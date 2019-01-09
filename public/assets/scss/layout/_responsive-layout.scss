@@ -1,0 +1,732 @@
+@media screen and (max-width: 1024px) {
+  // ------------------------------- homepage
+  #hero-section {
+  	.left {
+  		width: 35%;
+  	}
+  	.right {
+      width: 65%;
+    }
+  }
+  #events {
+  	.row {
+  		.col-item {
+  			padding: 20px 0px;
+      }
+    }
+  }
+  .timeline {
+  	.timeline-item {
+  		.date,.icon {
+  			flex: 2;
+  		}
+    }
+  }
+  .mini-section {
+  	.content {
+      padding: 10px;
+  		h1 {
+  			margin-bottom: 0px;
+  		}
+      .testi-content {
+  			div {
+  				section {
+  					padding: 0.5em 5em 0 5em;
+            p:nth-child(2) {
+              margin-bottom: 0px;
+            }
+  				}
+  			}
+      }
+    }
+  }
+  // ----------------------- button
+  .link-bottom {
+  	padding: 10px 20px 0 ;
+  }
+  .mini-section.regist .content p {
+    margin: 1em 5em 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #main-navbar {
+    .navbar-nav {
+      background-color: $blue;
+      padding: 10px;
+    }
+  }
+  #main-navbar.navbar-scroll {
+    .navbar-nav {
+      padding: 0px;
+    }
+  }
+  /*Detail event*/
+  #event-detail {
+  max-height: 90vh;}
+  #event-detail .left, #event-detail .right {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    padding: 40px; }
+  #event-detail .left {
+    align-items: flex-start;
+    width: 50%; }
+  #event-detail .right {
+    align-items: center;
+    width: 50%; }
+    #event-detail .right img {
+      width: 300px;
+      margin: 20px 0px 0px 10px;}
+  .event-mg {
+    margin-left: 20px;
+  }
+
+  /*End of detail event*/
+}
+
+@media screen and (max-width: 769px) {
+  // ------------------------------------ homepage
+  #hero-section {
+    flex-direction: column;
+    .left,.right {
+      height: 50vh;
+      width: 100%;
+    }
+    .left {
+      order: 2;
+    }
+    .right {
+      padding: 50px;
+      order: 1;
+      img {
+        width: 220px;
+      }
+    }
+  }
+  .mini-section .content .testi-content div section {
+    padding: 0.5em 1em 0 1em;
+  }
+  #events .row .col-item, #news .row .col-item {
+    padding: 20px 10px
+  }
+  #about .about-text {
+    width: 75%;
+  }
+  #contact .contact-item {
+    flex-direction: column;
+    .address {
+      padding: 20px;
+      width: 100%;
+    }
+    .map {
+      height: 50vh;
+      width: 100vw;
+    }
+  }
+  .center-section {
+    width: 85%;
+  }
+
+  /*Mulai login*/
+  #login .container{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    background-color: #FEBA33;
+    border-radius: 0px;
+    overflow: hidden;
+  }
+  #login .logo-atas {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  #login .logo-atas span img{
+  display: inline-block;
+  width: 180px;
+  margin-top: 20px;
+  float: right;
+  }
+  #login .logo-coming {
+    display: none;
+  }
+  #login .text-login {
+    display: none;
+  }
+  .form-login {
+    height: 450px;
+  }
+  #login .margin-zero {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  /*selesai login*/
+
+  /*Mulai Detail Event*/
+  #event-detail {
+  max-height: 100vh;}
+  #event-detail .left{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    padding: 0px; }
+  #event-detail .left {
+    margin-left: 10px;
+    width: 70%; }
+
+  #event-detail .right {
+    display: none; }
+  .event-mg {
+    margin: 0px 23%;
+    height: 60vh;
+  }
+  .event-mg h1 {
+    margin-left: 25%;
+  }
+  .event-mg h1 span{
+    margin-left: -30px;
+  }
+  .event-btn {
+    margin-left: 30%;
+  }
+  .event-hide-one {
+    margin-top: 80px;
+    width: 200px;
+    display: block;
+  }
+  .event-hide-one img{
+    width: 200px;
+  }
+
+  /*Selesai Detail Event*/
+}
+
+@media screen and (max-width: 480px) {
+  // ------------------------------------ homepage
+  #hero-section {
+    .right {
+      margin-top: 20px;
+    }
+  }
+  #timeline .content {
+    width: 90%;
+  }
+  .nav-pills li {
+    padding: 20px 10px;
+  }
+  .timeline .timeline-item {
+    flex-direction: column;
+    .icon {
+      order: 1;
+      margin: 20px 0;
+    }
+    .date {
+      order: 2;
+    }
+    .text {
+      order: 3;
+    }
+  }
+  .mini-section {
+    height: auto;
+  }
+  // ----------------------- grid
+  .grid-container {
+  	grid-template-columns: repeat(1, 1fr);
+
+  	div {
+  		&.wide {
+  			grid-column: auto;
+  		}
+  		&.tall {
+  			grid-row: auto;
+  			grid-column: auto;
+  		}
+  		&.big {
+  			grid-row: auto;
+  			grid-column: auto;
+  		}
+  	}
+  }
+  .mini-section.regist .content p {
+    margin: 1em 1.5em 0;
+  }
+  #about .about-text {
+    width: 85%;
+  }
+  /*mulai login*/
+  .wrapLogin {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #FEBA33; }
+
+  #login .container{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    background-color: #FEBA33;
+    border-radius: 0px;
+    overflow: hidden;
+  }
+  #login .col-md-4 {
+    background-color: #253A78;
+  }
+  #login .logo-atas {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  #login .logo-atas img{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 35px;
+  }
+  #login .logo-atas span img{
+    display: inline-block;
+    width: 160px;
+    margin-top: 20px;
+    float: right;
+  }
+  .form-login {
+    height: 430px;
+    width: 340px;
+  }
+  #login .margin-zero {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .form-login .row{
+    width: 80%;
+    margin: auto;
+    margin-top: 5px;
+    max-height: 80px;
+  }
+  .form-login .row img{
+    width: 60%;
+    margin: auto;
+  }
+
+  .form-login .row h4{
+    margin-left: 20px;
+    color:#FEBA33;
+  }
+  #login .form-control {
+    display: inline-block;
+    width: 70%;
+    border-radius: 0;
+    border:none;
+    border-bottom: 2px solid grey;
+  }
+  #login .form-group {
+    width: 100%;
+    padding: 5px 10px;
+  }
+  #login .form-group label{
+    padding: 0 5px;
+  }
+  #login .form-group label span{
+    padding-left: 32px;
+  }
+  #login .checkbox label{
+    margin: 5px 100px;
+  }
+
+  #login .checkbox label input{
+    margin-right: 10px;
+  }
+  #login .form-login .btn{
+    width: 120px;
+    height: 40px;
+    margin: 5px 110px;
+    background-color: #253A78;
+    border-radius: 5px;
+    color: #fff;
+  }
+  #login .forgot {
+    width: 70%;
+    margin: auto;
+    margin-top: 5px;
+  }
+  #login .regis {
+    width: 85%;
+    margin: auto;
+  }
+  /*Selesai login*/
+
+  /*mulai detail event*/
+  #event-detail .left {
+    width: 90%; }
+
+  .event-hide-one img {
+    margin-left: 50px;
+    width: 200px;
+  }
+  .event-mg {
+    margin: 0px 10%;
+  }
+  .event-mg h1 {
+    margin-left: 20%;
+    font-size: 2em;
+  }
+  .event-mg h1 span {
+    margin-left: -20px;
+  }
+  .event-hide-one img {
+    margin-left: 50px;
+    width: 170px;
+  }
+  .left p {
+    font-size: 1.2em;
+  }
+  /*selesai detail event*/
+
+}
+@media screen and (max-width: 326px) {
+  #events,#news {
+  	padding-left: 10px;
+  	padding-right: 10px;
+  }
+  /*mulai login*/
+  #login .container{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    background-color: #FEBA33;
+    border-radius: 0px;
+    overflow: hidden;
+  }
+  #login .logo-atas {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  #login .logo-atas img{
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 25px;
+  }
+  #login .logo-atas span img{
+    display: inline-block;
+    width: 130px;
+    margin-top: 20px;
+    float: right;
+  }
+  .form-login {
+    height: 420px;
+    width: 250px;
+  }
+  .form-login .row{
+    width: 90%;
+    margin: auto;
+    margin-top: 5px;
+    max-height: 80px;
+  }
+  .form-login .row img{
+    width: 70%;
+    margin: auto;
+  }
+
+  .form-login .row h4{
+    margin-left: 10px;
+    color:#FEBA33;
+    font-size: 1.3em;
+  }
+  #login .form-control {
+    display: inline-block;
+    width: 55%;
+    border-radius: 0;
+    border:none;
+    border-bottom: 1.3px solid grey;
+  }
+  #login .form-group {
+    width: 100%;
+    padding: 5px 10px;
+  }
+  #login .form-group label{
+    padding: 0 5px;
+  }
+  #login .form-group label span{
+    padding-left: 28px;
+  }
+  #login input:focus {
+      border-bottom: 1.5px solid #FEBA33;
+  }
+  #login .checkbox label{
+    margin: 0px 55px;
+    margin-bottom: 5px;
+  }
+
+  #login .checkbox label input{
+    margin-right: 10px;
+  }
+  #login .form-login .btn{
+    width: 100px;
+    height: 40px;
+    margin: 0px 75px;
+    background-color: #253A78;
+    border-radius: 5px;
+    color: #fff;
+  }
+  #login .forgot {
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .forgot a {
+    color: #5870BA;
+  }
+  .forgot p {
+    margin-bottom: 2px;
+  }
+  /*mulai detail event*/
+  #event-detail .left {
+    width: 90%; }
+
+  .event-hide-one img {
+    margin-left: 50px;
+    width: 200px;
+  }
+  .event-mg {
+    margin: 0px 10%;
+  }
+  .event-mg h1 {
+    margin-left: 22%;
+    font-size: 1.5em;
+  }
+  .event-mg h1 span {
+    margin-left: -20px;
+  }
+  .event-hide-one img {
+    margin-left: 50px;
+    width: 200px;
+  }
+  .left p {
+    font-size: 1.1em;
+  }
+  .event-btn {
+    border: 2px solid #304179;
+    margin-left: 50px;
+  }
+  .event-logo {
+    max-width: 250px;
+    margin-bottom: 30px;
+  }
+  /*selesai detail event*/
+}
+// --------------------------------- special for ipad
+@media screen and (min-height: 1024px) and (min-width: 768px){
+  #events,#timeline,#news,#gallery,#about,#sponsors,#contact {
+  	min-height: auto;
+  }
+  .grid-container {
+    grid-auto-rows: minmax(150px, auto);
+  }
+  #hero-section {
+    flex-direction: column;
+    .left,.right {
+      width: 100%;
+    }
+    .left {
+      height: 40vh;
+      order: 2;
+    }
+    .right {
+      height: 60vh;
+      padding: 50px;
+      order: 1;
+      img {
+        width: 220px;
+      }
+    }
+  }
+  .mini-section {
+    height: auto;
+  }
+  /*Mulai login*/
+  .wrapLogin {
+  position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FEBA33; }
+  #login .col-md-4{
+    -ms-flex:0 0 100%;
+    flex:0 0 100%;
+    max-width: 100%;
+    height:100px;
+  }
+  #login .col-md-8{
+    -ms-flex:0 0 100%;
+    flex:0 0 100%;
+    max-width: 100%;
+    min-height : 100%;
+  }
+  .form-login {
+    height: 80vh;
+    width: 90%;
+  }
+  .form-login .row {
+    width: 70%;
+    margin: auto;
+    margin-top: 15px;
+    max-height: 200px;
+  }
+  .form-login .row h4 {
+    font-size: 2.7em;
+    margin-left: 40px;
+    color: #FEBA33;
+  }
+  #login .form-group {
+    width: 100%;
+    padding: 15px 25px;
+}
+  #login .form-group label {
+    font-size: 2em;
+    padding: 0 25px;
+  }
+  #login .form-control {
+      width: 60%;
+  }
+  #login .form-group label span {
+    padding-left: 65px;
+  }
+  #login .checkbox label {
+    width: 100%;
+    margin: 25px 20px;
+    font-size: 2em;
+  }
+  #login .form-login .btn {
+    width: 150px;
+    height: 60px;
+    margin: 10px 250px;
+    font-size: 1.8em;
+  }
+  #login .logo-atas img {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 55px;
+  }
+  #login .logo-atas span img {
+    display: inline-block;
+    width: 250px;
+    margin-top: 25px;
+    float: right;
+  }
+    .cr, .radio .cr {
+      position: relative;
+      display: inline-block;
+      border: 1px solid #a9a9a9;
+      border-radius: .25em;
+      width: .8em;
+      height: .8em;
+      float: left;
+      margin-right: .5em;
+  }
+  #login .forgot {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.8em;
+  }
+  #login .regis {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.8em;
+  }
+
+  /*selesai login*/
+  /*Mulai Event detail*/
+  .event-hide-one img {
+    width: 350px;
+  }
+  .event-mg h1 {
+    font-size: 2.2em;
+    margin-left: 25%;
+  }
+  #event-detail .left p {
+    margin-bottom: 50px;
+    font-size: 1.6em;
+  }
+  .event-btn {
+    width: 180px;
+    height: 50px;
+    margin-left: 30%;
+  }
+  .event-hide-one {
+    margin-top: 50px;
+    width: 200px;
+    display: block;
+  }
+  /*selesai Event detail*/
+
+}
+
+// ERROR AND REGISTER PAGE
+
+@media screen and (max-width: 768px) {
+  #error-img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #register {
+    #vocom-logo-color {
+      width: 40%!important;
+    }
+    .regist-content {
+      width: 100%!important;
+    }
+    .desc-form {
+      position: relative!important;
+      width: 100%!important;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)!important;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)!important;
+      border-radius: 25px;
+      margin-top: 25px;
+      p {
+        direction: ltr!important;
+        padding: 50px 25px!important;
+      }
+      .desc-logo{
+        width: 30%!important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 0.8em;
+    }
+    #vocom-logo-color {
+      width: 75%!important;
+    }
+  }
+}
+
+// END OF ERROR AND REGISTER PAGE
+@media screen and (max-width: 321px) {
+  #header {
+  	.navbar-expand-lg {
+  		justify-content: center;
+  	}
+  }
+}
