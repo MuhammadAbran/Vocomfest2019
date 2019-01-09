@@ -248,8 +248,10 @@
           <!-- END OF WDC FORM -->
           <!-- MADC FORM -->
 
-          <form  id="wdc-form" class="tab-pane fade" action="{{ route('register') }}" method="post">
+          <form  id="wdc-form" class="tab-pane fade" action="{{ route('wdc') }}" method="post">
              @csrf
+             <input type="hidden" name="role" value="3">
+             <input type="hidden" name="progress" value="0">
              <div>
               <div class="row mg-0">
                 <div class="col-md-6 col-12 mg-b-15">
@@ -258,7 +260,7 @@
                       Team Name
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Team Name" name="">
+                      : <input type="text" placeholder="Team Name" name="team_name">
                     </div>
                   </div>
                 </div>
@@ -268,7 +270,7 @@
                       Leader email
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Email" name="">
+                      : <input type="text" placeholder="Email" name="leader_email">
                     </div>
                   </div>
                 </div>
@@ -281,7 +283,7 @@
                       Password
                     </div>
                     <div class="col-md-7">
-                      : <input type="password" placeholder="Password" name="">
+                      : <input type="password" placeholder="Password" name="password">
                     </div>
                   </div>
                 </div>
@@ -291,7 +293,7 @@
                       Confirm Password
                     </div>
                     <div class="col-md-7">
-                      : <input type="password" placeholder="Confirm Password" name="">
+                      : <input type="password" placeholder="Confirm Password" name="confirm_password">
                     </div>
                   </div>
                 </div>
@@ -304,7 +306,7 @@
                       Instance Name
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Instance Name" name="">
+                      : <input type="text" placeholder="Instance Name" name="instance_name">
                     </div>
                   </div>
                 </div>
@@ -314,7 +316,7 @@
                       Instance Address
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Instance Address" name="">
+                      : <input type="text" placeholder="Instance Address" name="instance_address">
                     </div>
                   </div>
                 </div>
@@ -327,7 +329,7 @@
                       Leader Name
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Leader Name" name="">
+                      : <input type="text" placeholder="Leader Name" name="leader_name">
                     </div>
                   </div>
                 </div>
@@ -337,7 +339,7 @@
                       Phone Number
                     </div>
                     <div class="col-md-7 phone-num">
-                      : +62 <input type="number" placeholder="Phone Number" name="">
+                      : +62 <input type="number" placeholder="Phone Number" name="leader_phone">
                     </div>
                   </div>
                 </div>
@@ -352,7 +354,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="">
+                      : <input type="text" placeholder="Member Name" name="co-leader_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -360,7 +362,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="">
+                      : <input type="text" placeholder="Member Email" name="co-leader_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -368,7 +370,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num mg-b-15">
-                      : +62 <input type="number" placeholder="Phone Number" name="">
+                      : +62 <input type="number" placeholder="Phone Number" name="co-leader_phone">
                     </div>
                   </div>
                 </div>
@@ -381,7 +383,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="">
+                      : <input type="text" placeholder="Member Name" name="member-1_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -389,7 +391,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="">
+                      : <input type="text" placeholder="Member Email" name="member-1_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -397,12 +399,12 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num mg-b-15">
-                      : +62 <input type="number" placeholder="Phone Number" name="">
+                      : +62 <input type="number" placeholder="Phone Number" name="member-1_phone">
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="row" style="display:none;">
+              <!-- <div class="row" style="display:none;">
                 <div class="col-md-6 col-12 mg-b-15">
                   <div class="row">
                     <span class="mg-b-15">Team Member #3</span>
@@ -432,10 +434,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="row justify-content-center">
                 <div class="col-md-3 mg-bt-10">
-                  <input class="regist-btn mg-bt-15" type="submit" value="REGISTER" name="">
+                  <input class="regist-btn mg-bt-15" type="submit" value="REGISTER">
                 </div>
               </div>
               <p class="log-here">

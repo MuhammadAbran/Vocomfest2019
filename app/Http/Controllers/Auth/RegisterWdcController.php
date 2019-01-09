@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Wdc;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterWdcController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard/wdc';
 
     /**
      * Create a new controller instance.
@@ -48,11 +49,11 @@ class RegisterWdcController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'team_name' => ['required', 'string', 'max:255'],
-            'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+        // return Validator::make($data, [
+        //     'team_name' => ['required', 'string', 'max:255'],
+        //     'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
+        // ]);
     }
 
     /**
@@ -63,10 +64,29 @@ class RegisterWdcController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $user = User::create([
+           'team_name' => $data['team_name'],
+           'leader_email' => $data['leader_email'],
+           'password' => Hash::make($data['password']),
+           'role' => $data['role'],
         ]);
+
+        $wdc = new Wdc([
+           'instance_name' => $data['instance_name'],
+           'instance_address' => $data['instance_address'],
+           'leader_name' => $data['leader_name'],
+           'leader_phone' => $data['leader_phone'],
+           'co-leader_name' => $data['co-leader_name'],
+           'co-leader_email' => $data['co-leader_email'],
+           'co-leader_phone' => $data['co-leader_phone'],
+           'member_name' => $data['member-1_name'],
+           'member_email' => $data['member-1_email'],
+           'member_phone' => $data['member-1_phone'],
+           'progress' => $data['progress'],
+        ]);
+
+        $user->wdc()->save($wdc);
+
+        return $user;
     }
 }
