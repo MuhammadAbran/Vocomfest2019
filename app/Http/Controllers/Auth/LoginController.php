@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -36,4 +37,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticated()
+    {
+      // dd(Auth::user()->isAdmin());
+      if (Auth::user()->isAdmin()) {
+         return redirect()->route('admin');
+      }
+      else if (Auth::user()->isMadc()) {
+         return redirect()->route('dashboard.madc');
+      }
+      else if (Auth::user()->isWdc()) {
+         return redirect()->route('dashboard.wdc');
+      }
+      else if (Auth::user()->isNtf()) {
+         // return redirect()->route('dashboard.ntf');
+      }
+
+      return redirect('/login');
+   }
 }
