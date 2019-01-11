@@ -1,6 +1,7 @@
 # Vocomfest2019
 Vocomfest2019
 
+Untuk mempermudah proses deploy, Auth di nonaktifkan dulu ya
 ROLE :
  1. admin
  2. madc
@@ -8,6 +9,7 @@ ROLE :
  4. ntf
 
 MADC Progress :
+
  0. registrasi
  1.  sudah verifikasi email -> Bisa melengkapi Data Tim
  2. sudah melengkapi data tim dan KUNCI DATA TIM -> Bisa Upload bukti pembayaran
@@ -23,6 +25,7 @@ MADC Progress :
  10. LOLOS, notif : lolos tahap final dan final akan diadakan di UGM
 
 WDC Progress :
+
  0. registrasi
  1. sudah verifikasi email -> Bisa melengkapi Data Tim
  2. sudah melengkapi data tim dan KUNCI DATA TIM-> Bisa Upload bukti pembayaran
