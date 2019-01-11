@@ -27,7 +27,10 @@ Route::get('/', function () {
 // });
 
 // Route::middleware(['auth', 'wdc'])->group(function(){
-   Route::get('/wdc', 'WdcController@index')->name('dashboard.wdc');
+    Route::get('wdc', 'WdcController@index')->name('wdc.dashboard');
+    Route::get('wdc/team', 'WdcController@team')->name('wdc.team');
+    Route::get('wdc/payment', 'WdcController@payment')->name('wdc.payment');
+    Route::get('wdc/submission', 'WdcController@submission')->name('wdc.submission');
 // });
 
 Route::middleware(['auth', 'ntf'])->group(function(){
