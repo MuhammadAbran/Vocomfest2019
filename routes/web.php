@@ -15,17 +15,17 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth', 'admin'])->group(function(){
+// Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin', 'AdminController@index')->name('admin');
-});
+// });
 
-Route::middleware(['auth', 'madc'])->group(function(){
-   Route::get('/dashboard/madc', 'MadcController@index')->name('dashboard.madc');
-});
+// Route::middleware(['auth', 'madc'])->group(function(){
+   Route::get('/madc', 'MadcController@index')->name('dashboard.madc');
+// });
 
-Route::middleware(['auth', 'wdc'])->group(function(){
-   Route::get('/dashboard/wdc', 'WdcController@index')->name('dashboard.wdc');
-});
+// Route::middleware(['auth', 'wdc'])->group(function(){
+   Route::get('/wdc', 'WdcController@index')->name('dashboard.wdc');
+// });
 
 Route::middleware(['auth', 'ntf'])->group(function(){
 

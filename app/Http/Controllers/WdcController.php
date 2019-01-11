@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class WdcController extends Controller
 {
-   public function __construct()
-   {
-     $this->middleware(['auth', 'wdc']);
-  }
+//    public function __construct()
+//    {
+//      $this->middleware(['auth', 'wdc']);
+//   }
 
   public function index()
   {
