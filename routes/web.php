@@ -20,7 +20,10 @@ Route::get('/', function () {
 // });
 
 // Route::middleware(['auth', 'madc'])->group(function(){
-   Route::get('/madc', 'MadcController@index')->name('dashboard.madc');
+   Route::get('madc', 'MadcController@index')->name('madc.dashboard');
+   Route::get('madc/team', 'MadcController@team')->name('madc.team');
+   Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
+   Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
 // });
 
 // Route::middleware(['auth', 'wdc'])->group(function(){
