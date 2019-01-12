@@ -16,7 +16,13 @@ Route::get('/', function () {
 
 
 // Route::middleware(['auth', 'admin'])->group(function(){
-   Route::get('/admin', 'AdminController@index')->name('admin');
+   Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
+   Route::get('/admin/teams/madc', 'AdminController@madcTeams')->name('admin.madcTeams');
+   Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
+   Route::get('/admin/news', 'AdminController@news')->name('admin.news');
+   Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
+   Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
+   Route::get('/admin/submissions', 'AdminController@submissions')->name('admin.submissions');
 // });
 
 // Route::middleware(['auth', 'madc'])->group(function(){

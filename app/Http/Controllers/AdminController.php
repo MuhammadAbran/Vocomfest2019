@@ -12,14 +12,50 @@ class AdminController extends Controller
    }
 
 
-    public function index()
-    {
-      $i = 1;
-      $ii = 1;
-      $madc = \App\MadcTeams::all();
-      $wdc = \App\WdcTeams::all();
-      $users = \App\User::all();
-      // dd($users);
-      return view('admin.dashboard', compact(['ii', 'i', 'users','madc', 'wdc']));
+   //  public function index()
+   //  {
+   //    $i = 1;
+   //    $ii = 1;
+   //    $madc = \App\Madc::all();
+   //    $wdc = \App\Wdc::all();
+   //    $users = \App\User::all();
+   //    // dd($users);
+   //    return view('admin.dashboard', compact(['ii', 'i', 'users','madc', 'wdc']));
+   // }
+
+
+   public function index()
+   {
+      return view('user.admin.dashboard');
+   }
+
+   public function madcTeams()
+   {
+      return view('user.admin.madc_teams');
+   }
+
+   public function wdcTeams()
+   {
+      return view('user.admin.wdc_teams');
+   }
+
+   public function galleries()
+   {
+      return view('user.admin.galleries');
+   }
+
+   public function news()
+   {
+      return view('user.admin.news');
+   }
+
+   public function payments()
+   {
+      return view('user.admin.payment');
+   }
+
+   public function submissions()
+   {
+      return view('user.admin.submission');
    }
 }
