@@ -29,9 +29,9 @@
           <button type="submit" class="btn btn-primary">Cari</button>
         </form>
       </div>
-      
+      <a href="{{route('admin.addNews')}}"><button class="btn btn-info mtb10"><i class="fa fa-edit"></i> Tambah Artikel</button></a>
       <table class="table table-striped">
-        <caption class="smaller">Menampilkan 1 hingga 4 dari total 4 data</caption>
+        <caption  class="smaller">Menampilkan 1 hingga 4 dari total 4 data</caption>
         <thead>
           <tr>
             <th scope="col"> </th>
@@ -47,10 +47,10 @@
             <th scope="row"><input type="checkbox" name="" value="1"></th>
             <td>Lorem ipsum dolor sit amet. <span>(draft)</span></td>
             <td>admin</td>
-            <td>Pengumuman</td>
+            <td>tt</td>
             <td>18/01/2017</td>
             <td class="py-1">
-              <a href="./edit-news.html" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+              <a href="{{route('admin.editNews')}}" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
               <a href="" data-toggle="modal" data-target="#delete-modal" class="btn-danger btn-sm"><i class="fa fa-trash"></i></a>
             </td>
           </tr>

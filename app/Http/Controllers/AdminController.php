@@ -49,6 +49,16 @@ class AdminController extends Controller
       return view('user.admin.news');
    }
 
+   public function addNews()
+   {
+      return view('user.admin.add_news');
+   }
+
+   public function editNews()
+   {
+      return view('user.admin.edit_news');
+   }
+
    public function payments()
    {
       return view('user.admin.payment');
