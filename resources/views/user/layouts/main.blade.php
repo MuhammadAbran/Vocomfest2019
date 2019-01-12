@@ -50,7 +50,7 @@
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="#"><button class="btn btn-danger">Logout</button></a>
                         </li>
                     </ul>
                 </div>
@@ -69,6 +69,8 @@
     <!-- Bootstrap JS -->
     <script src="{!! asset('assets/vendor/bootstrap/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('assets/vendor/lightcase/js/lightcase.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('assets/vendor/tinymce/tinymce.min.js') !!}" ></script>
+    <script type="text/javascript" src="{!! asset('assets/vendor/tinymce/init-tinymce.js') !!}" ></script>
     <script src="{!! asset('assets/js//main.js') !!}"></script>
 
     

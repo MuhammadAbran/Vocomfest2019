@@ -3,7 +3,12 @@
 @extends('user.admin.menu')
 @section('title', 'Dashboard | Admin')
 
+@section('breadcrumbs')
 
+
+
+
+@endsection
 
 @section('content')
     <div class="box">
