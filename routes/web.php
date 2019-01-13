@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MadcController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +34,9 @@ Route::get('/', function () {
 // Route::middleware(['auth', 'madc'])->group(function(){
    Route::get('madc', 'MadcController@index')->name('madc.dashboard');
    Route::get('madc/team', 'MadcController@team')->name('madc.team');
+   Route::post('madc/edit', 'MadcController@edit_team')->name('madc.edit.team');
    Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
+   Route::post('madc/payment/store', 'MadcController@payment_store')->name('madc.payment.store');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
 // });
 

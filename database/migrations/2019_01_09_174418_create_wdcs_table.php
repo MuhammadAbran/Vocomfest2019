@@ -20,10 +20,10 @@ class CreateWdcsTable extends Migration
             $table->string('leader_avatar')->default('avatar.jpg');
             $table->string('instance_name');
             $table->string('instance_address');
-            $table->string('co-leader_name');
-            $table->string('co-leader_email');
-            $table->string('co-leader_phone');
-            $table->string('co-leader_avatar')->default('avatar.jpg');
+            $table->string('coleader_name');
+            $table->string('coleader_email');
+            $table->string('coleader_phone');
+            $table->string('coleader_avatar')->default('avatar.jpg');
             $table->string('member_name');
             $table->string('member_email');
             $table->string('member_phone');

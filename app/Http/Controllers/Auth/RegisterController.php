@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/madc';
+    protected $redirectTo = 'madc';
 
     /**
      * Create a new controller instance.
@@ -78,15 +78,15 @@ class RegisterController extends Controller
            'instance_address' => $data['instance_address'],
            'leader_name' => $data['leader_name'],
            'leader_phone' => $data['leader_phone'],
-           'co-leader_name' => $data['co-leader_name'],
-           'co-leader_email' => $data['co-leader_email'],
-           'co-leader_phone' => $data['co-leader_phone'],
-           'member-1_name' => $data['member-1_name'],
-           'member-1_email' => $data['member-1_email'],
-           'member-1_phone' => $data['member-1_phone'],
-           'member-2_name' => $data['member-2_name'],
-           'member-2_email' => $data['member-2_email'],
-           'member-2_phone' => $data['member-2_phone'],
+           'coleader_name' => $data['co-leader_name'],
+           'coleader_email' => $data['co-leader_email'],
+           'coleader_phone' => $data['co-leader_phone'],
+           'member1_name' => $data['member-1_name'],
+           'member1_email' => $data['member-1_email'],
+           'member1_phone' => $data['member-1_phone'],
+           'member2_name' => $data['member-2_name'],
+           'member2_email' => $data['member-2_email'],
+           'member2_phone' => $data['member-2_phone'],
            'progress' => $data['progress'],
         ]);
 
