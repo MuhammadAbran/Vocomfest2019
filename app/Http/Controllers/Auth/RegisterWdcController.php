@@ -76,12 +76,12 @@ class RegisterWdcController extends Controller
            'instance_address' => $data['instance_address'],
            'leader_name' => $data['leader_name'],
            'leader_phone' => $data['leader_phone'],
-           'co-leader_name' => $data['co-leader_name'],
-           'co-leader_email' => $data['co-leader_email'],
-           'co-leader_phone' => $data['co-leader_phone'],
-           'member_name' => $data['member-1_name'],
-           'member_email' => $data['member-1_email'],
-           'member_phone' => $data['member-1_phone'],
+           'co_leader_name' => $data['co_leader_name'],
+           'co_leader_email' => $data['co_leader_email'],
+           'co_leader_phone' => $data['co_leader_phone'],
+           'member_name' => $data['member_1_name'],
+           'member_email' => $data['member_1_email'],
+           'member_phone' => $data['member_1_phone'],
            'progress' => $data['progress'],
         ]);
 

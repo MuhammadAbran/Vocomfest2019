@@ -45,7 +45,7 @@
           </a></li>
         </ul>
         <div class="tab-content">
-          <!-- WDC FORM -->
+          <!-- MADC FORM -->
           <form  id="madc-form" class="tab-pane fade in active show" action="{{ route('register') }}" method="post">
              @csrf
              <input type="hidden" name="role" value="2">
@@ -152,7 +152,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="co-leader_name">
+                      : <input type="text" placeholder="Member Name" name="co_leader_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -160,7 +160,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="co-leader_email">
+                      : <input type="text" placeholder="Member Email" name="co_leader_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -168,7 +168,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num">
-                      : +62 <input type="number" placeholder="Phone Number" name="co-leader_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="co_leader_phone">
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="member-1_name">
+                      : <input type="text" placeholder="Member Name" name="member_1_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -189,7 +189,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="member-1_email">
+                      : <input type="text" placeholder="Member Email" name="member_1_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -197,7 +197,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num">
-                      : +62 <input type="number" placeholder="Phone Number" name="member-1_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="member_1_phone">
                     </div>
                   </div>
                 </div>
@@ -212,7 +212,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="member-2_name">
+                      : <input type="text" placeholder="Member Name" name="member_2_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -220,7 +220,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="member-2_email">
+                      : <input type="text" placeholder="Member Email" name="member_2_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -228,7 +228,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num">
-                      : +62 <input type="number" placeholder="Phone Number" name="member-2_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="member_2_phone">
                     </div>
                   </div>
                 </div>
@@ -245,8 +245,8 @@
           </form>
 
 
-          <!-- END OF WDC FORM -->
-          <!-- MADC FORM -->
+          <!-- END OF MADC FORM -->
+          <!-- WDC FORM -->
 
           <form  id="wdc-form" class="tab-pane fade" action="{{ route('wdc') }}" method="post">
              @csrf
@@ -354,7 +354,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="co-leader_name">
+                      : <input type="text" placeholder="Member Name" name="co_leader_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -362,7 +362,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="co-leader_email">
+                      : <input type="text" placeholder="Member Email" name="co_leader_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -370,7 +370,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num mg-b-15">
-                      : +62 <input type="number" placeholder="Phone Number" name="co-leader_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="co_leader_phone">
                     </div>
                   </div>
                 </div>
@@ -383,7 +383,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="member-1_name">
+                      : <input type="text" placeholder="Member Name" name="member_1_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -391,7 +391,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="member-1_email">
+                      : <input type="text" placeholder="Member Email" name="member_1_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -399,7 +399,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num mg-b-15">
-                      : +62 <input type="number" placeholder="Phone Number" name="member-1_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="member_1_phone">
                     </div>
                   </div>
                 </div>
@@ -446,7 +446,7 @@
             </div>
           </form>
 
-          <!-- END OF MADC FORM -->
+          <!-- END OF WDC FORM -->
 
 
           <!-- SEMNAS FORM -->
