@@ -11,7 +11,7 @@ ROLE :
 MADC Progress :
 
  0. registrasi
- 1.  sudah verifikasi email -> Bisa melengkapi Data Tim
+ 1. sudah verifikasi email -> Bisa melengkapi Data Tim
  2. sudah melengkapi data tim dan KUNCI DATA TIM -> Bisa Upload bukti pembayaran
  3. sudah upload bukti bayar, nunggu approval admin -> Admin Approve bukti pembayaran
  4. sudah di-approve, resmi sebagai peserta -> bisa ngirim link poroposal
