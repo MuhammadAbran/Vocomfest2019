@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserSeederTable extends Seeder
+class MadcSeederTable extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class UserSeederTable extends Seeder
      */
     public function run()
     {
-        factory(\App\User::class, 10)->create();
+        factory(\App\Madc::class, 5)->create();
     }
 }
