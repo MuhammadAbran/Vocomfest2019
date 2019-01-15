@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,15 @@ class AdminController extends Controller
 
    public function index()
    {
+      // $users = User::get(['role']);
+      // $a = [];
+      // foreach ($users as $user) {
+      //    $a[] = $user['role'];
+      // }
+      // dd($a);
+      $user = User::find(2);
+      dd($user['role']);
+
       return view('user.admin.dashboard');
    }
 
