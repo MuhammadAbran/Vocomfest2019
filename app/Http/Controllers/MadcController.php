@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Madc;
 use Illuminate\Support\Facades\Auth;
+use App\Payment;
 
 class MadcController extends Controller
 {
@@ -90,7 +91,30 @@ class MadcController extends Controller
 
    public function payment()
    {
+      // $id = Auth::user()->id;
+
       return view('user.madc.payment');
+   }
+
+   public function paymentUpload(Request $req)
+   {
+      // $user_id = Auth::user()->id;
+      $user_id = 1;
+
+      if($file = $req->file('photo')){
+         $photo = time() . '.' . $file->getClientOriginalExtension();
+         $file->move('assets/img', $photo);
+
+         $pay = new Payment([
+            'payment_path' => $photo,
+            'user_id' => $user_id,
+         ]);
+
+         $pay->save();
+      }
+
+
+      return redirect()->back();
    }
 
    public function submission()
