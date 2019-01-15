@@ -55,9 +55,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{ route('madc.payment.upload') }}" method="post" enctype="multipart/form-data">
+                @csrf
                     <div class="form-group">
                         <label for="tim">Nama Tim :</label>
+                        <!-- Ambil ID team  -->
+                        <input type="hidden" name="id" value="1">
                         <input type="text" class="form-control" name="tim" value="Hmmm" disabled>
                      </div>
                      <div class="form-group">
@@ -72,7 +75,7 @@
 
                     <div class="form-group">
                         <label for="bukti">Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
                     </div>
                     <button type="submit" class="btn btn-custom">Kirim</button>
                 </form>

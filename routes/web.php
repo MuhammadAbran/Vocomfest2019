@@ -34,6 +34,7 @@ Route::get('/', function () {
    Route::get('madc/team', 'MadcController@team')->name('madc.team');
    Route::post('madc/team/edit', 'MadcController@teamEdit')->name('madc.team.edit');
    Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
+   Route::post('madc/payment/upload', 'MadcController@paymentUpload')->name('madc.payment.upload');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
 // });
 
