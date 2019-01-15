@@ -38,6 +38,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function username()
+    {
+      return 'leader_email';
+    }
+
     public function authenticated()
     {
       // dd(Auth::user()->isAdmin());
@@ -45,10 +50,10 @@ class LoginController extends Controller
          return redirect()->route('admin');
       }
       else if (Auth::user()->isMadc()) {
-         return redirect()->route('dashboard.madc');
+         return redirect()->route('madc.dashboard');
       }
       else if (Auth::user()->isWdc()) {
-         return redirect()->route('dashboard.wdc');
+         return redirect()->route('wdc.dashboard');
       }
       else if (Auth::user()->isNtf()) {
          // return redirect()->route('dashboard.ntf');
