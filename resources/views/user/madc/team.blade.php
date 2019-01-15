@@ -8,23 +8,26 @@
 @section('content')
   <div class="box">
   <!-- Team Member  -->
-    <?php if ($tim[0]->progress < 2) { ?>
+
+  <!-- Tombol Kunci Data akan hilang kalau progress sudah 2 (Sudah kunci data) -->
+    <?php if ($tim->progress < 2) { ?>
     <button class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
     <?php } ?>
+  <!-- Tombol Kunci Data akan hilang kalau progress sudah 2 (Sudah kunci data) -->
     <div class="row team">
       <!-- Team Member Box -->
       <div class="column">
         <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim[0]->leader_avatar}}" alt="IU" style="width:100%">
+          <img src="{{url('/')}}/assets/img/{{$tim->leader_avatar}}" alt="IU" style="width:100%">
           <div class="container">
-            <h2>{{$tim[0]->leader_name}}</h2>
+            <h2>{{$tim->leader_name}}</h2>
             <p class="title">Ketua Tim</p>
-            <p>{{$leader[0]->leader_email}}</p>
+            <p>{{$tim->leader_email}}</p>
             <p>
               <a href="{!! asset('assets/img/iu.jpg') !!}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              <?php if ($tim[0]->progress < 2) { ?>
+              <?php if ($tim->progress < 2) { ?>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">
                 Edit Data
               </button>
@@ -38,16 +41,17 @@
       <!-- Team Member Box -->
       <div class="column">
         <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim[0]->co_leader_avatar}}" alt="IU" style="width:100%">
+          <img src="{{url('/')}}/assets/img/{{$tim->co_leader_avatar}}" alt="IU" style="width:100%">
           <div class="container">
-            <h2>{{$tim[0]->co_leader_name}}</h2>
+            <h2>{{$tim->co_leader_name}}</h2>
             <p class="title">Wakil Ketua</p>
-            <p>{{$tim[0]->co_leader_email}}</p>
+            <p>{{$tim->co_leader_email}}</p>
             <p>
               <a href="{!! asset('assets/img/iu.jpg') !!}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              <?php if ($tim[0]->progress < 2) { ?>
+          <!-- Tombol Edit data bakal ilang kalo udah kunci data (progress>=2) -->
+              <?php if ($tim->progress < 2) { ?>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">
                 Edit Data
               </button>
@@ -61,16 +65,16 @@
       <!-- Team Member Box -->
       <div class="column">
         <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim[0]->member_1_avatar}}" alt="IU" style="width:100%">
+          <img src="{{url('/')}}/assets/img/{{$tim->member_1_avatar}}" alt="IU" style="width:100%">
           <div class="container">
-            <h2>{{$tim[0]->member_1_name}}</h2>
+            <h2>{{$tim->member_1_name}}</h2>
             <p class="title">Anggota</p>
-            <p>{{$tim[0]->member_1_email}}</p>
+            <p>{{$tim->member_1_email}}</p>
             <p>
               <a href="{!! asset('assets/img/iu.jpg') !!}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              <?php if ($tim[0]->progress < 2) { ?>
+              <?php if ($tim->progress < 2) { ?>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">
                 Edit Data
               </button>
@@ -82,19 +86,19 @@
       <!-- End Member Box -->
 
       <!-- Team Member Box -->
-      <?php if ($tim[0]->member_2_name != null) : ?>
+      <?php if ($tim->member_2_name != null) : ?>
       <div class="column">
         <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim[0]->member_2_avatar}}" alt="IU" style="width:100%">
+          <img src="{{url('/')}}/assets/img/{{$tim->member_2_avatar}}" alt="IU" style="width:100%">
           <div class="container">
-            <h2>{{$tim[0]->member_2_name}}</h2>
+            <h2>{{$tim->member_2_name}}</h2>
             <p class="title">Anggota</p>
-            <p>{{$tim[0]->member_2_email}}</p>
+            <p>{{$tim->member_2_email}}</p>
             <p>
               <a href="{!! asset('assets/img/iu.jpg') !!}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              <?php if ($tim[0]->progress < 2) { ?>
+              <?php if ($tim->progress < 2) { ?>
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#member2">
                 Edit Data
               </button>
@@ -121,12 +125,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengunci data tim <strong>{{$leader[0]->team_name}}?</strong><br>
+        Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
         <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
       </div>
       <div class="modal-footer">
         <form action="{{route('madc.payment')}}">
-          <input type="hidden" name="id" value="{{$tim[0]->id}}">
+          <input type="hidden" name="id" value="{{$tim->id}}">
           <button type="submit" class="btn btn-warning">Kunci Data</button>
         </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -147,14 +151,16 @@
       </div>
       <form action="{{ route('madc.team.edit') }}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-          <input type="hidden" name="id" value="{{$tim[0]->id}}">
+          <input type="hidden" name="id" value="{{$tim->id}}">
+          
+      <!-- Biar tau yang diedit data ketua/wakil/anggota -->
           <input type="hidden" name="pos" value=1>
           Nama <br>
-          <input type="text" name="name" value="{{$tim[0]->leader_name}}"><br>
+          <input type="text" name="name" value="{{$tim->leader_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$leader[0]->leader_email}}"><br>
+          <input type="email" name="email" value="{{$tim->leader_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim[0]->leader_phone}}">
+          +62<input type="text" name="phone" value="{{$tim->leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -182,14 +188,14 @@
       </div>
       <form action="{{ route('madc.team.edit') }}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-          <input type="hidden" name="id" value="{{$tim[0]->id}}">
+          <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=2>
           Nama <br>
-          <input type="text" name="name" value="{{$tim[0]->co_leader_name}}"><br>
+          <input type="text" name="name" value="{{$tim->co_leader_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim[0]->co_leader_email}}"><br>
+          <input type="email" name="email" value="{{$tim->co_leader_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim[0]->co_leader_phone}}">
+          +62<input type="text" name="phone" value="{{$tim->co_leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -217,14 +223,14 @@
       </div>
       <form action="{{ route('madc.team.edit') }}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-          <input type="hidden" name="id" value="{{$tim[0]->id}}">
+          <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=3>
           Nama <br>
-          <input type="text" name="name" value="{{$tim[0]->member_1_name}}"><br>
+          <input type="text" name="name" value="{{$tim->member_1_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim[0]->member_1_email}}"><br>
+          <input type="email" name="email" value="{{$tim->member_1_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim[0]->member_1_phone}}">
+          +62<input type="text" name="phone" value="{{$tim->member_1_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -252,14 +258,14 @@
       </div>
       <form action="{{ route('madc.team.edit') }}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-          <input type="hidden" name="id" value="{{$tim[0]->id}}">
+          <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=4>
           Nama <br>
-          <input type="text" name="name" value="{{$tim[0]->member_2_name}}"><br>
+          <input type="text" name="name" value="{{$tim->member_2_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim[0]->member_2_email}}"><br>
+          <input type="email" name="email" value="{{$tim->member_2_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone"  value="{{$tim[0]->member_2_phone}}">
+          +62<input type="text" name="phone"  value="{{$tim->member_2_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
