@@ -10,8 +10,14 @@
          <!-- Payment Box -->
      	<div class="payment">
          	<h1 class="title">Pembayaran</h1>
+        <!-- Tulisan berubah sesuai progress tim -->
+        @if($user->madc['progress'] < 3)
          	<div class="status">Status : <span class="text-danger" >Belum melakukan pembayaran</span></div>
-
+        @elseif($user->madc['progress'] == 3)
+            <div class="status">Status : <span class="text-warning" >Menunggu Konfirmasi</span></div>
+        @elseif($user->madc['progress'] > 3)
+         	<div class="status">Status : <span class="text-success" >Sudah melakukan pembayaran</span></div>
+        @endif
             <div class="row payment-info ">
                 <div class="col-md-2">
                     <strong>Kompetisi</strong>
@@ -26,7 +32,7 @@
                     <strong>Nama Tim</strong>
                 </div>
                 <div class="col-md-10">:
-                     <span>hmmm</span>
+                     <span>{{$user->team_name}}</span>
                 </div>
             </div>
 
@@ -38,8 +44,10 @@
                      <span>Rp. 50.000</span>
                 </div>
             </div>
+            <!-- Button upload akan hilang kalau Pembayaran sudah dikonfirmasi admin -->
+        @if($user->madc['progress'] < 4)
             <button  type="button" data-toggle="modal" data-target="#uploadPayment" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Bukti Pembayaran</button>
-
+        @endif
         </div>
         <!-- End Payment  Box-->
     </div>

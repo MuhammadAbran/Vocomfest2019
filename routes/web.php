@@ -36,6 +36,7 @@ Route::get('/', function () {
    Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
    Route::post('madc/payment/upload', 'MadcController@paymentUpload')->name('madc.payment.upload');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
+   Route::post('madc/submission/upload', 'MadcController@submissionUpload')->name('madc.submission.upload');
 // });
 
 // Route::middleware(['auth', 'wdc'])->group(function(){
