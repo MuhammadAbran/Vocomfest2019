@@ -33,20 +33,26 @@ class AdminController extends Controller
       //    $a[] = $user['role'];
       // }
       // dd($a);
-      $user = User::find(2);
-      dd($user['role']);
+      // $user = User::find(2);
 
       return view('user.admin.dashboard');
    }
 
    public function madcTeams()
    {
-      return view('user.admin.madc_teams');
+      $users = User::all();
+      $i = 1;
+
+
+      return view('user.admin.madc_teams', compact(['users', 'i']));
    }
 
    public function wdcTeams()
    {
-      return view('user.admin.wdc_teams');
+      $users = User::all();
+      $i = 1;
+
+      return view('user.admin.wdc_teams', compact(['users', 'i']));
    }
 
    public function galleries()

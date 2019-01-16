@@ -28,20 +28,36 @@
           <th>Aksi</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td><a href="./view-team.html" class="blue">Lorem Ipsum Dolorsit Amet</a></td>
-          <td>WDC Competition</td>
-          <td><span class="badge badge-primary">Registered</span></td>
-          <td>
-            <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-            <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-            <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-          </td>
-        </tr>
-                      
-                       
+      <tbody> @foreach($users as $user)
+      <tr>
+         @if($user->wdc != null )
+           <td>{{ $i++ }}</td>
+           <td><a href="./view-team.html" class="blue">{{ $user->team_name }}</a></td>
+           <td>WDC Competition</td>
+           @if($user->wdc['progress'] == 1)
+             <td><span class="badge badge-primary">Registered</span></td>
+           @elseif($user->wdc['progress'] == 2)
+             <td><span class="badge badge-info">Waiting for Confirm</span></td>    <td><span class="badge badge-primary">{{ $user->progress }}</span></td>
+           @elseif($user->wdc['progress'] == 3)
+             <td><span class="badge badge-info">Submitted</span></td>
+           @elseif($user->wdc['progress'] == 4)
+             <td><span class="badge badge-warning">confirmed</span></td>
+           @elseif($user->wdc['progress'] == 5)
+             <td><span class="badge badge-warning">Waiting for Selection</span></td>
+           @elseif($user->wdc['progress'] == 6)
+             <td><span class="badge badge-info">Waiting</span></td>
+           @elseif($user->wdc['progress'] == 7)
+             <td><span class="badge badge-success">Lulus Seleksi</span></td>
+           @endif
+           <td>
+             <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+             <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+             <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+           </td>
+          @endif
+      </tr>
+      @endforeach        
+
       </tbody>
     </table>
 
@@ -66,8 +82,8 @@
           </li>
         </ul>
       </nav>
-    </div>  
-    <!-- End of pagination --> 
+    </div>
+    <!-- End of pagination -->
   </div>
 
   <!-- modal -->

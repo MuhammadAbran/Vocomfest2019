@@ -29,19 +29,35 @@
         </tr>
       </thead>
       <tbody>
+        @foreach($users as $user)
         <tr>
-          <td>1</td>
-          <td><a href="./view-team.html" class="blue">Lorem Ipsum Dolorsit Amet</a></td>
-          <td>MADC Competition</td>
-          <td><span class="badge badge-primary">Registered</span></td>
-          <td>
-            <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-            <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-            <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-          </td>
+          @if($user->madc != null )
+            <td>{{ $i++ }}</td>
+             <td><a href="./view-team.html" class="blue">{{ $user->team_name }}</a></td>
+             <td>MADC Competition</td>
+             @if($user->madc['progress'] == 1)
+               <td><span class="badge badge-primary">Registered</span></td>
+             @elseif($user->madc['progress'] == 2)
+               <td><span class="badge badge-info">Waiting for Confirm</span></td>    <td><span class="badge badge-primary">{{ $user->progress }}</span></td>
+             @elseif($user->madc['progress'] == 3)
+               <td><span class="badge badge-info">Submitted</span></td>
+             @elseif($user->madc['progress'] == 4)
+               <td><span class="badge badge-warning">confirmed</span></td>
+             @elseif($user->madc['progress'] == 5)
+               <td><span class="badge badge-warning">Waiting for Selection</span></td>
+             @elseif($user->madc['progress'] == 6)
+               <td><span class="badge badge-info">Waiting</span></td>
+             @elseif($user->madc['progress'] == 7)
+               <td><span class="badge badge-success">Lulus Seleksi</span></td>
+             @endif
+             <td>
+               <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+               <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+               <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+             </td>
+           @endif
         </tr>
-                      
-                       
+        @endforeach
       </tbody>
     </table>
 
@@ -66,8 +82,8 @@
           </li>
         </ul>
       </nav>
-    </div>  
-    <!-- End of pagination --> 
+    </div>
+    <!-- End of pagination -->
   </div>
 
     <!-- modal -->

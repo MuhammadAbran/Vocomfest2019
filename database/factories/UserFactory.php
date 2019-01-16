@@ -26,7 +26,7 @@ $factory->define(App\User::class, function (Faker $faker) {
    }else {
       $team = $faker->name;
    }
-dd($user['role']);
+// dd($user['role']);
     return [
         'id' => $UID,
         'team_name' => $team,
