@@ -14,6 +14,8 @@ Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
 
+Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
+
 
 // Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin', 'AdminController@index')->name('admin.dashboard');

@@ -9,16 +9,10 @@
   <div class="box">
     <div class="row">
         <div class="col-md-12 pull-right">
-          <form class="form-inline">
-               <div class="form-group mx-sm-2">
-                 <label for="search" class="sr-only">Pencarian</label>
-                 <input type="text" class="form-control" id="" placeholder="Pencarian">
-               </div>
-               <button type="submit" class="btn btn-primary">Cari</button>
-             </form>
+
         </div>
      </div>
-    <table class="table table-hover table-bordered table-striped">
+    <table class="table table-hover table-bordered table-striped" id="madc-tables">
       <thead>
         <tr>
           <th>No</th>
@@ -28,37 +22,7 @@
           <th>Aksi</th>
         </tr>
       </thead>
-      <tbody>
-        @foreach($users as $user)
-        <tr>
-          @if($user->madc != null )
-            <td>{{ $i++ }}</td>
-             <td><a href="./view-team.html" class="blue">{{ $user->team_name }}</a></td>
-             <td>MADC Competition</td>
-             @if($user->madc['progress'] == 1)
-               <td><span class="badge badge-primary">Registered</span></td>
-             @elseif($user->madc['progress'] == 2)
-               <td><span class="badge badge-info">Waiting for Confirm</span></td>    <td><span class="badge badge-primary">{{ $user->progress }}</span></td>
-             @elseif($user->madc['progress'] == 3)
-               <td><span class="badge badge-info">Submitted</span></td>
-             @elseif($user->madc['progress'] == 4)
-               <td><span class="badge badge-warning">confirmed</span></td>
-             @elseif($user->madc['progress'] == 5)
-               <td><span class="badge badge-warning">Waiting for Selection</span></td>
-             @elseif($user->madc['progress'] == 6)
-               <td><span class="badge badge-info">Waiting</span></td>
-             @elseif($user->madc['progress'] == 7)
-               <td><span class="badge badge-success">Lulus Seleksi</span></td>
-             @endif
-             <td>
-               <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-               <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-               <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-             </td>
-           @endif
-        </tr>
-        @endforeach
-      </tbody>
+
     </table>
 
     <!-- pagination -->
@@ -108,4 +72,31 @@
   </div>
   <!-- /modal -->
 
+  @push('scripts')
+      <script>
+         $(function() {
+            $('#madc-tables').DataTable({
+               prossessing: true,
+               serverSide: true,
+               ajax: '{!! route('data.madc.users') !!}',
+               columns: [
+                  { data: 'id', name: 'id' },
+                  { data: 'team_name', name: 'team_name' },
+                  {
+                        name: '',
+                        data: null,
+                        sortable: false,
+                        render: function (data) {
+
+                               return "MADC Competition";
+                        }
+                    },
+                  { data: 'progress', name: 'progress' },
+                  // { data: 'action' },
+               ]
+            });
+
+         });
+      </script>
+  @endpush
 @endsection

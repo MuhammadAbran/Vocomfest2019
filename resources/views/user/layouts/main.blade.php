@@ -10,7 +10,7 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="{!! asset('assets/vendor/bootstrap/bootstrap.min.css') !!}" >
-    
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <!-- Sidebar Style CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/sidebar.css') !!}">
 
@@ -70,7 +70,7 @@
     </div>
 
     <!-- jQuery  -->
-    <script src="{!! asset('assets/js/jquery-3.3.1.slim.min.js') !!}"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Popper.JS -->
     <script src="{!! asset('assets/js/popper.min.js') !!}"></script>
     <!-- Bootstrap JS -->
@@ -80,8 +80,11 @@
     <script type="text/javascript" src="{!! asset('assets/vendor/tinymce/init-tinymce.js') !!}" ></script>
     <script src="{!! asset('assets/js//main.js') !!}"></script>
 
-    
-   
+    <!-- DataTables -->
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    @stack('scripts')
+
+
 </body>
 
 </html>
