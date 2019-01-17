@@ -11,6 +11,6 @@ class MadcSeederTable extends Seeder
      */
     public function run()
     {
-        factory(\App\Madc::class, 5)->create();
+        factory(\App\Madc::class, 100)->create();
     }
 }

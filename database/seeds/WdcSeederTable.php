@@ -11,6 +11,6 @@ class WdcSeederTable extends Seeder
      */
     public function run()
     {
-        factory(\App\Wdc::class, 5)->create();
+        factory(\App\Wdc::class, 100)->create();
     }
 }

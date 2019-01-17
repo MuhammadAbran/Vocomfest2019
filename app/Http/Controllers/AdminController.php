@@ -77,36 +77,46 @@ class AdminController extends Controller
       $data = [];
       $i = 1;
       foreach ($a as $k) {
-         $data[] = ['id' => $i++,
-                   'team_name' => $k[0]['team_name'],
-                   'progress' => $k[0]['progress']
+         $data[] = [
+                     'id' => $k[0]['team_name'],
+                     'i' => $i++,
+                     'team_name' => $k[0]['team_name'],
+                     'progress' => $k[0]['progress']
                 ];
       }
+
            return Datatables::of($data)
            ->editColumn('progress', function($data){
             if($data['progress'] == 1){
-              return strip_tags('<span class="badge badge-primary">Registered</span>');
+              return '<span class="badge badge-primary">Registered</span>';
            }
             elseif($data['progress'] == 2){
-               return strip_tags('<span class="badge badge-info">Waiting for Confirm</span>');
+               return '<span class="badge badge-info">Waiting for Confirm</span>';
             }
             elseif($data['progress'] == 3){
-               return strip_tags('<span class="badge badge-info">Submitted</span>');
+               return '<span class="badge badge-info">Submitted</span>';
             }
             elseif($data['progress'] == 4){
-               return strip_tags('<span class="badge badge-warning">confirmed</span>');
+               return '<span class="badge badge-warning">confirmed</span>';
             }
             elseif($data['progress'] == 5){
-               return strip_tags('<span class="badge badge-warning">Waiting for Selection</span>');
+               return '<span class="badge badge-warning">Waiting for Selection</span>';
             }
             elseif($data['progress'] == 6){
-               return strip_tags('<span class="badge badge-info">Waiting</span>');
+               return '<span class="badge badge-info">Waiting</span>';
             }
             elseif($data['progress'] == 7){
-               return strip_tags('<span class="badge badge-success">Lulus Seleksi</span>');
+               return '<span class="badge badge-success">Lulus Seleksi</span>';
             }
           })
-           ->make(true);
+          ->addColumn('action', function ($data){
+                $action = '';
+                return'<a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+                <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>';
+
+          })
+          ->make(true);
 
    }
 

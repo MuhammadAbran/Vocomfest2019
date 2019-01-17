@@ -3,8 +3,11 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Madc::class, function (Faker $faker) {
-   $user_id = [1,3,5,7,9];
-   static $i = 0;
+   $user_id = [];
+   for ($i=1; $i < 101; ++$i) {
+      $user_id[] = $i;
+   }
+   static $a = 0;
     return [
       'instance_name' => $faker->company,
       'instance_address' => $faker->state,
@@ -20,6 +23,6 @@ $factory->define(App\Madc::class, function (Faker $faker) {
       'member_2_email' => $faker->safeEmail,
       'member_2_phone' => $faker->phoneNumber,
       'progress' => mt_rand(0, 7),
-      'user_id' => $user_id[$i++],
+      'user_id' => $user_id[$a++],
     ];
 });

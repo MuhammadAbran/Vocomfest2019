@@ -26,7 +26,7 @@
     </table>
 
     <!-- pagination -->
-    <div class="">
+    <!-- <div class="">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="disabled page-item">
@@ -46,7 +46,7 @@
           </li>
         </ul>
       </nav>
-    </div>
+    </div> -->
     <!-- End of pagination -->
   </div>
 
@@ -80,19 +80,34 @@
                serverSide: true,
                ajax: '{!! route('data.madc.users') !!}',
                columns: [
-                  { data: 'id', name: 'id' },
+                  { data: 'i', name: 'i' },
                   { data: 'team_name', name: 'team_name' },
                   {
                         name: '',
                         data: null,
                         sortable: false,
                         render: function (data) {
-
                                return "MADC Competition";
                         }
                     },
-                  { data: 'progress', name: 'progress' },
-                  // { data: 'action' },
+                 {
+                    name: 'progress',
+                    data: 'progress',
+                    render: function(data){
+                       function htmlDecode(input){
+                          var e = document.createElement('span');
+                          e.innerHTML = input;
+                          return e.childNodes[0].nodeValue;
+                        }
+
+                       return htmlDecode(data);
+                    }
+                 },
+                  {
+                     data: 'action',
+                     name: 'action',
+                     sortable: false
+                  },
                ]
             });
 
