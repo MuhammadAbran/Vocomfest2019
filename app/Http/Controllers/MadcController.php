@@ -8,6 +8,7 @@ use App\Madc;
 use Illuminate\Support\Facades\Auth;
 use App\Payment;
 use DB;
+use App\Submission;
 
 class MadcController extends Controller
 {
@@ -18,13 +19,10 @@ class MadcController extends Controller
 
    public function index()
    {
-      // Buat nyari progress tim, biar timeline jalan 
-
-      // $user_id = Auth::user()->id;
-      // $progress = Madc::where('user_id',$user_id)->first();
+      // Cari user 
+      $user = Auth::user();
       
-      // return view('user.madc.dashboard', compact('progress'));
-      return view('user.madc.dashboard');
+      return view('user.madc.dashboard', compact('user'));
    }
 
    public function team()
@@ -102,18 +100,16 @@ class MadcController extends Controller
 
    public function payment()
    {
-      // Buat ambil progress dari tim (udah upload atau belum, udah di approve atau belum)
-      // $id = Auth::user()->id;
-      // $progress = Madc::where('user_id',$user_id)->first();
+      // Buat ambil user
+      $user = Auth::user();
 
-      return view('user.madc.payment');
+      return view('user.madc.payment', compact('user'));
    }
 
    public function paymentUpload(Request $req)
    {
       // Ambil user_id buat dimasukin ke tabel payments
-      // $user_id = Auth::user()->id;
-      $user_id = 1;
+      $user_id = Auth::user()->id;
 
       if($file = $req->file('photo')){
          $photo = 'namatim_' . time() . '.' . $file->getClientOriginalExtension();
@@ -127,12 +123,33 @@ class MadcController extends Controller
          $pay->save();
       }
 
+      $user->madc()->update(['progress' => 3]);
 
       return redirect()->back();
    }
 
    public function submission()
    {
-      return view('user.madc.submission');
+      $user = Auth::user();
+
+      return view('user.madc.submission', compact('user'));
    }
+
+   public function submissionUpload(Request $req)
+   {
+      $user= Auth::user();
+
+      $submit = new Submission([
+         'submissions_path' => $req->link,
+         'type' => $req->tema,
+         'user_id' => $user->id
+      ]);
+      
+      $user->madc()->update(['progress' => 5]);
+
+      $submit->save();
+
+      return redirect()->back();
+   }
+
 }
