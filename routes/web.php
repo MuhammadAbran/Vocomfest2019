@@ -15,6 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
+Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
 
 
 // Route::middleware(['auth', 'admin'])->group(function(){

@@ -41,25 +41,7 @@ class AdminController extends Controller
 
    public function madcTeams()
    {
-      // $users = User::get();
-      // dd($users->madc);
-      // $users = User::all();
-      // $a = [];
-      // foreach ($users as $user) {
-      //    if ($user->madc['progress'] != null) {
-      //       $a[] = $user->madc()
-      //       ->join('users', 'users.id', '=', 'madcs.user_id')
-      //       ->get(['users.id', 'team_name', 'progress']);
-      //    }
-      // }
-      // $data = [];
-      // foreach ($a as $k) {
-      //    $data[] = ['id' => $k[0]['id'],
-      //              'team_name' => $k[0]['team_name'],
-      //              'progress' => $k[0]['progress']
-      //           ];
-      // }
-      // dd($data);
+
       return view('user.admin.madc_teams');
    }
 
@@ -78,7 +60,7 @@ class AdminController extends Controller
       $i = 1;
       foreach ($a as $k) {
          $data[] = [
-                     'id' => $k[0]['team_name'],
+                     'id' => $k[0]['id'],
                      'i' => $i++,
                      'team_name' => $k[0]['team_name'],
                      'progress' => $k[0]['progress']
@@ -110,14 +92,70 @@ class AdminController extends Controller
             }
           })
           ->addColumn('action', function ($data){
-                $action = '';
-                return'<a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-                <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>';
-
+                return'
+                   <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+                   <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                ';
           })
           ->make(true);
 
+   }
+
+   public function wdcUsers()
+   {
+      $users = User::all();
+      $a = [];
+      foreach ($users as $user) {
+         if ($user->wdc['progress'] != null) {
+            $a[] = $user->wdc()
+            ->join('users', 'users.id', '=', 'wdcs.user_id')
+            ->get(['users.id', 'team_name', 'progress']);
+         }
+      }
+      $data = [];
+      $i = 1;
+      foreach ($a as $k) {
+         $data[] = [
+                     'id' => $k[0]['id'],
+                     'i' => $i++,
+                     'team_name' => $k[0]['team_name'],
+                     'progress' => $k[0]['progress']
+                ];
+      }
+
+           return Datatables::of($data)
+           ->editColumn('progress', function($data){
+            if($data['progress'] == 1){
+              return '<span class="badge badge-primary">Registered</span>';
+           }
+            elseif($data['progress'] == 2){
+               return '<span class="badge badge-info">Waiting for Confirm</span>';
+            }
+            elseif($data['progress'] == 3){
+               return '<span class="badge badge-info">Submitted</span>';
+            }
+            elseif($data['progress'] == 4){
+               return '<span class="badge badge-warning">confirmed</span>';
+            }
+            elseif($data['progress'] == 5){
+               return '<span class="badge badge-warning">Waiting for Selection</span>';
+            }
+            elseif($data['progress'] == 6){
+               return '<span class="badge badge-info">Waiting</span>';
+            }
+            elseif($data['progress'] == 7){
+               return '<span class="badge badge-success">Lulus Seleksi</span>';
+            }
+          })
+          ->addColumn('action', function ($data){
+                return'
+                   <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+                   <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                ';
+          })
+          ->make(true);
    }
 
    public function wdcTeams()
