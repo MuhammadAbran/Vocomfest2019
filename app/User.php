@@ -45,6 +45,11 @@ class User extends Authenticatable implements MustVerifyEmail
       return $this->hasOne(\App\Payment::class);
    }
 
+   public function submission()
+   {
+      return $this->hasOne(\App\Submission::class);
+   }
+
 
    public function isAdmin()
    {

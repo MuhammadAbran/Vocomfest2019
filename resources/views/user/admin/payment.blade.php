@@ -10,7 +10,7 @@
           <nav aria-label="breadcrumb">
              <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-               <li class="breadcrumb-item active" aria-current="page">MADC Teams</li>
+               <li class="breadcrumb-item active" aria-current="page">Payments</li>
              </ol>
            </nav>
       </div>

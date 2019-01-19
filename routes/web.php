@@ -19,6 +19,7 @@ Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users'
 Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
 
 Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
+Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
 
 
 

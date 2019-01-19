@@ -189,29 +189,6 @@ class AdminController extends Controller
 
    public function payments()
    {
-      // $payments = Payment::all();
-      // $data = [];
-      // $i = 1;
-      // foreach ($payments as $payment) {
-      //    if ($payment->user->wdc) {
-      //       $data[] = [
-      //             'id' => $payment->user->id,
-      //             'i' => $i++,
-      //             'team_name' => $payment->user->team_name,
-      //             'kompetisi' => "WDC Competition",
-      //             'payment_path' => $payment['payment_path']
-      //          ];
-      //    }else {
-      //       $data[] = [
-      //             'id' => $payment->user->id,
-      //             'i' => $i++,
-      //             'team_name' => $payment->user->team_name,
-      //             'kompetisi' => "MADC Competition",
-      //             'payment_path' => $payment['payment_path']
-      //          ];
-      //    }
-      // }
-      // dd($data);
       return view('user.admin.payment');
    }
 
@@ -253,6 +230,48 @@ class AdminController extends Controller
 
    public function submissions()
    {
+      // dd($data);
       return view('user.admin.submission');
+   }
+
+   public function submissionsGetData()
+   {
+      $submission = \App\Submission::all();
+      $data = [];
+      $i = 1;
+      foreach ($submission as $sub) {
+         if ($sub->user->wdc) {
+            $data[] = [
+              'id' => $sub->user->id,
+              'i' => $i++,
+              'team_name' => $sub->user->team_name,
+              'kompetisi' => "WDC Competition",
+              'progress' => $sub->user->wdc['progress'],
+              'submissions_path' => $sub['submissions_path'],
+           ];
+        }else {
+           $data[] = [
+             'id' => $sub->user->id,
+             'i' => $i++,
+             'team_name' => $sub->user->team_name,
+             'kompetisi' => "MADC Competition",
+             'progress' => $sub->user->madc['progress'],
+             'submissions_path' => $sub['submissions_path'],
+          ];
+        }
+      }
+
+      return Datatables::of($data)
+      ->editColumn('submissions_path', function($data){
+         return '<a href="'. $data['submissions_path'] .'" class="btn-success btn-sm">Link</a>';
+      })
+      ->addColumn('action', function($data){
+         return'
+             <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+             <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+             <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+         ';
+      })
+      ->make(true);
    }
 }
