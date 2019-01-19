@@ -40,6 +40,11 @@ class User extends Authenticatable implements MustVerifyEmail
      return $this->hasOne(\App\Wdc::class);
    }
 
+   public function payment()
+   {
+      return $this->hasOne(\App\Payment::class);
+   }
+
 
    public function isAdmin()
    {

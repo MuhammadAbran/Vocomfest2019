@@ -15,7 +15,7 @@
            </nav>
       </div>
      </div>
-    <table class="table table-hover table-bordered table-striped">
+    <table class="table table-hover table-bordered table-striped" id='payment-tables'>
       <thead>
         <tr>
           <th>No</th>
@@ -74,7 +74,39 @@
   </div>
 
   @push('scripts')
-
+      <script type="text/javascript">
+         $(function(){
+            $('#payment-tables').DataTable({
+               prossessing: true,
+               serverside: true,
+               ajax: '{!! route('data.payments.users') !!}',
+               columns: [
+                  { name: 'i', data: 'i' },
+                  {
+                     name: 'team_name',
+                     data: 'team_name'
+                  },
+                  {
+                     name: 'kompetisi',
+                     data: 'kompetisi',
+                  },
+                  {
+                     name: 'payment_path',
+                     data: 'payment_path',
+                     sortable: false,
+                     render: function(data){
+                        return '<img src="{{ url('storage/payments') }}/'+data+'" alt="payment" width=200px>';
+                     }
+                  },
+                  {
+                     name: 'action',
+                     data: 'action',
+                     sortable: false
+                  },
+               ]
+            });
+         });
+      </script>
   @endpush
 
 @endsection

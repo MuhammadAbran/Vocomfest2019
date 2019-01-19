@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Payment;
 use Yajra\Datatables\Datatables;
 
 class AdminController extends Controller
@@ -188,7 +189,66 @@ class AdminController extends Controller
 
    public function payments()
    {
+      // $payments = Payment::all();
+      // $data = [];
+      // $i = 1;
+      // foreach ($payments as $payment) {
+      //    if ($payment->user->wdc) {
+      //       $data[] = [
+      //             'id' => $payment->user->id,
+      //             'i' => $i++,
+      //             'team_name' => $payment->user->team_name,
+      //             'kompetisi' => "WDC Competition",
+      //             'payment_path' => $payment['payment_path']
+      //          ];
+      //    }else {
+      //       $data[] = [
+      //             'id' => $payment->user->id,
+      //             'i' => $i++,
+      //             'team_name' => $payment->user->team_name,
+      //             'kompetisi' => "MADC Competition",
+      //             'payment_path' => $payment['payment_path']
+      //          ];
+      //    }
+      // }
+      // dd($data);
       return view('user.admin.payment');
+   }
+
+   public function paymentsGetData()
+   {
+      $payments = Payment::all();
+      $data = [];
+      $i = 1;
+      foreach ($payments as $payment) {
+         if ($payment->user->wdc) {
+            $data[] = [
+                  'id' => $payment->user->id,
+                  'i' => $i++,
+                  'team_name' => $payment->user->team_name,
+                  'kompetisi' => "WDC Competition",
+                  'payment_path' => $payment['payment_path']
+               ];
+         }else {
+            $data[] = [
+                  'id' => $payment->user->id,
+                  'i' => $i++,
+                  'team_name' => $payment->user->team_name,
+                  'kompetisi' => "MADC Competition",
+                  'payment_path' => $payment['payment_path']
+               ];
+         }
+      }
+
+      return Datatables::of($data)
+      ->addColumn('action', function ($data){
+           return'
+               <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+               <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+               <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+           ';
+      })
+      ->make(true);
    }
 
    public function submissions()

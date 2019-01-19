@@ -12,4 +12,9 @@ class Payment extends Model
       'payment_path',
       'user_id'
    ];
+
+   public function user()
+   {
+      return $this->belongsTo(\App\User::class);
+   }
 }
