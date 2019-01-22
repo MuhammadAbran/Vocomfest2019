@@ -1,11 +1,13 @@
 @extends('frontend.layouts.main')
 
+@extends('frontend.menu.home_navigation')
+
 @section('title','Home')
+
 
 @section('content')
 
     <!-- Start Header Section -->
-
     <header  id="header">
 		<div class="container">
 			<div class="row">
@@ -15,17 +17,15 @@
                         Heading Industry 4.0"</h1>
                     <div class="call-btn">
                         <button class="btn btn-custom btn-transparent m-margin10" onclick=" $('#about').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Tentang</button>
-                        <a href="register.html"><button class="animated pulse infinite btn btn-custom ">Daftar</button></a>
+                        <a href="#"><button class="animated pulse infinite btn btn-custom ">Daftar</button></a>
                     </div>	
 				</div>
 			</div>
 		</div>
     </header>
-
     <!-- End Header Section -->
 
     <!-- Start About  Section  -->
-    
     <section id="about">
 		<div class="container">
 			<div class="row">
@@ -39,7 +39,7 @@
             <div class="row">
 				<div class="col-sm-12 order-sm-2  col-md-7 order-md-1">
 					<div class="video_box bottom-animated" data-toggle="modal" data-target="#videoTeaser">
-                        <img  class="play_btn" src="assets/img/play_btn.png" alt="Video play button">
+                        <img  class="play_btn" src="{!! asset('assets/img/play_btn.png')!!}" alt="Video play button">
                     </div>
 				</div>
 				<div class=" col-sm-12 order-sm-1  col-md-5 order-md-2 content bottom-animated">
@@ -66,7 +66,7 @@
            
             <div class="row">
                 <div class="col-4 offset-4 bottom-animated">
-                    <img class="animated heartBeat infinite mx-auto d-block text-center" src="assets/img/vocom_logo2.png" style="width:100%;height:100%;display:block;">  
+                    <img class="animated heartBeat infinite mx-auto d-block text-center" src="{!! asset('assets/img/vocom_logo2.png')!!}" style="width:100%;height:100%;display:block;">  
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-4 ">
                     <div class="card">
-                        <img class="card-img-top img-responsive" src="assets/img/icpc.png" alt="Card image cap">
+                        <img class="card-img-top img-responsive" src="{!! asset('assets/img/icpc.png')!!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">International Collegiate Programming Contest</p>
                             <div class="text-center">
@@ -87,7 +87,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-responsive" src="assets/img/madc.png" alt="Card image cap">
+                        <img class="card-img-top img-responsive" src="{!! asset('assets/img/madc.png')!!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">Mobile Apps Development <br/>Competition</p>
                             <div class="text-center">
@@ -99,7 +99,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-responsive" src="assets/img/wdc.png" alt="Card image cap">
+                        <img class="card-img-top img-responsive" src="{!! asset('assets/img/wdc.png') !!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">Web Design<br/> Competition</p>
                             <div class="text-center">
@@ -139,7 +139,7 @@
                     </p> 
                 </div>
                 <div class="col-md-6 bottom-animated">
-                   <img class="image-responsive" style="width:100%;"src="assets/img/training-seminar.jpg" alt="Festuval image">
+                   <img class="image-responsive" style="width:100%;"src="{!! asset('assets/img/training-seminar.jpg')!!}" alt="Festuval image">
 
                 </div>
             </div>
@@ -202,37 +202,15 @@
                         </div>
 
                         <div class="news-list">
-                            <img src="assets/img/news-thumb.jpg">
+                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
                             <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
                             <small>16 September 2018</small>
                             <p class="text-center">
-                                <a href="news.html"><button class="btn btn-green">Selengkapnya</button></a>
+                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
                             </p>
                         </div>
 
-                        <div class="news-list">
-                            <img src="assets/img/news-thumb.jpg">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                                <a href="news.html"><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
-
-                        <div class="news-list">
-                            <img src="assets/img/news-thumb.jpg">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                                <a href="news.html"><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
-
-
-                      
-
-                      
-
+                        
                         <!-- End of News List-->
 
                     </section>
