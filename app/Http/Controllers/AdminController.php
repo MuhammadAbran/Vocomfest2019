@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\News;
 use App\Payment;
 use Yajra\Datatables\Datatables;
 
@@ -177,6 +178,35 @@ class AdminController extends Controller
       return view('user.admin.news');
    }
 
+   /* Get Data From Database */
+   public function newsData(Request $request)
+    {   
+     
+        //if($request->ajax()){
+            $model = News::query();
+            return DataTables::of($model)
+            ->addColumn('action', function ($model){
+
+               if($model->is_published === 1){
+                  $btn_status = '<a href="'.route('homePage').'" class="btn-warning btn-sm publish-btn">Unpublish</a> ';
+               }else{
+                  $btn_status = '<a href="#" class="btn-success btn-sm publish-btn">Publish</a> ';
+               }
+               return
+               $btn_status.
+                   '<a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+               ';
+          })
+            ->addIndexColumn()
+            ->rawColumns(['action'])
+            ->make(true);
+
+       // }
+        //return redirect('');
+        
+    }
+
    public function addNews()
    {
       return view('user.admin.add_news');
@@ -274,4 +304,6 @@ class AdminController extends Controller
       })
       ->make(true);
    }
+
+   
 }

@@ -33,6 +33,7 @@ Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.s
    Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
 
    Route::get('/admin/news', 'AdminController@news')->name('admin.news');
+   Route::get('/admin/news/data', 'AdminController@newsData')->name('admin.newsData');
    Route::get('/admin/news/add', 'AdminController@addNews')->name('admin.addNews');
    Route::get('/admin/news/edit', 'AdminController@editNews')->name('admin.editNews');
 
