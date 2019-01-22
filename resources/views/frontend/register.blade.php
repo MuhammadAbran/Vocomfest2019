@@ -2,7 +2,7 @@
 
 @extends('frontend.menu.page_navigation')
 
-@section('title','Login')
+@section('title','Register Page')
 
 @section('content')
     <section  id="register-page">

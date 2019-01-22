@@ -95,4 +95,8 @@ class RegisterController extends Controller
         return $user;
 
     }
+
+    public function showRegistrationForm() {
+        return view('frontend.register');
+    }
 }
