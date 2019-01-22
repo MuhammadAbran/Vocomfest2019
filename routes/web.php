@@ -11,6 +11,10 @@
 |
 */
 Route::get('/', 'HomeController@index');
+Route::get('/competition/wdc', 'HomeController@wdcPage')->name('wdcPage');
+Route::get('/competition/madc', 'HomeController@madcPage')->name('madcPage');
+Route::get('/competition/icpc', 'HomeController@icpcPage')->name('icpcPage');
+
 
 //Ajax Request Data
 Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
