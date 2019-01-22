@@ -6,82 +6,40 @@
 
 
 @section('content')
-  <div class="box">
-    <section class="row py-2">
-      <div class="col-md-6 px-0 text-left">
-        <label>
-          <select class="form-control input-sm">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select>
-        </label>
-        <span class="small">rekaman per halaman</span>
-      </div>
 
-      <div class="col-md-6 px-0 text-right">
-        <form class="form-inline">
-          <div class="form-group mx-sm-2">
-            <label for="search" class="sr-only">Pencarian</label>
-            <input type="text" class="form-control" id="" placeholder="Pencarian">
-          </div>
-          <button type="submit" class="btn btn-primary">Cari</button>
-        </form>
+<div class="box">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Table
+      <a href="#" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create User"><i class="icon-plus"></i> Create</a>
+      </h3>
+    </div>
+    <div class="panel-body">
+          <table id="newsTable" class="table table-hover" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Title</th>
+                      <th>Status</th>
+                      <th>Create Date</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+              </tbody>
+              <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Create Date</th>
+                    <th>Action</th>
+                  </tr>
+              </tfoot>
+          </table>
       </div>
-      <a href="{{route('admin.addNews')}}"><button class="btn btn-info mtb10"><i class="fa fa-edit"></i> Tambah Artikel</button></a>
-      <table class="table table-striped">
-        <caption  class="smaller">Menampilkan 1 hingga 4 dari total 4 data</caption>
-        <thead>
-          <tr>
-            <th scope="col"> </th>
-            <th scope="col" class="judul">Judul</th>
-            <th scope="col">Pembuat</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><input type="checkbox" name="" value="1"></th>
-            <td>Lorem ipsum dolor sit amet. <span>(draft)</span></td>
-            <td>admin</td>
-            <td>tt</td>
-            <td>18/01/2017</td>
-            <td class="py-1">
-              <a href="{{route('admin.editNews')}}" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-              <a href="" data-toggle="modal" data-target="#delete-modal" class="btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-        
-        </tbody>
-      </table>
-      
-      <div class="">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="disabled page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li class="active page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>          
-    </section>
   </div>
-
+</div>
     <!-- modal -->
   <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -104,3 +62,23 @@
   </div>
   <!-- /modal -->
 @endsection
+
+@push('scripts')
+    <script>
+        $('#newsTable').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.newsData') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'id'},
+                {data: 'title', name: 'title'},
+                {data: 'is_published',name: 'is_published'},
+                {data: 'created_at',name: 'created_at'},
+                {data: 'action',name: 'action'}
+            ]
+        })
+
+
+    </script>
+@endpush 
