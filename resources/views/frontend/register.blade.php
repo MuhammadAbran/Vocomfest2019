@@ -20,46 +20,74 @@
                             <form class="form-signin">
                                 <div class="row">
                                     <div class="col-md-5 offset-md-1">
-                                        <div class="form-label-group">
-                                            <input type="text" id="teamName" class="form-control" placeholder="Email address" required>
-                                            <label for="teamName">Nama Tim</label>
-                                        </div>
-                                        <div class="form-label-group">
-                                            <input type="email" id="leaderEmail" class="form-control" placeholder="Email Ketua" required>
-                                            <label for="leaderEmail">Email Ketua</label>
-                                        </div>
-                                        <div class="form-label-group">
-                                            <input type="password" id="password" class="form-control" placeholder="Email address" required>
-                                            <label for="password">Kata Sandi</label>
+
+                                        <div class="form-group">
+                                            <label for="sel1">Pilih Lomba</label>
+                                            <select class="form-control" id="sel1">
+                                                <option>Web Design Competition</option>
+                                                <option>Mobile Apps Development Competition</option>
+                                            </select>
                                         </div>
 
-                                        <div class="form-label-group">
-                                            <input type="email" id="repeatPassword" class="form-control" placeholder="Email address" required>
-                                            <label for="repeatPassword">Konfirmasi Kata Sandi</label>
-                                        </div>              
+                                        <div class="form-group">
+                                            <label for="teamName">Nama Tim</label>
+                                            <input type="text" class="form-control" id="teamName" placeholder="Nama Tim">
+                                        </div>
+
+                                       <div class="form-group">
+                                            <label for="leaderEmail">Email</label>
+                                            <input type="email" class="form-control" id="leaderEmail"  placeholder="Email">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password">Kata Sandi</label>
+                                            <input type="password" class="form-control" id="password" placeholder="Kata Sandi">
+                                        </div>
+
+                                       
+                                         <div class="form-group">
+                                            <label for="instanceName">Nama Instansi</label>
+                                            <input type="text" class="form-control" id="instanceName" placeholder="Nama Instansi">
+                                        </div>
+
+                                       <div class="form-group">
+                                            <label for="instanceAddress">Alamat Instansi</label>
+                                            <input type="text" class="form-control"  placeholder="Nama Ketua">
+                                        </div>
+                                        
                                     </div>
 
                                     <div class="col-md-5">
-                                        <div class="form-label-group">
-                                            <input type="email" id="instansiName" class="form-control" placeholder="Email address" required>
-                                            <label for="instansiName">Nama Instansi</label>
-                                        </div>
-                                        
-                                        <div class="form-label-group">
-                                            <input type="email" id="leaderName" class="form-control" placeholder="Email address" required>
-                                            <label for="leaderName">Alamat Instansi</label>
+                                        <div class="form-group">
+                                            <label for="leaderName">Nama Ketua</label>
+                                            <input type="text" class="form-control" id="leaderName"  placeholder="Email Ketua">
                                         </div>
 
-                                        <div class="form-label-group">
-                                            <input type="email" id="telp" class="form-control" placeholder="Email address" required>
-                                            <label for="telp">Nama Ketua</label>
+                                        <div class="form-group">
+                                            <label for="leaderPhone">No Hp</label>
+                                            <input type="text" class="form-control" id="leaderPhone"  placeholder="No Hp">
                                         </div>
 
-                                        <div class="form-label-group">
-                                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                                            <label for="inputEmail">Nomor Telp</label>
+                                        <div class="form-group">
+                                            <label for="member1Name">Nama Anggota #1</label>
+                                            <input type="text" class="form-control" id="member1Name"  placeholder="Nama Anggota #1">
                                         </div>
-                        
+
+                                        <div class="form-group">
+                                            <label for="member1Phone">No hp</label>
+                                            <input type="text" class="form-control" id="member1Phone" placeholder="Nomor Hp Anggota #1">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="member2Name">Nama Anggota #2</label>
+                                            <input type="text" class="form-control" id="member2Name" placeholder="Nama Anggota #2">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="member2Phone">No Hp</label>
+                                            <input type="text" class="form-control" id="member2Phone"  placeholder="No Hp Anggota #2">
+                                        </div>
+                                       
                                     </div>
                                     <div class="col-md-10 offset-md-1">
                                         <button class="btn btn-lg btn-green btn-block text-uppercase" type="submit">Daftar</button>
