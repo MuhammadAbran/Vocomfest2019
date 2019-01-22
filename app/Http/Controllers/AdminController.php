@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\News;
+use Session;
 use App\Payment;
 use Yajra\Datatables\Datatables;
 
@@ -216,6 +217,11 @@ class AdminController extends Controller
    // Input news data into database
    public function storeNews(Request $request){
       
+      //news input validation
+      $this->validate($request,[
+         'title' => 'required|string|max:32',
+         'content' => 'required|string'
+     ]);
       // Checking request submit data
       $publish = $request->submit == 'Terbitkan' ? 1 : 0;
 
@@ -229,6 +235,9 @@ class AdminController extends Controller
 
       //save into database
       $model->save();
+
+      //add flash session
+      Session::flash('message', 'Berita berhasil ditambahkan');
       return redirect()->route('admin.news');
    }
 

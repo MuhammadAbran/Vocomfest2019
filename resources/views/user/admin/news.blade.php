@@ -10,11 +10,14 @@
 <div class="box">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">User Table
+      <h3 class="panel-title">
       <a href="{{route('admin.addNews')}}" class="btn btn-info pull-right modal-show"  title="Create User"><i class="icon-plus"></i> Create</a>
       </h3>
     </div>
     <div class="panel-body">
+        @if(Session::has('message'))
+        <p class="alert alert-success">{{ Session::get('message') }}</p>
+        @endif
           <table id="newsTable" class="table table-hover" style="width:100%">
               <thead>
                   <tr>
