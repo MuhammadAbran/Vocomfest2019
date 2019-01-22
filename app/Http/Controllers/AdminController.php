@@ -181,15 +181,21 @@ class AdminController extends Controller
    /* Get Data From Database */
    public function newsData(Request $request)
     {   
-
+     
         //if($request->ajax()){
             $model = News::query();
             return DataTables::of($model)
-            ->addColumn('action', function ($data){
-               return'
-                   <a href="#" class="btn-success btn-sm">Publish</a>
-                   <a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                   <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            ->addColumn('action', function ($model){
+
+               if($model->is_published === 1){
+                  $btn_status = '<a href="'.route('homePage').'" class="btn-warning btn-sm publish-btn">Unpublish</a> ';
+               }else{
+                  $btn_status = '<a href="#" class="btn-success btn-sm publish-btn">Publish</a> ';
+               }
+               return
+               $btn_status.
+                   '<a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                ';
           })
             ->addIndexColumn()
