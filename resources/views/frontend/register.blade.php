@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-md-10 offset-md-1">
                                         <button class="btn btn-lg btn-green btn-block text-uppercase" type="submit">Daftar</button>
-                                        <a class="d-block text-center mt-2 small" href="login.html">Masuk</a>
+                                    <a class="d-block text-center mt-2 small" href="{{route('login')}}">Masuk</a>
                                         <hr class="my-4">
                                     </div>
 

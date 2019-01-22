@@ -34,7 +34,7 @@
                         
 
                             <button class="btn form-btn btn-lg btn-green btn-block text-uppercase" type="submit">Masuk</button>
-                            <a class="d-block text-center mt-2 small" href="register.html">Dafar</a>
+                            <a class="d-block text-center mt-2 small" href="{{route('register')}}">Daftar</a>
                             <hr class="my-4">
                         </form>
                     </div>
