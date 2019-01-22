@@ -1,7 +1,7 @@
 @section('navigation')
     <nav class="navbar navbar-expand-lg fixed-top bottom-animated" id="myNav">
             <div class="container-fluid">
-                <a href="index.html" class="navbar-brand">
+                <a href="{{route('homePage')}}" class="navbar-brand">
                     <div class="logo-nav-white"></div>
                     <div class="logo-nav-mobile"></div>
                 </a>
@@ -11,25 +11,25 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="index.html#header"  class="nav-link" onclick=" $('#header').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Beranda
+                        <a href="{{route('homePage')}}#header"  class="nav-link" onclick=" $('#header').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Beranda
                                 <span class="line_menu"></span>
                             </a>  
                          </li>
     
                          <li class="nav-item">
-                            <a href="index.html#about"  class="nav-link" onclick=" $('#about').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Tentang
+                            <a href="{{route('homePage')}}#about"  class="nav-link" onclick=" $('#about').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Tentang
                                 <span class="line_menu"></span>
                             </a>  
                          </li>
     
                          <li class="nav-item">
-                            <a href="index.html#competition" class="nav-link" onclick=" $('#competition').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Kompetisi
+                            <a href="{{route('homePage')}}#competition" class="nav-link" onclick=" $('#competition').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Kompetisi
                                 <span class="line_menu"></span>
                             </a>  
                          </li>
     
                          <li class="nav-item">
-                            <a href="index.html#festival" class="nav-link" onclick=" $('#festival').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Festival Technology
+                            <a href="{{route('homePage')}}#festival" class="nav-link" onclick=" $('#festival').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Festival Technology
                                 <span class="line_menu"></span>
                             </a>  
                          </li>
@@ -41,13 +41,13 @@
                          </li> -->
     
                          <li class="nav-item">
-                            <a href="index.html#news"  class="nav-link" onclick=" $('#news').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Informasi
+                            <a href="{{route('homePage')}}#news"  class="nav-link" onclick=" $('#news').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Informasi
                                 <span class="line_menu"></span>
                             </a>  
                          </li>
     
                          <li class="nav-item">
-                            <a href="index.html#contact"  class="nav-link" onclick=" $('#contact').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Hubungi
+                            <a href="{{route('homePage')}}#contact"  class="nav-link" onclick=" $('#contact').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Hubungi
                                 <span class="line_menu"></span>
                             </a>  
                          </li>

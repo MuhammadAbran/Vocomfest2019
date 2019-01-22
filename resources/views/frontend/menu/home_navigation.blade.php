@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bottom-animated" id="myNav">
 		<div class="container-fluid">
-            <a href="index.html" class="navbar-brand">
+        <a href="{{route('homePage')}}" class="navbar-brand">
                 <div class="logo-nav"></div>
                 <div class="logo-nav-mobile"></div>
 			</a>

@@ -4,6 +4,12 @@
 
 @section('title','Home')
 
+@section('star_animation')
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+@endsection
+
 
 @section('content')
 
@@ -79,7 +85,7 @@
                         <div class="card-body">
                             <p class="card-text text-center">International Collegiate Programming Contest</p>
                             <div class="text-center">
-                                <a href="icpc.html"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
+                                <a href="{{route('icpcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
                         </div>
                     </div>
@@ -91,7 +97,7 @@
                         <div class="card-body">
                             <p class="card-text text-center">Mobile Apps Development <br/>Competition</p>
                             <div class="text-center">
-                                    <a href="madc.html"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
+                                    <a href="{{route('madcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
                         </div>
                     </div>
@@ -103,7 +109,7 @@
                         <div class="card-body">
                             <p class="card-text text-center">Web Design<br/> Competition</p>
                             <div class="text-center">
-                                    <a href="wdc.html"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
+                                    <a href="{{route('wdcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
                         </div>
                     </div>
@@ -131,11 +137,11 @@
                 <div class="col-md-6 left-box bottom-animated">
                     <p>National Technology Festival (NTF) adalah salah satu rangkaian acara pada VOCOMFEST 2019 yang menyelenggarakan festival dimana akan mengundang berbagai start up, komunitas, dan perusahaan yang telah bekerja sama dengan acara ini dengan mengangkat tema dari tema umum VOCOMFEST 2019 sendiri yaitu “Improving Indonesia’s Economy Heading to Industry 4.0”. </p>
                     <p class="mybtn">
-                        <a href="ntf.html"><button class="btn btn-green">Selengkapnya</button></a>
+                        <a href="{{route('ntfPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
                     </p> 
 
                     <p class="text-center btn-mobile">
-                        <a href="ntf.html"><button class="btn btn-green">Selengkapnya</button></a>
+                        <a href="{{route('ntfPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
                     </p> 
                 </div>
                 <div class="col-md-6 bottom-animated">
@@ -198,6 +204,24 @@
                             <small>16 September 2018</small>
                             <p class="text-center">
                                 <a href="news.html"><button class="btn btn-green">Selengkapnya</button></a>
+                            </p>
+                        </div>
+
+                        <div class="news-list">
+                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
+                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
+                            <small>16 September 2018</small>
+                            <p class="text-center">
+                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
+                            </p>
+                        </div>
+
+                        <div class="news-list">
+                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
+                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
+                            <small>16 September 2018</small>
+                            <p class="text-center">
+                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
                             </p>
                         </div>
 

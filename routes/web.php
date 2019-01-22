@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('homePage');
 Route::get('/competition/wdc', 'HomeController@wdcPage')->name('wdcPage');
 Route::get('/competition/madc', 'HomeController@madcPage')->name('madcPage');
 Route::get('/competition/icpc', 'HomeController@icpcPage')->name('icpcPage');

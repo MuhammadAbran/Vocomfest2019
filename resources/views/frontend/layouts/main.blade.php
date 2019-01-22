@@ -32,10 +32,7 @@
 
 <body>
     
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-    
+    @yield('star_animation')
     <!-- Navigation -->
     @yield('navigation')
   
