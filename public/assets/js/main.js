@@ -17,56 +17,8 @@ $(window).on("scroll", function() {
     }
 })
 
-$('.center').slick({
-    centerMode: true,
-    centerPadding: '60px',
-    slidesToShow: 3,
-    responsive: [
-        {
-        breakpoint: 768,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-        }
-        },
-        {
-        breakpoint: 480,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-        }
-        }
-    ]
-});
 
 
-window.sr = ScrollReveal({reset:true});
-
-sr.reveal('.bottom-animated', {
-    duration: 2000,
-    origin:'bottom',
-    distance:'200px'
-});
-sr.reveal('.top-animated', {
-    duration: 2000,
-    origin:'top',
-    distance:'200px'
-});
-
-sr.reveal('.left-animated', {
-    duration: 2000,
-    origin:'left',
-    distance:'200px'
-});
-sr.reveal('.right-animated', {
-    duration: 2000,
-    origin:'right',
-    distance:'200px'
-});
 
 
 $(".btn,a").hover(function(){

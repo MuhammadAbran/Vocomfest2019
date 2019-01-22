@@ -39,7 +39,7 @@
 
    		<div class="row">
    		  <div class="col-md-12">
-   		    <textarea class="tinymce"></textarea>
+					<textarea class="tinymce" id="addNews"></textarea>
    		  </div>
    		</div>
 
@@ -54,3 +54,4 @@
    		<!--akhir content section-->
 	</div>
 @endsection
+
