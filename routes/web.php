@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
-});
+Route::get('/', 'HomeController@index')->name('homePage');
+Route::get('/competition/wdc', 'HomeController@wdcPage')->name('wdcPage');
+Route::get('/competition/madc', 'HomeController@madcPage')->name('madcPage');
+Route::get('/competition/icpc', 'HomeController@icpcPage')->name('icpcPage');
+Route::get('/competition/ntf', 'HomeController@ntfPage')->name('ntfPage');
+Route::get('/competition/news', 'HomeController@newsPage')->name('newsPage');
+
 
 //Ajax Request Data
 Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
