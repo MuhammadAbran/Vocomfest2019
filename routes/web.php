@@ -32,10 +32,13 @@ Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.s
    Route::get('/admin/teams/madc', 'AdminController@madcTeams')->name('admin.madcTeams');
    Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
 
+
    Route::get('/admin/news', 'AdminController@news')->name('admin.news');
    Route::get('/admin/news/data', 'AdminController@newsData')->name('admin.newsData');
    Route::get('/admin/news/add', 'AdminController@addNews')->name('admin.addNews');
+   Route::post('/admin/news/add', 'AdminController@storeNews')->name('admin.storeNews');
    Route::get('/admin/news/edit', 'AdminController@editNews')->name('admin.editNews');
+
 
    Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
