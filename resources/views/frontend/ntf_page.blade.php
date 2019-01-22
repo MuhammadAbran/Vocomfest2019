@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="col-md-4 offset-md-1 right-animated">
-                    <img class="logo" src="assets/img/ntf.png" alt="Logo National Technology Festival">
+                    <img class="logo" src="{!! asset('assets/img/ntf.png')!!}" alt="Logo National Technology Festival">
                 </div>
             </div>
 		</div>

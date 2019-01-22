@@ -22,7 +22,8 @@
                 </div>
 
                 <div class="col-md-4 offset-md-1 right-animated">
-                    <img class="logo" src="assets/img/wdc.png" alt="Logo WDC">
+                    <img class="logo" src="{!! asset('assets/img/wdc.png')!!}" alt="Web Design
+                    Competition">
                 </div>
             </div>
 		</div>
