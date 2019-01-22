@@ -13,7 +13,12 @@
                 <span class="timeline__year">Timeline</span>
 
                 <!-- Timeline box -->
+                <!-- Buat liat progress tim, kalo sudah lewat progressnya class timeline-danger berubah jadi time-line success -->
+                @if($user->madc['progress'] < 0)
                 <div class="timeline__box  timeline-danger">
+                @else
+                <div class="timeline__box  timeline-success">
+                @endif
                     <div class="timeline__date">
                         <span class="timeline__day">1-30</span>
                         <span class="timeline__month">Feb</span>
@@ -25,8 +30,12 @@
                         </div>
                     </div>
                 </div> 
-
+            
+                @if($user->madc['progress'] < 1)
                 <div class="timeline__box  timeline-danger">
+                @else
+                <div class="timeline__box  timeline-success">
+                @endif
                     <div class="timeline__date">
                         <span class="timeline__day">1-30</span>
                         <span class="timeline__month">Feb</span>
@@ -40,6 +49,7 @@
                 </div>        
                   
                  <!-- End Timeline box -->  
+
              </div>
         </div>
 

@@ -6,45 +6,29 @@
 @section('content')
   <div class="box">
     <div class="row">
-        <div class="col-md-12 pull-right">
-          <form class="form-inline">
-               <div class="form-group mx-sm-2">
-                 <label for="search" class="sr-only">Pencarian</label>
-                 <input type="text" class="form-control" id="" placeholder="Pencarian">
-               </div>
-               <button type="submit" class="btn btn-primary">Cari</button>
-             </form>
-        </div>
+      <div class="col-md-12 pull-right">
+          <nav aria-label="breadcrumb">
+             <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
+               <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+               <li class="breadcrumb-item active" aria-current="page">Payments</li>
+             </ol>
+           </nav>
+      </div>
      </div>
-    <table class="table table-hover table-bordered table-striped">
+    <table class="table table-hover table-bordered table-striped" id='payment-tables'>
       <thead>
         <tr>
           <th>No</th>
           <th>Nama Tim</th>
-          <th>Kategori</th>
-          <th>Status</th>
+          <th>Kompetisi</th>
+          <th>Bukti Pembayaran</th>
           <th>Aksi</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td><a href="./view-team.html" class="blue">Lorem Ipsum Dolorsit Amet</a></td>
-          <td>MADC Competition</td>
-          <td><span class="badge badge-primary">Registered</span></td>
-          <td>
-            <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-            <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-            <a href="#" class="btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-          </td>
-        </tr>
-                      
-                       
-      </tbody>
     </table>
 
     <!-- pagination -->
-    <div class="">
+    <!-- <div class="">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="disabled page-item">
@@ -64,8 +48,65 @@
           </li>
         </ul>
       </nav>
-    </div>  
-    <!-- End of pagination --> 
+    </div> -->
+    <!-- End of pagination -->
+    <!-- modal -->
+    <div class="modal fade" id="deleteTeam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Hapus Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <p>Anda yakin ingin <strong>menghapus</strong> Tim blabla?</p>
+            <button type="button" class="btn btn-danger" name="button"> <i class="fa fa-check"></i> Ya</button>
+            <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- /modal -->
+  </div>
+
+  @push('scripts')
+      <script type="text/javascript">
+         $(function(){
+            $('#payment-tables').DataTable({
+               prossessing: true,
+               serverside: true,
+               ajax: '{!! route('data.payments.users') !!}',
+               columns: [
+                  { name: 'i', data: 'i' },
+                  {
+                     name: 'team_name',
+                     data: 'team_name'
+                  },
+                  {
+                     name: 'kompetisi',
+                     data: 'kompetisi',
+                  },
+                  {
+                     name: 'payment_path',
+                     data: 'payment_path',
+                     sortable: false,
+                     render: function(data){
+                        return '<img src="{{ url('storage/payments') }}/'+data+'" alt="payment" width=200px>';
+                     }
+                  },
+                  {
+                     name: 'action',
+                     data: 'action',
+                     sortable: false
+                  },
+               ]
+            });
+         });
+      </script>
+  @endpush
 
 @endsection

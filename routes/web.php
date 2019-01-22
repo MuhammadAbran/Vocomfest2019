@@ -11,8 +11,16 @@
 |
 */
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('admin.dashboard');
 });
+
+//Ajax Request Data
+Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
+Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
+
+Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
+Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
+
 
 
 // Route::middleware(['auth', 'admin'])->group(function(){
@@ -32,8 +40,11 @@ Route::get('/', function () {
 // Route::middleware(['auth', 'madc'])->group(function(){
    Route::get('madc', 'MadcController@index')->name('madc.dashboard');
    Route::get('madc/team', 'MadcController@team')->name('madc.team');
+   Route::post('madc/team/edit', 'MadcController@teamEdit')->name('madc.team.edit');
    Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
+   Route::post('madc/payment/upload', 'MadcController@paymentUpload')->name('madc.payment.upload');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
+   Route::post('madc/submission/upload', 'MadcController@submissionUpload')->name('madc.submission.upload');
 // });
 
 // Route::middleware(['auth', 'wdc'])->group(function(){
@@ -48,7 +59,7 @@ Route::middleware(['auth', 'ntf'])->group(function(){
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::post('wdc', 'Auth\RegisterWdcController@register')->name('wdc');
 
 // Route::middleware('auth')->group(function(){

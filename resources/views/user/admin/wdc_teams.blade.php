@@ -1,24 +1,26 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'MADC Teams | Admin')
+@section('title', 'WDC Teams | Admin')
 
 
 
 @section('content')
   <div class="box">
     <div class="row">
-        <div class="col-md-12 pull-right">
-          <form class="form-inline">
-               <div class="form-group mx-sm-2">
-                 <label for="search" class="sr-only">Pencarian</label>
-                 <input type="text" class="form-control" id="" placeholder="Pencarian">
-               </div>
-               <button type="submit" class="btn btn-primary">Cari</button>
-             </form>
-        </div>
+        <div class="row">
+            <div class="col-md-12 pull-right">
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">WDC Teams</li>
+                  </ol>
+                </nav>
+            </div>
+         </div>
      </div>
-    <table class="table table-hover table-bordered table-striped">
+
+    <table class="table table-hover table-bordered table-striped" id="wdc-tables">
       <thead>
         <tr>
           <th>No</th>
@@ -28,25 +30,10 @@
           <th>Aksi</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td><a href="./view-team.html" class="blue">Lorem Ipsum Dolorsit Amet</a></td>
-          <td>WDC Competition</td>
-          <td><span class="badge badge-primary">Registered</span></td>
-          <td>
-            <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-            <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-            <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-          </td>
-        </tr>
-                      
-                       
-      </tbody>
     </table>
 
     <!-- pagination -->
-    <div class="">
+    <!-- <div class="">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="disabled page-item">
@@ -66,8 +53,8 @@
           </li>
         </ul>
       </nav>
-    </div>  
-    <!-- End of pagination --> 
+    </div> -->
+    <!-- End of pagination -->
   </div>
 
   <!-- modal -->
@@ -91,5 +78,51 @@
     </div>
   </div>
   <!-- /modal -->
+
+  @push('scripts')
+      <script>
+         $(function(){
+            $('#wdc-tables').DataTable({
+               columnDefs: [{
+                   defaultContent: "-",
+                   targets: "_all"
+                }],
+               prossessing: true,
+               serverSide: true,
+               ajax: '{!! route('data.wdc.users') !!}',
+               columns: [
+                  { name: 'i', data: 'i' },
+                  { name: 'team_name', data: 'team_name' },
+                  {
+                     name: '',
+                     data: null,
+                     sortable: false,
+                     render: function(){
+                        return "WDC Competition";
+                     }
+                  },
+                  {
+                    name: 'progress',
+                    data: 'progress',
+                    render: function(data){
+                       function htmlDecode(input){
+                          var e = document.createElement('span');
+                          e.innerHTML = input;
+                          return e.childNodes[0].nodeValue;
+                        }
+
+                       return htmlDecode(data);
+                    }
+                 },
+                  {
+                     name: 'action',
+                     data: 'action',
+                     sortable: false
+                  },
+               ]
+            });
+         });
+      </script>
+  @endpush
 
 @endsection

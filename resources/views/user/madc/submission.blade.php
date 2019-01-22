@@ -10,8 +10,11 @@
                      <!-- Payment Box -->
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
+        @if($user-> madc['progress'] < 5)
             <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-
+        @elseif($user-> madc['progress'] == 5)
+            <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
+        @endif
              <div class="row submission-info ">
                  <div class="col-md-2">
                     <strong>Kompetisi</strong>
@@ -26,7 +29,7 @@
                     <strong>Nama Tim</strong>
                 </div>
                 <div class="col-md-10">:
-                        <span>hmmm</span>
+                        <span>{{$user->team_name}}</span>
                 </div>
             </div>
 
@@ -58,18 +61,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{ route('madc.submission.upload') }}" method="post">
                     <div class="form-group">
-                        <label for="tim">Judul :</label>
-                        <input type="text" class="form-control" name="tim" placeholder="Hmmm" >
+                        <label for="tim">Judul/Tema :</label>
+                        <select name="tema" id="" class="form-control">
+                            <option value="1">Makanan dan Minuman</option>
+                            <option value="2">Kimia</option>
+                            <option value="3">Furniture</option>
+                            <option value="4">Otomotif</option>
+                            <option value="5">Elektronik</option>
+                            <option value="6">Tekstil</option>
+                        </select>
                      </div>
 
                      <div class="form-group">
                             <label for="tim">Link :</label>
-                            <input type="text" class="form-control" name="tim" placeholder="http://drive.google.com" >
+                            <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" >
                          </div>
                     
                     <button type="submit" class="btn btn-custom">Kirim</button>
+                    @csrf
                 </form>
             </div>
             <div class="modal-footer">

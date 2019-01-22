@@ -9,16 +9,16 @@
   <div class="box">
     <div class="row">
         <div class="col-md-12 pull-right">
-          <form class="form-inline">
-               <div class="form-group mx-sm-2">
-                 <label for="search" class="sr-only">Pencarian</label>
-                 <input type="text" class="form-control" id="" placeholder="Pencarian">
-               </div>
-               <button type="submit" class="btn btn-primary">Cari</button>
-             </form>
+           <nav aria-label="breadcrumb">
+              <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">MADC Teams</li>
+              </ol>
+            </nav>
         </div>
      </div>
-    <table class="table table-hover table-bordered table-striped">
+
+    <table class="table table-hover table-bordered table-striped" id="madc-tables">
       <thead>
         <tr>
           <th>No</th>
@@ -28,46 +28,7 @@
           <th>Aksi</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td><a href="./view-team.html" class="blue">Lorem Ipsum Dolorsit Amet</a></td>
-          <td>MADC Competition</td>
-          <td><span class="badge badge-primary">Registered</span></td>
-          <td>
-            <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-            <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-            <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-          </td>
-        </tr>
-                      
-                       
-      </tbody>
     </table>
-
-    <!-- pagination -->
-    <div class="">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="disabled page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="active page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>  
-    <!-- End of pagination --> 
   </div>
 
     <!-- modal -->
@@ -92,4 +53,46 @@
   </div>
   <!-- /modal -->
 
+  @push('scripts')
+      <script>
+         $(function() {
+            $('#madc-tables').DataTable({
+               prossessing: true,
+               serverSide: true,
+               ajax: '{!! route('data.madc.users') !!}',
+               columns: [
+                  { data: 'i', name: 'i' },
+                  { data: 'team_name', name: 'team_name' },
+                  {
+                        name: '',
+                        data: null,
+                        sortable: false,
+                        render: function (data) {
+                               return "MADC Competition";
+                        }
+                    },
+                 {
+                    name: 'progress',
+                    data: 'progress',
+                    render: function(data){
+                       function htmlDecode(input){
+                          var e = document.createElement('span');
+                          e.innerHTML = input;
+                          return e.childNodes[0].nodeValue;
+                        }
+
+                       return htmlDecode(data);
+                    }
+                 },
+                  {
+                     data: 'action',
+                     name: 'action',
+                     sortable: false
+                  },
+               ]
+            });
+
+         });
+      </script>
+  @endpush
 @endsection

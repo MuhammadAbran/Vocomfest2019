@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -38,6 +38,16 @@ class User extends Authenticatable
    public function wdc()
    {
      return $this->hasOne(\App\Wdc::class);
+   }
+
+   public function payment()
+   {
+      return $this->hasOne(\App\Payment::class);
+   }
+
+   public function submission()
+   {
+      return $this->hasOne(\App\Submission::class);
    }
 
 
