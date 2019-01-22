@@ -22,7 +22,8 @@
             </div>
 
             <div class="col-md-4 offset-md-1 right-animated">
-                <img class="logo" src="{!! asset('assets/img/madc.png')!!}" alt="Logo WDC">
+                <img class="logo" src="{!! asset('assets/img/madc.png')!!}" alt="Mobile Apps Development 
+                Competition">
             </div>
         </div>
     </div>
