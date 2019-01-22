@@ -23,7 +23,7 @@
                         Heading Industry 4.0"</h1>
                     <div class="call-btn">
                         <button class="btn btn-custom btn-transparent m-margin10" onclick=" $('#about').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Tentang</button>
-                        <a href="#"><button class="animated pulse infinite btn btn-custom ">Daftar</button></a>
+                        <a href="{{route('register')}}"><button class="animated pulse infinite btn btn-custom ">Daftar</button></a>
                     </div>	
 				</div>
 			</div>

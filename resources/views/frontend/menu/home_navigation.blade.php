@@ -54,13 +54,13 @@
                      </li>
                      
                     <li class="nav-item">
-                        <a class="nav-link">Daftar
+                        <a href="{{route('register')}}" class="nav-link">Daftar
                             <span class="line_menu"></span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link">Masuk
+                    <a href="{{route('login')}}"class="nav-link">Masuk
                             <span class="line_menu"></span>
                         </a>
                     </li>
