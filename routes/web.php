@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
-});
+Route::get('/', 'HomeController@index');
 
 //Ajax Request Data
 Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
