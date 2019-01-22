@@ -82,6 +82,7 @@
 
     <!-- DataTables -->
     <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets/vendor/sweetalert2/sweetalert2.all.min.js') }}"></script>
     @stack('scripts')
 
 

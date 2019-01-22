@@ -21,7 +21,7 @@
                       <th>No</th>
                       <th>Title</th>
                       <th>Status</th>
-                      <th>Create Date</th>
+                      <th>Update Date</th>
                       <th>Action</th>
                   </tr>
               </thead>
@@ -32,7 +32,7 @@
                     <th>No</th>
                     <th>Title</th>
                     <th>Status</th>
-                    <th>Create Date</th>
+                    <th>Update Date</th>
                     <th>Action</th>
                   </tr>
               </tfoot>
@@ -66,6 +66,7 @@
 @push('scripts')
     <script>
         $('#newsTable').DataTable({
+          "order": [[ 3, "desc" ]],
             responsive: true,
             processing: true,
             serverSide: true,
@@ -74,10 +75,14 @@
                 {data: 'DT_RowIndex', name: 'id'},
                 {data: 'title', name: 'title'},
                 {data: 'is_published',name: 'is_published'},
-                {data: 'created_at',name: 'created_at'},
+                {data: 'updated_at',name: 'updated_at'},
                 {data: 'action',name: 'action'}
             ]
         })
+
+        $('body').on('click','.publish-btn',function(){
+            
+        });
 
 
     </script>

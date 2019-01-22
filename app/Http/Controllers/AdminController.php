@@ -182,7 +182,7 @@ class AdminController extends Controller
    public function newsData(Request $request)
     {   
      
-        //if($request->ajax()){
+        if($request->ajax()){
             $model = News::query();
             return DataTables::of($model)
             ->addColumn('action', function ($model){
@@ -202,14 +202,34 @@ class AdminController extends Controller
             ->rawColumns(['action'])
             ->make(true);
 
-       // }
-        //return redirect('');
+        }
+        return redirect('');
         
     }
 
+   // Display form for adding news
    public function addNews()
    {
       return view('user.admin.add_news');
+   }
+
+   // Input news data into database
+   public function storeNews(Request $request){
+      
+      // Checking request submit data
+      $publish = $request->submit == 'Terbitkan' ? 1 : 0;
+
+      // instance News Model to model variable
+      $model = new News();
+
+      // binding data from request
+      $model->title = $request->title;
+      $model->content = $request->content;
+      $model->is_published = $publish;
+
+      //save into database
+      $model->save();
+      return redirect()->route('admin.news');
    }
 
    public function editNews()
