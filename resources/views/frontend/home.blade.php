@@ -198,41 +198,35 @@
 				<div class="col-md-12 bottom-animated">
                     <section class="center slider">
                         <!-- news list-->
+
                         <div class="news-list">
-                            <img src="assets/img/news-thumb.jpg">
+                            <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
                             <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
                             <small>16 September 2018</small>
                             <p class="text-center">
-                                <a href="news.html"><button class="btn btn-green">Selengkapnya</button></a>
+                            <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
                             </p>
                         </div>
 
                         <div class="news-list">
-                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
+                                <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
+                                <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
+                                <small>16 September 2018</small>
+                                <p class="text-center">
+                                <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
+                                </p>
+                            </div>
 
-                        <div class="news-list">
-                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
+                            <div class="news-list">
+                                    <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
+                                    <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
+                                    <small>16 September 2018</small>
+                                    <p class="text-center">
+                                    <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
+                                    </p>
+                                </div>
 
-                        <div class="news-list">
-                            <img src="{!! asset('assets/img/news-thumb.jpg')!!}">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                                <a href=""><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
+                      
 
                         
                         <!-- End of News List-->

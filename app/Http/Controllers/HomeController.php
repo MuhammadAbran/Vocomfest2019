@@ -44,4 +44,9 @@ class HomeController extends Controller
     {
         return view('frontend.ntf_page');
     }
+
+    public function newsPage()
+    {
+        return view('frontend.news_page');
+    }
 }

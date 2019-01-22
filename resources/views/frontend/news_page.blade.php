@@ -21,8 +21,11 @@
         <div class="row">
             <div class="col-md-8 offset-md-2 content bottom-animated">
                     <p>
+                    <img src="{!!asset('assets/img/news-thumb.jpg')!!}" alt="image">
+                    </p>
+                    <p>
                         Aliquam principes deterruisset cum et, vel an eius equidem. Id quando legimus inermis eum, cibo consul democritum cum te, cu cum suas laudem graeci. Bonorum gloriatur signiferumque an pro. Justo corpora suscipit quo et, vim te noluisse praesent scriptorem, pro ea incorrupte intellegam mediocritatem. Hinc laoreet mediocrem te nec, petentium iracundia ut cum. Fabulas ornatus iudicabit an pri, qui at decore legimus voluptatibus. Ei semper adipisci constituto eum, ad reque dicam nec.                            
-                        <img src="assets/img/news-thumb.jpg" alt="image">
+                        
                     </p>                          
                     <p>
                         Delenit utroque vivendo est ea. Vim autem virtute concludaturque id. Cu ferri oblique has. At sed impedit apeirian ullamcorper, eum cu amet viris. Duo alia causae vituperatoribus ea, salutatus adolescens conclusionemque qui an. Illum euripidis eu vix.
@@ -43,20 +46,20 @@
              
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <img src="assets/img/news-thumb.jpg" alt="">
-                        <h1><a href="news.html">Lorem ipsum dolor sit, amet consectetur...</a></h1>
+                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
+                    <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
                         <span>16 September 2018</span>
                     </div>
 
                     <div class="col-md-4">
-                        <img src="assets/img/news-thumb.jpg" alt="">
-                        <h1><a href="news.html">Lorem ipsum dolor sit, amet consectetur...</a></h1>
+                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
+                        <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
                         <span>16 September 2018</span>
                     </div>
 
                     <div class="col-md-4">
-                        <img src="assets/img/news-thumb.jpg" alt="">
-                        <h1><a href="news.html">Lorem ipsum dolor sit, amet consectetur...</a></h1>
+                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
+                        <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
                         <span>16 September 2018</span>
                     </div>
                    
