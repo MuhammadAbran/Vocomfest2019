@@ -3,6 +3,7 @@ $('#sidebarCollapse').on('click', function () {
     $('#sidebar').toggleClass('active');
 });
 
+
 $(window).on("scroll", function() {
     if($(window).scrollTop()) {
           $('nav').addClass('navScroll');
@@ -75,8 +76,4 @@ $(".btn,a").mouseleave("animationend webkitAnimationEnd oAnimationEnd MSAnimatio
     $(this).removeClass('animated pulse infinite ');
 });
 
-
-$('body').on('click','.publish-btn',function(){
-    alert('hai');
-})
 

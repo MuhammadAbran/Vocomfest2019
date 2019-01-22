@@ -79,6 +79,10 @@
             ]
         })
 
+        $('body').on('click','.publish-btn',function(){
+            
+        });
+
 
     </script>
 @endpush 
