@@ -43,127 +43,124 @@ class AdminController extends Controller
 
    public function madcTeams()
    {
-
+      $madcs = \App\Madc::whereHas('user')->with('user')->paginate(5);
+      // dd($madcs);
       return view('user.admin.madc_teams');
    }
 
-   public function madcUsers()
+   public function madcUsers(Request $request)
    {
-      $users = User::all();
-      $a = [];
-      foreach ($users as $user) {
-         if ($user->madc['progress'] != null) {
-            $a[] = $user->madc()
-            ->join('users', 'users.id', '=', 'madcs.user_id')
-            ->get(['users.id', 'team_name', 'progress']);
-         }
-      }
-      $data = [];
-      $i = 1;
-      foreach ($a as $k) {
-         $data[] = [
-                     'id' => $k[0]['id'],
-                     'i' => $i++,
-                     'team_name' => $k[0]['team_name'],
-                     'progress' => $k[0]['progress']
-                ];
-      }
+      if ($request->ajax()) {
+         $madcs = \App\Madc::whereHas('user')->with('user')->get();
+         $data = [];
+         foreach ($madcs as $madc) {
 
-           return Datatables::of($data)
-           ->editColumn('progress', function($data){
-            if($data['progress'] == 1){
-              return '<span class="badge badge-primary">Registered</span>';
-           }
-            elseif($data['progress'] == 2){
-               return '<span class="badge badge-info">Waiting for Confirm</span>';
-            }
-            elseif($data['progress'] == 3){
-               return '<span class="badge badge-info">Submitted</span>';
-            }
-            elseif($data['progress'] == 4){
-               return '<span class="badge badge-warning">confirmed</span>';
-            }
-            elseif($data['progress'] == 5){
-               return '<span class="badge badge-warning">Waiting for Selection</span>';
-            }
-            elseif($data['progress'] == 6){
-               return '<span class="badge badge-info">Waiting</span>';
-            }
-            elseif($data['progress'] == 7){
-               return '<span class="badge badge-success">Lulus Seleksi</span>';
-            }
-          })
-          ->addColumn('action', function ($data){
-                return'
-                   <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-                   <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                   <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-                ';
-          })
-          ->make(true);
+            $data[] = [
+               'id' => $madc->user->id,
+               'team_name' => $madc->user->team_name,
+               'progress' => $madc->progress
+            ];
+
+         }
+         return Datatables::of($data)
+              ->editColumn('progress', function($data){
+              if($data['progress'] == 0){
+                   return '<span class="badge badge-danger">XXX</span>';
+               }
+               elseif($data['progress'] == 1){
+                 return '<span class="badge badge-primary">Registered</span>';
+              }
+               elseif($data['progress'] == 2){
+                  return '<span class="badge badge-info">Waiting for Confirm</span>';
+               }
+               elseif($data['progress'] == 3){
+                  return '<span class="badge badge-info">Submitted</span>';
+               }
+               elseif($data['progress'] == 4){
+                  return '<span class="badge badge-warning">confirmed</span>';
+               }
+               elseif($data['progress'] == 5){
+                  return '<span class="badge badge-warning">Waiting for Selection</span>';
+               }
+               elseif($data['progress'] == 6){
+                  return '<span class="badge badge-info">Waiting</span>';
+               }
+               elseif($data['progress'] == 7){
+                  return '<span class="badge badge-success">Lulus Seleksi</span>';
+               }
+             })
+             ->addColumn('action', function ($data){
+                   return'
+                      <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+                      <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                      <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                   ';
+             })
+             ->addIndexColumn()
+             ->rawColumns(['action', 'progress'])
+             ->make(true);
+      }
+      return redirect('/');
 
    }
 
-   public function wdcUsers()
+   public function wdcUsers(Request $request)
    {
-      $users = User::all();
-      $a = [];
-      foreach ($users as $user) {
-         if ($user->wdc['progress'] != null) {
-            $a[] = $user->wdc()
-            ->join('users', 'users.id', '=', 'wdcs.user_id')
-            ->get(['users.id', 'team_name', 'progress']);
+      if ($request->ajax()) {
+         $wdcs = \App\Wdc::whereHas('user')->with('user')->get();
+         $data = [];
+         foreach ($wdcs as $wdc) {
+               $data[] = [
+                 'id' => $wdc->user->id,
+                 'team_name' => $wdc->user->team_name,
+                 'progress' => $wdc->progress
+               ];
          }
-      }
-      $data = [];
-      $i = 1;
-      foreach ($a as $k) {
-         $data[] = [
-                     'id' => $k[0]['id'],
-                     'i' => $i++,
-                     'team_name' => $k[0]['team_name'],
-                     'progress' => $k[0]['progress']
-                ];
+
+              return Datatables::of($data)
+              ->editColumn('progress', function($data){
+              if($data['progress'] == 0){
+                  return '<span class="badge badge-danger">XXX</span>';
+              }
+               elseif($data['progress'] == 1){
+                 return '<span class="badge badge-primary">Registered</span>';
+              }
+               elseif($data['progress'] == 2){
+                  return '<span class="badge badge-info">Waiting for Confirm</span>';
+               }
+               elseif($data['progress'] == 3){
+                  return '<span class="badge badge-info">Submitted</span>';
+               }
+               elseif($data['progress'] == 4){
+                  return '<span class="badge badge-warning">confirmed</span>';
+               }
+               elseif($data['progress'] == 5){
+                  return '<span class="badge badge-warning">Waiting for Selection</span>';
+               }
+               elseif($data['progress'] == 6){
+                  return '<span class="badge badge-info">Waiting</span>';
+               }
+               elseif($data['progress'] == 7){
+                  return '<span class="badge badge-success">Lulus Seleksi</span>';
+               }
+
+             })
+             ->addColumn('action', function ($data){
+                   return'
+                      <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
+                      <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                      <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                   ';
+             })
+             ->addIndexColumn()
+             ->rawColumns(['progress', 'action'])
+             ->make(true);
       }
 
-           return Datatables::of($data)
-           ->editColumn('progress', function($data){
-            if($data['progress'] == 1){
-              return '<span class="badge badge-primary">Registered</span>';
-           }
-            elseif($data['progress'] == 2){
-               return '<span class="badge badge-info">Waiting for Confirm</span>';
-            }
-            elseif($data['progress'] == 3){
-               return '<span class="badge badge-info">Submitted</span>';
-            }
-            elseif($data['progress'] == 4){
-               return '<span class="badge badge-warning">confirmed</span>';
-            }
-            elseif($data['progress'] == 5){
-               return '<span class="badge badge-warning">Waiting for Selection</span>';
-            }
-            elseif($data['progress'] == 6){
-               return '<span class="badge badge-info">Waiting</span>';
-            }
-            elseif($data['progress'] == 7){
-               return '<span class="badge badge-success">Lulus Seleksi</span>';
-            }
-          })
-          ->addColumn('action', function ($data){
-                return'
-                   <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-                   <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                   <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-                ';
-          })
-          ->make(true);
    }
 
    public function wdcTeams()
    {
-      $users = User::all();
-      $i = 1;
 
       return view('user.admin.wdc_teams', compact(['users', 'i']));
    }
@@ -180,8 +177,8 @@ class AdminController extends Controller
 
    /* Get Data From Database */
    public function newsData(Request $request)
-    {   
-     
+    {
+
         if($request->ajax()){
             $model = News::query();
             return DataTables::of($model)
@@ -193,7 +190,7 @@ class AdminController extends Controller
                   $btn_status = '<a href="#" class="btn-success btn-sm publish-btn">Publish</a> ';
                }
                return
-               $btn_status.
+               $btn_status.=
                    '<a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                    <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                ';
@@ -204,7 +201,7 @@ class AdminController extends Controller
 
         }
         return redirect('');
-        
+
     }
 
    // Display form for adding news
@@ -215,7 +212,7 @@ class AdminController extends Controller
 
    // Input news data into database
    public function storeNews(Request $request){
-      
+
       // Checking request submit data
       $publish = $request->submit == 'Terbitkan' ? 1 : 0;
 
@@ -244,27 +241,27 @@ class AdminController extends Controller
 
    public function paymentsGetData()
    {
-      $payments = Payment::all();
+      $paymentsWdc = Payment::whereHas('user.wdc')->with('user.wdc')->get();
+      $paymentsMadc = Payment::whereHas('user.madc')->with('user.madc')->get();
       $data = [];
       $i = 1;
-      foreach ($payments as $payment) {
-         if ($payment->user->wdc) {
+      foreach ($paymentsWdc as $paymentW) {
             $data[] = [
-                  'id' => $payment->user->id,
+                  'id' => $paymentW->user->id,
                   'i' => $i++,
-                  'team_name' => $payment->user->team_name,
+                  'team_name' => $paymentW->user->team_name,
                   'kompetisi' => "WDC Competition",
-                  'payment_path' => $payment['payment_path']
+                  'payment_path' => $paymentW['payment_path']
                ];
-         }else {
-            $data[] = [
-                  'id' => $payment->user->id,
-                  'i' => $i++,
-                  'team_name' => $payment->user->team_name,
-                  'kompetisi' => "MADC Competition",
-                  'payment_path' => $payment['payment_path']
-               ];
-         }
+      }
+      foreach ($paymentsMadc as $paymentM) {
+         $data[] = [
+               'id' => $paymentM->user->id,
+               'i' => $i++,
+               'team_name' => $paymentM->user->team_name,
+               'kompetisi' => "MADC Competition",
+               'payment_path' => $paymentM['payment_path']
+            ];
       }
 
       return Datatables::of($data)
@@ -286,30 +283,30 @@ class AdminController extends Controller
 
    public function submissionsGetData()
    {
-      $submission = \App\Submission::all();
+      $submissionWdc = \App\Submission::whereHas('user.wdc')->with('user.wdc')->get();
+      $submissionMadc = \App\Submission::whereHas('user.madc')->with('user.madc')->get();
       $data = [];
       $i = 1;
-      foreach ($submission as $sub) {
-         if ($sub->user->wdc) {
+      foreach ($submissionWdc as $subW) {
             $data[] = [
-              'id' => $sub->user->id,
+              'id' => $subW->user->id,
               'i' => $i++,
-              'team_name' => $sub->user->team_name,
+              'team_name' => $subW->user->team_name,
               'kompetisi' => "WDC Competition",
-              'progress' => $sub->user->wdc['progress'],
-              'submissions_path' => $sub['submissions_path'],
+              'progress' => $subW->user->wdc['progress'],
+              'submissions_path' => $subW['submissions_path'],
            ];
-        }else {
+        }
+        foreach ($submissionMadc as $subM) {
            $data[] = [
-             'id' => $sub->user->id,
+             'id' => $subM->user->id,
              'i' => $i++,
-             'team_name' => $sub->user->team_name,
+             'team_name' => $subM->user->team_name,
              'kompetisi' => "MADC Competition",
-             'progress' => $sub->user->madc['progress'],
-             'submissions_path' => $sub['submissions_path'],
+             'progress' => $subM->user->madc['progress'],
+             'submissions_path' => $subM['submissions_path'],
           ];
         }
-      }
 
       return Datatables::of($data)
       ->editColumn('submissions_path', function($data){
@@ -325,5 +322,5 @@ class AdminController extends Controller
       ->make(true);
    }
 
-   
+
 }

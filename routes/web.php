@@ -74,3 +74,6 @@ Route::post('wdc', 'Auth\RegisterWdcController@register')->name('wdc');
 //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Config::set('debugbar.enabled', true);

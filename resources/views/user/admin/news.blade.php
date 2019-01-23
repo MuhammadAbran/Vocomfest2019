@@ -66,7 +66,7 @@
 @push('scripts')
     <script>
         $('#newsTable').DataTable({
-          "order": [[ 3, "desc" ]],
+            order: [ 3, "desc" ],
             responsive: true,
             processing: true,
             serverSide: true,
@@ -81,9 +81,9 @@
         })
 
         $('body').on('click','.publish-btn',function(){
-            
+
         });
 
 
     </script>
-@endpush 
+@endpush
