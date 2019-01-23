@@ -10,7 +10,12 @@
                      <!-- Payment Box -->
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
+
+        @if($user-> wdc['progress'] < 5)
             <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
+        @elseif($user-> wdc['progress'] == 5)
+            <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
+        @endif
 
              <div class="row submission-info ">
                  <div class="col-md-2">
@@ -38,8 +43,9 @@
                         <span>Hello world</span>
                 </div>
             </div>
+            @if($user-> wdc['progress'] > 3)
             <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
-
+            @endif
         </div>
                      <!-- End Payment  Box-->
     </div>
@@ -58,18 +64,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{ route('wdc.submission.upload') }}" method="post">
                     <div class="form-group">
                         <label for="tim">Judul :</label>
-                        <input type="text" class="form-control" name="tim" placeholder="Hmmm" >
-                     </div>
+                        <input type="text" class="form-control" name="judul" placeholder="Hmmm" >
+                    </div>
 
                      <div class="form-group">
-                            <label for="tim">Link :</label>
-                            <input type="text" class="form-control" name="tim" placeholder="http://drive.google.com" >
-                         </div>
+                        <label for="tim">Link :</label>
+                        <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" >
+                    </div>
                     
+                    <input type="hidden" name="tema" value="1">
+
                     <button type="submit" class="btn btn-custom">Kirim</button>
+                    @csrf
                 </form>
             </div>
             <div class="modal-footer">

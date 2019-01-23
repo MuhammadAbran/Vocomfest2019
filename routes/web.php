@@ -24,7 +24,6 @@ Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
 
 Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
 Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
-Route::get('dataGalleries', 'AdminController@galleriesData')->name('galleries.data');
 
 
 
@@ -33,13 +32,9 @@ Route::get('dataGalleries', 'AdminController@galleriesData')->name('galleries.da
    Route::get('/admin/teams/madc', 'AdminController@madcTeams')->name('admin.madcTeams');
    Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
 
-
    Route::get('/admin/news', 'AdminController@news')->name('admin.news');
-   Route::get('/admin/news/data', 'AdminController@newsData')->name('admin.newsData');
    Route::get('/admin/news/add', 'AdminController@addNews')->name('admin.addNews');
-   Route::post('/admin/news/add', 'AdminController@storeNews')->name('admin.storeNews');
    Route::get('/admin/news/edit', 'AdminController@editNews')->name('admin.editNews');
-
 
    Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
@@ -59,8 +54,11 @@ Route::get('dataGalleries', 'AdminController@galleriesData')->name('galleries.da
 // Route::middleware(['auth', 'wdc'])->group(function(){
     Route::get('wdc', 'WdcController@index')->name('wdc.dashboard');
     Route::get('wdc/team', 'WdcController@team')->name('wdc.team');
+    Route::post('wdc/team/edit', 'WdcController@teamEdit')->name('wdc.team.edit');
     Route::get('wdc/payment', 'WdcController@payment')->name('wdc.payment');
+    Route::post('wdc/payment/upload', 'WdcController@paymentUpload')->name('wdc.payment.upload');
     Route::get('wdc/submission', 'WdcController@submission')->name('wdc.submission');
+    Route::post('wdc/submission/upload', 'WdcController@submissionUpload')->name('wdc.submission.upload');
 // });
 
 Route::middleware(['auth', 'ntf'])->group(function(){
@@ -75,6 +73,3 @@ Route::post('wdc', 'Auth\RegisterWdcController@register')->name('wdc');
 //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // });
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-Config::set('debugbar.enabled', true);

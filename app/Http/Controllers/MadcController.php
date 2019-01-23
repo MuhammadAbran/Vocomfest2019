@@ -48,8 +48,8 @@ class MadcController extends Controller
          $tim->leader_name = $req->name;
          $tim->leader_phone = $req->phone;
          if($file = $req->file('photo')){
-            $photo = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('assets/img', $photo);
+            $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move('foto', $photo);
             $tim->leader_avatar = $photo;
 
             $tim->update();
@@ -61,8 +61,8 @@ class MadcController extends Controller
          $tim->co_leader_name = $req->name;
          $tim->co_leader_phone = $req->phone;
          if($file = $req->file('photo')){
-            $photo = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('assets/img', $photo);
+            $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move('foto', $photo);
             $tim->co_leader_avatar = $photo;
 
             $tim->update();
@@ -73,8 +73,8 @@ class MadcController extends Controller
          $tim->member_1_name = $req->name;
          $tim->member_1_phone = $req->phone;
          if($file = $req->file('photo')){
-            $photo = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('assets/img', $photo);
+            $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move('foto', $photo);
             $tim->member_1_avatar = $photo;
 
             $tim->update();
@@ -85,7 +85,7 @@ class MadcController extends Controller
          $tim->member_2_name = $req->name;
          $tim->member_2_phone = $req->phone;
          if($file = $req->file('photo')){
-            $photo = 'namatim_' . time() . '.' . $file->getClientOriginalExtension();
+            $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->move('foto', $photo);
             $tim->member_2_avatar = $photo;
 
