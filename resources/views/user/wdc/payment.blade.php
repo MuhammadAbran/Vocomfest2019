@@ -8,7 +8,15 @@
          <!-- Payment Box -->
      	<div class="payment">
          	<h1 class="title">Pembayaran</h1>
+
+        <!-- Tulisan berubah sesuai progress tim -->
+        @if($user->wdc['progress'] < 3)
          	<div class="status">Status : <span class="text-danger" >Belum melakukan pembayaran</span></div>
+        @elseif($user->wdc['progress'] == 3)
+            <div class="status">Status : <span class="text-warning" >Menunggu Konfirmasi</span></div>
+        @elseif($user->wdc['progress'] > 3)
+         	<div class="status">Status : <span class="text-success" >Sudah melakukan pembayaran</span></div>
+        @endif
 
             <div class="row payment-info ">
                 <div class="col-md-2">
@@ -36,7 +44,10 @@
                      <span>Rp. 50.000</span>
                 </div>
             </div>
+        <!-- Button upload akan hilang kalau Pembayaran sudah dikonfirmasi admin -->
+        @if($user->wdc['progress'] < 4)
             <button  type="button" data-toggle="modal" data-target="#uploadPayment" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Bukti Pembayaran</button>
+        @endif
 
         </div>
         <!-- End Payment  Box-->
@@ -53,9 +64,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{ route('wdc.payment.upload') }}" method="post" enctype="multipart/form-data">
+                @csrf
                     <div class="form-group">
                         <label for="tim">Nama Tim :</label>
+                        <!-- Ambil ID team  -->
+                        <input type="hidden" name="id" value="1">
                         <input type="text" class="form-control" name="tim" value="Hmmm" disabled>
                      </div>
                      <div class="form-group">
@@ -70,7 +84,7 @@
 
                     <div class="form-group">
                         <label for="bukti">Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
                     </div>
                     <button type="submit" class="btn btn-custom">Kirim</button>
                 </form>
