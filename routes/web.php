@@ -24,6 +24,7 @@ Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
 
 Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
 Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
+Route::get('dataGalleries', 'AdminController@galleriesData')->name('galleries.data');
 
 
 

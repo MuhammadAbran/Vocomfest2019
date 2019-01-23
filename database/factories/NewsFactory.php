@@ -14,10 +14,13 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\News::class, function (Faker $faker) {
+   $img = $faker->image(public_path('storage/news'));
+   $fullPath = explode('\\', $img);
+   $path = end($fullPath);
     return [
-        'title' => str_random(10),
-        'content' => str_random(200),
-        'thumbnail' => 'thumbnail.png',
-        'is_published' => 1
+        'title' => ucwords($faker->sentence()),
+        'content' => $faker->paragraph(30),
+        'thumbnail' => $path,
+        'is_published' => mt_rand(1,2)
     ];
 });

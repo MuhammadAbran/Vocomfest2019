@@ -2,24 +2,16 @@
 
 @extends('user.admin.menu')
 @section('title', 'WDC Teams | Admin')
-
-
-
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
+         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+         <li class="breadcrumb-item active" aria-current="page">WDC Teams</li>
+      </ol>
+     </nav>
+@endsection
 @section('content')
   <div class="box">
-    <div class="row">
-        <div class="row">
-            <div class="col-md-12 pull-right">
-               <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">WDC Teams</li>
-                  </ol>
-                </nav>
-            </div>
-         </div>
-     </div>
-
     <table class="table table-hover table-bordered table-striped" id="wdc-tables">
       <thead>
         <tr>

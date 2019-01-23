@@ -170,6 +170,23 @@ class AdminController extends Controller
       return view('user.admin.galleries');
    }
 
+   public function galleriesData(Request $request)
+   {
+      if ($request->ajax()) {
+         $galleries = \App\Gallary::query();
+         return Datatables::of($galleries)
+         ->addColumn('action', function($galleries){
+            return '
+            <a href="#" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+            <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+           ';
+         })
+         ->addIndexColumn()
+         ->rawColumns(['action'])
+         ->make(true);
+      }
+   }
+
    public function news()
    {
       return view('user.admin.news');
@@ -212,7 +229,7 @@ class AdminController extends Controller
 
    // Input news data into database
    public function storeNews(Request $request){
-
+      // dd($request->thumbnail);
       // Checking request submit data
       $publish = $request->submit == 'Terbitkan' ? 1 : 0;
 
@@ -220,9 +237,17 @@ class AdminController extends Controller
       $model = new News();
 
       // binding data from request
+      if ($request->hasFile('thumbnail')) {
+         $image = $request->file('thumbnail');
+         $name = time() . '.' . $image->getClientOriginalExtension();
+         $path = public_path('storage/news');
+         $image->move($path, $name);
+      }
+
       $model->title = $request->title;
-      $model->content = $request->content;
+      $model->content = strip_tags($request->content);
       $model->is_published = $publish;
+      $model->thumbnail = $name;
 
       //save into database
       $model->save();
@@ -286,31 +311,27 @@ class AdminController extends Controller
       $submissionWdc = \App\Submission::whereHas('user.wdc')->with('user.wdc')->get();
       $submissionMadc = \App\Submission::whereHas('user.madc')->with('user.madc')->get();
       $data = [];
-      $i = 1;
+      foreach ($submissionMadc as $subM) {
+         $data[] = [
+           'id' => $subM->user->id,
+           'team_name' => $subM->user->team_name,
+           'kompetisi' => "MADC Competition",
+           'progress' => $subM->user->madc['progress'],
+           'submissions_path' => $subM['submissions_path'],
+        ];
+      }
       foreach ($submissionWdc as $subW) {
             $data[] = [
               'id' => $subW->user->id,
-              'i' => $i++,
               'team_name' => $subW->user->team_name,
               'kompetisi' => "WDC Competition",
               'progress' => $subW->user->wdc['progress'],
               'submissions_path' => $subW['submissions_path'],
            ];
         }
-        foreach ($submissionMadc as $subM) {
-           $data[] = [
-             'id' => $subM->user->id,
-             'i' => $i++,
-             'team_name' => $subM->user->team_name,
-             'kompetisi' => "MADC Competition",
-             'progress' => $subM->user->madc['progress'],
-             'submissions_path' => $subM['submissions_path'],
-          ];
-        }
-
       return Datatables::of($data)
       ->editColumn('submissions_path', function($data){
-         return '<a href="'. $data['submissions_path'] .'" class="btn-success btn-sm">Link</a>';
+         return '<a href="'. $data['submissions_path'] .'" class="btn-warning btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
       })
       ->addColumn('action', function($data){
          return'
@@ -319,6 +340,8 @@ class AdminController extends Controller
              <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
          ';
       })
+      ->addIndexColumn()
+      ->rawColumns(['action', 'submissions_path'])
       ->make(true);
    }
 
