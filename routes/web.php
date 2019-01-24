@@ -67,7 +67,6 @@ Route::middleware(['auth', 'ntf'])->group(function(){
 
 
 Auth::routes(['verify' => true]);
-Route::post('wdc', 'Auth\RegisterWdcController@register')->name('wdc');
 
 // Route::middleware('auth')->group(function(){
 //    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

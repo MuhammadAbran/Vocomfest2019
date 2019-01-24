@@ -69,7 +69,7 @@ class AdminController extends Controller
                }
                elseif($data['progress'] == 1){
                  return '<span class="badge badge-primary">Registered</span>';
-              }
+               }
                elseif($data['progress'] == 2){
                   return '<span class="badge badge-info">Waiting for Confirm</span>';
                }
