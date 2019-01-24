@@ -25,13 +25,25 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
+    protected function redirectTo()
+    {
+        if (Auth::user()->role == '1') {
+            return 'wdc';
+        }
+
+        if (Auth::user()->role == '2') {
+            return 'madc';
+        }
+    }
+
     public function __construct()
     {
         $this->middleware('auth');

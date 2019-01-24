@@ -24,7 +24,7 @@
                                         <div class="form-group">
                                             <label for="sel1">Pilih Lomba</label>
                                             <select class="form-control" id="sel1" name="role">
-                                                <option value="1">Web Design Competition</option>
+                                                <option value="3">Web Design Competition</option>
                                                 <option value="2">Mobile Apps Development Competition</option>
                                             </select>
                                         </div>
@@ -98,7 +98,7 @@
                                             <input type="text" class="form-control" id="member2Phone"  placeholder="No Hp Anggota #2" name="member_1_phone">
                                         </div>
 
-                                        <input type="hidden" name="progress" value="0">
+                                        <input type="hidden" name="progress" value="1">
                                        
                                     </div>
                                     <div class="col-md-10 offset-md-1">
