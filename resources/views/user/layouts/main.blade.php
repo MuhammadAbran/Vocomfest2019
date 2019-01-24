@@ -48,6 +48,8 @@
                         <span>Menu</span>
                     </button>
 
+                    @yield('breadcrumbs')
+
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('logout') }}"

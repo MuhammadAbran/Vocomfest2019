@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class NewsTableSeeder extends Seeder
+class GalleryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\News::class,20)->create();
+        factory(\App\Gallary::class, 20)->create();
     }
 }

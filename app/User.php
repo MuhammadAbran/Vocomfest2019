@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function madc()
     {
-      return $this->hasOne(\App\Madc::class);
+      return $this->hasOne('\App\Madc', 'user_id', 'id');
     }
 
    public function wdc()

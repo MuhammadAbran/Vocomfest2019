@@ -21,4 +21,9 @@ class Wdc extends Model
      'member_phone',
      'progress'
   ];
+
+  public function user()
+  {
+     return $this->belongsTo(\App\User::class);
+ }
 }

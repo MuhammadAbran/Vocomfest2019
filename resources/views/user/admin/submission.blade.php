@@ -2,21 +2,16 @@
 
 @extends('user.admin.menu')
 @section('title', 'Dashboard | Admin')
-
-
-
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
+         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Submissions</li>
+      </ol>
+     </nav>
+@endsection
 @section('content')
   <div class="box">
-    <div class="row">
-      <div class="col-md-12 pull-right">
-          <nav aria-label="breadcrumb">
-             <ol class="breadcrumb"  style="background-color:white;color:#7386D5">
-               <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-               <li class="breadcrumb-item active" aria-current="page">Submissions</li>
-             </ol>
-           </nav>
-      </div>
-     </div>
     <table class="table table-hover table-bordered table-striped" id="submission-table">
       <thead>
         <tr>
@@ -61,7 +56,7 @@
             serverSide: true,
             ajax: '{!! route('data.submissions.users') !!}',
             columns: [
-               { name: 'i', data: 'i' },
+               { name: 'id', data: 'DT_RowIndex' },
                {
                   name: 'team_name',
                   data: 'team_name'
@@ -76,16 +71,7 @@
                },
                {
                   name: 'submissions_path',
-                  data: 'submissions_path',
-                  render: function(data){
-                     function htmlDecode(input){
-                       var e = document.createElement('span');
-                       e.innerHTML = input;
-                       return e.childNodes[0].nodeValue;
-                      }
-
-                     return htmlDecode(data);
-                  }
+                  data: 'submissions_path'
                },
                {
                   name: 'action',

@@ -32,7 +32,7 @@ class CreateMadcsTable extends Migration
             $table->string('member_2_email');
             $table->string('member_2_phone');
             $table->string('member_2_avatar')->default('avatar.jpg');
-            $table->integer('progress');
+            $table->integer('progress')->default(1);
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

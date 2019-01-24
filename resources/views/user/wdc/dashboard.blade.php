@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Dashboard | MADC')
+@section('title', 'Dashboard | WDC')
 
 
 
@@ -13,7 +13,11 @@
                 <span class="timeline__year">Timeline</span>
 
                 <!-- Timeline box -->
+                @if($user->wdc['progress'] < 0)
                 <div class="timeline__box  timeline-danger">
+                @else
+                <div class="timeline__box  timeline-success">
+                @endif
                     <div class="timeline__date">
                         <span class="timeline__day">1-30</span>
                         <span class="timeline__month">Feb</span>
@@ -26,7 +30,11 @@
                     </div>
                 </div> 
 
+                @if($user->wdc['progress'] < 1)
                 <div class="timeline__box  timeline-danger">
+                @else
+                <div class="timeline__box  timeline-success">
+                @endif
                     <div class="timeline__date">
                         <span class="timeline__day">1-30</span>
                         <span class="timeline__month">Feb</span>

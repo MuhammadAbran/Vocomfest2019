@@ -24,4 +24,9 @@ class Madc extends Model
       'member_2_phone',
       'progress'
    ];
+
+   public function user()
+   {
+      return $this->belongsTo('\App\User', 'user_id', 'id');
+   }
 }

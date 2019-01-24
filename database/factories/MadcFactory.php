@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Madc::class, function (Faker $faker) {
    $user_id = [];
-   for ($i=1; $i < 101; ++$i) {
+   for ($i=101; $i < 201; ++$i) {
       $user_id[] = $i;
    }
    static $a = 0;
