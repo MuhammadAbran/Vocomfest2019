@@ -41,8 +41,9 @@
                         <span>Hello world</span>
                 </div>
             </div>
+            @if($user-> madc['progress'] == 4)
             <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
-
+            @endif
         </div>
                      <!-- End Payment  Box-->
     </div>

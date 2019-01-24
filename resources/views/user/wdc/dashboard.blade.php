@@ -30,7 +30,7 @@
                     </div>
                 </div> 
 
-                @if($user->wdc['progress'] < 1)
+                @if($user->email_verified_at == null)
                 <div class="timeline__box  timeline-danger">
                 @else
                 <div class="timeline__box  timeline-success">

@@ -31,7 +31,7 @@
                     </div>
                 </div> 
             
-                @if($user->madc['progress'] < 1)
+                @if($user->email_verified_at != null)
                 <div class="timeline__box  timeline-danger">
                 @else
                 <div class="timeline__box  timeline-success">

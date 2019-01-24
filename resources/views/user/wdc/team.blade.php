@@ -8,9 +8,9 @@
 @section('content')
   <div class="box">
   <!-- Team Member  -->
-    <?php if ($tim->progress < 2) { ?>
+    @if ($tim->progress == 1)
     <button class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
-    <?php } ?>
+    @endif
     <div class="row team">
       <!-- Team Member Box -->
       <div class="column">
@@ -24,7 +24,7 @@
               <a href="{{url('/')}}/assets/img/{{$tim->leader_avatar}}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              @if($tim->progress < 2)
+              @if($tim->progress == 1)
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">
                 Edit Data
               </button>
@@ -47,7 +47,7 @@
               <a href="{{url('/')}}/assets/img/{{$tim->co_leader_avatar}}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              @if($tim->progress < 2)
+              @if($tim->progress == 1)
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">
                 Edit Data
               </button>
@@ -70,7 +70,7 @@
               <a href="{{url('/')}}/assets/img/{{$tim->member_avatar}}" data-rel="lightcase">
                 <button class="btn btn-custom">Lihat Identitas</button>
               </a>
-              @if($tim->progress < 2)
+              @if($tim->progress == 1)
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">
                 Edit Data
               </button>
