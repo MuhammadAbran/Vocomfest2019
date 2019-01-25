@@ -64,6 +64,9 @@ Route::middleware(['auth', 'wdc'])->group(function(){
     Route::post('wdc/payment/upload', 'WdcController@paymentUpload')->name('wdc.payment.upload');
     Route::get('wdc/submission', 'WdcController@submission')->name('wdc.submission');
     Route::post('wdc/submission/upload', 'WdcController@submissionUpload')->name('wdc.submission.upload');
+
+     // update progress
+   Route::put('wdc/progress','WdcController@updateProgress')->name('wdc.updateProgress');
 });
 
 

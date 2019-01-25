@@ -23,8 +23,8 @@
         @slot('name',$tim->leader_name)
         @slot('email', $tim->leader_email)
         @slot('button')
-        <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
-          @endslot
+          <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
+        @endslot
       @endcomponent
 
       @component('components.member_box')

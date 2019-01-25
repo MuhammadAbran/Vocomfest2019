@@ -28,7 +28,7 @@ class WdcController extends Controller
     {
         //Ambil user_id
         $user_id = Auth::user()->id;
-        //Gabungin tabel users + madcs, lalu cari yang user_idnya sama
+        //Gabungin tabel users + wdcs, lalu cari yang user_idnya sama
         $tim = DB::table('users')->join('wdcs','users.id','=','wdcs.user_id')->where('user_id', $user_id)->first();
 
         return view('user.wdc.team', compact('tim'));
@@ -128,7 +128,7 @@ class WdcController extends Controller
  
        $submit = new Submission([
           'submissions_path' => $req->link,
-          'type' => $req->tema,
+          'theme' => $req->tema,
           'user_id' => $user->id
        ]);
        
@@ -137,5 +137,16 @@ class WdcController extends Controller
        $submit->save();
  
        return redirect()->back();
+    }
+
+    public function updateProgress(Request $request)
+    {
+       //get user id from auth session
+       $data = Wdc::where('user_id', Auth::user()->id)->first();
+       /* Update Progress */
+       $data->progress = $request->progress;
+ 
+       $data->update();
+       return redirect()->route('wdc.dashboard');
     }
 }
