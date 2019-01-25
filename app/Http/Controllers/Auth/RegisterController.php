@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
 
-        if ($data['role'] == "1")
+        if ($data['role'] == "3")
         {
             $wdc = new Wdc([
                 'instance_name' => $data['instance_name'],

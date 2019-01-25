@@ -66,8 +66,16 @@
             <div class="modal-body">
                 <form action="{{ route('wdc.submission.upload') }}" method="post">
                     <div class="form-group">
-                        <label for="tim">Judul :</label>
-                        <input type="text" class="form-control" name="judul" placeholder="Hmmm" >
+                        <label for="tim">Tema :</label>
+                        <select name="tema" id="" class="form-control">
+                            <option disabled selected>Pilih Tema</option>
+                            <option value="Makanan dan Minuman">Makanan dan Minuman</option>
+                            <option value="Kimia">Kimia</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Otomotif">Otomotif</option>
+                            <option value="Elektronik">Elektronik</option>
+                            <option value="Tekstil">Tekstil</option>
+                        </select>
                     </div>
 
                      <div class="form-group">
