@@ -18,8 +18,9 @@ class WdcController extends Controller
 
     public function index()
     {
-    // Cari user 
-      $user = Auth::user();
+      
+      // ambil data user berdasarkan id di auth
+      $user = Madc::where('user_id', Auth::user()->id)->first();
       
       return view('user.wdc.dashboard', compact('user'));
     }
