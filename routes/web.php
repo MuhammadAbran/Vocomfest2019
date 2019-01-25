@@ -11,11 +11,11 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('homePage');
-Route::get('/competition/wdc', 'HomeController@wdcPage')->name('wdcPage');
-Route::get('/competition/madc', 'HomeController@madcPage')->name('madcPage');
-Route::get('/competition/icpc', 'HomeController@icpcPage')->name('icpcPage');
-Route::get('/competition/ntf', 'HomeController@ntfPage')->name('ntfPage');
-Route::get('/competition/news', 'HomeController@newsPage')->name('newsPage');
+Route::get('/page/web-design-competition', 'HomeController@wdcPage')->name('wdcPage');
+Route::get('/page/mobile-apps-deevelopment-competition', 'HomeController@madcPage')->name('madcPage');
+Route::get('/page/international-collegiate-programming-contest', 'HomeController@icpcPage')->name('icpcPage');
+Route::get('/page/national-technology-festival', 'HomeController@ntfPage')->name('ntfPage');
+Route::get('/page/news', 'HomeController@newsPage')->name('newsPage');
 
 
 //Ajax Request Data
