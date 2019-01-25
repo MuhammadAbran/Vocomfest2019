@@ -61,14 +61,6 @@ Route::middleware(['auth', 'wdc'])->group(function(){
     Route::post('wdc/submission/upload', 'WdcController@submissionUpload')->name('wdc.submission.upload');
 });
 
-Route::middleware(['auth', 'ntf'])->group(function(){
-
-});
 
 
-
-
-// Route::middleware('auth')->group(function(){
-//    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-// });
 Route::get('/home', 'HomeController@index')->name('home');

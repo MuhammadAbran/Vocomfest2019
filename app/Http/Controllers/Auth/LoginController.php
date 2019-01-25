@@ -45,18 +45,17 @@ class LoginController extends Controller
 
     public function authenticated()
     {
-      // dd(Auth::user()->isAdmin());
+      // redirect to admin
       if (Auth::user()->isAdmin()) {
          return redirect()->route('admin.dashboard');
       }
+      // redirect to madc
       else if (Auth::user()->isMadc()) {
          return redirect()->route('madc.dashboard');
       }
+      // redirect to wdc
       else if (Auth::user()->isWdc()) {
          return redirect()->route('wdc.dashboard');
-      }
-      else if (Auth::user()->isNtf()) {
-         // return redirect()->route('dashboard.ntf');
       }
 
       return redirect('/login');
