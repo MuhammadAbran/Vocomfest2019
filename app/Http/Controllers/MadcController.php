@@ -32,7 +32,7 @@ class MadcController extends Controller
       //Gabungin tabel users + madcs, lalu cari yang user_idnya sama
       $tim = DB::table('users')->join('madcs','users.id','=','madcs.user_id')->where('user_id', $user_id)->first();
 
-      return view('user.madc.team', compact('leader', 'tim'));
+      return view('user.madc.team', compact('tim'));
    }
 
    public function teamEdit(Request $req)
@@ -122,8 +122,8 @@ class MadcController extends Controller
 
          $pay->save();
       }
-
-      $user->madc()->update(['progress' => 3]);
+      $updateProgress = Madc::where('user_id', Auth::user()->id)->first();
+      $updateProgress = $updateProgress->update(['progress' => 3]);
 
       return redirect()->back();
    }
@@ -141,7 +141,7 @@ class MadcController extends Controller
 
       $submit = new Submission([
          'submissions_path' => $req->link,
-         'type' => $req->tema,
+         'theme' => $req->tema,
          'user_id' => $user->id
       ]);
       
@@ -150,6 +150,17 @@ class MadcController extends Controller
       $submit->save();
 
       return redirect()->back();
+   }
+
+   public function updateProgress(Request $request)
+   {
+      //get user id from auth session
+      $data = Madc::where('user_id', Auth::user()->id)->first();
+      /* Update Progress */
+      $data->progress = $request->progress;
+
+      $data->update();
+      return redirect()->route('madc.dashboard');
    }
 
 }

@@ -11,8 +11,10 @@
      	<div class="payment">
          	<h1 class="title">Pembayaran</h1>
         <!-- Tulisan berubah sesuai progress tim -->
-        @if($user->madc['progress'] < 3)
-         	<div class="status">Status : <span class="text-danger" >Belum melakukan pembayaran</span></div>
+        @if($user->madc['progress'] <= 1)
+         	<div class="status">Status : <span class="text-danger" >Belum bisa pembayaran, kunci data tim terlebih dahulu!</span></div>
+        @elseif($user->madc['progress'] == 2)
+         	<div class="status">Status : <span class="text-danger" >Mohon untuk segera upload pembayaran</span></div>
         @elseif($user->madc['progress'] == 3)
             <div class="status">Status : <span class="text-warning" >Menunggu Konfirmasi</span></div>
         @elseif($user->madc['progress'] > 3)
