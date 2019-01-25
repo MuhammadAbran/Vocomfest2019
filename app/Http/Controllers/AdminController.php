@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\News;
+use Session;
 use App\Payment;
 use Yajra\Datatables\Datatables;
 
@@ -251,6 +252,9 @@ class AdminController extends Controller
 
       //save into database
       $model->save();
+
+      //add flash session
+      Session::flash('message', 'Berita berhasil ditambahkan');
       return redirect()->route('admin.news');
    }
 

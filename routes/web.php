@@ -27,7 +27,7 @@ Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.s
 
 Auth::routes(['verify' => true]);
 
-// Route::middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
    Route::get('/admin/teams/madc', 'AdminController@madcTeams')->name('admin.madcTeams');
    Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
@@ -39,9 +39,9 @@ Auth::routes(['verify' => true]);
    Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
    Route::get('/admin/submissions', 'AdminController@submissions')->name('admin.submissions');
-// });
+});
 
-// Route::middleware(['auth', 'madc'])->group(function(){
+Route::middleware(['auth', 'madc'])->group(function(){
    Route::get('madc', 'MadcController@index')->name('madc.dashboard');
    Route::get('madc/team', 'MadcController@team')->name('madc.team');
    Route::post('madc/team/edit', 'MadcController@teamEdit')->name('madc.team.edit');
@@ -49,9 +49,9 @@ Auth::routes(['verify' => true]);
    Route::post('madc/payment/upload', 'MadcController@paymentUpload')->name('madc.payment.upload');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
    Route::post('madc/submission/upload', 'MadcController@submissionUpload')->name('madc.submission.upload');
-// });
+});
 
-// Route::middleware(['auth', 'wdc'])->group(function(){
+Route::middleware(['auth', 'wdc'])->group(function(){
     Route::get('wdc', 'WdcController@index')->name('wdc.dashboard');
     Route::get('wdc/team', 'WdcController@team')->name('wdc.team');
     Route::post('wdc/team/edit', 'WdcController@teamEdit')->name('wdc.team.edit');
@@ -59,7 +59,7 @@ Auth::routes(['verify' => true]);
     Route::post('wdc/payment/upload', 'WdcController@paymentUpload')->name('wdc.payment.upload');
     Route::get('wdc/submission', 'WdcController@submission')->name('wdc.submission');
     Route::post('wdc/submission/upload', 'WdcController@submissionUpload')->name('wdc.submission.upload');
-// });
+});
 
 Route::middleware(['auth', 'ntf'])->group(function(){
 
