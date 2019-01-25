@@ -97,7 +97,7 @@
           Nama <br>
           <input type="text" name="name" value="{{$tim->leader_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim->leader_email}}"><br>
+          <input type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
           No.Hp<br>
           +62<input type="text" name="phone" value="{{$tim->leader_phone}}">
           <div class="form-group">

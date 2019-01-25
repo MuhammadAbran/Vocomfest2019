@@ -19,8 +19,8 @@ class MadcController extends Controller
 
    public function index()
    {
-      // Cari user 
-      $user = Auth::user();
+      // ambil data user berdasarkan id di auth
+      $user = Madc::where('user_id', Auth::user()->id)->first();
       
       return view('user.madc.dashboard', compact('user'));
    }
@@ -44,7 +44,7 @@ class MadcController extends Controller
       //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
       if ($req->pos == 1) {
-         $leader->leader_email = $req->email;
+
          $tim->leader_name = $req->name;
          $tim->leader_phone = $req->phone;
          if($file = $req->file('photo')){
