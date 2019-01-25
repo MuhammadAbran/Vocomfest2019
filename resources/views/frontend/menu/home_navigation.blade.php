@@ -53,17 +53,41 @@
                         </a>  
                      </li>
                      
-                    <li class="nav-item">
-                        <a href="{{route('register')}}" class="nav-link">Daftar
-                            <span class="line_menu"></span>
-                        </a>
-                    </li>
+                     @if(Auth::user())
+                        @if(Auth::user()->role == 1)
+                            <li class="nav-item">
+                                <a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard
+                                    <span class="line_menu"></span>
+                                </a>
+                            </li>
+                        @elseif(Auth::user()->role == 2)
+                            <li class="nav-item">
+                                <a href="{{route('madc.dashboard')}}" class="nav-link">Dashboard
+                                    <span class="line_menu"></span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{route('wdc.dashboard')}}" class="nav-link">Dashboard
+                                    <span class="line_menu"></span>
+                                </a>
+                            </li>
+                        @endif
 
-                    <li class="nav-item">
-                    <a href="{{route('login')}}"class="nav-link">Masuk
-                            <span class="line_menu"></span>
-                        </a>
-                    </li>
+                    
+                     @else
+                        <li class="nav-item">
+                            <a href="{{route('register')}}" class="nav-link">Daftar
+                                <span class="line_menu"></span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a href="{{route('login')}}"class="nav-link">Masuk
+                                <span class="line_menu"></span>
+                            </a>
+                        </li>
+                    @endif
 				</ul>
 			</div>
 		</div>
