@@ -123,11 +123,12 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        
+        //rediret to /madc  if role == 2
         if (Auth::user()->role == '2') {
             return 'madc';
         }
 
+        //rediret to /wdc  if role == 3
         if (Auth::user()->role == '3') {
             return 'wdc';
         }
