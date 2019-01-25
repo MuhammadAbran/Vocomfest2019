@@ -47,7 +47,7 @@ class LoginController extends Controller
     {
       // dd(Auth::user()->isAdmin());
       if (Auth::user()->isAdmin()) {
-         return redirect()->route('admin');
+         return redirect()->route('admin.dashboard');
       }
       else if (Auth::user()->isMadc()) {
          return redirect()->route('madc.dashboard');
