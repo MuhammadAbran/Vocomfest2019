@@ -49,10 +49,10 @@
 
                     {{-- not login status--}}
                      @else
-                        @component('components.navigation_link',['href' =>route('register'),'menu_name' => 'Register'])
+                        @component('components.navigation_link',['href' =>route('register'),'menu_name' => 'Daftar'])
                         @endcomponent
 
-                        @component('components.navigation_link',['href' =>route('login'),'menu_name' => 'Login'])
+                        @component('components.navigation_link',['href' =>route('login'),'menu_name' => 'Masuk'])
                         @endcomponent
                     @endif
 				</ul>
