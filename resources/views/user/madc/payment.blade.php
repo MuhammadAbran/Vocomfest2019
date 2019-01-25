@@ -45,7 +45,7 @@
                 </div>
             </div>
             <!-- Button upload akan hilang kalau Pembayaran sudah dikonfirmasi admin -->
-        @if($user->madc['progress'] < 4)
+        @if($user->madc['progress'] == 2)
             <button  type="button" data-toggle="modal" data-target="#uploadPayment" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Bukti Pembayaran</button>
         @endif
         </div>

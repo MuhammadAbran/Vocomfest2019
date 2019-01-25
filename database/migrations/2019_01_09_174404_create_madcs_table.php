@@ -28,10 +28,10 @@ class CreateMadcsTable extends Migration
             $table->string('member_1_email');
             $table->string('member_1_phone');
             $table->string('member_1_avatar')->default('avatar.jpg');
-            $table->string('member_2_name');
-            $table->string('member_2_email');
-            $table->string('member_2_phone');
-            $table->string('member_2_avatar')->default('avatar.jpg');
+            // $table->string('member_2_name');
+            // $table->string('member_2_email');
+            // $table->string('member_2_phone');
+            // $table->string('member_2_avatar')->default('avatar.jpg');
             $table->integer('progress')->default(1);
             $table->integer('user_id')->unsigned();
 
