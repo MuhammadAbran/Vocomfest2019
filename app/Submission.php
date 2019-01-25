@@ -10,7 +10,7 @@ class Submission extends Model
 
     protected $fillable = [
        'submissions_path',
-       'type',
+       'theme',
        'user_id'
     ];
 

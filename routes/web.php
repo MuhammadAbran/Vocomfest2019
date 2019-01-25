@@ -42,13 +42,18 @@ Route::middleware(['auth', 'admin'])->group(function(){
 });
 
 Route::middleware(['auth', 'madc'])->group(function(){
+
    Route::get('madc', 'MadcController@index')->name('madc.dashboard');
    Route::get('madc/team', 'MadcController@team')->name('madc.team');
    Route::post('madc/team/edit', 'MadcController@teamEdit')->name('madc.team.edit');
+
    Route::get('madc/payment', 'MadcController@payment')->name('madc.payment');
    Route::post('madc/payment/upload', 'MadcController@paymentUpload')->name('madc.payment.upload');
    Route::get('madc/submission', 'MadcController@submission')->name('madc.submission');
    Route::post('madc/submission/upload', 'MadcController@submissionUpload')->name('madc.submission.upload');
+
+   // update progress
+   Route::put('madc/progress','MadcController@updateProgress')->name('madc.updateProgress');
 });
 
 Route::middleware(['auth', 'wdc'])->group(function(){

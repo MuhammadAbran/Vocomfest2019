@@ -64,14 +64,15 @@
             <div class="modal-body">
                 <form action="{{ route('madc.submission.upload') }}" method="post">
                     <div class="form-group">
-                        <label for="tim">Judul/Tema :</label>
+                        <label for="tim">Tema :</label>
                         <select name="tema" id="" class="form-control">
-                            <option value="1">Makanan dan Minuman</option>
-                            <option value="2">Kimia</option>
-                            <option value="3">Furniture</option>
-                            <option value="4">Otomotif</option>
-                            <option value="5">Elektronik</option>
-                            <option value="6">Tekstil</option>
+                            <option disabled selected>Pilih Tema</option>
+                            <option value="Makanan dan Minuman">Makanan dan Minuman</option>
+                            <option value="Kimia">Kimia</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Otomotif">Otomotif</option>
+                            <option value="Elektronik">Elektronik</option>
+                            <option value="Tekstil">Tekstil</option>
                         </select>
                      </div>
 
