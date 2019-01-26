@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Payment | MADC')
+@section('title', 'Payment | WDC')
 
 
 
@@ -11,9 +11,9 @@
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
 
-        @if($user-> wdc['progress'] < 5)
+        @if($user-> wdc['progress'] < 5 || $user-> wdc['progress'] == 7)
             <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-        @elseif($user-> wdc['progress'] == 5)
+        @elseif($user-> wdc['progress'] == 5 || $user-> wdc['progress'] == 8)
             <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
         @endif
 
@@ -43,7 +43,7 @@
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($user-> wdc['progress'] == 4)
+            @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 7)
             <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
             @endif
         </div>
