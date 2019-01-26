@@ -2,9 +2,15 @@
 
 @extends('user.admin.menu')
 @section('title', 'Team | MADC')
-
-
-
+@section('breadcrumbs')
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
+         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+         <li class="breadcrumb-item"><a href="{{ route('admin.wdcTeams') }}">WDC Teams</a></li>
+         <li class="breadcrumb-item active" aria-current="page">{{ $tim->user->team_name }}</li>
+      </ol>
+     </nav>
+@endsection
 @section('content')
   <div class="box">
   <!-- Team Member  -->
