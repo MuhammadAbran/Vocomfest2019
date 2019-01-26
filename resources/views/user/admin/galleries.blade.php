@@ -14,6 +14,9 @@
 @section('content')
 
 	<div class="box">
+      <div class="panel-heading" style="margin-bottom: 20px; margin-left: 1400px">
+        <a href="" class="btn btn-primary pull-right modal-show"  data-toggle="modal" data-target="#add-gallary"><i class="fa fa-plus"></i> Add</a>
+      </div>
 	    <table class="table table-striped" id="galleries-table">
          <thead>
 	        <tr>
@@ -48,6 +51,28 @@
 	    </div>
 	  </div>
 	</div>
+
+   <!-- Add Gallaries -->
+   <div class="modal fade" id="add-gallary" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">Tambah Gallary</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+             <input type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px">
+	          Image : <input type="file" class="form-control" name="gallaries_path" style="margin-bottom:20px">
+	          <button type="submit" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-save"></i> Simpan Ke Draft</button>
+	          <button type="submit" class="btn btn-primary" name="button" data-dismiss="modal"> <i class="fa fa-cloud-upload-alt"></i> Publish</button>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- /modal -->
 
 @endsection
@@ -77,10 +102,42 @@
          });
       });
 
+      //publish and unpublish News
+      $(document).on('click', '.publish', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('publish.gallary') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#galleries-table').DataTable().ajax.reload();
+            }
+         });
+      });
+
+      $(document).on('click', '.unpublish', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('unpublish.gallary') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#galleries-table').DataTable().ajax.reload();
+            }
+         });
+      });
+
+
       //GET DATA
       $(function(){
          $('#galleries-table').DataTable({
-            order: [[ 4, 'asc' ]],
+            order: [[ 4, 'desc' ]],
             responsive: true,
             serverSide: true,
             prossessing: true,

@@ -28,7 +28,7 @@
                       <th width="10%">Thumbnail</th>
                       <th width="25%">Title</th>
                       <th width="10%">Status</th>
-                      <th width="15%">Update Date</th>
+                      <th width="8%">Update Date</th>
                       <th width="10%">Action</th>
                   </tr>
               </thead>
@@ -62,6 +62,7 @@
 @endsection
 
 @push('scripts')
+   <script type="text/javascript" src="{{ asset('assets/vendor/moment/moment.js') }}"></script>
     <script>
       //Delete News
       $(document).on('click', '.delete-news', function(){
@@ -144,7 +145,13 @@
                       return '<span class="badge badge-danger">Not published yet</span>'
                    }
                 },
-                {data: 'updated_at',name: 'updated_at'},
+                {
+                   data: 'updated_at',
+                   name: 'updated_at',
+                   render: function(data){
+                      return moment(data).format('DD-MM-YYYY');
+                   }
+                },
                 {data: 'action',name: 'action'}
             ]
         })

@@ -41,6 +41,8 @@ Route::get('deleteNews', 'AdminController@deleteNews')->name('delete.news');
 //gallaries
 Route::get('galleriesData', 'AdminController@galleriesData')->name('galleries.data');
 Route::get('deleteGallary', 'AdminController@deleteGallary')->name('delete.gallary');
+Route::get('publishGallary', 'AdminController@publishGallary')->name('publish.gallary');
+Route::get('unpublishGallary', 'AdminController@unpublishGallary')->name('unpublish.gallary');
 
 Auth::routes(['verify' => true]);
 

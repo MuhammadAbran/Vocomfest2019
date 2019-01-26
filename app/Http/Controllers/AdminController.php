@@ -187,16 +187,44 @@ class AdminController extends Controller
          }
          return Datatables::of($data)
          ->addColumn('action', function($data){
-            return '
-            <a href="#" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-            <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-gallary" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
-           ';
+            if($data['status'] === 1){
+               $btn_status = '<a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm publish-btn unpublish">Unpublish</a> ';
+            }else{
+               $btn_status = '<a href="#" id="'. $data['id'] .'" class="btn-success btn-sm publish-btn publish" publish>Publish</a> ';
+            }
+            return
+            $btn_status.=
+                '<a href="'. route('newsPage') .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                 <a href="#" class="btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                 <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-gallary" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
+            ';
          })
          ->addIndexColumn()
          ->rawColumns(['action'])
          ->make(true);
       }
    }
+
+   //publish Gallary
+   public function publishGallary(Request $req)
+   {
+      $news = \App\Gallary::find($req->id);
+
+      $news->status = 1;
+
+      $news->save();
+   }
+
+   //unpublish News
+   public function unpublishGallary(Request $req)
+   {
+      $news = \App\Gallary::find($req->id);
+
+      $news->status = 0;
+
+      $news->save();
+   }
+
 
    public function deleteGallary(Request $req)
    {
@@ -236,7 +264,7 @@ class AdminController extends Controller
                }
                return
                $btn_status.=
-                   '<a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   '<a href="'. route('newsPage') .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                     <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-news" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
                ';
           })
