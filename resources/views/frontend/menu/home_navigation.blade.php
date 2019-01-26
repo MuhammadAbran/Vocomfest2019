@@ -11,59 +11,50 @@
 			</button>
 			<div class="collapse navbar-collapse" id="mynavbar">
 				<ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#header').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Beranda
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
 
-                     <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#about').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Tentang
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
+                    {{-- using component navigation  --}}
+                    @component('components.navigation_animate',['section_id' =>'header','menu_name' => 'Beranda'])
+                    @endcomponent
 
-                     <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#competition').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Kompetisi
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
+                    @component('components.navigation_animate',['section_id' =>'about','menu_name' => 'Tentang'])
+                    @endcomponent
 
-                     <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#festival').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Festival Technology
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
-                     
-                     <!-- <li class="nav-item">
-                        <a href="index.html#timeline"  class="nav-link" onclick=" $('#timeline').animatescroll({scrollSpeed:3000,easing:'easeInOutBack'});">Timeline
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li> -->
+                    @component('components.navigation_animate',['section_id' =>'competition','menu_name' => 'Kompetisi'])
+                    @endcomponent
 
-                     <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#news').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Informasi
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
+                    @component('components.navigation_animate',['section_id' =>'festival','menu_name' => 'Festival Technology'])
+                    @endcomponent
 
-                     <li class="nav-item">
-                        <a class="nav-link" onclick=" $('#contact').animatescroll({scrollSpeed:1500,easing:'easeInOutBack'});">Hubungi
-                            <span class="line_menu"></span>
-                        </a>  
-                     </li>
-                     
-                    <li class="nav-item">
-                        <a href="{{route('register')}}" class="nav-link">Daftar
-                            <span class="line_menu"></span>
-                        </a>
-                    </li>
+                    @component('components.navigation_animate',['section_id' =>'news','menu_name' => 'Informasi'])
+                    @endcomponent
 
-                    <li class="nav-item">
-                    <a href="{{route('login')}}"class="nav-link">Masuk
-                            <span class="line_menu"></span>
-                        </a>
-                    </li>
+                    @component('components.navigation_animate',['section_id' =>'contact','menu_name' => 'Hubungi'])
+                    @endcomponent
+                    
+                    {{-- checking login status--}}
+                    @if(Auth::user())
+                        @if(Auth::user()->role == 1)
+
+                            @component('components.navigation_link',['href' =>route('admin.dashboard'),'menu_name' => 'Dashboard'])
+                            @endcomponent
+                 
+                        @elseif(Auth::user()->role == 2)
+
+                            @component('components.navigation_link',['href' =>route('madc.dashboard'),'menu_name' => 'Dashboard'])
+                            @endcomponent
+                        @else
+                            @component('components.navigation_link',['href' =>route('wdc.dashboard'),'menu_name' => 'Dashboard'])
+                            @endcomponent
+                        @endif
+
+                    {{-- not login status--}}
+                     @else
+                        @component('components.navigation_link',['href' =>route('register'),'menu_name' => 'Daftar'])
+                        @endcomponent
+
+                        @component('components.navigation_link',['href' =>route('login'),'menu_name' => 'Masuk'])
+                        @endcomponent
+                    @endif
 				</ul>
 			</div>
 		</div>

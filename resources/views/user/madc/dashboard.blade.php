@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.madc.menu')
-@section('title', 'Dashboard | MADC')
+@section('title', 'Dashboard - Vocomfest 2019')
 
 
 
@@ -14,40 +14,103 @@
 
                 <!-- Timeline box -->
                 <!-- Buat liat progress tim, kalo sudah lewat progressnya class timeline-danger berubah jadi time-line success -->
-                @if($user->madc['progress'] < 0)
-                <div class="timeline__box  timeline-danger">
-                @else
-                <div class="timeline__box  timeline-success">
-                @endif
-                    <div class="timeline__date">
-                        <span class="timeline__day">1-30</span>
-                        <span class="timeline__month">Feb</span>
-                    </div>
-                    <div class="timeline__post">
-                        <div class="timeline__content">
-                        <h1>Register</h1>
-                        <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
-                        </div>
-                    </div>
-                </div> 
-            
-                @if($user->email_verified_at != null)
-                <div class="timeline__box  timeline-danger">
-                @else
-                <div class="timeline__box  timeline-success">
-                @endif
-                    <div class="timeline__date">
-                        <span class="timeline__day">1-30</span>
-                        <span class="timeline__month">Feb</span>
-                    </div>
-                    <div class="timeline__post">
-                        <div class="timeline__content">
-                        <h1>Verifikasi Email</h1>
-                        <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
-                        </div>
-                    </div>
-                </div>        
-                  
+                
+                @component('components.timeline_box')
+                    @slot('status',' timeline-success')
+                    @slot('title','register')
+                    @slot('description','Registerasi telah berhasil')
+                @endcomponent
+
+                @component('components.timeline_box')
+                    @slot('title','Verifikasi Email')
+                    @if($user->progress == 0)
+                        @slot('status',' timeline-warning')
+                        @slot('description','Belum varifikasi')  
+                    @else
+                        @slot('status',' timeline-success')
+                        @slot('description','Email berhasil di verifikasi')  
+                    @endif
+                @endcomponent
+
+                @component('components.timeline_box')
+                    @slot('title','Melengkapi Data Tim')
+
+                    @if($user->progress  < 1)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Belum bisa melengkapi data tim, silahkan verifikasi email terlebih dahulu')  
+                    @elseif($user->progress <=1)
+                        @slot('status',' timeline-warning')
+                        @slot('description','Mohon untuk melengkapi data tim dan mengunci data tim')  
+                    @elseif($user->progress >=1)
+                        @slot('status',' timeline-success')
+                        @slot('description','Data tim berhasil dikunci')  
+                    @endif
+                @endcomponent
+
+                @component('components.timeline_box')
+                    @slot('title','Pembayaran')
+                    @if($user->progress  < 2)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Lengkapi Pembayaran terlebih dahulu')  
+                    @elseif($user->progress == 2)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Mohon untuk segera upload bukti pembayaran')  
+                        
+                    @elseif($user->progress == 3)
+                        @slot('status',' timeline-warning')
+                        @slot('description','Berhasil di upload, menunggu pengumuman')  
+
+                     @elseif($user->progress >=4)
+                        @slot('status',' timeline-success')
+                        @slot('description','Pembayaran telah selesai')  
+                    @endif
+                @endcomponent
+
+                @component('components.timeline_box')
+                    @slot('title','Submssion #1')
+                    @if($user->progress  < 4)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Lengkapi Pembayaran terlebih dahulu')  
+                    @elseif($user->progress == 4)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Belum upload submssion #1')  
+                        
+                    @elseif($user->progress == 5)
+                        @slot('status',' timeline-warning')
+                        @slot('description','Berhasil di upload, menunggu pengumuman')  
+
+                     @elseif($user->progress <= 5 || $user->progress == 99)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Mohon maaf, anda tidak lolos seleksi tahap #1')  
+
+                    @elseif($user->progress >= 6)
+                        @slot('status',' timeline-success')
+                        @slot('description','Selamat Anda lolos tahap #1')  
+                    @endif
+                @endcomponent
+
+                @component('components.timeline_box')
+                    @slot('title','Submssion #2')
+                    @if($user->progress  <= 6)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Lengkapi Pembayaran terlebih dahulu')  
+                    @elseif($user->progress == 4)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Belum upload submssion #1')  
+                        
+                    @elseif($user->progress == 5)
+                        @slot('status',' timeline-warning')
+                        @slot('description','Berhasil di upload, menunggu pengumuman')  
+
+                     @elseif($user->progress <= 5 || $user->progress == 99)
+                        @slot('status',' timeline-danger')
+                        @slot('description','Mohon maaf, anda tidak lolos seleksi tahap #1')  
+
+                    @elseif($user->progress >= 6)
+                        @slot('status',' timeline-success')
+                        @slot('description','Selamat Anda lolos tahap #1')  
+                    @endif
+                @endcomponent
                  <!-- End Timeline box -->  
 
              </div>

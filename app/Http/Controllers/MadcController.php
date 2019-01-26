@@ -19,8 +19,8 @@ class MadcController extends Controller
 
    public function index()
    {
-      // Cari user 
-      $user = Auth::user();
+      // ambil data user berdasarkan id di auth
+      $user = Madc::where('user_id', Auth::user()->id)->first();
       
       return view('user.madc.dashboard', compact('user'));
    }
@@ -44,7 +44,7 @@ class MadcController extends Controller
       //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
       if ($req->pos == 1) {
-         $leader->leader_email = $req->email;
+
          $tim->leader_name = $req->name;
          $tim->leader_phone = $req->phone;
          if($file = $req->file('photo')){
@@ -109,15 +109,15 @@ class MadcController extends Controller
    public function paymentUpload(Request $req)
    {
       // Ambil user_id buat dimasukin ke tabel payments
-      $user_id = Auth::user()->id;
+      $user = Auth::user();
 
       if($file = $req->file('photo')){
-         $photo = 'namatim_' . time() . '.' . $file->getClientOriginalExtension();
+         $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
          $file->move('payment', $photo);
 
          $pay = new Payment([
             'payment_path' => $photo,
-            'user_id' => $user_id,
+            'user_id' => $user->id,
          ]);
 
          $pay->save();
@@ -145,7 +145,11 @@ class MadcController extends Controller
          'user_id' => $user->id
       ]);
       
-      $user->madc()->update(['progress' => 5]);
+      if ($user->madc->progress == 4) {
+         $user->madc()->update(['progress' => 5]);
+      }elseif ($user->madc->progress == 7) {
+         $user->madc()->update(['progress' => 8]);
+      }
 
       $submit->save();
 

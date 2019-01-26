@@ -1,114 +1,83 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Payment | MADC')
+@section('title', 'Payment | WDC')
 
 
 
 @section('content')
   <div class="box">
-  <!-- Team Member  -->
-    @if ($tim->progress == 1)
-    <button class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
-    @endif
+  <!-- Team Member box -->
+
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    <button {{$tim->progress <=1?'' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
+  <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    
     <div class="row team">
       <!-- Team Member Box -->
-      <div class="column">
-        <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim->leader_avatar}}" alt="IU" style="width:100%">
-          <div class="container">
-            <h2>{{$tim->leader_name}}</h2>
-            <p class="title">Ketua Tim</p>
-            <p>{{$tim->leader_email}}</p>
-            <p>
-              <a href="{{url('/')}}/assets/img/{{$tim->leader_avatar}}" data-rel="lightcase">
-                <button class="btn btn-custom">Lihat Identitas</button>
-              </a>
-              @if($tim->progress == 1)
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">
-                Edit Data
-              </button>
-              @endif
-            </p>
-          </div>
-        </div>
-      </div> 
+      @component('components.member_box')
+        @slot('title', 'Ketua Tim')
+        @slot('avatar',$tim->leader_avatar)
+        @slot('name',$tim->leader_name)
+        @slot('email', $tim->leader_email)
+        @slot('button')
+          <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
+        @endslot
+      @endcomponent 
       <!-- End Member Box -->
 
-      <!-- Team Member Box -->
-      <div class="column">
-        <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim->co_leader_avatar}}" alt="IU" style="width:100%">
-          <div class="container">
-            <h2>{{$tim->co_leader_name}}</h2>
-            <p class="title">Wakil Ketua</p>
-            <p>{{$tim->co_leader_email}}</p>
-            <p>
-              <a href="{{url('/')}}/assets/img/{{$tim->co_leader_avatar}}" data-rel="lightcase">
-                <button class="btn btn-custom">Lihat Identitas</button>
-              </a>
-              @if($tim->progress == 1)
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">
-                Edit Data
-              </button>
-              @endif
-            </p>
-          </div>
-        </div>
-      </div> 
-      <!-- End Member Box -->
+      @component('components.member_box')
+        @slot('title', 'Anggota #1')
+        @slot('avatar',$tim->co_leader_avatar)
+        @slot('name',$tim->co_leader_name)
+        @slot('email', $tim->co_leader_email)
+        @slot('button')
+        <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">Edit Data</button>
+        @endslot
+      @endcomponent
+    
+      @component('components.member_box')
+        @slot('title', 'Anggota #2')
+        @slot('avatar',$tim->member_avatar)
+        @slot('name',$tim->member_name)
+        @slot('email', $tim->member_email)
+        @slot('button')
+        <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Edit Data</button>
+        @endslot
+      @endcomponent
 
-      <!-- Team Member Box -->
-      <div class="column">
-        <div class="card">
-          <img src="{{url('/')}}/assets/img/{{$tim->member_avatar}}" alt="IU" style="width:100%">
-          <div class="container">
-            <h2>{{$tim->member_name}}</h2>
-            <p class="title">Anggota</p>
-            <p>{{$tim->member_email}}</p>
-            <p>
-              <a href="{{url('/')}}/assets/img/{{$tim->member_avatar}}" data-rel="lightcase">
-                <button class="btn btn-custom">Lihat Identitas</button>
-              </a>
-              @if($tim->progress == 1)
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">
-                Edit Data
-              </button>
-              @endif
-            </p>
-          </div>
-        </div>
-      </div> 
       <!-- End Member Box -->
 
     </div>
-        <!-- End of Team member -->
+        <!-- End of Team member box -->
   </div>
 
-  <!--Kunci Data Modal -->
-  <div class="modal fade" id="kunciData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Kunci Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
-        <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
-      </div>
-      <div class="modal-footer">
-        <form action="{{route('wdc.payment')}}">
-          <input type="hidden" name="id" value="{{$tim->id}}">
-          <button type="submit" class="btn btn-warning">Kunci Data</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--Kunci Data Modal -->
+<div class="modal fade" id="kunciData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Kunci Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
+          <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
+        </div>
+        <div class="modal-footer">
+          <form action="{{route('wdc.updateProgress')}}" method="POST">
+            @csrf
+            <input type="hidden" name="progress" value="2">
+            <input type="hidden" name="_method" value="PUT">
+            <button type="submit" class="btn btn-warning">Kunci Data</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 <!-- Leader Edit Data Modal -->
 <div class="modal fade" id="leader" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

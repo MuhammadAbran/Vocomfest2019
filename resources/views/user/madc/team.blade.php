@@ -23,8 +23,8 @@
         @slot('name',$tim->leader_name)
         @slot('email', $tim->leader_email)
         @slot('button')
-        <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
-          @endslot
+          <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
+        @endslot
       @endcomponent
 
       @component('components.member_box')
@@ -51,7 +51,7 @@
         <!-- End of Team member -->
   </div>
 
-  <!--Kunci Data Modal -->
+<!--Kunci Data Modal -->
 <div class="modal fade" id="kunciData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -97,7 +97,7 @@
           Nama <br>
           <input type="text" name="name" value="{{$tim->leader_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim->leader_email}}"><br>
+          <input type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
           No.Hp<br>
           +62<input type="text" name="phone" value="{{$tim->leader_phone}}">
           <div class="form-group">

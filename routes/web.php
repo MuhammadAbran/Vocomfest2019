@@ -11,11 +11,11 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('homePage');
-Route::get('/competition/wdc', 'HomeController@wdcPage')->name('wdcPage');
-Route::get('/competition/madc', 'HomeController@madcPage')->name('madcPage');
-Route::get('/competition/icpc', 'HomeController@icpcPage')->name('icpcPage');
-Route::get('/competition/ntf', 'HomeController@ntfPage')->name('ntfPage');
-Route::get('/competition/news', 'HomeController@newsPage')->name('newsPage');
+Route::get('/page/web-design-competition', 'HomeController@wdcPage')->name('wdcPage');
+Route::get('/page/mobile-apps-deevelopment-competition', 'HomeController@madcPage')->name('madcPage');
+Route::get('/page/international-collegiate-programming-contest', 'HomeController@icpcPage')->name('icpcPage');
+Route::get('/page/national-technology-festival', 'HomeController@ntfPage')->name('ntfPage');
+Route::get('/page/news', 'HomeController@newsPage')->name('newsPage');
 
 
 //Ajax Request Data
@@ -78,6 +78,9 @@ Route::middleware(['auth', 'wdc'])->group(function(){
     Route::post('wdc/payment/upload', 'WdcController@paymentUpload')->name('wdc.payment.upload');
     Route::get('wdc/submission', 'WdcController@submission')->name('wdc.submission');
     Route::post('wdc/submission/upload', 'WdcController@submissionUpload')->name('wdc.submission.upload');
+
+     // update progress
+   Route::put('wdc/progress','WdcController@updateProgress')->name('wdc.updateProgress');
 });
 
 
