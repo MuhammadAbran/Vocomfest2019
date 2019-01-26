@@ -27,6 +27,12 @@ class AdminController extends Controller
       return view('user.admin.madc_teams');
    }
 
+   public function viewMadcTeams($id)
+   {
+      $tim = \App\User::find($id)->madc;
+      return view('user.admin.view_madc', compact(['tim']));
+   }
+
    public function madcUsers(Request $request)
    {
       if ($request->ajax()) {
@@ -70,7 +76,7 @@ class AdminController extends Controller
              })
              ->addColumn('action', function ($data){
                    return'
-                      <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                      <a href="'. route('view.madc.team', $data['id']) .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                       <a href="#" name="'. $data['team_name'] .'" id="'. $data['id'] .'" class="btn-danger btn-sm delete_team" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                    ';
              })
@@ -85,6 +91,12 @@ class AdminController extends Controller
    public function madcUsersDelete(Request $req)
    {
       User::destroy($req->id);
+   }
+
+   public function viewWdcTeams($id)
+   {
+      $tim = \App\User::find($id)->wdc;
+      return view('user.admin.view_wdc', compact(['tim']));
    }
 
    public function wdcUsers(Request $request)
@@ -130,8 +142,7 @@ class AdminController extends Controller
              })
              ->addColumn('action', function ($data){
                    return'
-                      <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-                      <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                      <a href="'. route('view.wdc.team', $data['id']) .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                       <a href="" name="'. $data['team_name'] .'" id="' . $data['id'] .'" class="btn-danger btn-sm deleteTeam" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                    ';
              })

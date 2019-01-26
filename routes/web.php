@@ -53,7 +53,9 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
    Route::get('/admin/teams/madc', 'AdminController@madcTeams')->name('admin.madcTeams');
+   Route::get('/admin/teams/madc/{id}', 'AdminController@viewMadcTeams')->name('view.madc.team');
    Route::get('/admin/teams/wdc', 'AdminController@wdcTeams')->name('admin.wdcTeams');
+   Route::get('/admin/teams/wdc/{id}', 'AdminController@viewWdcTeams')->name('view.wdc.team');
 
    Route::get('/admin/news', 'AdminController@news')->name('admin.news');
    Route::get('/admin/news/add', 'AdminController@addNews')->name('admin.addNews');
