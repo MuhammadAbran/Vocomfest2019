@@ -14,7 +14,7 @@
 @section('content')
 
 	<div class="box">
-      <div class="panel-heading" style="margin-bottom: 20px; margin-left: 1400px">
+      <div class="panel-heading" style="margin-bottom: 20px;">
         <a href="" class="btn btn-primary pull-right modal-show"  data-toggle="modal" data-target="#add-gallary"><i class="fa fa-plus"></i> Add</a>
       </div>
 	    <table class="table table-striped" id="galleries-table">

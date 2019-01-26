@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['news_all'] = News::all();
-        
+        $data['news_all'] = News::where('is_published','1')->get();
+
         return view('frontend.home',$data);
     }
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
     {   
         $data['news'] = News::find($id);
 
-        $data['news_all'] = News::limit(3)->get();
+        $data['news_all'] = News::where('is_published','1')->limit(3)->get();
 
        return view('frontend.news_page',$data);
     }
