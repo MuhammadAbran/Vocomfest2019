@@ -73,6 +73,23 @@
 	    </div>
 	  </div>
 	</div>
+
+   <!-- Image -->
+   <div class="modal fade bd-example-modal-lg" id="images" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px">Gallaries &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <img src="" alt="" id="img002" width="768px">
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- /modal -->
 
 @endsection
@@ -133,6 +150,12 @@
          });
       });
 
+      // judul Gallary
+      $(document).on('click', '#img001', function(){
+         var src = $(this).attr("src");
+         $('#img002').attr("src", src);
+      });
+
 
       //GET DATA
       $(function(){
@@ -151,7 +174,7 @@
                   name: 'gallaries_path',
                   data: 'gallaries_path',
                   render: function(data){
-                     return '<img src="{{ url('storage/gallaries') }}/' + data + '" alt="Gallaies" width=160px>'
+                     return '<img id="img001" src="{{ url('storage/gallaries') }}/' + data + '" alt="Gallaies" width=160px  data-toggle="modal" data-target="#images" style="cursor:pointer">'
                   }
                },
                {
