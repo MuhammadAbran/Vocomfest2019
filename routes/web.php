@@ -40,6 +40,8 @@ Route::post('storeNews', 'AdminController@storeNews')->name('admin.storeNews');
 Route::get('publishNews', 'AdminController@publishNews')->name('publish.news');
 Route::get('unpublishNews', 'AdminController@unpublishNews')->name('unpublish.news');
 Route::get('deleteNews', 'AdminController@deleteNews')->name('delete.news');
+Route::get('editNews/{id}', 'AdminController@editNews')->name('edit.news');
+Route::post('updateNews', 'AdminController@updateNews')->name('update.news');
 
 //gallaries
 Route::get('galleriesData', 'AdminController@galleriesData')->name('galleries.data');

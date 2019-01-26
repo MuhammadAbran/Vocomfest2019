@@ -305,7 +305,8 @@ class AdminController extends Controller
                return
                $btn_status.=
                    '<a href="'. route('newsPage') .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                    <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-news" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
+                    <a href="'. route('edit.news', $data['id']) .'" class="btn-info btn-sm edit-news"><i class="fa fa-edit"></i></a>
+                    <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-news" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
                ';
           })
             ->addIndexColumn()
@@ -346,7 +347,7 @@ class AdminController extends Controller
 
    // Input news data into database
    public function storeNews(Request $request){
-      // dd($request->thumbnail);
+
       // Checking request submit data
       $publish = $request->submit == 'Terbitkan' ? 1 : 0;
 
@@ -372,9 +373,33 @@ class AdminController extends Controller
       return redirect()->route('admin.news')->with(['message', 'Berita berhasil ditambahkan']);
    }
 
-   public function editNews()
+   public function updateNews(Request $request){
+
+      // Checking request submit data
+      $publish = $request->submit == 'Terbitkan' ? 1 : 0;
+      $id = $request->id;
+      // binding data from request
+      if ($request->hasFile('thumbnail')) {
+         $image = $request->file('thumbnail');
+         $name = time() . '.' . $image->getClientOriginalExtension();
+         $path = public_path('storage/news');
+         $image->move($path, $name);
+      }
+      $data = [
+         'title' => $request->title,
+         'content' => strip_tags($request->content),
+         'is_published' => $publish,
+         'thumbnail' => $name
+      ];
+      // instance News Model to model variable
+      $news = News::find($id)->update($data);
+      return redirect()->route('admin.news')->with(['message', 'Berita berhasil ditambahkan']);
+   }
+
+   public function editNews($id)
    {
-      return view('user.admin.edit_news');
+      $news = News::find($id);
+      return view('user.admin.edit_news', compact(['news']));
    }
 
    public function deleteNews(Request $req)
