@@ -199,36 +199,17 @@
                     <section class="center slider">
                         <!-- news list-->
 
-                        <div class="news-list">
-                            <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
-                            <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                            <small>16 September 2018</small>
-                            <p class="text-center">
-                            <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
-                            </p>
-                        </div>
+                        @foreach($news_all as $news)
+                            @component('components.home_news_list')
+                                @slot('title',$news->title)
+                                @slot('thumbnail',$news->thumbnail)
+                                @slot('alt',$news->title)
+                                @slot('news_id',$news->id)
+                                @slot('date',$news->created_at)
+                            @endcomponent
+                        @endforeach
 
-                        <div class="news-list">
-                                <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
-                                <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                                <small>16 September 2018</small>
-                                <p class="text-center">
-                                <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
-                                </p>
-                            </div>
-
-                            <div class="news-list">
-                                    <img src="{!!asset('assets/img/news-thumb.jpg')!!}">
-                                    <h1>Lorem ipsum, dolor sit amet consectetur.. </h1>
-                                    <small>16 September 2018</small>
-                                    <p class="text-center">
-                                    <a href="{{route('newsPage')}}"><button class="btn btn-green">Selengkapnya</button></a>
-                                    </p>
-                                </div>
-
-                      
-
-                        
+                    
                         <!-- End of News List-->
 
                     </section>

@@ -426,7 +426,8 @@ nav.navScroll{
 }
 
 #news .slick-slide img {
-  width: 100%;
+  max-width: 100%;
+  height: 200px;
 }
 
 #news .slick-prev:before,
