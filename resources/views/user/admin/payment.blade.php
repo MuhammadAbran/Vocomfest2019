@@ -20,6 +20,7 @@
           <th>Nama Tim</th>
           <th>Kompetisi</th>
           <th>Bukti Pembayaran</th>
+          <th>Tanggal</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -36,7 +37,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <p>Anda yakin ingin <strong>menghapus</strong> berita ini?</p>
+              <p>Anda yakin ingin <strong>menghapus</strong> Pembayaran ini?</p>
               <button id="deletePayment" type="button" class="btn btn-danger delete_payment" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
               <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
 
@@ -66,7 +67,41 @@
   </div>
 
   @push('scripts')
+      <script type="text/javascript" src="{{ asset('assets/vendor/moment/moment.js') }}"></script>
       <script type="text/javascript">
+      //Confirmed Payment
+      $(document).on('click', '.confirmed', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers: {
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('confirmed.payments') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#payment-tables').DataTable().ajax.reload();
+            }
+         });
+      });
+
+      //Unconfirmed Payment
+      $(document).on('click', '.unconfirmed', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers: {
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('unconfirmed.payments') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#payment-tables').DataTable().ajax.reload();
+            }
+         });
+      });
+
+
       //Delete Payments
       $(document).on('click', '.delete-payment-data', function(){
          var id = $(this).attr("id");
@@ -97,11 +132,12 @@
       //GET DATA
          $(function(){
             $('#payment-tables').DataTable({
+               order: [[ 4, "desc" ]],
                prossessing: true,
                serverside: true,
                ajax: '{!! route('data.payments.users') !!}',
                columns: [
-                  { name: 'i', data: 'i' },
+                  { name: 'id', data: 'DT_RowIndex' },
                   {
                      name: 'team_name',
                      data: 'team_name'
@@ -116,6 +152,13 @@
                      sortable: false,
                      render: function(data){
                         return '<img id="img001" src="{{ url('storage/payments') }}/'+data+'" alt="payment" width=200px  data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 8px">';
+                     }
+                  },
+                  {
+                     name: 'updated_at',
+                     data: 'updated_at',
+                     render: function(data){
+                        return moment(data).format("DD-MM-YYYY");
                      }
                   },
                   {

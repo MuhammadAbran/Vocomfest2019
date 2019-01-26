@@ -44,19 +44,19 @@ class AdminController extends Controller
          return Datatables::of($data)
               ->editColumn('progress', function($data){
               if($data['progress'] == 0){
-                   return '<span class="badge badge-danger">XXX</span>';
+                   return '<span class="badge badge-danger">Belum Membayar</span>';
                }
                elseif($data['progress'] == 1){
                  return '<span class="badge badge-primary">Registered</span>';
                }
                elseif($data['progress'] == 2){
-                  return '<span class="badge badge-info">Waiting for Confirm</span>';
+                  return '<span class="badge badge-danger">Belum Bayar</span>';
                }
                elseif($data['progress'] == 3){
-                  return '<span class="badge badge-info">Submitted</span>';
+                  return '<span class="badge badge-warning">Konfirmasi Pembayaran</span>';
                }
                elseif($data['progress'] == 4){
-                  return '<span class="badge badge-warning">confirmed</span>';
+                  return '<span class="badge badge-warning">Telah Membayar</span>';
                }
                elseif($data['progress'] == 5){
                   return '<span class="badge badge-warning">Waiting for Selection</span>';
@@ -110,13 +110,13 @@ class AdminController extends Controller
                  return '<span class="badge badge-primary">Registered</span>';
               }
                elseif($data['progress'] == 2){
-                  return '<span class="badge badge-info">Waiting for Confirm</span>';
+                  return '<span class="badge badge-danger">Belum Bayar</span>';
                }
                elseif($data['progress'] == 3){
-                  return '<span class="badge badge-info">Submitted</span>';
+                  return '<span class="badge badge-warning">Konfirmasi Pembayaran</span>';
                }
                elseif($data['progress'] == 4){
-                  return '<span class="badge badge-warning">confirmed</span>';
+                  return '<span class="badge badge-success">Telah Membayar</span>';
                }
                elseif($data['progress'] == 5){
                   return '<span class="badge badge-warning">Waiting for Selection</span>';
@@ -383,35 +383,64 @@ class AdminController extends Controller
       $paymentsWdc = Payment::whereHas('user.wdc')->with('user.wdc')->get();
       $paymentsMadc = Payment::whereHas('user.madc')->with('user.madc')->get();
       $data = [];
-      $i = 1;
       foreach ($paymentsWdc as $paymentW) {
+         $progressW = (int)$paymentW->user->wdc->progress;
+         if ($progressW < 4 && $progressW > 0) {
             $data[] = [
                   'id' => $paymentW->user->id,
-                  'i' => $i++,
                   'team_name' => $paymentW->user->team_name,
                   'kompetisi' => "WDC Competition",
-                  'payment_path' => $paymentW['payment_path']
+                  'payment_path' => $paymentW['payment_path'],
+                  'updated_at' => (string)$paymentW['updated_at']
                ];
-      }
-      foreach ($paymentsMadc as $paymentM) {
-         $data[] = [
-               'id' => $paymentM->user->id,
-               'i' => $i++,
-               'team_name' => $paymentM->user->team_name,
-               'kompetisi' => "MADC Competition",
-               'payment_path' => $paymentM['payment_path']
-            ];
+         }
       }
 
-      return Datatables::of($data)
-      ->addColumn('action', function ($data){
-           return'
-               <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-               <a href="" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-               <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
-           ';
-      })
-      ->make(true);
+      foreach ($paymentsMadc as $paymentM) {
+         $progressM = (int)$paymentM->user->madc->progress;
+         if ($progressM < 4 && $progressM > 0) {
+         $data[] = [
+               'id' => $paymentM->user->id,
+               'team_name' => $paymentM->user->team_name,
+               'kompetisi' => "MADC Competition",
+               'payment_path' => $paymentM['payment_path'],
+               'updated_at' => (string)$paymentM['updated_at']
+            ];
+         }
+      }
+
+         return Datatables::of($data)
+         ->addColumn('action', function ($data){
+              return'
+                  <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm confirmed"><i class="fa fa-check" aria-hidden="true"></i></a>
+                  <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm unconfirmed"><i class="fa fa-times" aria-hidden="true"></i></a>
+                  <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
+              ';
+         })
+         ->rawColumns(['action'])
+         ->addIndexColumn()
+         ->make(true);
+
+   }
+
+   public function confirmedPayments(Request $req)
+   {
+      $users = \App\User::find($req->id);
+      if ($users->wdc) {
+         $users->wdc->update(['progress' => 4]);
+      }else {
+         $users->madc->update(['progress' => 4]);
+      }
+   }
+
+   public function unconfirmedPayments(Request $req)
+   {
+      $users = \App\User::find($req->id);
+      if ($users->wdc) {
+         $users->wdc->update(['progress' => 0]);
+      }else {
+         $users->madc->update(['progress' => 0]);
+      }
    }
 
    public function deletePayment(Request $req)

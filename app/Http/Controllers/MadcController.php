@@ -21,7 +21,7 @@ class MadcController extends Controller
    {
       // ambil data user berdasarkan id di auth
       $user = Madc::where('user_id', Auth::user()->id)->first();
-      
+
       return view('user.madc.dashboard', compact('user'));
    }
 
@@ -55,7 +55,7 @@ class MadcController extends Controller
             $tim->update();
          }
          $leader->save();
-         $tim->update();         
+         $tim->update();
       }elseif ($req->pos == 2) {
          $tim->co_leader_email = $req->email;
          $tim->co_leader_name = $req->name;
@@ -113,7 +113,7 @@ class MadcController extends Controller
 
       if($file = $req->file('photo')){
          $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
-         $file->move('payment', $photo);
+         $file->move(public_path('storage/payments'), $photo);
 
          $pay = new Payment([
             'payment_path' => $photo,
@@ -144,7 +144,7 @@ class MadcController extends Controller
          'theme' => $req->tema,
          'user_id' => $user->id
       ]);
-      
+
       if ($user->madc->progress == 4) {
          $user->madc()->update(['progress' => 5]);
       }elseif ($user->madc->progress == 7) {

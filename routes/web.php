@@ -26,6 +26,8 @@ Route::get('deleteUserMadc', 'AdminController@madcUsersDelete')->name('delete.ma
 
 //payments
 Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
+Route::get('confirmedPayments', 'AdminController@confirmedPayments')->name('confirmed.payments');
+Route::get('unconfirmedPayments', 'AdminController@unconfirmedPayments')->name('unconfirmed.payments');
 Route::get('deletePayment', 'AdminController@deletePayment')->name('delete.payments');
 
 //submission
