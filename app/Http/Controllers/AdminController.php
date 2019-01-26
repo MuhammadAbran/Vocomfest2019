@@ -16,36 +16,14 @@ class AdminController extends Controller
       $this->middleware(['auth', 'admin']);
    }
 
-
-   //  public function index()
-   //  {
-   //    $i = 1;
-   //    $ii = 1;
-   //    $madc = \App\Madc::all();
-   //    $wdc = \App\Wdc::all();
-   //    $users = \App\User::all();
-   //    // dd($users);
-   //    return view('admin.dashboard', compact(['ii', 'i', 'users','madc', 'wdc']));
-   // }
-
-
    public function index()
    {
-      // $users = User::get(['role']);
-      // $a = [];
-      // foreach ($users as $user) {
-      //    $a[] = $user['role'];
-      // }
-      // dd($a);
-      // $user = User::find(2);
-
       return view('user.admin.dashboard');
    }
 
    public function madcTeams()
    {
-      $madcs = \App\Madc::whereHas('user')->with('user')->paginate(5);
-      // dd($madcs);
+
       return view('user.admin.madc_teams');
    }
 
@@ -94,7 +72,7 @@ class AdminController extends Controller
                    return'
                       <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
                       <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                      <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                      <a href="#" name="'. $data['team_name'] .'" id="'. $data['id'] .'" class="btn-danger btn-sm delete_team" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                    ';
              })
              ->addIndexColumn()
@@ -103,6 +81,11 @@ class AdminController extends Controller
       }
       return redirect('/');
 
+   }
+
+   public function madcUsersDelete(Request $req)
+   {
+      User::destroy($req->id);
    }
 
    public function wdcUsers(Request $request)
@@ -150,7 +133,7 @@ class AdminController extends Controller
                    return'
                       <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
                       <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                      <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                      <a href="" name="'. $data['team_name'] .'" id="' . $data['id'] .'" class="btn-danger btn-sm deleteTeam" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                    ';
              })
              ->addIndexColumn()
@@ -158,6 +141,11 @@ class AdminController extends Controller
              ->make(true);
       }
 
+   }
+
+   public function wdcUsersDelete(Request $req)
+   {
+      $user = User::destroy($req->id);
    }
 
    public function wdcTeams()
@@ -168,24 +156,51 @@ class AdminController extends Controller
 
    public function galleries()
    {
+      $galleries = \App\Gallary::get();
+      $data = [];
+      foreach ($galleries as $g) {
+         $data[] = [
+            'id' => $g->id,
+            'title' => $g->title,
+            'gallaries_path' => $g->gallaries_path,
+            'status' => $g->status,
+            'updated_at' => (string)$g->updated_at,
+         ];
+      }
+      // dd($data);
       return view('user.admin.galleries');
    }
 
    public function galleriesData(Request $request)
    {
       if ($request->ajax()) {
-         $galleries = \App\Gallary::query();
-         return Datatables::of($galleries)
-         ->addColumn('action', function($galleries){
+         $galleries = \App\Gallary::get();
+         $data = [];
+         foreach ($galleries as $g) {
+            $data[] = [
+               'id' => $g->id,
+               'title' => $g->title,
+               'gallaries_path' => $g->gallaries_path,
+               'status' => $g->status,
+               'updated_at' => (string)$g->updated_at,
+            ];
+         }
+         return Datatables::of($data)
+         ->addColumn('action', function($data){
             return '
             <a href="#" class="btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-            <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-gallary" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
            ';
          })
          ->addIndexColumn()
          ->rawColumns(['action'])
          ->make(true);
       }
+   }
+
+   public function deleteGallary(Request $req)
+   {
+      return \App\Gallary::destroy($req->id);
    }
 
    public function news()
@@ -198,11 +213,22 @@ class AdminController extends Controller
     {
 
         if($request->ajax()){
-            $model = News::query();
-            return DataTables::of($model)
-            ->addColumn('action', function ($model){
+            $news = News::get();
+            $data = [];
+            foreach ($news as $new) {
+               $data[] = [
+                   'id' => $new->id,
+                   'title' => $new->title,
+                   'content' => $new->content,
+                   'thumbnail' => $new->thumbnail,
+                   'is_published' => $new->is_published,
+                   'updated_at' => (string)$new->updated_at
+               ];
+            }
+            return DataTables::of($data)
+            ->addColumn('action', function ($data){
 
-               if($model->is_published === 1){
+               if($data['is_published'] === 1){
                   $btn_status = '<a href="'.route('homePage').'" class="btn-warning btn-sm publish-btn">Unpublish</a> ';
                }else{
                   $btn_status = '<a href="#" class="btn-success btn-sm publish-btn">Publish</a> ';
@@ -210,7 +236,7 @@ class AdminController extends Controller
                return
                $btn_status.=
                    '<a href="#" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                   <a href="" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+                    <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-news" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
                ';
           })
             ->addIndexColumn()
@@ -263,6 +289,13 @@ class AdminController extends Controller
       return view('user.admin.edit_news');
    }
 
+   public function deleteNews(Request $req)
+   {
+      if ($req->ajax()) {
+         return \App\News::destroy($req->id);
+      }
+   }
+
    public function payments()
    {
       return view('user.admin.payment');
@@ -297,11 +330,18 @@ class AdminController extends Controller
       ->addColumn('action', function ($data){
            return'
                <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-               <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-               <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+               <a href="" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+               <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
            ';
       })
       ->make(true);
+   }
+
+   public function deletePayment(Request $req)
+   {
+      if ($req->ajax()) {
+         return \App\Payment::destroy($req->id);
+      }
    }
 
    public function submissions()

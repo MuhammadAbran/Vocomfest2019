@@ -37,8 +37,8 @@
         </div>
         <div class="modal-body">
           <form>
-            <p>Anda yakin ingin <strong>menghapus</strong> Tim blabla?</p>
-            <button type="button" class="btn btn-danger" name="button"> <i class="fa fa-check"></i> Ya</button>
+            <p>Anda yakin ingin <strong>menghapus</strong> Tim <span id="teamName"></span>?</p>
+            <button id="deleteThisTeam" type="button" class="btn btn-danger delete-this-team" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
           </form>
         </div>
@@ -49,6 +49,32 @@
 
   @push('scripts')
       <script>
+      //Delete Team
+      $(document).on('click', '.delete_team', function(){
+         var id = $(this).attr("id");
+         var name = $(this).attr("name");
+         console.log(name);
+
+         $('#teamName').html(name);
+         $('#deleteThisTeam').attr("id", id)
+      });
+
+      $(document).on('click', '.delete-this-team', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ route('delete.madc.users') }}",
+            method: "GET",
+            data: {id:id},
+            success: function(){
+               $('#madc-tables').DataTable().ajax.reload();
+            }
+         });
+      });
+
+      //GET DATA
          $(function() {
             $('#madc-tables').DataTable({
                responsive: true,

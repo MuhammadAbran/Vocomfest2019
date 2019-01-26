@@ -40,8 +40,8 @@
 	      </div>
 	      <div class="modal-body">
 	        <form>
-	          <p>Anda yakin ingin <strong>menghapus</strong> berita?</p>
-	          <button type="button" class="btn btn-danger" name="button"> <i class="fa fa-check"></i> Ya</button>
+	          <p>Anda yakin ingin <strong>menghapus</strong> Gambar Ini?</p>
+	          <button id="deleteGallary" type="button" class="btn btn-danger delete_gallary" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
 	          <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
 	        </form>
 	      </div>
@@ -55,6 +55,29 @@
 @push('scripts')
    <script type="text/javascript" src="{{ asset('assets/vendor/moment/moment.js') }}"></script>
    <script type="text/javascript">
+      //delete Gallary
+      $(document).on('click', '.delete-gallary', function(){
+         var id = $(this).attr("id");
+         $('#deleteGallary').attr("id", id);
+      });
+
+      $(document).on('click', '.delete_gallary', function(){
+         var id = $(this).attr("id");
+
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('delete.gallary') }}",
+            method: "GET",
+            data: {id:id},
+            success: function(){
+               $('#galleries-table').DataTable().ajax.reload();
+            }
+         });
+      });
+
+      //GET DATA
       $(function(){
          $('#galleries-table').DataTable({
             order: [[ 4, 'asc' ]],

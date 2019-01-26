@@ -50,8 +50,8 @@
         </div>
         <div class="modal-body">
           <form>
-            <p>Anda yakin ingin <strong>menghapus</strong> berita?</p>
-            <button type="button" class="btn btn-danger" name="button"> <i class="fa fa-check"></i> Ya</button>
+            <p>Anda yakin ingin <strong>menghapus</strong> berita ini?</p>
+            <button id="deleteNews" type="button" class="btn btn-danger delete_news" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
           </form>
         </div>
@@ -63,6 +63,28 @@
 
 @push('scripts')
     <script>
+      //Delete News
+      $(document).on('click', '.delete-news', function(){
+          var id = $(this).attr("id");
+          $('#deleteNews').attr("id", id);
+      });
+
+      $(document).on('click', '.delete_news', function(){
+            var id = $(this).attr("id");
+            $.ajax({
+               headers:{
+                  'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+               },
+               url: "{{ route('delete.news') }}",
+               method: "GET",
+               data: {id: id},
+               success: function(){
+                  $('#newsTable').DataTable().ajax.reload();
+               }
+            });
+      });
+
+      //GET DATA
         $('#newsTable').DataTable({
             order: [[ 4, "desc" ]],
             responsive: true,

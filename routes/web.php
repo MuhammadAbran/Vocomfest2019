@@ -21,9 +21,23 @@ Route::get('/competition/news', 'HomeController@newsPage')->name('newsPage');
 //Ajax Request Data
 Route::get('dataUsersMadc', 'AdminController@madcUsers')->name('data.madc.users');
 Route::get('dataUsersWdc', 'AdminController@wdcUsers')->name('data.wdc.users');
+Route::get('deleteUsersWdc', 'AdminController@wdcUsersDelete')->name('delete.wdc.users');
+Route::get('deleteUserMadc', 'AdminController@madcUsersDelete')->name('delete.madc.users');
 
+//payments
 Route::get('dataPayment', 'AdminController@paymentsGetData')->name('data.payments.users');
+Route::get('deletePayment', 'AdminController@deletePayment')->name('delete.payments');
+
+//submission
 Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
+
+//news
+Route::get('dataNews', 'AdminController@newsData')->name('admin.newsData');
+Route::get('deleteNews', 'AdminController@deleteNews')->name('delete.news');
+
+//gallaries
+Route::get('galleriesData', 'AdminController@galleriesData')->name('galleries.data');
+Route::get('deleteGallary', 'AdminController@deleteGallary')->name('delete.gallary');
 
 Auth::routes(['verify' => true]);
 
