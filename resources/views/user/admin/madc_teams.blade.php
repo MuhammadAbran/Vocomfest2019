@@ -17,7 +17,7 @@
         <tr>
           <th>No</th>
           <th>Nama Tim</th>
-          <th>Kategori</th>
+          <th>Kompetisi</th>
           <th>Status</th>
           <th>Aksi</th>
         </tr>

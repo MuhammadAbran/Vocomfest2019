@@ -70,7 +70,6 @@ class AdminController extends Controller
              })
              ->addColumn('action', function ($data){
                    return'
-                      <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
                       <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                       <a href="#" name="'. $data['team_name'] .'" id="'. $data['id'] .'" class="btn-danger btn-sm delete_team" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
                    ';

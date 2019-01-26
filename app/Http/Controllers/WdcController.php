@@ -49,7 +49,7 @@ class WdcController extends Controller
           $tim->leader_phone = $req->phone;
           if($file = $req->file('photo')){
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
-             $file->move('foto', $photo);
+             $file->move(public_path('storage/foto'), $photo);
              $tim->leader_avatar = $photo;
 
              $tim->update();
@@ -62,7 +62,7 @@ class WdcController extends Controller
           $tim->co_leader_phone = $req->phone;
           if($file = $req->file('photo')){
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
-             $file->move('foto', $photo);
+             $file->move(public_path('storage/foto'), $photo);
              $tim->co_leader_avatar = $photo;
 
              $tim->update();
@@ -74,7 +74,7 @@ class WdcController extends Controller
           $tim->member_phone = $req->phone;
           if($file = $req->file('photo')){
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
-             $file->move('foto', $photo);
+             $file->move(public_path('storage/foto'), $photo);
              $tim->member_avatar = $photo;
 
              $tim->update();
