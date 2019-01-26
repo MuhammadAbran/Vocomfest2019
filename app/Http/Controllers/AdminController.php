@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\News;
+use App\Submission;
 use Session;
 use App\Payment;
 use Yajra\Datatables\Datatables;
@@ -499,12 +500,19 @@ class AdminController extends Controller
          return'
          <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
          <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
-         <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+         <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
          ';
       })
       ->addIndexColumn()
       ->rawColumns(['action', 'submissions_path'])
       ->make(true);
+   }
+
+   public function deleteSubmission(Request $req)
+   {
+      if ($req->ajax()) {
+         $sub = Submission::destroy($req->id);
+      }
    }
 
 

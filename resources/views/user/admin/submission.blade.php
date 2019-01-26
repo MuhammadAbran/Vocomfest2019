@@ -39,8 +39,8 @@
       </div>
       <div class="modal-body">
         <form>
-          <p>Anda yakin ingin <strong>menghapus</strong> Tim blabla?</p>
-          <button type="button" class="btn btn-danger" name="button"> <i class="fa fa-check"></i> Ya</button>
+          <p>Anda yakin ingin <strong>menghapus</strong> Submisi ini?</p>
+          <button id="deleteSubmission" type="button" class="btn btn-danger delete_submission" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
           <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
         </form>
       </div>
@@ -51,6 +51,62 @@
 
 @push('scripts')
    <script type="text/javascript">
+   //submisi Lolos
+   $(document).on('click', '.lolos', function(){
+      var id = $(this).attr("id");
+      $.ajax({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+         },
+         url: "{{ route('confirmed.payments') }}",
+         method: "GET",
+         data: {id: id},
+         success: function(){
+            $('#submission-table').DataTable().ajax.reload();
+         }
+      });
+   });
+
+   //Sumbisi Ndak Lolos
+   $(document).on('click', '.ndak-lolos', function(){
+      var id = $(this).attr("id");
+      $.ajax({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+         },
+         url: "{{ route('unconfirmed.payments') }}",
+         method: "GET",
+         data: {id: id},
+         success: function(){
+            $('#submission-table').DataTable().ajax.reload();
+         }
+      });
+   });
+
+
+   //Delete Submission
+   $(document).on('click', '.delete-submission', function(){
+      var id = $(this).attr("id");
+      console.log(id);
+      $('#deleteSubmission').attr("id", id);
+   });
+
+   $(document).on('click', '.delete_submission', function(){
+      var id = $(this).attr("id");
+      $.ajax({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+         },
+         url: "{{ route('delete.submission') }}",
+         method: "GET",
+         data: {id: id},
+         success: function(){
+            $('#submission-table').DataTable().ajax.reload();
+         }
+      });
+   });
+
+      //GET DATA
       $(function(){
          $('#submission-table').DataTable({
             prossessing: true,
