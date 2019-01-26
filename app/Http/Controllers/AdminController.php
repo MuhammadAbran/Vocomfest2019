@@ -156,18 +156,12 @@ class AdminController extends Controller
 
    public function galleries()
    {
-      $galleries = \App\Gallary::get();
-      $data = [];
-      foreach ($galleries as $g) {
-         $data[] = [
-            'id' => $g->id,
-            'title' => $g->title,
-            'gallaries_path' => $g->gallaries_path,
-            'status' => $g->status,
-            'updated_at' => (string)$g->updated_at,
-         ];
-      }
-      // dd($data);
+      // $gallary = \App\Gallary::find(11);
+      // $data = [
+      //    'title' => $gallary->title,
+      //    'gallaries_path' => $gallary->gallaries_path
+      // ];
+      // dd(response()->json($data));
       return view('user.admin.galleries');
    }
 
@@ -194,8 +188,7 @@ class AdminController extends Controller
             }
             return
             $btn_status.=
-                '<a href="'. route('newsPage') .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-                 <a href="#" class="btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                '<a href="#" id="'. $data['id'] .'" class="btn-info btn-sm edit-gallary"  data-toggle="modal" data-target="#add-gallary"><i class="fa fa-edit"></i></a>
                  <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-gallary" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
             ';
          })
@@ -203,6 +196,42 @@ class AdminController extends Controller
          ->rawColumns(['action'])
          ->make(true);
       }
+   }
+
+   // Input news data into database
+   public function addGallary(Request $request){
+      // Checking request submit data
+      $publish = $request->submit == 'publish' ? 1 : 0;
+
+      // instance News Model to model variable
+      $gallary = new \App\Gallary();
+
+      if ($request->hasFile('gallary')) {
+         $image = $request->file('gallary');
+         $name = time() . '.' . $image->getClientOriginalExtension();
+         $path = public_path('storage/gallaries');
+         $image->move($path, $name);
+      }
+
+      $gallary->title = $request->title;
+      $gallary->gallaries_path = $name;
+      $gallary->status = $publish;
+
+      $gallary->save();
+
+      return redirect()->back()->with(['message', 'Berita berhasil ditambahkan']);
+   }
+
+   public function fetchGallary(Request $req)
+   {
+      $id = $req->id;
+      $gallary = \App\Gallary::find($id);
+      $data = [
+         'title' => $gallary->title,
+         'gallaries_path' => realpath($gallary->gallaries_path)
+      ];
+
+      return response()->json($data, 200);
    }
 
    //publish Gallary

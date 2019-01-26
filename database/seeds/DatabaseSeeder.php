@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeederTable::class);
         $this->call(MadcSeederTable::class);
         $this->call(WdcSeederTable::class);
-      //  $this->call(SubmissionSeederTable::class);
-       // $this->call(NewsTableSeeder::class);
-       // $this->call(PaymentSeederTable::class);
-       // $this->call(GalleryTableSeeder::class);
+        // $this->call(SubmissionSeederTable::class);
+        // $this->call(NewsTableSeeder::class);
+        // $this->call(PaymentSeederTable::class);
+        // $this->call(GalleryTableSeeder::class);
 
     }
 }

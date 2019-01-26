@@ -63,23 +63,26 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        <form>
-             <input type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px">
-	          Image : <input type="file" class="form-control" name="gallaries_path" style="margin-bottom:20px">
-	          <button type="submit" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-save"></i> Simpan Ke Draft</button>
-	          <button type="submit" class="btn btn-primary" name="button" data-dismiss="modal"> <i class="fa fa-cloud-upload-alt"></i> Publish</button>
+	        <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
+             @csrf
+             <input type="hidden" name="id" id="gallary-id" value="">
+             <input id="title-gallary" type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px" required>
+	          Image : <input id="image-gallary" type="file" class="form-control" name="gallary" style="margin-bottom:20px" required>
+	          <button type="submit" class="btn btn-secondary" name="submit" value="draft"> <i class="fa fa-save"></i> Simpan Ke Draft</button>
+	          <button type="submit" class="btn btn-primary" name="submit" value="publish"> <i class="fa fa-cloud-upload-alt"></i> Terbitkan</button>
 	        </form>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
+
    <!-- Image -->
    <div class="modal fade bd-example-modal-lg" id="images" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px">Gallaries &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px" target="_blank">Gallaries &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -97,6 +100,25 @@
 @push('scripts')
    <script type="text/javascript" src="{{ asset('assets/vendor/moment/moment.js') }}"></script>
    <script type="text/javascript">
+      //Edit Gallary
+      $(document).on('click', '.edit-gallary', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            url: "{{ route('fetch.edit.gallary') }}",
+            method: "GET",
+            data: {id: id},
+            dataType: 'json',
+            success: function(data)
+            {
+               $('#title-gallary').val(data.title);
+               $('#image-gallary').val(data.gallaries_path);
+               $('#gallary-id').val(id);
+               $('.modal-title').html("Edit Gallary");
+               $('#galleries-table').DataTable().ajax.reload();
+            }
+         });
+      });
+
       //delete Gallary
       $(document).on('click', '.delete-gallary', function(){
          var id = $(this).attr("id");
@@ -150,7 +172,7 @@
          });
       });
 
-      // judul Gallary
+      // image Gallary
       $(document).on('click', '#img001', function(){
          var src = $(this).attr("src");
          $('#img002').attr("src", src);
@@ -174,7 +196,7 @@
                   name: 'gallaries_path',
                   data: 'gallaries_path',
                   render: function(data){
-                     return '<img id="img001" src="{{ url('storage/gallaries') }}/' + data + '" alt="Gallaies" width=160px  data-toggle="modal" data-target="#images" style="cursor:pointer">'
+                     return '<img id="img001" src="{{ url('storage/gallaries') }}/' + data + '" alt="Gallaies" width=160px  data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 8px">'
                   }
                },
                {

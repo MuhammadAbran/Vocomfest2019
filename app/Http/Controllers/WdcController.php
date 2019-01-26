@@ -18,10 +18,10 @@ class WdcController extends Controller
 
     public function index()
     {
-      
+
       // ambil data user berdasarkan id di auth
       $user = Wdc::where('user_id', Auth::user()->id)->first();
-      
+
       return view('user.wdc.dashboard', compact('user'));
     }
 
@@ -40,9 +40,9 @@ class WdcController extends Controller
        $leader = Auth::user();
        $id = $req->id;
        $tim = Wdc::find($id);
- 
+
        //$req->pos biar tau yang diganti data ketua/wakil/anggota
- 
+
        if ($req->pos == 1) {
           $leader->leader_email = $req->email;
           $tim->leader_name = $req->name;
@@ -51,11 +51,11 @@ class WdcController extends Controller
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
              $file->move('foto', $photo);
              $tim->leader_avatar = $photo;
- 
+
              $tim->update();
           }
           $leader->save();
-          $tim->update();         
+          $tim->update();
        }elseif ($req->pos == 2) {
           $tim->co_leader_email = $req->email;
           $tim->co_leader_name = $req->name;
@@ -64,7 +64,7 @@ class WdcController extends Controller
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
              $file->move('foto', $photo);
              $tim->co_leader_avatar = $photo;
- 
+
              $tim->update();
           }
           $tim->update();
@@ -76,13 +76,13 @@ class WdcController extends Controller
              $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
              $file->move('foto', $photo);
              $tim->member_avatar = $photo;
- 
+
              $tim->update();
           }
           $tim->update();
        }
- 
- 
+
+
        return redirect()->back();
     }
 
@@ -98,21 +98,21 @@ class WdcController extends Controller
     {
        // Ambil user_id buat dimasukin ke tabel payments
        $user = Auth::user();
- 
+
        if($file = $req->file('photo')){
           $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
-          $file->move('payment', $photo);
- 
+          $file->move(public_path('storage/payments'), $photo);
+
           $pay = new Payment([
              'payment_path' => $photo,
              'user_id' => $user->id,
           ]);
- 
+
           $pay->save();
        }
- 
+
        $user->wdc()->update(['progress' => 3]);
- 
+
        return redirect()->back();
     }
 
@@ -126,21 +126,21 @@ class WdcController extends Controller
     public function submissionUpload(Request $req)
     {
        $user= Auth::user();
- 
+
        $submit = new Submission([
           'submissions_path' => $req->link,
           'theme' => $req->tema,
           'user_id' => $user->id
        ]);
-       
+
        if ($user->wdc->progress == 4) {
          $user->madc()->update(['progress' => 5]);
        }elseif ($user->wdc->progress == 7) {
          $user->madc()->update(['progress' => 8]);
        }
- 
+
        $submit->save();
- 
+
        return redirect()->back();
     }
 
@@ -150,7 +150,7 @@ class WdcController extends Controller
        $data = Wdc::where('user_id', Auth::user()->id)->first();
        /* Update Progress */
        $data->progress = $request->progress;
- 
+
        $data->update();
        return redirect()->route('wdc.dashboard');
     }

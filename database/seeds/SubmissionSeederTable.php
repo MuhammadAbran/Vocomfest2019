@@ -11,6 +11,6 @@ class SubmissionSeederTable extends Seeder
      */
     public function run()
     {
-        //factory(\App\Submission::class, 20)->create();
+        factory(\App\Submission::class, 20)->create();
     }
 }
