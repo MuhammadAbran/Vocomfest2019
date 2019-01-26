@@ -15,7 +15,11 @@ $(window).on("scroll", function() {
           $('nav').removeClass('navScroll');
           $('.logo-nav').removeClass('logo-nav-white');
     }
-})
+});
+
+$(document).ready(function($) {
+    $('a[data-rel^=lightcase]').lightcase();
+});
 
 
 

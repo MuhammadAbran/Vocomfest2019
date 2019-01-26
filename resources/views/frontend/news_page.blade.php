@@ -3,7 +3,7 @@
 
 @extends('frontend.menu.page_navigation')
 
-@section('title','Login')
+@section('title',$news->title)
 
 @section('content')
 <section  id="news-page">
@@ -11,8 +11,8 @@
         <div class="overlay">
             <div class="container">
                 <div class="title-box bottom-animated">
-                    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                    <small>16 September 2018</small>
+                    <h1>{{$news->title}}</h1>
+                    <small>Published Date : {{$news->created_at}}</small>
                 </div>
             </div>
         </div>
@@ -21,22 +21,13 @@
         <div class="row">
             <div class="col-md-8 offset-md-2 content bottom-animated">
                     <p>
-                    <img src="{!!asset('assets/img/news-thumb.jpg')!!}" alt="image">
+                    <a href="{!!asset('storage/news')!!}/{{$news->thumbnail}}" data-rel="lightcase"><img src="{!!asset('storage/news')!!}/{{$news->thumbnail}}" alt="{{$news->title}}"></a>
                     </p>
                     <p>
-                        Aliquam principes deterruisset cum et, vel an eius equidem. Id quando legimus inermis eum, cibo consul democritum cum te, cu cum suas laudem graeci. Bonorum gloriatur signiferumque an pro. Justo corpora suscipit quo et, vim te noluisse praesent scriptorem, pro ea incorrupte intellegam mediocritatem. Hinc laoreet mediocrem te nec, petentium iracundia ut cum. Fabulas ornatus iudicabit an pri, qui at decore legimus voluptatibus. Ei semper adipisci constituto eum, ad reque dicam nec.                            
+                        {{$news->content}}
                         
                     </p>                          
-                    <p>
-                        Delenit utroque vivendo est ea. Vim autem virtute concludaturque id. Cu ferri oblique has. At sed impedit apeirian ullamcorper, eum cu amet viris. Duo alia causae vituperatoribus ea, salutatus adolescens conclusionemque qui an. Illum euripidis eu vix.
-                    </p>           
-                    <p>
-                         Vix eu etiam mediocrem. Qui debet essent omnium ut. Ne qui recusabo temporibus, in eum singulis posidonium. Nec reque saepe ea, esse veniam definitionem est ei.
-                        Delenit utroque vivendo est ea. Vim autem virtute concludaturque id. Cu ferri oblique has. At sed impedit apeirian ullamcorper, eum cu amet viris. Duo alia causae vituperatoribus ea, salutatus adolescens conclusionemque qui an. Illum euripidis eu vix.
-                    </p>      
-                    <p>
-                        Aliquam principes deterruisset cum et, vel an eius equidem. Id quando legimus inermis eum, cibo consul democritum cum te, cu cum suas laudem graeci. Bonorum gloriatur signiferumque an pro. Justo corpora suscipit quo et, vim te noluisse praesent scriptorem, pro ea incorrupte intellegam mediocritatem. Hinc laoreet mediocrem te nec, petentium iracundia ut cum. Fabulas ornatus iudicabit an pri, qui at decore legimus voluptatibus. Ei semper adipisci constituto eum, ad reque dicam nec.
-                    </p>
+
             </div>
 
             <!-- Related Post -->
@@ -45,23 +36,14 @@
 
              
                 <div class="row text-center">
-                    <div class="col-md-4">
-                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
-                    <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
-                        <span>16 September 2018</span>
-                    </div>
 
-                    <div class="col-md-4">
-                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
-                        <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
-                        <span>16 September 2018</span>
-                    </div>
-
-                    <div class="col-md-4">
-                        <img src="{!! asset('assets/img/news-thumb.jpg')!!}" alt="">
-                        <h1><a href="{{route('newsPage')}}">Lorem ipsum dolor sit, amet consectetur...</a></h1>
-                        <span>16 September 2018</span>
-                    </div>
+                    @foreach($news_all as $related)
+                        <div class="col-md-4">
+                            <img src="{!! asset('storage/news')!!}/{{$related->thumbnail}}" alt="{{$related->title}}">
+                            <h1><a href="{{route('newsPage',$related->id)}}">{{$related->title}}</a></h1>
+                            <span>{{$related->created_at}}</span>
+                        </div>
+                    @endforeach
                    
                 </div>
             </div>
