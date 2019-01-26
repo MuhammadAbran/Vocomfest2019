@@ -17,8 +17,8 @@
 <div class="box">
 
   <div class="panel panel-primary">
-    <div class="panel-heading" style="margin-bottom: 20px; margin-left: 1400px">
-      <a href="{{route('admin.addNews')}}" class="btn btn-primary pull-right modal-show"  title="Create User"><i class="fa fa-plus"></i> Create</a>
+    <div class="panel-heading" style="margin-bottom: 20px;">
+      <a href="{{route('admin.addNews')}}" class="btn btn-primary pull-right modal-show"  title="Create"><i class="fa fa-plus"></i> Create</a>
     </div>
     <div class="panel-body">
           <table id="newsTable" class="table table-hover table-bordered table-striped">
@@ -80,6 +80,13 @@
                method: "GET",
                data: {id: id},
                success: function(){
+
+                  /* Add success modal*/
+                  Swal.fire({
+                     type: 'success',
+                     title: 'Berhasil dihapus!',
+                     text: 'Berita yang anda pilih telah dihapus',
+                  });
                   $('#newsTable').DataTable().ajax.reload();
                }
             });
@@ -96,6 +103,13 @@
             method: "GET",
             data: {id: id},
             success: function(){
+
+                /* Add success modal*/
+                Swal.fire({
+                     type: 'success',
+                     title: 'Published!',
+                     text: 'Berita yang anda pilih telah di publish',
+                  });
                $('#newsTable').DataTable().ajax.reload();
             }
          });
@@ -111,6 +125,14 @@
             method: "GET",
             data: {id: id},
             success: function(){
+
+                /* Add success modal*/
+                Swal.fire({
+                     type: 'success',
+                     title: 'Unpublished!',
+                     text: 'Berita yang anda pilih telah di unpublish',
+                  });
+
                $('#newsTable').DataTable().ajax.reload();
             }
          });
@@ -130,7 +152,7 @@
                    name: 'thumbnail',
                    sortable: false,
                    render: function(data){
-                      return '<img src="{{ url('storage/news') }}/' + data + '" alt="News" width=100px>';
+                      return '<img src="{{ url('storage/news') }}/' + data + '" alt="featured image news" width=100px>';
                    }
                 },
                 {data: 'title', name: 'title'},
