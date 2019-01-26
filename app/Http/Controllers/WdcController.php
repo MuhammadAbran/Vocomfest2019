@@ -20,7 +20,7 @@ class WdcController extends Controller
     {
       
       // ambil data user berdasarkan id di auth
-      $user = Madc::where('user_id', Auth::user()->id)->first();
+      $user = Wdc::where('user_id', Auth::user()->id)->first();
       
       return view('user.wdc.dashboard', compact('user'));
     }
@@ -133,7 +133,11 @@ class WdcController extends Controller
           'user_id' => $user->id
        ]);
        
-       $user->wdc()->update(['progress' => 5]);
+       if ($user->wdc->progress == 4) {
+         $user->madc()->update(['progress' => 5]);
+       }elseif ($user->wdc->progress == 7) {
+         $user->madc()->update(['progress' => 8]);
+       }
  
        $submit->save();
  
