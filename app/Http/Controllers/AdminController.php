@@ -476,6 +476,7 @@ class AdminController extends Controller
            'id' => $subM->user->id,
            'team_name' => $subM->user->team_name,
            'kompetisi' => "MADC Competition",
+           'theme' => $subM->theme,
            'progress' => $subM->user->madc['progress'],
            'submissions_path' => $subM['submissions_path'],
         ];
@@ -485,19 +486,20 @@ class AdminController extends Controller
               'id' => $subW->user->id,
               'team_name' => $subW->user->team_name,
               'kompetisi' => "WDC Competition",
+              'theme' => $subW->theme,
               'progress' => $subW->user->wdc['progress'],
               'submissions_path' => $subW['submissions_path'],
            ];
         }
       return Datatables::of($data)
       ->editColumn('submissions_path', function($data){
-         return '<a href="'. $data['submissions_path'] .'" class="btn-warning btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
+         return '<a href="'. $data['submissions_path'] .'" class="btn-primary btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
       })
       ->addColumn('action', function($data){
          return'
-             <a href="#" class="btn-success btn-sm"><i class="fa fa-check"></i></a>
-             <a href="./view-team.html" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-             <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+         <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
+         <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
+         <a href="#" class="btn-danger btn-sm" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
          ';
       })
       ->addIndexColumn()

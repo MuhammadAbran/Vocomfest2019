@@ -18,6 +18,7 @@
           <th>No</th>
           <th>Nama Tim</th>
           <th>Kompetisi</th>
+          <th>Tema</th>
           <th>Tahap</th>
           <th>file</th>
           <th>Aksi</th>
@@ -66,8 +67,19 @@
                   data: 'kompetisi'
                },
                {
+                 name: 'theme',
+                 data: 'theme'
+               },
+               {
                   name: 'progress',
-                  data: 'progress'
+                  data: 'progress',
+                  render: function(data){
+                     if (data == 5) {
+                        return '<span class="badge badge-primary">Penyisihan 1</span>';
+                     }
+
+                     return '<span class="badge badge-success">Penyisihan 2</span>';
+                  }
                },
                {
                   name: 'submissions_path',
