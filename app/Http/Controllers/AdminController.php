@@ -205,6 +205,7 @@ class AdminController extends Controller
 
    public function news()
    {
+
       return view('user.admin.news');
    }
 
@@ -229,9 +230,9 @@ class AdminController extends Controller
             ->addColumn('action', function ($data){
 
                if($data['is_published'] === 1){
-                  $btn_status = '<a href="'.route('homePage').'" class="btn-warning btn-sm publish-btn">Unpublish</a> ';
+                  $btn_status = '<a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm publish-btn unpublish">Unpublish</a> ';
                }else{
-                  $btn_status = '<a href="#" class="btn-success btn-sm publish-btn">Publish</a> ';
+                  $btn_status = '<a href="#" id="'. $data['id'] .'" class="btn-success btn-sm publish-btn publish" publish>Publish</a> ';
                }
                return
                $btn_status.=
@@ -247,6 +248,27 @@ class AdminController extends Controller
         return redirect('');
 
     }
+
+   //publish News
+   public function publishNews(Request $req)
+   {
+      $news = \App\News::find($req->id);
+
+      $news->is_published = 1;
+
+      $news->save();
+   }
+
+   //unpublish News
+   public function unpublishNews(Request $req)
+   {
+      $news = \App\News::find($req->id);
+
+      $news->is_published = 0;
+
+      $news->save();
+   }
+
 
    // Display form for adding news
    public function addNews()
@@ -279,9 +301,7 @@ class AdminController extends Controller
       //save into database
       $model->save();
 
-      //add flash session
-      Session::flash('message', 'Berita berhasil ditambahkan');
-      return redirect()->route('admin.news');
+      return redirect()->route('admin.news')->with(['message', 'Berita berhasil ditambahkan']);
    }
 
    public function editNews()

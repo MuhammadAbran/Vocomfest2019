@@ -33,6 +33,9 @@ Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.s
 
 //news
 Route::get('dataNews', 'AdminController@newsData')->name('admin.newsData');
+Route::post('storeNews', 'AdminController@storeNews')->name('admin.storeNews');
+Route::get('publishNews', 'AdminController@publishNews')->name('publish.news');
+Route::get('unpublishNews', 'AdminController@unpublishNews')->name('unpublish.news');
 Route::get('deleteNews', 'AdminController@deleteNews')->name('delete.news');
 
 //gallaries

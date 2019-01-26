@@ -84,6 +84,37 @@
             });
       });
 
+      //publish and unpublish News
+      $(document).on('click', '.publish', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('publish.news') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#newsTable').DataTable().ajax.reload();
+            }
+         });
+      });
+
+      $(document).on('click', '.unpublish', function(){
+         var id = $(this).attr("id");
+         $.ajax({
+            headers:{
+               'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+            },
+            url: "{{ route('unpublish.news') }}",
+            method: "GET",
+            data: {id: id},
+            success: function(){
+               $('#newsTable').DataTable().ajax.reload();
+            }
+         });
+      });
+
       //GET DATA
         $('#newsTable').DataTable({
             order: [[ 4, "desc" ]],
