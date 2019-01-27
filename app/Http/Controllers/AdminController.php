@@ -209,6 +209,9 @@ class AdminController extends Controller
             ];
          }
          return Datatables::of($data)
+         ->editColumn('gallaries_path', function($data){
+            return '<img data-title="'. $data['title'] .'" id="img001" src="'. url('storage/gallaries') ."/". $data['gallaries_path'] .'" alt="news" width=100px data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 5px">';
+         })
          ->addColumn('action', function($data){
             if($data['status'] === 1){
                $btn_status = '<a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm publish-btn unpublish">Unpublish</a> ';
@@ -222,7 +225,7 @@ class AdminController extends Controller
             ';
          })
          ->addIndexColumn()
-         ->rawColumns(['action'])
+         ->rawColumns(['action', 'gallaries_path'])
          ->make(true);
       }
    }

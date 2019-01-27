@@ -64,7 +64,7 @@
    <div class="modal-dialog modal-lg" role="document">
      <div class="modal-content">
        <div class="modal-header">
-         <h5><span id="titleNews"></span></h5>
+         <h5 style="margin-top:8px" class="modal-title"><span id="titleNews"></span></h5> &nbsp;<a href="{{ route('homePage') }}" class="modal-title" style="font-size:20px; color:#3498db " target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
          </button>

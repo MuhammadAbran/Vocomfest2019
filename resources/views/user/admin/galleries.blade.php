@@ -82,7 +82,7 @@
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px" target="_blank">Gallaries &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px" target="_blank"><span id="titleGallay"></span> &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -172,6 +172,12 @@
          });
       });
 
+      //title Gallary
+      $(document).on('click', '#img001', function(){
+         var title = $(this).attr("data-title");
+         $('#titleGallay').html(title);
+      });
+
       // image Gallary
       $(document).on('click', '#img001', function(){
          var src = $(this).attr("src");
@@ -195,9 +201,7 @@
                {
                   name: 'gallaries_path',
                   data: 'gallaries_path',
-                  render: function(data){
-                     return '<img id="img001" src="{{ url('storage/gallaries') }}/' + data + '" alt="Gallaies" width=160px  data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 8px">'
-                  }
+                  sortable: false
                },
                {
                   name: 'title',
