@@ -12,6 +12,7 @@ use Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Wdc;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -54,10 +55,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'team_name' => ['required', 'string', 'max:255'],
-            // 'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:6', 'confirmed'],
-
+            'team_name' => ['required', 'string', 'max:191'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'instance_name' => ['required', 'string', 'max:191'],
+            'instance_address' =>['required', 'string', 'max:191'],
+            'leader_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'leader_email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
+            'leader_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
+            'co_leader_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'co_leader_email' => ['required', 'string', 'email', 'max:191'],
+            'co_leader_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08, 089999999999999', 'max:15'],
+            'member_1_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'member_1_email' => ['required', 'string', 'email', 'max:191'],
+            'member_1_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
         ]);
     }
 
@@ -69,6 +79,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $this->validate($data, [
+        //     'team_name' => ['required', 'string', 'max:255'],
+        //     'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
+        //     'instance_name' => ['required', 'string']
+        // ]);
+
         $user = User::create([
             'team_name' => $data['team_name'],
             'leader_email' => $data['leader_email'],
@@ -91,7 +108,7 @@ class RegisterController extends Controller
                 'member_phone' => $data['member_1_phone'],
                 'progress' => $data['progress'],
             ]);
-     
+
             $user->wdc()->save($wdc);
         }
 
@@ -113,9 +130,8 @@ class RegisterController extends Controller
                 // 'member_2_phone' => $data['member_2_phone'],
                 'progress' => $data['progress'],
             ]);
-     
+
             $user->madc()->save($madc);
-             
         }
 
         return $user;
