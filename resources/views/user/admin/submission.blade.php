@@ -130,11 +130,11 @@
                   name: 'progress',
                   data: 'progress',
                   render: function(data){
-                     if (data == 4) {
+                     if (data == 5) {
                         return '<span class="badge badge-primary">Penyisihan 1</span>';
                      }
 
-                     else if (data == 6) {
+                     else if (data == 7) {
                         return '<span class="badge badge-success">Penyisihan 2</span>';
                      }
                   }

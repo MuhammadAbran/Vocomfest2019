@@ -126,7 +126,6 @@ class WdcController extends Controller
     public function submissionUpload(Request $req)
     {
        $user= Auth::user();
-
        $submit = new Submission([
           'submissions_path' => $req->link,
           'theme' => $req->tema,
@@ -134,9 +133,9 @@ class WdcController extends Controller
        ]);
 
        if ($user->wdc->progress == 4) {
-         $user->madc()->update(['progress' => 5]);
+         $user->wdc->update(['progress' => 5]);
        }elseif ($user->wdc->progress == 7) {
-         $user->madc()->update(['progress' => 8]);
+         $user->wdc->update(['progress' => 8]);
        }
 
        $submit->save();

@@ -50,33 +50,39 @@ class AdminController extends Controller
          }
          return Datatables::of($data)
               ->editColumn('progress', function($data){
-              if($data['progress'] == 0){
-                   return '<span class="badge badge-danger">Belum Membayar</span>';
-               }
-               elseif($data['progress'] == 1){
-                 return '<span class="badge badge-primary">Registered</span>';
-               }
-               elseif($data['progress'] == 2){
-                  return '<span class="badge badge-danger">Belum Bayar</span>';
-               }
-               elseif($data['progress'] == 3){
-                  return '<span class="badge badge-warning">Konfirmasi Pembayaran</span>';
-               }
-               elseif($data['progress'] == 4){
-                  return '<span class="badge badge-warning">Telah Membayar</span>';
-               }
-               elseif($data['progress'] == 5){
-                  return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
-               }
-               elseif($data['progress'] == 6){
-                  return '<span class="badge badge-info">Waiting</span>';
-               }
-               elseif($data['progress'] == 7){
-                  return '<span class="badge badge-success">Lulus Seleksi</span>';
-               }
-               elseif($data['progress'] == 99){
-                  return '<span class="badge badge-danger">Tidak Lulus Seleksi</span>';
-               }
+                 if($data['progress'] == 0){
+                     return '<span class="badge badge-danger">Belum Verifikasi Email</span>';
+                 }
+                  elseif($data['progress'] == 1){
+                    return '<span class="badge badge-primary">Registered</span>';
+                 }
+                  elseif($data['progress'] == 2){
+                     return '<span class="badge badge-danger">Belum Bayar</span>';
+                  }
+                  elseif($data['progress'] == 3){
+                     return '<span class="badge badge-warning">Konfirmasi Pembayaran</span>';
+                  }
+                  elseif($data['progress'] == 4){
+                     return '<span class="badge badge-success">Telah Membayar</span>';
+                  }
+                  elseif($data['progress'] == 5){
+                     return '<span class="badge badge-info">Penyisihan #1</span>';
+                  }
+                  elseif($data['progress'] == 6){
+                     return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
+                  }
+                  elseif($data['progress'] == 7){
+                     return '<span class="badge badge-success">Penyisihan #2</span>';
+                  }
+                  elseif($data['progress'] == 8){
+                     return '<span class="badge badge-success">Lolos Kebabak FINAL</span>';
+                  }
+                  elseif($data['progress'] == 98){
+                     return '<span class="badge badge-danger">Belum Membayar</span>';
+                  }
+                  elseif($data['progress'] == 99){
+                     return '<span class="badge badge-danger">Tidak Lulus Seleksi</span>';
+                  }
              })
              ->addColumn('action', function ($data){
                    return'
@@ -119,7 +125,7 @@ class AdminController extends Controller
               return Datatables::of($data)
               ->editColumn('progress', function($data){
               if($data['progress'] == 0){
-                  return '<span class="badge badge-danger">XXX</span>';
+                  return '<span class="badge badge-danger">Belum Verifikasi Email</span>';
               }
                elseif($data['progress'] == 1){
                  return '<span class="badge badge-primary">Registered</span>';
@@ -134,13 +140,19 @@ class AdminController extends Controller
                   return '<span class="badge badge-success">Telah Membayar</span>';
                }
                elseif($data['progress'] == 5){
-                  return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
+                  return '<span class="badge badge-info">Penyisihan #1</span>';
                }
                elseif($data['progress'] == 6){
-                  return '<span class="badge badge-info">Waiting</span>';
+                  return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
                }
                elseif($data['progress'] == 7){
-                  return '<span class="badge badge-success">Lulus Seleksi</span>';
+                  return '<span class="badge badge-success">Penyisihan #2</span>';
+               }
+               elseif($data['progress'] == 8){
+                  return '<span class="badge badge-success">Lolos Kebabak FINAL</span>';
+               }
+               elseif($data['progress'] == 98){
+                  return '<span class="badge badge-danger">Belum Membayar</span>';
                }
                elseif($data['progress'] == 99){
                   return '<span class="badge badge-danger">Tidak Lulus Seleksi</span>';
@@ -427,7 +439,7 @@ class AdminController extends Controller
       $data = [];
       foreach ($paymentsWdc as $paymentW) {
          $progressW = (int)$paymentW->user->wdc->progress;
-         if ($progressW < 4 && $progressW > 0) {
+         if ($progressW == 4) {
             $data[] = [
                   'id' => $paymentW->user->id,
                   'team_name' => $paymentW->user->team_name,
@@ -440,7 +452,7 @@ class AdminController extends Controller
 
       foreach ($paymentsMadc as $paymentM) {
          $progressM = (int)$paymentM->user->madc->progress;
-         if ($progressM < 4 && $progressM > 0) {
+         if ($progressM == 4) {
          $data[] = [
                'id' => $paymentM->user->id,
                'team_name' => $paymentM->user->team_name,
@@ -479,9 +491,9 @@ class AdminController extends Controller
    {
       $users = \App\User::find($req->id);
       if ($users->wdc) {
-         $users->wdc->update(['progress' => 0]);
+         $users->wdc->update(['progress' => 98]);
       }else {
-         $users->madc->update(['progress' => 0]);
+         $users->madc->update(['progress' => 98]);
       }
    }
 
@@ -505,7 +517,7 @@ class AdminController extends Controller
       $data = [];
       foreach ($submissionMadc as $subM) {
          $progressSM = (int)$subM->user->madc['progress'];
-         if ($progressSM == 4 || $progressSM == 6) {
+         if ($progressSM == 5 || $progressSM == 7) {
             $data[] = [
               'id' => $subM->user->id,
               'team_name' => $subM->user->team_name,
@@ -518,7 +530,7 @@ class AdminController extends Controller
       }
       foreach ($submissionWdc as $subW) {
          $progressSW = (int)$subW->user->wdc['progress'];
-         if ($progressSW == 4 || $progressSW == 6) {
+         if ($progressSW == 5 || $progressSW == 7) {
             $data[] = [
               'id' => $subW->user->id,
               'team_name' => $subW->user->team_name,
@@ -549,10 +561,19 @@ class AdminController extends Controller
    {
       $users = \App\User::find($req->id);
       if ($users->wdc) {
-         $users->wdc->update(['progress' => 5]);
+         if ($users->wdc->progress == 5) {
+            $users->wdc->update(['progress' => 6]);
+         }elseif ($users->wdc->progress == 7) {
+            $users->wdc->update(['progress' => 6]);
+         }
       }else {
-         $users->madc->update(['progress' => 5]);
+         if ($users->madc->progress == 5) {
+            $users->madc->update(['progress' => 6]);
+         }elseif ($users->madc->progress == 7) {
+            $users->madc->update(['progress' => 6]);
+         }
       }
+
    }
 
    public function ndakLolosSubmisi(Request $req)
