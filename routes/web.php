@@ -32,6 +32,8 @@ Route::get('deletePayment', 'AdminController@deletePayment')->name('delete.payme
 
 //submission
 Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
+Route::get('lolosSubmisi', 'AdminController@lolosSubmisi')->name('lolos.submisi');
+Route::get('ndakLolosSubmisi', 'AdminController@ndakLolosSubmisi')->name('ndakLolos.submisi');
 Route::get('deleteSubmission', 'AdminController@deleteSubmission')->name('delete.submission');
 
 //news

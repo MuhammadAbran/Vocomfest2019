@@ -58,7 +58,7 @@
          headers: {
             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
          },
-         url: "{{ route('confirmed.payments') }}",
+         url: "{{ route('lolos.submisi') }}",
          method: "GET",
          data: {id: id},
          success: function(){
@@ -74,7 +74,7 @@
          headers: {
             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
          },
-         url: "{{ route('unconfirmed.payments') }}",
+         url: "{{ route('ndakLolos.submisi') }}",
          method: "GET",
          data: {id: id},
          success: function(){
@@ -130,11 +130,13 @@
                   name: 'progress',
                   data: 'progress',
                   render: function(data){
-                     if (data == 5) {
+                     if (data == 4) {
                         return '<span class="badge badge-primary">Penyisihan 1</span>';
                      }
 
-                     return '<span class="badge badge-success">Penyisihan 2</span>';
+                     else if (data == 6) {
+                        return '<span class="badge badge-success">Penyisihan 2</span>';
+                     }
                   }
                },
                {

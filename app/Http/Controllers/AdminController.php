@@ -66,13 +66,16 @@ class AdminController extends Controller
                   return '<span class="badge badge-warning">Telah Membayar</span>';
                }
                elseif($data['progress'] == 5){
-                  return '<span class="badge badge-warning">Waiting for Selection</span>';
+                  return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
                }
                elseif($data['progress'] == 6){
                   return '<span class="badge badge-info">Waiting</span>';
                }
                elseif($data['progress'] == 7){
                   return '<span class="badge badge-success">Lulus Seleksi</span>';
+               }
+               elseif($data['progress'] == 99){
+                  return '<span class="badge badge-danger">Tidak Lulus Seleksi</span>';
                }
              })
              ->addColumn('action', function ($data){
@@ -131,13 +134,16 @@ class AdminController extends Controller
                   return '<span class="badge badge-success">Telah Membayar</span>';
                }
                elseif($data['progress'] == 5){
-                  return '<span class="badge badge-warning">Waiting for Selection</span>';
+                  return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
                }
                elseif($data['progress'] == 6){
                   return '<span class="badge badge-info">Waiting</span>';
                }
                elseif($data['progress'] == 7){
                   return '<span class="badge badge-success">Lulus Seleksi</span>';
+               }
+               elseif($data['progress'] == 99){
+                  return '<span class="badge badge-danger">Tidak Lulus Seleksi</span>';
                }
 
              })
@@ -498,16 +504,21 @@ class AdminController extends Controller
       $submissionMadc = \App\Submission::whereHas('user.madc')->with('user.madc')->get();
       $data = [];
       foreach ($submissionMadc as $subM) {
-         $data[] = [
-           'id' => $subM->user->id,
-           'team_name' => $subM->user->team_name,
-           'kompetisi' => "MADC Competition",
-           'theme' => $subM->theme,
-           'progress' => $subM->user->madc['progress'],
-           'submissions_path' => $subM['submissions_path'],
-        ];
+         $progressSM = (int)$subM->user->madc['progress'];
+         if ($progressSM == 4 || $progressSM == 6) {
+            $data[] = [
+              'id' => $subM->user->id,
+              'team_name' => $subM->user->team_name,
+              'kompetisi' => "MADC Competition",
+              'theme' => $subM->theme,
+              'progress' => $subM->user->madc['progress'],
+              'submissions_path' => $subM['submissions_path'],
+           ];
+         }
       }
       foreach ($submissionWdc as $subW) {
+         $progressSW = (int)$subW->user->wdc['progress'];
+         if ($progressSW == 4 || $progressSW == 6) {
             $data[] = [
               'id' => $subW->user->id,
               'team_name' => $subW->user->team_name,
@@ -517,6 +528,7 @@ class AdminController extends Controller
               'submissions_path' => $subW['submissions_path'],
            ];
         }
+      }
       return Datatables::of($data)
       ->editColumn('submissions_path', function($data){
          return '<a href="'. $data['submissions_path'] .'" class="btn-primary btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
@@ -531,6 +543,26 @@ class AdminController extends Controller
       ->addIndexColumn()
       ->rawColumns(['action', 'submissions_path'])
       ->make(true);
+   }
+
+   public function lolosSubmisi(Request $req)
+   {
+      $users = \App\User::find($req->id);
+      if ($users->wdc) {
+         $users->wdc->update(['progress' => 5]);
+      }else {
+         $users->madc->update(['progress' => 5]);
+      }
+   }
+
+   public function ndakLolosSubmisi(Request $req)
+   {
+      $users = \App\User::find($req->id);
+      if ($users->wdc) {
+         $users->wdc->update(['progress' => 99]);
+      }else {
+         $users->madc->update(['progress' => 99]);
+      }
    }
 
    public function deleteSubmission(Request $req)
