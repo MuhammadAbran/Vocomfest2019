@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Payment | WDC')
+@section('title', 'Payment | W  DC')
 
 
 
