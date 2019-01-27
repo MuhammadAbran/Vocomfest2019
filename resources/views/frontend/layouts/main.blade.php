@@ -17,7 +17,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
-
+    <link rel="stylesheet" href="{!! asset('assets/vendor/lightcase/css/lightcase.css') !!}" >
+    
     <link rel="stylesheet" href="{!! asset('assets/vendor/slick/slick.css') !!}">
     <link rel="stylesheet" href="{!! asset('assets/vendor/slick/slick-theme.css') !!}">
 
@@ -68,6 +69,7 @@
     
 
     <script src="{!! asset('assets/vendor/slick/slick.js') !!}"></script>
+    <script src="{!! asset('assets/vendor/lightcase/js/lightcase.js') !!}"></script>
     <!-- Popper.JS -->
     <script src="{!! asset('assets/js/popper.min.js') !!}"></script>
     <!-- Bootstrap JS -->

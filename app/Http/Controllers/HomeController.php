@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $data['news_all'] = News::where('is_published','1')->get();
+
+        return view('frontend.home',$data);
     }
 
     public function wdcPage()
@@ -45,8 +48,12 @@ class HomeController extends Controller
         return view('frontend.ntf_page');
     }
 
-    public function newsPage()
-    {
-        return view('frontend.news_page');
+    public function newsPage($id)
+    {   
+        $data['news'] = News::find($id);
+
+        $data['news_all'] = News::where('is_published','1')->limit(3)->get();
+
+       return view('frontend.news_page',$data);
     }
 }

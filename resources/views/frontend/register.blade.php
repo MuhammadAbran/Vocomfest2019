@@ -30,13 +30,19 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="teamName">Nama Tim</label>
-                                            <input type="text" class="form-control" id="teamName" placeholder="Nama Tim" name="team_name">
+                                            <label for="leaderName">Nama Ketua</label>
+                                            <input type="text" class="form-control" id="leaderName"  placeholder="Nama Ketua" name="leader_name">
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="leaderPhone">No Hp</label>
+                                            <input type="text" class="form-control" id="leaderPhone"  placeholder="No Hp Ketua" name="leader_phone">
+                                        </div>
+
+
                                        <div class="form-group">
-                                            <label for="leaderEmail">Email</label>
-                                            <input type="email" class="form-control" id="leaderEmail"  placeholder="Email" name="leader_email">
+                                            <label for="leaderEmail">Email </label>
+                                            <input type="email" class="form-control" id="leaderEmail"  placeholder="Email Ketua" name="leader_email">
                                         </div>
 
                                         <div class="form-group">
@@ -58,14 +64,10 @@
                                     </div>
 
                                     <div class="col-md-5">
-                                        <div class="form-group">
-                                            <label for="leaderName">Nama Ketua</label>
-                                            <input type="text" class="form-control" id="leaderName"  placeholder="Nama Ketua" name="leader_name">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="leaderPhone">No Hp</label>
-                                            <input type="text" class="form-control" id="leaderPhone"  placeholder="No Hp Ketua" name="leader_phone">
+                                        
+                                         <div class="form-group">
+                                            <label for="teamName">Nama Tim</label>
+                                            <input type="text" class="form-control" id="teamName" placeholder="Nama Tim" name="team_name">
                                         </div>
 
                                         <div class="form-group">

@@ -310,7 +310,7 @@ class AdminController extends Controller
                }
                return
                $btn_status.=
-                   '<a href="'. route('newsPage') .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                   '<a href="'. route('newsPage',$data['id']) .'" class="btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                     <a href="'. route('edit.news', $data['id']) .'" class="btn-info btn-sm edit-news"><i class="fa fa-edit"></i></a>
                     <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-news" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
                ';
