@@ -313,6 +313,9 @@ class AdminController extends Controller
                ];
             }
             return DataTables::of($data)
+            ->editColumn('thumbnail', function($data){
+               return '<img data-content="'. $data['content'] .'" data-title="'. $data['title'] .'" id="img0011" src="'. url('storage/news') ."/". $data['thumbnail'] .'" alt="news" width=100px data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 5px">';
+            })
             ->addColumn('action', function ($data){
 
                if($data['is_published'] === 1){
@@ -328,7 +331,7 @@ class AdminController extends Controller
                ';
           })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'thumbnail'])
             ->make(true);
 
         }

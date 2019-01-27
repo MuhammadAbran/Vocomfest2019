@@ -58,6 +58,26 @@
       </div>
     </div>
   </div>
+
+  <!-- Image -->
+ <div class="modal fade bd-example-modal-lg" id="images" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5><span id="titleNews"></span></h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <img src="" alt="" id="img002" width="768px">
+       </div>
+       <div class="modal-footer">
+        <span id="contentNews"></span>
+      </div>
+     </div>
+   </div>
+ </div>
   <!-- /modal -->
 @endsection
 
@@ -138,6 +158,25 @@
          });
       });
 
+      //title news
+      $(document).on('click', '#img0011', function(){
+         var title = $(this).attr("data-title");
+         $('#titleNews').html(title);
+      });
+
+      //content news
+      $(document).on('click', '#img0011', function(){
+         var title = $(this).attr("data-content");
+         $('#contentNews').html(title);
+      });
+
+      // image News
+      $(document).on('click', '#img0011', function(){
+         var src = $(this).attr("src");
+         $('#img002').attr("src", src);
+      });
+
+
       //GET DATA
         $('#newsTable').DataTable({
             order: [[ 4, "desc" ]],
@@ -150,10 +189,7 @@
                 {
                    data: 'thumbnail',
                    name: 'thumbnail',
-                   sortable: false,
-                   render: function(data){
-                      return '<img src="{{ url('storage/news') }}/' + data + '" alt="featured image news" width=100px>';
-                   }
+                   sortable: false
                 },
                 {data: 'title', name: 'title'},
                 {

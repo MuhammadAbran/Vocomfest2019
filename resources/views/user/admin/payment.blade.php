@@ -151,7 +151,7 @@
                      data: 'payment_path',
                      sortable: false,
                      render: function(data){
-                        return '<img id="img001" src="{{ url('storage/payments') }}/'+data+'" alt="payment" width=200px  data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 8px">';
+                        return '<img id="img001" src="{{ url('storage/payments') }}/'+data+'" alt="payment" width=200px data-toggle="modal" data-target="#images" style="cursor:pointer; border-radius: 8px">';
                      }
                   },
                   {
