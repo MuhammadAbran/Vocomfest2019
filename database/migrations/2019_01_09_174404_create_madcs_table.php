@@ -24,10 +24,10 @@ class CreateMadcsTable extends Migration
             $table->string('co_leader_email');
             $table->string('co_leader_phone');
             $table->string('co_leader_avatar')->default('avatar.jpg');
-            $table->string('member_1_name');
-            $table->string('member_1_email');
-            $table->string('member_1_phone');
-            $table->string('member_1_avatar')->default('avatar.jpg');
+            $table->string('member_name');
+            $table->string('member_email');
+            $table->string('member_phone');
+            $table->string('member_avatar')->default('avatar.jpg');
             // $table->string('member_2_name');
             // $table->string('member_2_email');
             // $table->string('member_2_phone');

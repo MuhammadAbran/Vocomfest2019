@@ -30,7 +30,7 @@ return [
         'array' => 'The :attribute must have between :min and :max items.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => 'The :attribute confirmation does not match.',
+    'confirmed' => ':attribute tidak sama.',
     'date' => 'The :attribute is not a valid date.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format' => 'The :attribute does not match the format :format.',
@@ -76,9 +76,9 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute may not be greater than :max.',
+        'numeric' => ':attribute tidak boleh lebih panjang dari :max karakter.',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => ':attribute tidak boleh lebih dari :max karakter.',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -86,14 +86,14 @@ return [
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => ':attribute tidak boleh kurang dari :min karakter.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
     'present' => 'The :attribute field must be present.',
-    'regex' => 'The :attribute format is invalid.',
+    'regex' => ':attribute tidak sesuai format.',
     'required' => 'The :attribute field is required.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -111,7 +111,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid zone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute telah terdaftar.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -128,8 +128,35 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'leader_name' => [
+            'regex' => 'Nama tidak boleh mengandung karakter selain alfabet dan spasi.',
+        ],
+        'leader_email' => [
+            'email' => 'Email tidak sesuai format (contoh@mail.com).'
+        ],
+        'leader_phone' => [
+            'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
+            'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
+        ],
+        'co_leader_name' => [
+            'regex' => 'Nama tidak boleh mengandung karakter selain alfabet dan spasi.',
+        ],
+        'co_leader_email' => [
+            'email' => 'Email tidak sesuai format (contoh@mail.com).'
+        ],
+        'co_leader_phone' => [
+            'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
+            'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
+        ],
+        'member_1_name' => [
+            'regex' => 'Nama tidak boleh mengandung karakter selain alfabet dan spasi.',
+        ],
+        'member_1_email' => [
+            'email' => 'Email tidak sesuai format (contoh@mail.com).'
+        ],
+        'member_1_phone' => [
+            'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
+            'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
         ],
     ],
 
@@ -144,6 +171,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'leader_email' => 'Email',
+        'leader_phone' => 'Nomor Hp',
+        'co_leader_phone' => 'Nomor Hp',
+        'password' => 'Password'
+    ],
 
 ];
