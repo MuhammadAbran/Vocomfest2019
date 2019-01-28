@@ -82,7 +82,7 @@
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <a href="{{ route('homePage') }}" class="modal-title btn btn-primary" id="exampleModalLongTitle" style="font-size:20px" target="_blank"><span id="titleGallay"></span> &nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+	        <a href="{{ route('homePage') }}" class="modal-title" style="" target="_blank"><h5 style="margin-top:8px" class="modal-title"><span id="titleGallay"></span></h5></a> &nbsp;<a href="{{ route('homePage') }}" class="modal-title" style="font-size:20px; color:#3498db " target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
