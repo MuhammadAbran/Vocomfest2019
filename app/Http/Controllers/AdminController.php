@@ -445,7 +445,7 @@ class AdminController extends Controller
       $data = [];
       foreach ($paymentsWdc as $paymentW) {
          $progressW = (int)$paymentW->user->wdc->progress;
-         if ($progressW == 4) {
+         if ($progressW == 3) {
             $data[] = [
                   'id' => $paymentW->user->id,
                   'team_name' => $paymentW->user->team_name,
@@ -458,7 +458,7 @@ class AdminController extends Controller
 
       foreach ($paymentsMadc as $paymentM) {
          $progressM = (int)$paymentM->user->madc->progress;
-         if ($progressM == 4) {
+         if ($progressM == 3) {
          $data[] = [
                'id' => $paymentM->user->id,
                'team_name' => $paymentM->user->team_name,
