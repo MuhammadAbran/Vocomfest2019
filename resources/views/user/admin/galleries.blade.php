@@ -44,7 +44,7 @@
 	      <div class="modal-body">
 	        <form>
 	          <p>Anda yakin ingin <strong>menghapus</strong> Gambar Ini?</p>
-	          <button id="deleteGallary" type="button" class="btn btn-danger delete_gallary" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+	          <button id="" type="button" class="btn btn-danger delete_gallary" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
 	          <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
 	        </form>
 	      </div>
@@ -122,7 +122,7 @@
       //delete Gallary
       $(document).on('click', '.delete-gallary', function(){
          var id = $(this).attr("id");
-         $('#deleteGallary').attr("id", id);
+         $('.delete_gallary').attr("id", id);
       });
 
       $(document).on('click', '.delete_gallary', function(){
