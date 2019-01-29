@@ -51,7 +51,7 @@
         <div class="modal-body">
           <form>
             <p>Anda yakin ingin <strong>menghapus</strong> berita ini?</p>
-            <button id="deleteNews" type="button" class="btn btn-danger delete_news" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+            <button id="" type="button" class="btn btn-danger delete_news" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
           </form>
         </div>
@@ -87,7 +87,7 @@
       //Delete News
       $(document).on('click', '.delete-news', function(){
           var id = $(this).attr("id");
-          $('#deleteNews').attr("id", id);
+          $('.delete_news').attr("id", id);
       });
 
       $(document).on('click', '.delete_news', function(){
