@@ -39,7 +39,7 @@
         <div class="modal-body">
           <form>
             <p>Anda yakin ingin <strong>menghapus</strong> Tim <span id="teamName"></span>?</p>
-            <button id="deleteThisTeam" type="button" class="btn btn-danger delete_team" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+            <button id="" type="button" class="btn btn-danger delete_team" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
           </form>
         </div>
@@ -55,7 +55,7 @@
          var id = $(this).attr("id");
          var name = $(this).attr("name");
          // console.log(name);
-         $('#deleteThisTeam').attr("id", id);
+         $('.delete_team').attr("id", id);
          $("#teamName").html(name);
       });
 

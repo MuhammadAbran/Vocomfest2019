@@ -33,6 +33,35 @@ class UserSeederTable extends Seeder
             'password' => bcrypt('vocomfest19'),
         ]);
 
-        //factory(\App\User::class, 200)->create();
+        DB::table('users')->insert([
+            'id' => '4',
+            'team_name' => 'asfdasdas',
+            'leader_email' => 'asdasd@vocoasdasdmfest.com',
+            'role' => '3',
+            'password' => bcrypt('asdas'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '5',
+            'team_name' => 'WDC TEAM',
+            'leader_email' => 'asdasd@gmail.com',
+            'role' => '3',
+            'password' => bcrypt('vocomfest19'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '6',
+            'team_name' => 'MADC TEAM',
+            'role' => '2',
+            'leader_email' => 'asdasdsad@gmail.com',
+            'password' => bcrypt('vocomfest19'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '7',
+            'team_name' => 'MADC TEAM',
+            'role' => '2',
+            'leader_email' => 'sdadsdsd@gmail.com',
+            'password' => bcrypt('vocomfest19'),
+        ]);
+
+        // factory(\App\User::class, 200)->create();
     }
 }
