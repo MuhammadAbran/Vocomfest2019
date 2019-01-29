@@ -15,12 +15,13 @@
     <table class="table table-hover table-bordered table-striped" id="submission-table">
       <thead>
         <tr>
-          <th>No</th>
+          <th width="5%">No</th>
           <th>Nama Tim</th>
           <th>Kompetisi</th>
           <th>Tema</th>
           <th>Tahap</th>
           <th>file</th>
+          <th width="10%">Status</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -142,6 +143,21 @@
                {
                   name: 'submissions_path',
                   data: 'submissions_path'
+               },
+               {
+                  name: 'progress',
+                  data: 'progress',
+                  render: function(data){
+                     if (data == 5) {
+                        return '<span class="badge badge-danger">Belum Lolos</span>';
+                     }else if (data == 6) {
+                        return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
+                     }else if (data == 7) {
+                        return '<span class="badge badge-danger">Belum Lolos</span>';
+                     }else if (data == 8) {
+                        return '<span class="badge badge-success">Lolos Penyisihan #2</span>';
+                     }
+                  }
                },
                {
                   name: 'action',
