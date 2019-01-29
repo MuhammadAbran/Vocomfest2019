@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -42,7 +45,7 @@ class LoginController extends Controller
     {
       return 'leader_email';
     }
-
+    
     public function authenticated()
     {
       // redirect to admin

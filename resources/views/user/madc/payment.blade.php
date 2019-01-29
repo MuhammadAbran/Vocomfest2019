@@ -3,15 +3,13 @@
 @extends('user.madc.menu')
 @section('title', 'Team | MADC')
 
-
-
 @section('content')
 	<div class="box">
          <!-- Payment Box -->
      	<div class="payment">
          	<h1 class="title">Pembayaran</h1>
         <!-- Tulisan berubah sesuai progress tim -->
-        @if($user->madc['progress'] <= 1)
+        @if($user->madc['progress'] < 2)
          	<div class="status">Status : <span class="text-danger" >Belum bisa pembayaran, kunci data tim terlebih dahulu!</span></div>
         @elseif($user->madc['progress'] == 2)
          	<div class="status">Status : <span class="text-danger" >Mohon untuk segera upload pembayaran</span></div>
@@ -50,6 +48,10 @@
         @if($user->madc['progress'] == 2)
             <button  type="button" data-toggle="modal" data-target="#uploadPayment" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Bukti Pembayaran</button>
         @endif
+        @if($errors->has('photo'))
+            <br><strong>{{ $errors->first('photo') }}</strong>
+        @endif
+        
         </div>
         <!-- End Payment  Box-->
     </div>
@@ -69,9 +71,7 @@
                 @csrf
                     <div class="form-group">
                         <label for="tim">Nama Tim :</label>
-                        <!-- Ambil ID team  -->
-                        <input type="hidden" name="id" value="1">
-                        <input type="text" class="form-control" name="tim" value="Hmmm" disabled>
+                        <input type="text" class="form-control" name="tim" value="{{$user->team_name}}" disabled>
                      </div>
                      <div class="form-group">
                         <label for="amount">Total :</label>
@@ -85,7 +85,7 @@
 
                     <div class="form-group">
                         <label for="bukti">Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
                     </div>
                     <button type="submit" class="btn btn-custom">Kirim</button>
                 </form>

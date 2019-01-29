@@ -10,11 +10,15 @@
                      <!-- Payment Box -->
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
-        @if($user-> madc['progress'] < 5 || $user-> madc['progress'] == 7)
+
+        @if($user-> madc['progress'] < 4)
+            <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
+        @elseif($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
             <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-        @elseif($user-> madc['progress'] == 5 || $user-> madc['progress'] == 8)
+        @elseif($user-> madc['progress'] == 5 || $user-> madc['progress'] == 7)
             <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
         @endif
+
              <div class="row submission-info ">
                  <div class="col-md-2">
                     <strong>Kompetisi</strong>
@@ -41,7 +45,7 @@
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($user-> madc['progress'] == 4 || $user-> madc['progress'] == 7)
+            @if($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
             <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
             @endif
         </div>
@@ -66,7 +70,6 @@
                     <div class="form-group">
                         <label for="tim">Tema :</label>
                         <select name="tema" id="" class="form-control">
-                            <option disabled selected>Pilih Tema</option>
                             <option value="Makanan dan Minuman">Makanan dan Minuman</option>
                             <option value="Kimia">Kimia</option>
                             <option value="Furniture">Furniture</option>
@@ -77,9 +80,9 @@
                      </div>
 
                      <div class="form-group">
-                            <label for="tim">Link :</label>
-                            <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" >
-                         </div>
+                        <label for="tim">Link :</label>
+                        <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" required oninvalid="this.setCustomValidity('Harap isi dengan link submission')" oninput="this.setCustomValidity('')">
+                    </div>
                     
                     <button type="submit" class="btn btn-custom">Kirim</button>
                     @csrf

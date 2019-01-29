@@ -40,6 +40,9 @@ class MadcController extends Controller
       $leader = Auth::user();
       $id = $req->id;
       $tim = Madc::find($id);
+      $this->validate($req,[
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+      ]);
 
       //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
@@ -69,9 +72,9 @@ class MadcController extends Controller
          }
          $tim->update();
       }elseif ($req->pos == 3) {
-         $tim->member_1_email = $req->email;
-         $tim->member_1_name = $req->name;
-         $tim->member_1_phone = $req->phone;
+         $tim->member_email = $req->email;
+         $tim->member_name = $req->name;
+         $tim->member_phone = $req->phone;
          if($file = $req->file('photo')){
             $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('storage/foto'), $photo);
@@ -111,6 +114,10 @@ class MadcController extends Controller
       // Ambil user_id buat dimasukin ke tabel payments
       $user = Auth::user();
 
+      $this->validate($req,[
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+      ]);
+
       if($file = $req->file('photo')){
          $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
          $file->move(public_path('storage/payments'), $photo);
@@ -146,9 +153,9 @@ class MadcController extends Controller
       ]);
 
       if ($user->madc->progress == 4) {
-         $user->madc()->update(['progress' => 5]);
-      }elseif ($user->madc->progress == 7) {
-         $user->madc()->update(['progress' => 8]);
+         $user->madc->update(['progress' => 5]);
+      }elseif ($user->madc->progress == 6) {
+         $user->madc->update(['progress' => 7]);
       }
 
       $submit->save();

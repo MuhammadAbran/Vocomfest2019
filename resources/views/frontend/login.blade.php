@@ -23,13 +23,23 @@
                             <hr class="title-line" />
 
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" name="leader_email" placeholder="Email address" required>
+                                <input type="email" id="inputEmail" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" name="leader_email" placeholder="Email address" required>
                                 <label for="inputEmail">Email address</label>
+                                @if ($errors->has('leader_email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('leader_email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                                <input type="password" id="inputPassword" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" required>
                                 <label for="inputPassword">Password</label>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         
 

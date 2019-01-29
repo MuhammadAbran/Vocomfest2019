@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Payment | WDC')
+@section('title', 'Team Member | WDC')
 
 
 
@@ -9,10 +9,15 @@
   <div class="box">
   <!-- Team Member box -->
 
+    @if($tim->progress == 0)
+    <strong>Harap verifikasi email terlebih dahulu</strong><br>
+    @endif
     <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
-    <button {{$tim->progress <=1?'' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
-  <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
-    
+    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    @if($errors->has('photo'))
+      <br><strong>{{ $errors->first('photo') }}</strong>
+    @endif
     <div class="row team">
       <!-- Team Member Box -->
       @component('components.member_box')
@@ -98,9 +103,9 @@
           Nama <br>
           <input type="text" name="name" value="{{$tim->leader_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim->leader_email}}"><br>
+          <input type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->leader_phone}}">
+          <input type="text" name="phone" value="{{$tim->leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -135,7 +140,7 @@
           Email<br>
           <input type="email" name="email" value="{{$tim->co_leader_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->co_leader_phone}}">
+          <input type="text" name="phone" value="{{$tim->co_leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -170,7 +175,7 @@
           Email<br>
           <input type="email" name="email" value="{{$tim->member_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->member_phone}}">
+          <input type="text" name="phone" value="{{$tim->member_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">

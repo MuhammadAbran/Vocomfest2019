@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Payment | W  DC')
+@section('title', 'Submission | WDC')
 
 
 
@@ -11,9 +11,11 @@
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
 
-        @if($user-> wdc['progress'] < 5 || $user-> wdc['progress'] == 7)
+        @if($user-> wdc['progress'] < 4)
+            <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
+        @elseif($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
             <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-        @elseif($user-> wdc['progress'] == 5 || $user-> wdc['progress'] == 8)
+        @elseif($user-> wdc['progress'] == 5 || $user-> wdc['progress'] == 7)
             <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
         @endif
 
@@ -31,7 +33,7 @@
                     <strong>Nama Tim</strong>
                 </div>
                 <div class="col-md-10">:
-                        <span>hmmm</span>
+                        <span>{{$user->team_name}}</span>
                 </div>
             </div>
 
@@ -43,7 +45,7 @@
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 7)
+            @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
             <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
             @endif
         </div>
@@ -68,7 +70,6 @@
                     <div class="form-group">
                         <label for="tim">Tema :</label>
                         <select name="tema" id="" class="form-control">
-                            <option disabled selected>Pilih Tema</option>
                             <option value="Makanan dan Minuman">Makanan dan Minuman</option>
                             <option value="Kimia">Kimia</option>
                             <option value="Furniture">Furniture</option>
@@ -80,10 +81,8 @@
 
                      <div class="form-group">
                         <label for="tim">Link :</label>
-                        <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" >
+                        <input type="text" class="form-control" name="link" placeholder="http://drive.google.com" required oninvalid="this.setCustomValidity('Harap isi dengan link submission')" oninput="this.setCustomValidity('')">
                     </div>
-                    
-                    <input type="hidden" name="tema" value="1">
 
                     <button type="submit" class="btn btn-custom">Kirim</button>
                     @csrf

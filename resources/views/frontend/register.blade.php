@@ -170,7 +170,7 @@
                                             @endif
                                         </div>
 
-                                        <input type="hidden" name="progress" value="1">
+                                        <input type="hidden" name="progress" value="0">
                                        
                                     </div>
                                     <div class="col-md-10 offset-md-1">

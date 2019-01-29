@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Dashboard | WDC')
+@section('title', 'Dashboard - Vocomfest 2019')
 
 
 
@@ -55,7 +55,7 @@
                         
                     @elseif($user->progress == 3)
                         @slot('status',' timeline-warning')
-                        @slot('description','Berhasil di upload, menunggu pengumuman')  
+                        @slot('description','Berhasil di upload, menunggu konfirmasi admin')  
 
                      @elseif($user->progress >=4)
                         @slot('status',' timeline-success')
@@ -64,13 +64,13 @@
                 @endcomponent
 
                 @component('components.timeline_box')
-                    @slot('title','Submssion #1')
+                    @slot('title','Submission #1')
                     @if($user->progress  < 4)
                         @slot('status',' timeline-danger')
                         @slot('description','Lengkapi Pembayaran terlebih dahulu')  
                     @elseif($user->progress == 4)
                         @slot('status',' timeline-danger')
-                        @slot('description','Belum upload submssion #1')  
+                        @slot('description','Belum upload submission #1')  
                         
                     @elseif($user->progress == 5)
                         @slot('status',' timeline-warning')
@@ -86,28 +86,27 @@
                     @endif
                 @endcomponent
 
+                @if($user->progress  > 5 & $user->progress < 99)
                 @component('components.timeline_box')
-                    @slot('title','Submssion #2')
-                    @if($user->progress  <= 6)
+                    @slot('title','Submission #2')
+                    @if($user->progress == 6)
                         @slot('status',' timeline-danger')
-                        @slot('description','Lengkapi Pembayaran terlebih dahulu')  
-                    @elseif($user->progress == 4)
-                        @slot('status',' timeline-danger')
-                        @slot('description','Belum upload submssion #1')  
+                        @slot('description','Belum upload Submission #2')  
                         
-                    @elseif($user->progress == 5)
+                    @elseif($user->progress == 7)
                         @slot('status',' timeline-warning')
                         @slot('description','Berhasil di upload, menunggu pengumuman')  
 
-                     @elseif($user->progress <= 5 || $user->progress == 99)
+                     @elseif($user->progress <= 7 || $user->progress == 99)
                         @slot('status',' timeline-danger')
-                        @slot('description','Mohon maaf, anda tidak lolos seleksi tahap #1')  
+                        @slot('description','Mohon maaf, anda tidak lolos seleksi tahap #2')  
 
-                    @elseif($user->progress >= 6)
+                    @elseif($user->progress >= 8)
                         @slot('status',' timeline-success')
-                        @slot('description','Selamat Anda lolos tahap #1')  
+                        @slot('description','Selamat Anda lolos tahap #2')  
                     @endif
                 @endcomponent
+                @endif
                   
                  <!-- End Timeline box -->  
              </div>
