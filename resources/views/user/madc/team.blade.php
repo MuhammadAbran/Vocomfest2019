@@ -9,9 +9,15 @@
   <div class="box">
   <!-- Team Member  -->
 
-  <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
-    <button {{$tim->progress <=1?'' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
-  <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    @if($tim->progress == 0)
+    <strong>Harap verifikasi email terlebih dahulu</strong><br>
+    @endif
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    @if($errors->has('photo'))
+      <br><strong>{{ $errors->first('photo') }}</strong>
+    @endif
 
     <div class="row team">
       <!-- Team Member Box -->
@@ -39,9 +45,9 @@
 
       @component('components.member_box')
         @slot('title', 'Anggota #2')
-        @slot('avatar',$tim->member_1_avatar)
-        @slot('name',$tim->member_1_name)
-        @slot('email', $tim->member_1_email)
+        @slot('avatar',$tim->member_avatar)
+        @slot('name',$tim->member_name)
+        @slot('email', $tim->member_email)
         @slot('button')
         <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Edit Data</button>
         @endslot
@@ -99,7 +105,7 @@
           Email<br>
           <input type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->leader_phone}}">
+          <input type="text" name="phone" value="{{$tim->leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -134,7 +140,7 @@
           Email<br>
           <input type="email" name="email" value="{{$tim->co_leader_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->co_leader_phone}}">
+          <input type="text" name="phone" value="{{$tim->co_leader_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -165,11 +171,11 @@
           <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=3>
           Nama <br>
-          <input type="text" name="name" value="{{$tim->member_1_name}}"><br>
+          <input type="text" name="name" value="{{$tim->member_name}}"><br>
           Email<br>
-          <input type="email" name="email" value="{{$tim->member_1_email}}"><br>
+          <input type="email" name="email" value="{{$tim->member_email}}"><br>
           No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->member_1_phone}}">
+          +62<input type="text" name="phone" value="{{$tim->member_phone}}">
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">

@@ -40,7 +40,9 @@ class WdcController extends Controller
        $leader = Auth::user();
        $id = $req->id;
        $tim = Wdc::find($id);
-
+       $this->validate($req,[
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+       ]);
        //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
        if ($req->pos == 1) {
@@ -99,6 +101,10 @@ class WdcController extends Controller
        // Ambil user_id buat dimasukin ke tabel payments
        $user = Auth::user();
 
+       $this->validate($req,[
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+       ]);
+       
        if($file = $req->file('photo')){
           $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
           $file->move(public_path('storage/payments'), $photo);
@@ -134,8 +140,8 @@ class WdcController extends Controller
 
        if ($user->wdc->progress == 4) {
          $user->wdc->update(['progress' => 5]);
-       }elseif ($user->wdc->progress == 7) {
-         $user->wdc->update(['progress' => 8]);
+       }elseif ($user->wdc->progress == 6) {
+         $user->wdc->update(['progress' => 7]);
        }
 
        $submit->save();

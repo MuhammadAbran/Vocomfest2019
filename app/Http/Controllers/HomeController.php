@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['news_all'] = News::where('is_published','1')->get();
-
+        
         return view('frontend.home',$data);
     }
 

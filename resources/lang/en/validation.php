@@ -158,6 +158,11 @@ return [
             'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
             'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
         ],
+        'photo' => [
+            'image' => 'Harap upload file berupa foto',
+            'uploaded' => 'Harap upload foto dengan ukuran maksimal 2 MB',
+            'mimes' => 'Harap upload foto berupa jpg, jpeg, atau png'
+        ]
     ],
 
     /*
