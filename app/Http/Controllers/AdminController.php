@@ -180,7 +180,7 @@ class AdminController extends Controller
    public function wdcTeams()
    {
 
-      return view('user.admin.wdc_teams', compact(['users', 'i']));
+      return view('user.admin.wdc_teams');
    }
 
    public function galleries()
