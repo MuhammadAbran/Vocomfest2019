@@ -33,6 +33,7 @@
         @endslot
       @endcomponent
 
+      @if($tim->co_leader_name != null & $tim->co_leader_email != null & $tim->co_leader_phone != null)
       @component('components.member_box')
         @slot('title', 'Anggota #1')
         @slot('avatar',$tim->co_leader_avatar)
@@ -42,7 +43,9 @@
         <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">Edit Data</button>
         @endslot
       @endcomponent
+      @endif
 
+      @if($tim->member_name != null & $tim->member_email != null & $tim->member_phone != null)
       @component('components.member_box')
         @slot('title', 'Anggota #2')
         @slot('avatar',$tim->member_avatar)
@@ -52,6 +55,7 @@
         <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Edit Data</button>
         @endslot
       @endcomponent
+      @endif
       
     </div>
         <!-- End of Team member -->
