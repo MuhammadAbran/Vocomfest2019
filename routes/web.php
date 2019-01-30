@@ -15,7 +15,7 @@ Route::get('/page/web-design-competition', 'HomeController@wdcPage')->name('wdcP
 Route::get('/page/mobile-apps-deevelopment-competition', 'HomeController@madcPage')->name('madcPage');
 Route::get('/page/international-collegiate-programming-contest', 'HomeController@icpcPage')->name('icpcPage');
 Route::get('/page/national-technology-festival', 'HomeController@ntfPage')->name('ntfPage');
-Route::get('/page/informasi/{id}', 'HomeController@newsPage')->name('newsPage');
+Route::get('/post/{id}', 'HomeController@newsPage')->name('newsPage');
 
 
 //Ajax Request Data
