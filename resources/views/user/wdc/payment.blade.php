@@ -86,7 +86,7 @@
 
                     <div class="form-group">
                         <label for="bukti">Bukti Pembayaran</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required oninvalid="this.setCustomValidity('Pilih file yang akan diupload')" oninput="this.setCustomValidity('')">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
                     </div>
                     <button type="submit" class="btn btn-custom">Kirim</button>
                 </form>
