@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title') - Vocomfest 2019</title>
-
+    <link rel="shortcut icon" type="image/png" href="{!! asset('assets/img/logo_v.png') !!}"/>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="{!! asset('assets/vendor/bootstrap/bootstrap.min.css') !!}" >
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">

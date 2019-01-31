@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gallary;
 use App\News;
 use Illuminate\Http\Request;
 use App\User;
@@ -27,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['news_all'] = News::where('is_published','1')->get();
-        
+        $data['sponsorship'] = Gallary::where('status','1')->get();
         return view('frontend.home',$data);
     }
 
