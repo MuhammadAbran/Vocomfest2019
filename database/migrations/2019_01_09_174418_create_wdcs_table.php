@@ -23,7 +23,7 @@ class CreateWdcsTable extends Migration
 
 
             $table->string('co_leader_name')->nullable();
-            $table->string('co_leader_email'->nullable());
+            $table->string('co_leader_email')->nullable();
             $table->string('co_leader_phone')->nullable();
             $table->string('co_leader_avatar')->default('avatar.png');
 
