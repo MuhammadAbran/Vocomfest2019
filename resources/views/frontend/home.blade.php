@@ -4,11 +4,6 @@
 
 @section('title','Home')
 
-@section('star_animation')
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-@endsection
 
 
 @section('content')
@@ -222,7 +217,7 @@
     <!-- End News Section  -->
 
     <!-- start galleries section-->
-    <section id="galleries">
+    {{-- <section id="galleries">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -246,7 +241,7 @@
                <img src="assets/img/cat1.jpg" alt="">
             </div>
         </div>
-    </section>
+    </section> --}}
     
     <!-- End of galleries Section  -->
       
