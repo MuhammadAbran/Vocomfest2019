@@ -21,6 +21,7 @@ class CreateWdcsTable extends Migration
             $table->string('instance_name');
             $table->string('instance_address');
 
+
             $table->string('co_leader_name');
             $table->string('co_leader_email');
             $table->string('co_leader_phone');
@@ -30,6 +31,7 @@ class CreateWdcsTable extends Migration
             $table->string('member_email');
             $table->string('member_phone');
             $table->string('member_avatar')->default('avatar.png');
+
             $table->integer('progress')->default(1);
             $table->integer('user_id')->unsigned();
 

@@ -31,6 +31,7 @@ class CreateMadcsTable extends Migration
             $table->string('member_phone');
             $table->string('member_avatar')->default('avatar.png');
             
+
             $table->integer('progress')->default(1);
             $table->integer('user_id')->unsigned();
 
