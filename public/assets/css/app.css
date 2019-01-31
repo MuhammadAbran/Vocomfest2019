@@ -211,7 +211,8 @@ nav.navScroll{
 	padding-left: 100px;
 	min-height: 100vh;
 	background: url('../img/header_bg.png') no-repeat;
-	background-size:100% 100%;
+    background-size:cover;
+    background-position: top right;
 }
 
 
@@ -226,13 +227,16 @@ nav.navScroll{
 
 @media screen and (max-width: 768px) {
     #header{
-        padding-top: 150px;
+       padding-top:150px;
         padding-left: 0px;
         text-align: left;
+        background: url('../img/header_bg.png') no-repeat;
+        background-size:cover;
+        background-position: top right;
     }
     #header .headline{
         margin-left:0px;
-        color:black;
+        color:white;
     }
     #header .call-btn{
         margin-top:20px;
@@ -240,6 +244,15 @@ nav.navScroll{
     
     .m-margin10{
         margin:10px 0px;
+    }
+    #header .btn-transparent{
+        color:white;
+        background: transparent;
+        border:1px solid  white;
+    }
+    #header .btn-transparent:hover{
+        background: white;
+        color:black
     }
 }
 
@@ -548,7 +561,7 @@ nav.navScroll{
 /*contact*/
 #contact{
     padding-top:20px;
-    height:60vh;
+    min-height:60vh;
     background: white;
 	background-size: 100% 100%;
 }
