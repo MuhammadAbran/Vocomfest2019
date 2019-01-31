@@ -12,47 +12,50 @@
 
 @section('content')
     <div class="box">
-         <!-- Timeline -->
-        <div class="timeline">
-            <div class="timeline__group">
-                <span class="timeline__year">Timeline</span>
-
-                <!-- Timeline box -->
-                <div class="timeline__box  timeline-danger">
-                    <div class="timeline__date">
-                        <span class="timeline__day">1-30</span>
-                        <span class="timeline__month">Feb</span>
-                    </div>
-                    <div class="timeline__post">
-                        <div class="timeline__content">
-                        <h1>Register</h1>
-                        <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="timeline__box  timeline-danger">
-                    <div class="timeline__date">
-                        <span class="timeline__day">1-30</span>
-                        <span class="timeline__month">Feb</span>
-                    </div>
-                    <div class="timeline__post">
-                        <div class="timeline__content">
-                        <h1>Verifikasi Email</h1>
-                        <p>Attends the Philadelphia Museum School of Industrial Art. Studies design with Alexey Brodovitch, art director at Harper's Bazaar, and works as his assistant.</p>
-                        </div>
-                    </div>
-                </div>        
-                  
-                 <!-- End Timeline box -->  
-             </div>
+         <!-- Chart -->
+         
+         <div style="width:100%;height: 500px">
+            <canvas id="myChart"></canvas>
         </div>
-
-        <!-- End Of timeline -->
-        <ul class="timeline-info">
-            <div class="danger"><span>Belum Selesai</span></div>
-            <div class="warning"><span>Menunggu Konfirmasi</span></div>
-            <div class="success"><span>Selesai</span></div>
-        </ul>
-    </div>
 @endsection
+@push('scripts')
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Wdc", "Madc", "NTF", "ICPC","Total Peserta"],
+            datasets: [{
+                label: '# Pendaftar',
+                data: [{{$madc_all}}, {{$wdc_all}}, 0, 0, {{$total}}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+@endpush

@@ -20,7 +20,10 @@ class AdminController extends Controller
 
    public function index()
    {
-      return view('user.admin.dashboard');
+      $data['total'] = User::count();
+      $data['madc_all'] = User::where('role',2)->count();
+      $data['wdc_all'] = User::where('role',3)->count();
+      return view('user.admin.dashboard',$data);
    }
 
    public function madcTeams()
