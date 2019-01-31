@@ -114,7 +114,7 @@
 
                                         <div class="form-group">
                                             <label for="member1Name">Nama Anggota #1</label>
-                                            <input type="text" class="form-control{{ $errors->has('co_leader_name') ? ' is-invalid' : '' }}" id="member1Name"  placeholder="Nama Anggota #1" name="co_leader_name" value="{{ old('co_leader_name') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('co_leader_name') ? ' is-invalid' : '' }}" id="member1Name"  placeholder="Nama Anggota #1" name="co_leader_name" value="{{ old('co_leader_name') }}">
                                             @if ($errors->has('co_leader_name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('co_leader_name') }}</strong>
@@ -124,7 +124,7 @@
 
                                         <div class="form-group">
                                             <label for="member1Email">Email Anggota#1</label>
-                                            <input type="text" class="form-control{{ $errors->has('co_leader_email') ? ' is-invalid' : '' }}" id="member1Email" placeholder="Email Anggota #1" name="co_leader_email" value="{{ old('co_leader_email') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('co_leader_email') ? ' is-invalid' : '' }}" id="member1Email" placeholder="Email Anggota #1" name="co_leader_email" value="{{ old('co_leader_email') }}">
                                             @if ($errors->has('co_leader_email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('co_leader_email') }}</strong>
@@ -134,7 +134,7 @@
 
                                         <div class="form-group">
                                             <label for="member1Phone">No hp</label>
-                                            <input type="text" class="form-control{{ $errors->has('co_leader_phone') ? ' is-invalid' : '' }}" id="member1Phone" placeholder="Nomor Hp Anggota #1" name="co_leader_phone" value="{{ old('co_leader_phone') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('co_leader_phone') ? ' is-invalid' : '' }}" id="member1Phone" placeholder="Nomor Hp Anggota #1" name="co_leader_phone" value="{{ old('co_leader_phone') }}">
                                             @if ($errors->has('co_leader_phone'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('co_leader_phone') }}</strong>
@@ -144,7 +144,7 @@
 
                                         <div class="form-group">
                                             <label for="member2Name">Nama Anggota #2</label>
-                                            <input type="text" class="form-control{{ $errors->has('member_1_name') ? ' is-invalid' : '' }}" id="member2Name" placeholder="Nama Anggota #2" name="member_1_name" value="{{ old('member_1_name') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('member_1_name') ? ' is-invalid' : '' }}" id="member2Name" placeholder="Nama Anggota #2" name="member_1_name" value="{{ old('member_1_name') }}">
                                             @if ($errors->has('member_1_name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('member_1_name') }}</strong>
@@ -154,7 +154,7 @@
 
                                         <div class="form-group">
                                             <label for="member2Email">Email Anggota #2</label>
-                                            <input type="text" class="form-control{{ $errors->has('member_1_email') ? ' is-invalid' : '' }}" id="member2Email" placeholder="Email Anggota #1" name="member_1_email" value="{{ old('member_1_email') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('member_1_email') ? ' is-invalid' : '' }}" id="member2Email" placeholder="Email Anggota #1" name="member_1_email" value="{{ old('member_1_email') }}">
                                             @if ($errors->has('member_1_email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('member_1_email') }}</strong>
@@ -164,7 +164,7 @@
 
                                         <div class="form-group">
                                             <label for="member2Phone">No Hp</label>
-                                            <input type="text" class="form-control{{ $errors->has('member_1_phone') ? ' is-invalid' : '' }}" id="member2Phone"  placeholder="No Hp Anggota #2" name="member_1_phone" value="{{ old('member_1_phone') }}" required>
+                                            <input type="text" class="form-control{{ $errors->has('member_1_phone') ? ' is-invalid' : '' }}" id="member2Phone"  placeholder="No Hp Anggota #2" name="member_1_phone" value="{{ old('member_1_phone') }}">
                                             @if ($errors->has('member_1_phone'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('member_1_phone') }}</strong>
