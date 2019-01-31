@@ -22,14 +22,14 @@ class CreateWdcsTable extends Migration
             $table->string('instance_address');
 
 
-            $table->string('co_leader_name');
-            $table->string('co_leader_email');
-            $table->string('co_leader_phone');
+            $table->string('co_leader_name')->nullable();
+            $table->string('co_leader_email')->nullable();
+            $table->string('co_leader_phone')->nullable();
             $table->string('co_leader_avatar')->default('avatar.png');
 
-            $table->string('member_name');
-            $table->string('member_email');
-            $table->string('member_phone');
+            $table->string('member_name')->nullable();
+            $table->string('member_email')->nullable();
+            $table->string('member_phone')->nullable();
             $table->string('member_avatar')->default('avatar.png');
 
             $table->integer('progress')->default(1);
