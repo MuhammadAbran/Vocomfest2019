@@ -33,7 +33,6 @@
 
 <body>
     
-    @yield('star_animation')
     <!-- Navigation -->
     @yield('navigation')
   

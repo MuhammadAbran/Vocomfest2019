@@ -15,19 +15,19 @@
         </ul>
     </li>
     <li>
-        <a href="{{route('admin.galleries')}}"><i class="fas fa-briefcase"></i>  Galleries</a>
-    </li>
-     <li>
-        <a href="{{route('admin.news')}}"><i class="fas fa-briefcase"></i> News</a>
-    </li>
-    <li>
         <a href="{{route('admin.payments')}}"><i class="fas fa-briefcase"></i> Payments</a>
     </li>
     <li>
         <a href="{{route('admin.submissions')}}"><i class="fas fa-briefcase"></i> Submissions</a>
     </li>
     <li>
+        <a href="{{route('admin.galleries')}}"><i class="fas fa-briefcase"></i> Sponsorship</a>
+    </li>
+     <li>
+        <a href="{{route('admin.news')}}"><i class="fas fa-briefcase"></i> News</a>
+    </li>
+    <li>
             <a href="{{route('admin.setting')}}"><i class="fas fa-briefcase"></i> Settings</a>
-        </li>
+    </li>
 </ul>
 @endsection

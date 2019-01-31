@@ -257,20 +257,12 @@
             </div>
     
             <div class="row bottom-animated">
-                <div class="col-xs-6 col-sm-6 col-md-3">
-                    <img class="logo mx-auto d-block" src="assets/img/telkomsel.png" alt="">
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-3">
-                    <img class="logo mx-auto d-block" src="assets/img/telkomsel.png" alt="">
-                </div>
-
-                <div class="col-xs-6 col-sm-6 col-md-3">
-                    <img class="logo mx-auto d-block" src="assets/img/telkomsel.png" alt="">
-                </div>
-
-                <div class="col-xs-6 col-sm-6 col-md-3">
-                    <img class="logo mx-auto d-block" src="assets/img/telkomsel.png" alt="">
-                </div>
+                
+                @foreach ($sponsorship as $item)
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <img class="logo mx-auto d-block" src="{{asset('storage/gallaries')}}/{{$item->gallaries_path}}" alt="{{$item->title}}">
+                    </div> 
+                @endforeach
              </div>
          </div>
     </section>

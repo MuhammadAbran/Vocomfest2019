@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
          <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-         <li class="breadcrumb-item active" aria-current="page">Galleries</li>
+         <li class="breadcrumb-item active" aria-current="page">Sponsorship</li>
       </ol>
      </nav>
 @endsection
@@ -57,7 +57,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLongTitle">Tambah Gallary</h5>
+	        <h5 class="modal-title" id="exampleModalLongTitle">Tambah Sponsorship</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
