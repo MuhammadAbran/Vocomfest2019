@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Wdc;
+use App\Setting;
 use App\Payment;
 use App\Submission;
 
@@ -91,9 +92,10 @@ class WdcController extends Controller
     public function payment()
     {
       // Buat ambil user
-      $user = Auth::user();
+      $data['user'] = Auth::user();
+      $data['setting'] = Setting::find(2);
 
-      return view('user.wdc.payment', compact('user'));
+      return view('user.wdc.payment', $data);
     }
 
     public function paymentUpload(Request $req)
@@ -124,9 +126,10 @@ class WdcController extends Controller
 
     public function submission()
     {
-        $user = Auth::user();
-
-        return view('user.wdc.submission', compact('user'));
+         $data['user'] = Auth::user();
+         $data['setting'] = Setting::find(3);
+         $data['submssion_2'] = Setting::find(4);
+         return view('user.wdc.submission', $data);
     }
 
     public function submissionUpload(Request $req)

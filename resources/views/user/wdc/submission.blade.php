@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Submission | WDC')
+@section('title', 'Submission')
 
 
 
@@ -10,14 +10,18 @@
                      <!-- Payment Box -->
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
-
-        @if($user-> wdc['progress'] < 4)
-            <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
-        @elseif($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
-            <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-        @elseif($user-> wdc['progress'] == 5 || $user-> wdc['progress'] == 7)
-            <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
-        @endif
+            
+            @if($setting->is_active == false || $submission_2->is_active == false)
+                <p class="text-danger"><strong>Mohon maaf, priode submission telah lewat!</strong></p>
+            @else
+                @if($user-> wdc['progress'] < 4)
+                    <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
+                @elseif($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
+                    <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
+                @elseif($user-> wdc['progress'] == 5 || $user-> wdc['progress'] == 7)
+                    <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
+                @endif
+            @endif
 
              <div class="row submission-info ">
                  <div class="col-md-2">
@@ -45,8 +49,10 @@
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
-            <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
+            @if($setting->is_active == true && $submssion_2->is_active == true)
+                @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
+                <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
+                @endif
             @endif
         </div>
                      <!-- End Payment  Box-->

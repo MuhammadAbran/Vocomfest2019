@@ -23,8 +23,7 @@
                             <hr class="title-line" />
 
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" name="leader_email" placeholder="Email address" required>
-                                <label for="inputEmail">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" name="leader_email" placeholder="Alamat Email" required>
                                 @if ($errors->has('leader_email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('leader_email') }}</strong>
@@ -33,8 +32,8 @@
                             </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" required>
-                                <label for="inputPassword">Password</label>
+                                    <br />
+                                <input type="password" id="inputPassword" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" required>             
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -42,7 +41,7 @@
                                 @endif
                             </div>
                         
-
+                            <br />
                             <button class="btn form-btn btn-lg btn-green btn-block text-uppercase" type="submit">Masuk</button>
                             <a class="d-block text-center mt-2 small" href="{{route('register')}}">Daftar</a>
                             <hr class="my-4">

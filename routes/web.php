@@ -69,6 +69,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
    Route::get('/admin/submissions', 'AdminController@submissions')->name('admin.submissions');
+
+   Route::get('/admin/setting', 'AdminController@setting')->name('admin.setting');
+   Route::post('/admin/settingUpdate', 'AdminController@settingUpdate')->name('admin.settingUpdate');
 });
 
 Route::middleware(['auth', 'madc'])->group(function(){

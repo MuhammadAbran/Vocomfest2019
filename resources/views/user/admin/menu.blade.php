@@ -26,5 +26,8 @@
     <li>
         <a href="{{route('admin.submissions')}}"><i class="fas fa-briefcase"></i> Submissions</a>
     </li>
+    <li>
+            <a href="{{route('admin.setting')}}"><i class="fas fa-briefcase"></i> Settings</a>
+        </li>
 </ul>
 @endsection

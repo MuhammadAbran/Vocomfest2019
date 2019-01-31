@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Dashboard - Vocomfest 2019')
+@section('title', 'Dashboard')
 
 
 
