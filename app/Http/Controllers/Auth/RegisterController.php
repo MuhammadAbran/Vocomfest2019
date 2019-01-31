@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
+use App\Setting;
 use Illuminate\Support\Facades\Redirect;
 use App\Wdc;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Mail\VerifyMail;
 
 class RegisterController extends Controller
 {
@@ -62,12 +64,12 @@ class RegisterController extends Controller
             'leader_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
             'leader_email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'leader_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
-            'co_leader_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
-            'co_leader_email' => ['required', 'string', 'email', 'max:191'],
-            'co_leader_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08, 089999999999999', 'max:15'],
-            'member_1_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
-            'member_1_email' => ['required', 'string', 'email', 'max:191'],
-            'member_1_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
+            'co_leader_name' => ['nullable', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'co_leader_email' => ['nullable', 'string', 'email', 'max:191'],
+            'co_leader_phone' => ['nullable', 'regex:/(08)/', 'min:7', 'digits_between:08, 089999999999999', 'max:15'],
+            'member_1_name' => ['nullable', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'member_1_email' => ['nullable', 'string', 'email', 'max:191'],
+            'member_1_phone' => ['nullable', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
         ]);
     }
 
@@ -153,6 +155,9 @@ class RegisterController extends Controller
     }
 
     public function showRegistrationForm() {
-        return view('frontend.register');
+
+        $data['setting'] = Setting::find(1);
+
+        return view('frontend.register',$data);
     }
 }
