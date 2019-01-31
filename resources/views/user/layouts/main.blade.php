@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>@yield('title') - Vocomfest 2019</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="{!! asset('assets/vendor/bootstrap/bootstrap.min.css') !!}" >

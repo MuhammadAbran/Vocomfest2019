@@ -7,6 +7,7 @@ use App\User;
 use App\News;
 use App\Submission;
 use Session;
+use App\Setting;
 use App\Payment;
 use Yajra\Datatables\Datatables;
 
@@ -180,7 +181,7 @@ class AdminController extends Controller
    public function wdcTeams()
    {
 
-      return view('user.admin.wdc_teams', compact(['users', 'i']));
+      return view('user.admin.wdc_teams');
    }
 
    public function galleries()
@@ -599,5 +600,19 @@ class AdminController extends Controller
       }
    }
 
+   public function setting()
+   {
+      $data['settings'] = Setting::all();
+
+      return view('user.admin.setting',$data);
+   }
+   public function settingUpdate(Request $request)
+   {
+      $data = Setting::find($request->id);
+
+      $data->is_active = $request->is_active ;
+         
+       $data->save();
+   }
 
 }

@@ -1,23 +1,27 @@
 @extends('user.layouts.main')
 
 @extends('user.madc.menu')
-@section('title', 'Team | MADC')
+@section('title', 'Pembayaran')
 
 @section('content')
 	<div class="box">
          <!-- Payment Box -->
      	<div class="payment">
-         	<h1 class="title">Pembayaran</h1>
-        <!-- Tulisan berubah sesuai progress tim -->
-        @if($user->madc['progress'] < 2)
-         	<div class="status">Status : <span class="text-danger" >Belum bisa pembayaran, kunci data tim terlebih dahulu!</span></div>
-        @elseif($user->madc['progress'] == 2)
-         	<div class="status">Status : <span class="text-danger" >Mohon untuk segera upload pembayaran</span></div>
-        @elseif($user->madc['progress'] == 3)
-            <div class="status">Status : <span class="text-warning" >Menunggu Konfirmasi</span></div>
-        @elseif($user->madc['progress'] > 3)
-         	<div class="status">Status : <span class="text-success" >Sudah melakukan pembayaran</span></div>
-        @endif
+            <h1 class="title">Pembayaran</h1>
+            @if($setting->is_active == false)
+             <p class="text-danger"><strong>Mohon maaf, priode pembayaran telah lewat!</strong></p>
+            @else
+                <!-- Tulisan berubah sesuai progress tim -->
+                @if($user->madc['progress'] < 2)
+                    <div class="status">Status : <span class="text-danger" >Belum bisa pembayaran, kunci data tim terlebih dahulu!</span></div>
+                @elseif($user->madc['progress'] == 2)
+                    <div class="status">Status : <span class="text-danger" >Mohon untuk segera upload pembayaran</span></div>
+                @elseif($user->madc['progress'] == 3)
+                    <div class="status">Status : <span class="text-warning" >Menunggu Konfirmasi</span></div>
+                @elseif($user->madc['progress'] > 3)
+                    <div class="status">Status : <span class="text-success" >Sudah melakukan pembayaran</span></div>
+                @endif
+            @endif
             <div class="row payment-info ">
                 <div class="col-md-2">
                     <strong>Kompetisi</strong>
@@ -45,7 +49,7 @@
                 </div>
             </div>
             <!-- Button upload akan hilang kalau Pembayaran sudah dikonfirmasi admin -->
-        @if($user->madc['progress'] == 2)
+        @if($user->madc['progress'] == 2 && $setting->is_active == true)
             <button  type="button" data-toggle="modal" data-target="#uploadPayment" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Bukti Pembayaran</button>
         @endif
         @if($errors->has('photo'))

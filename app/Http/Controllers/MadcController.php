@@ -7,6 +7,7 @@ use App\User;
 use App\Madc;
 use Illuminate\Support\Facades\Auth;
 use App\Payment;
+use App\Setting;
 use DB;
 use App\Submission;
 
@@ -104,9 +105,12 @@ class MadcController extends Controller
    public function payment()
    {
       // Buat ambil user
-      $user = Auth::user();
+      $data['user'] = Auth::user();
 
-      return view('user.madc.payment', compact('user'));
+      $data['setting'] = Setting::find(2);
+
+
+      return view('user.madc.payment',$data);
    }
 
    public function paymentUpload(Request $req)
@@ -137,9 +141,11 @@ class MadcController extends Controller
 
    public function submission()
    {
-      $user = Auth::user();
+      $data['user'] = Auth::user();
+      $data['setting'] = Setting::find(3);
+      $data['submission_2'] = Setting::find(4);
 
-      return view('user.madc.submission', compact('user'));
+      return view('user.madc.submission', $data);
    }
 
    public function submissionUpload(Request $req)

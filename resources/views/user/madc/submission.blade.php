@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.madc.menu')
-@section('title', 'Team | MADC')
+@section('title', 'Submssion')
 
 
 
@@ -11,13 +11,17 @@
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
 
-        @if($user-> madc['progress'] < 4)
-            <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
-        @elseif($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
-            <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
-        @elseif($user-> madc['progress'] == 5 || $user-> madc['progress'] == 7)
-            <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
-        @endif
+            @if($setting->is_active == false || $submission_2->is_active == false)
+                <p class="text-danger"><strong>Mohon maaf, priode submission telah lewat!</strong></p>
+            @else
+                @if($user-> madc['progress'] < 4)
+                    <div class="status">Status : <span class="text-danger" >Harap melakukan pembayaran terlebih dahulu</span></div>
+                @elseif($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
+                    <div class="status">Status : <span class="text-danger" >Berkas Belum di Unggah</span></div>
+                @elseif($user-> madc['progress'] == 5 || $user-> madc['progress'] == 7)
+                    <div class="status">Status : <span class="text-warning" >Berkas Sudah di Unggah, Menunggu Pengumuman</span></div>
+                @endif
+            @endif
 
              <div class="row submission-info ">
                  <div class="col-md-2">
@@ -45,8 +49,10 @@
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
-            <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
+            @if($setting->is_active == true && $submission_2->is_active == true)
+                @if($user-> madc['progress'] == 4 || $user-> madc['progress'] == 6)
+                <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
+                @endif
             @endif
         </div>
                      <!-- End Payment  Box-->

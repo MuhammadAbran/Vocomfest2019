@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
+use App\Setting;
 use Illuminate\Support\Facades\Redirect;
 use App\Wdc;
 use Illuminate\Support\Facades\Session;
@@ -154,6 +155,9 @@ class RegisterController extends Controller
     }
 
     public function showRegistrationForm() {
-        return view('frontend.register');
+
+        $data['setting'] = Setting::find(1);
+
+        return view('frontend.register',$data);
     }
 }

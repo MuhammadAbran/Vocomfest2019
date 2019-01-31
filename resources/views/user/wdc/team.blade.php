@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.wdc.menu')
-@section('title', 'Team Member | WDC')
+@section('title', 'Team Member')
 
 
 

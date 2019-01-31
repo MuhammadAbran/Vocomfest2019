@@ -17,7 +17,9 @@
                         <div class="card-body">
                         <h1 class="sec-title text-center">Register</h1>
                         <hr class="title-line" />
-                        
+                        @if($setting->is_active == false)
+                            <p class="text-center"><strong>mohon maaf, priode registrasi telah di tutup</strong></p>
+                        @else
                             <form  id="madc-form" class="form-signin" action="{{ route('register') }}" method="post">
                                 <div class="row">
                                     <div class="col-md-5 offset-md-1">
@@ -51,7 +53,7 @@
                                         </div>
 
 
-                                       <div class="form-group">
+                                    <div class="form-group">
                                             <label for="leaderEmail">Email Ketua</label>
                                             <input type="email" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" id="leaderEmail"  placeholder="Email Ketua" name="leader_email" value="{{ old('leader_email') }}" required>
                                             @if ($errors->has('leader_email'))
@@ -76,7 +78,7 @@
                                             <input type="password" class="form-control" id="password-confirm" placeholder="Ulang Kata Sandi" name="password_confirmation" required>
                                         </div>
 
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <label for="instanceName">Nama Instansi</label>
                                             <input type="text" class="form-control{{ $errors->has('instance_name') ? ' is-invalid' : '' }}" id="instanceName" placeholder="Nama Instansi" name="instance_name" value="{{ old('instance_name') }}" required>
                                             @if ($errors->has('instance_name'))
@@ -100,7 +102,7 @@
 
                                     <div class="col-md-5">
                                         
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <label for="teamName">Nama Tim</label>
                                             <input type="text" class="form-control{{ $errors->has('team_name') ? ' is-invalid' : '' }}" id="teamName" placeholder="Nama Tim" name="team_name" value="{{ old('team_name') }}" required>
                                             @if ($errors->has('team_name'))
@@ -171,7 +173,7 @@
                                         </div>
 
                                         <input type="hidden" name="progress" value="0">
-                                       
+                                    
                                     </div>
                                     <div class="col-md-10 offset-md-1">
                                         <button class="btn btn-lg btn-green btn-block text-uppercase" type="submit">Daftar</button>
@@ -182,6 +184,7 @@
                                 </div>
                                 @csrf
                             </form>
+                            @endif
                         </div>
                     </div>
 

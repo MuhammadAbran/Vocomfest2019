@@ -15,7 +15,7 @@ Route::get('/page/web-design-competition', 'HomeController@wdcPage')->name('wdcP
 Route::get('/page/mobile-apps-deevelopment-competition', 'HomeController@madcPage')->name('madcPage');
 Route::get('/page/international-collegiate-programming-contest', 'HomeController@icpcPage')->name('icpcPage');
 Route::get('/page/national-technology-festival', 'HomeController@ntfPage')->name('ntfPage');
-Route::get('/page/informasi/{id}', 'HomeController@newsPage')->name('newsPage');
+Route::get('/post/{id}', 'HomeController@newsPage')->name('newsPage');
 
 
 //Ajax Request Data
@@ -69,6 +69,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/galleries', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
    Route::get('/admin/submissions', 'AdminController@submissions')->name('admin.submissions');
+
+   Route::get('/admin/setting', 'AdminController@setting')->name('admin.setting');
+   Route::post('/admin/settingUpdate', 'AdminController@settingUpdate')->name('admin.settingUpdate');
 });
 
 Route::middleware(['auth', 'madc'])->group(function(){

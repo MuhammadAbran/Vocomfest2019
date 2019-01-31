@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.madc.menu')
-@section('title', 'Team | MADC')
+@section('title', 'Team Member')
 
 
 
