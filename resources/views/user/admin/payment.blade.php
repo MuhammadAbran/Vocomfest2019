@@ -38,7 +38,7 @@
           </div>
           <div class="modal-body">
               <p>Anda yakin ingin <strong>menghapus</strong> Pembayaran ini?</p>
-              <button id="deletePayment" type="button" class="btn btn-danger delete_payment" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+              <button id="" type="button" class="btn btn-danger delete_payment" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
               <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
 
           </div>
@@ -80,6 +80,11 @@
             method: "GET",
             data: {id: id},
             success: function(){
+               Swal.fire({
+                  type: 'success',
+                  title: 'Berhasil dikonfirmasi!',
+                  text: 'Pembayaran yang anda pilih telah dikonfirmasi!',
+               });
                $('#payment-tables').DataTable().ajax.reload();
             }
          });
@@ -96,6 +101,11 @@
             method: "GET",
             data: {id: id},
             success: function(){
+                  Swal.fire({
+                     type: 'error',
+                     title: 'Konfirmasi Ditolak!',
+                     text: 'Pembayaran yang anda pilih Tidak terkonfirmasi!',
+                  });
                $('#payment-tables').DataTable().ajax.reload();
             }
          });
@@ -105,7 +115,7 @@
       //Delete Payments
       $(document).on('click', '.delete-payment-data', function(){
          var id = $(this).attr("id");
-         $('#deletePayment').attr("id", id);
+         $('.delete_payment').attr("id", id);
       });
 
       $(document).on('click', '.delete_payment', function(){
@@ -118,6 +128,11 @@
             method: "GET",
             data: {id: id},
             success: function(){
+               Swal.fire({
+                  type: 'success',
+                  title: 'Berhasil dihapus!',
+                  text: 'Pembayaran yang anda pilih telah dihapus!',
+               });
                $('#payment-tables').DataTable().ajax.reload();
             }
          });

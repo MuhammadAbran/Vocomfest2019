@@ -138,6 +138,13 @@
                      else if (data == 7) {
                         return '<span class="badge badge-success">Penyisihan 2</span>';
                      }
+                     if (data == 6) {
+                        return '<span class="badge badge-primary">Menuju Penyisihan #2</span>';
+                     }
+
+                     else if (data == 8) {
+                        return '<span class="badge badge-success">Lolos FINAL</span>';
+                     }
                   }
                },
                {

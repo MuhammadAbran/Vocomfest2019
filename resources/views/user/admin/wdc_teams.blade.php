@@ -68,7 +68,12 @@
             url: "{{ route('delete.wdc.users')  }}",
             method: "GET",
             data: {id:id},
-            success: function(data){
+            success: function(){
+               Swal.fire({
+                  type: 'success',
+                  title: 'Berhasil dihapus!',
+                  text: 'Team yang anda pilih telah dihapus',
+               });
                $('#wdc-tables').DataTable().ajax.reload();
             }
          });

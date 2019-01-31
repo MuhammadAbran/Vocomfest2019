@@ -69,6 +69,11 @@
             method: "GET",
             data: {id:id},
             success: function(){
+               Swal.fire({
+                  type: 'success',
+                  title: 'Berhasil dihapus!',
+                  text: 'Team yang anda pilih telah dihapus',
+               });
                $('#madc-tables').DataTable().ajax.reload();
             }
          });

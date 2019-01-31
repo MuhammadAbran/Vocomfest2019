@@ -448,6 +448,7 @@ class AdminController extends Controller
          if ($progressW == 3) {
             $data[] = [
                   'id' => $paymentW->user->id,
+                  'payment_id' => $paymentW->id,
                   'team_name' => $paymentW->user->team_name,
                   'kompetisi' => "WDC Competition",
                   'payment_path' => $paymentW['payment_path'],
@@ -461,6 +462,7 @@ class AdminController extends Controller
          if ($progressM == 3) {
          $data[] = [
                'id' => $paymentM->user->id,
+               'payment_id' => $paymentM->id,
                'team_name' => $paymentM->user->team_name,
                'kompetisi' => "MADC Competition",
                'payment_path' => $paymentM['payment_path'],
@@ -474,7 +476,7 @@ class AdminController extends Controller
               return'
                   <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm confirmed"><i class="fa fa-check" aria-hidden="true"></i></a>
                   <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm unconfirmed"><i class="fa fa-times" aria-hidden="true"></i></a>
-                  <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
+                  <a href="#" id="'. $data['payment_id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
               ';
          })
          ->rawColumns(['action'])
@@ -523,7 +525,7 @@ class AdminController extends Controller
       $data = [];
       foreach ($submissionMadc as $subM) {
          $progressSM = (int)$subM->user->madc['progress'];
-         if ($progressSM == 5 || $progressSM == 7) {
+         if ($progressSM == 5 || $progressSM == 7 || $progressSM == 6 || $progressSM == 8) {
             $data[] = [
               'id' => $subM->user->id,
               'team_name' => $subM->user->team_name,
@@ -536,7 +538,7 @@ class AdminController extends Controller
       }
       foreach ($submissionWdc as $subW) {
          $progressSW = (int)$subW->user->wdc['progress'];
-         if ($progressSW == 5 || $progressSW == 7) {
+         if ($progressSW == 5 || $progressSW == 7 || $progressSW == 6 || $progressSW == 8) {
             $data[] = [
               'id' => $subW->user->id,
               'team_name' => $subW->user->team_name,
@@ -552,11 +554,18 @@ class AdminController extends Controller
          return '<a href="'. $data['submissions_path'] .'" class="btn-primary btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
       })
       ->addColumn('action', function($data){
-         return'
-         <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
-         <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
-         <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
-         ';
+         if ($data['progress'] == 6 || $data['progress'] == 8) {
+            return'
+            <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            ';
+         }else {
+            return'
+            <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            ';
+         }
+
       })
       ->addIndexColumn()
       ->rawColumns(['action', 'submissions_path'])

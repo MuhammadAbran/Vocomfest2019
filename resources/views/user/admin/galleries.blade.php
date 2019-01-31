@@ -136,6 +136,11 @@
             method: "GET",
             data: {id:id},
             success: function(){
+                  Swal.fire({
+                     type: 'success',
+                     title: 'Berhasil dihapus!',
+                     text: 'Gallery yang anda pilih telah dihapus',
+                  });
                $('#galleries-table').DataTable().ajax.reload();
             }
          });
@@ -152,6 +157,12 @@
             method: "GET",
             data: {id: id},
             success: function(){
+               /* Add success modal*/
+               Swal.fire({
+                    type: 'success',
+                    title: 'Published!',
+                    text: 'Gallery yang anda pilih telah di publish!',
+                 });
                $('#galleries-table').DataTable().ajax.reload();
             }
          });
@@ -167,6 +178,11 @@
             method: "GET",
             data: {id: id},
             success: function(){
+               Swal.fire({
+                    type: 'success',
+                    title: 'Unpublished!',
+                    text: 'Gallery yang anda pilih telah di un-publish!',
+                 });
                $('#galleries-table').DataTable().ajax.reload();
             }
          });
