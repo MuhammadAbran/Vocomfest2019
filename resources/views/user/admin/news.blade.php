@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'MADC Teams | Admin')
+@section('title', 'News | Admin')
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">

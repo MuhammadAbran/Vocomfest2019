@@ -25,8 +25,8 @@
                     </p>
                     <p>
                         {{$news->content}}
-                        
-                    </p>                          
+
+                    </p>
 
             </div>
 
@@ -34,23 +34,22 @@
             <div class="col-md-8 offset-md-2 related-post bottom-animated">
                 <h5 class="text-center">You might also like <br/> <strong>one of the following</strong></h5>
 
-             
+
                 <div class="row text-center">
 
                     @foreach($news_all as $related)
                         <div class="col-md-4">
-                            <img src="{!! asset('storage/news')!!}/{{$related->thumbnail}}" alt="{{$related->title}}">
+                            <a href="{{route('newsPage',$related->id)}}" style="cursor:pointer"><img src="{!! asset('storage/news')!!}/{{$related->thumbnail}}" alt="{{$related->title}}"></a>
                             <h1><a href="{{route('newsPage',$related->id)}}">{{$related->title}}</a></h1>
                             <span>{{$related->created_at}}</span>
                         </div>
                     @endforeach
-                   
+
                 </div>
             </div>
             <!-- End Of Related Post -->
-          
+
         </div>
     </div>
 </section>
 @endsection
-
