@@ -49,6 +49,7 @@ Route::post('updateNews', 'AdminController@updateNews')->name('update.news');
 Route::get('galleriesData', 'AdminController@galleriesData')->name('galleries.data');
 Route::get('fetchGallary', 'AdminController@fetchGallary')->name('fetch.edit.gallary');
 Route::post('addGallary', 'AdminController@addGallary')->name('gallery.store');
+Route::post('editGallary', 'AdminController@editGallary')->name('gallery.edit');
 Route::get('deleteGallary', 'AdminController@deleteGallary')->name('delete.gallary');
 Route::get('publishGallary', 'AdminController@publishGallary')->name('publish.gallary');
 Route::get('unpublishGallary', 'AdminController@unpublishGallary')->name('unpublish.gallary');

@@ -224,7 +224,7 @@ class AdminController extends Controller
             }
             return
             $btn_status.=
-                '<a href="#" id="'. $data['id'] .'" class="btn-info btn-sm edit-gallary"  data-toggle="modal" data-target="#add-gallary"><i class="fa fa-edit"></i></a>
+                '<a href="#" id="'. $data['id'] .'" class="btn-info btn-sm edit-gallary"  data-toggle="modal" data-target="#edit-gallary"><i class="fa fa-edit"></i></a>
                  <a href="" id="'. $data['id'] .'" class="btn-danger btn-sm delete-gallary" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
             ';
          })
@@ -258,13 +258,33 @@ class AdminController extends Controller
       return redirect()->back()->with(['message', 'Berita berhasil ditambahkan']);
    }
 
+   public function editGallary(Request $request){
+      $gallary = \App\Gallary::find($request->id);
+      // dd();
+      if ($request->hasFile('gallary')) {
+         $image = $request->file('gallary');
+         $name = time() . '.' . $image->getClientOriginalExtension();
+         $path = public_path('storage/gallaries');
+         $image->move($path, $name);
+      }
+
+      $gallary->title = $request->title;
+      $gallary->gallaries_path = $name;
+
+      $gallary->save();
+
+      return redirect()->back()->with(['message', 'Berita berhasil ditambahkan']);
+   }
+
    public function fetchGallary(Request $req)
    {
       $id = $req->id;
       $gallary = \App\Gallary::find($id);
+      $path = public_path('storage/gallaries/' . $gallary->gallaries_path);
       $data = [
+         'id' => $gallary->id,
          'title' => $gallary->title,
-         'gallaries_path' => realpath($gallary->gallaries_path)
+         'gallaries_path' => $path
       ];
 
       return response()->json($data, 200);

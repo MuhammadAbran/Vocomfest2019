@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'MADC Teams | Admin')
+@section('title', 'Sponsorship | Admin')
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
@@ -25,7 +25,7 @@
              <th scope="col" class="judul">Judul</th>
 	          <th scope="col">Status</th>
 	          <th scope="col">Tanggal</th>
-	          <th scope="col">Aksi</th>
+	          <th scope="col" width=15%>Aksi</th>
 	        </tr>
 	      </thead>
 	    </table>
@@ -43,7 +43,7 @@
 	      </div>
 	      <div class="modal-body">
 	        <form>
-	          <p>Anda yakin ingin <strong>menghapus</strong> Gambar Ini?</p>
+	          <p>Anda yakin ingin <strong>menghapus</strong> Sponsor Ini?</p>
 	          <button id="" type="button" class="btn btn-danger delete_gallary" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
 	          <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
 	        </form>
@@ -65,11 +65,33 @@
 	      <div class="modal-body">
 	        <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
              @csrf
-             <input type="hidden" name="id" id="gallary-id" value="">
-             <input id="title-gallary" type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px" required>
-	          Image : <input id="image-gallary" type="file" class="form-control" name="gallary" style="margin-bottom:20px" required>
+             <input type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px" required>
+	          Image : <input type="file" class="form-control" name="gallary" style="margin-bottom:20px" required>
 	          <button type="submit" class="btn btn-secondary" name="submit" value="draft"> <i class="fa fa-save"></i> Simpan Ke Draft</button>
 	          <button type="submit" class="btn btn-primary" name="submit" value="publish"> <i class="fa fa-cloud-upload-alt"></i> Terbitkan</button>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+   <!-- Edit Gallaries -->
+   <div class="modal fade" id="edit-gallary" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">Edit Sponsorship</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form method="POST" action="{{ route('gallery.edit') }}" enctype="multipart/form-data">
+             @csrf
+             <input type="hidden" name="id" id="gallary-id" value="">
+             <input id="title-gallary" type="text" class="form-control" name="title" placeholder="Judul" style="margin-bottom:18px">
+	          Image : <input id="image-gallary" type="file" class="form-control" name="gallary" style="margin-bottom:20px" required>
+	          <button type="submit" class="btn btn-secondary" name="submit"> <i class="fa fa-save"></i> Simpan</button>
 	        </form>
 	      </div>
 	    </div>
@@ -111,9 +133,8 @@
             success: function(data)
             {
                $('#title-gallary').val(data.title);
+               $('#gallary-id').val(data.id);
                $('#image-gallary').val(data.gallaries_path);
-               $('#gallary-id').val(id);
-               $('.modal-title').html("Edit Gallary");
                $('#galleries-table').DataTable().ajax.reload();
             }
          });
