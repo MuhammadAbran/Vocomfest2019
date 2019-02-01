@@ -154,6 +154,7 @@ class WdcController extends Controller
              'user_id' => $user->id,
           ]);
        }
+
        if ($user->wdc->progress == 4) {
          $user->wdc->update(['progress' => 5]);
        }elseif ($user->wdc->progress == 6) {
