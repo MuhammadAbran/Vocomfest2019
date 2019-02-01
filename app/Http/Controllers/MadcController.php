@@ -42,7 +42,7 @@ class MadcController extends Controller
       $id = $req->id;
       $tim = Madc::find($id);
       $this->validate($req,[
-         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
       ]);
 
       //$req->pos biar tau yang diganti data ketua/wakil/anggota
@@ -119,7 +119,7 @@ class MadcController extends Controller
       $user = Auth::user();
 
       $this->validate($req,[
-         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
       ]);
 
       if($file = $req->file('photo')){
@@ -151,13 +151,26 @@ class MadcController extends Controller
    public function submissionUpload(Request $req)
    {
       $user= Auth::user();
-
-      $submit = new Submission([
-         'submissions_path' => $req->link,
-         'theme' => $req->tema,
-         'user_id' => $user->id
-      ]);
-
+      $UserSubmitID = Submission::where(['user_id' => $user->id])->first();
+      if ($UserSubmitID) {
+         $idFirstSub = $UserSubmitID->id;
+         $submit = new Submission([
+           'submissions_path' => $req->link,
+           'theme' => $req->tema,
+           'user_id' => $user->id,
+           'parent_id' => $idFirstSub,
+         ]);
+         $visible = Submission::find($idFirstSub);
+         $visible->visible = 0;
+         $visible->save();
+      }else {
+         $submit = new Submission([
+           'submissions_path' => $req->link,
+           'theme' => $req->tema,
+           'user_id' => $user->id,
+         ]);
+      }
+      
       if ($user->madc->progress == 4) {
          $user->madc->update(['progress' => 5]);
       }elseif ($user->madc->progress == 6) {

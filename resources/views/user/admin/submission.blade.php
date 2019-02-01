@@ -41,7 +41,7 @@
       <div class="modal-body">
         <form>
           <p>Anda yakin ingin <strong>menghapus</strong> Submisi ini?</p>
-          <button id="deleteSubmission" type="button" class="btn btn-danger delete_submission" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+          <button id="" type="button" class="btn btn-danger delete_submission" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
           <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
         </form>
       </div>
@@ -63,6 +63,11 @@
          method: "GET",
          data: {id: id},
          success: function(){
+            Swal.fire({
+               type: 'success',
+               title: 'LOLOS!',
+               text: 'Sumbisi yang anda pilih berhasil anda loloskan!',
+            });
             $('#submission-table').DataTable().ajax.reload();
          }
       });
@@ -79,6 +84,11 @@
          method: "GET",
          data: {id: id},
          success: function(){
+            Swal.fire({
+               type: 'error',
+               title: 'Tidak LOLOS!',
+               text: 'Sumbisi yang anda pilih berhasil tidak anda loloskan!',
+            });
             $('#submission-table').DataTable().ajax.reload();
          }
       });
@@ -89,7 +99,7 @@
    $(document).on('click', '.delete-submission', function(){
       var id = $(this).attr("id");
       console.log(id);
-      $('#deleteSubmission').attr("id", id);
+      $('.delete_submission').attr("id", id);
    });
 
    $(document).on('click', '.delete_submission', function(){
@@ -102,6 +112,11 @@
          method: "GET",
          data: {id: id},
          success: function(){
+            Swal.fire({
+               type: 'success',
+               title: 'Berhasil Dihapus!',
+               text: 'Sumbisi yang anda pilih berhasil anda Hapus!',
+            });
             $('#submission-table').DataTable().ajax.reload();
          }
       });
@@ -110,6 +125,7 @@
       //GET DATA
       $(function(){
          $('#submission-table').DataTable({
+            order: [[ 4, "asc" ]],
             prossessing: true,
             serverSide: true,
             ajax: '{!! route('data.submissions.users') !!}',
@@ -143,7 +159,7 @@
                      }
 
                      else if (data == 8) {
-                        return '<span class="badge badge-success">Lolos FINAL</span>';
+                        return '<span class="badge badge-success">FINAL</span>';
                      }
                   }
                },
@@ -160,9 +176,9 @@
                      }else if (data == 6) {
                         return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
                      }else if (data == 7) {
-                        return '<span class="badge badge-danger">Belum Lolos</span>';
+                        return '<span class="badge badge-danger">Belum Lolos #2</span>';
                      }else if (data == 8) {
-                        return '<span class="badge badge-success">Lolos Penyisihan #2</span>';
+                        return '<span class="badge badge-success">Lolos FINAL</span>';
                      }
                   }
                },

@@ -42,7 +42,7 @@ class WdcController extends Controller
        $id = $req->id;
        $tim = Wdc::find($id);
        $this->validate($req,[
-         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
        ]);
        //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
@@ -104,9 +104,9 @@ class WdcController extends Controller
        $user = Auth::user();
 
        $this->validate($req,[
-         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048' 
+         'photo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
        ]);
-       
+
        if($file = $req->file('photo')){
           $photo = $user->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
           $file->move(public_path('storage/payments'), $photo);
@@ -128,19 +128,32 @@ class WdcController extends Controller
     {
          $data['user'] = Auth::user();
          $data['setting'] = Setting::find(3);
-         $data['submssion_2'] = Setting::find(4);
+         $data['submission_2'] = Setting::find(4);
          return view('user.wdc.submission', $data);
     }
 
     public function submissionUpload(Request $req)
     {
-       $user= Auth::user();
-       $submit = new Submission([
-          'submissions_path' => $req->link,
-          'theme' => $req->tema,
-          'user_id' => $user->id
-       ]);
-
+       $user = Auth::user();
+       $UserSubmitID = Submission::where(['user_id' => $user->id])->first();
+       if ($UserSubmitID) {
+          $idFirstSub = $UserSubmitID->id;
+          $submit = new Submission([
+             'submissions_path' => $req->link,
+             'theme' => $req->tema,
+             'user_id' => $user->id,
+             'parent_id' => $idFirstSub,
+          ]);
+          $visible = Submission::find($idFirstSub);
+          $visible->visible = 0;
+          $visible->save();
+       }else {
+          $submit = new Submission([
+             'submissions_path' => $req->link,
+             'theme' => $req->tema,
+             'user_id' => $user->id,
+          ]);
+       }
        if ($user->wdc->progress == 4) {
          $user->wdc->update(['progress' => 5]);
        }elseif ($user->wdc->progress == 6) {

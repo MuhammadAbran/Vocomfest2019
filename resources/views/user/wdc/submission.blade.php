@@ -10,7 +10,7 @@
                      <!-- Payment Box -->
         <div class="submission">
             <h1 class="title">Unggah Berkas</h1>
-            
+
             @if($setting->is_active == false || $submission_2->is_active == false)
                 <p class="text-danger"><strong>Mohon maaf, priode submission telah lewat!</strong></p>
             @else
@@ -45,11 +45,11 @@
                 <div class="col-md-2">
                     <strong>Proposal</strong>
                 </div>
-                <div class="col-md-10">: 
+                <div class="col-md-10">:
                         <span>Hello world</span>
                 </div>
             </div>
-            @if($setting->is_active == true && $submssion_2->is_active == true)
+            @if($setting->is_active == true && $submission_2->is_active == true)
                 @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
                 <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
                 @endif

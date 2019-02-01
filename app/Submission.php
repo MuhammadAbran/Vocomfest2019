@@ -11,7 +11,8 @@ class Submission extends Model
     protected $fillable = [
        'submissions_path',
        'theme',
-       'user_id'
+       'user_id',
+       'parent_id'
     ];
 
     public function user()

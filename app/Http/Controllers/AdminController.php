@@ -529,9 +529,10 @@ class AdminController extends Controller
       $data = [];
       foreach ($submissionMadc as $subM) {
          $progressSM = (int)$subM->user->madc['progress'];
-         if ($progressSM == 5 || $progressSM == 7 || $progressSM == 6 || $progressSM == 8) {
+         if ($subM->visible && $progressSM != 99) {
             $data[] = [
               'id' => $subM->user->id,
+              'submission_id' => $subM->id,
               'team_name' => $subM->user->team_name,
               'kompetisi' => "MADC Competition",
               'theme' => $subM->theme,
@@ -542,9 +543,10 @@ class AdminController extends Controller
       }
       foreach ($submissionWdc as $subW) {
          $progressSW = (int)$subW->user->wdc['progress'];
-         if ($progressSW == 5 || $progressSW == 7 || $progressSW == 6 || $progressSW == 8) {
+         if ($subW->visible && $progressSW != 99) {
             $data[] = [
               'id' => $subW->user->id,
+              'submission_id' => $subW->id,
               'team_name' => $subW->user->team_name,
               'kompetisi' => "WDC Competition",
               'theme' => $subW->theme,
@@ -560,13 +562,13 @@ class AdminController extends Controller
       ->addColumn('action', function($data){
          if ($data['progress'] == 6 || $data['progress'] == 8) {
             return'
-            <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            <a href="#" id="'. $data['submission_id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
             ';
          }else {
             return'
             <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
             <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
-            <a href="#" id="'. $data['id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            <a href="#" id="'. $data['submission_id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
             ';
          }
 
@@ -583,13 +585,13 @@ class AdminController extends Controller
          if ($users->wdc->progress == 5) {
             $users->wdc->update(['progress' => 6]);
          }elseif ($users->wdc->progress == 7) {
-            $users->wdc->update(['progress' => 6]);
+            $users->wdc->update(['progress' => 8]);
          }
       }else {
          if ($users->madc->progress == 5) {
             $users->madc->update(['progress' => 6]);
          }elseif ($users->madc->progress == 7) {
-            $users->madc->update(['progress' => 6]);
+            $users->madc->update(['progress' => 8]);
          }
       }
 
@@ -623,7 +625,7 @@ class AdminController extends Controller
       $data = Setting::find($request->id);
 
       $data->is_active = $request->is_active ;
-         
+
        $data->save();
    }
 
