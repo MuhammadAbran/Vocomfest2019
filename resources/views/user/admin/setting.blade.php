@@ -13,7 +13,7 @@
      </nav>
 @endsection
 @section('content')
-    
+
     <div class="box">
         <table>
 
@@ -22,7 +22,7 @@
                     <tr>
                         <th style="margin-right:20px; display:block">{{$setting->name}}</th>
                         <td>
-                            <div class="switchToggle">  
+                            <div class="switchToggle">
                                 <input type="checkbox" data-id="{{$setting->id}}" class="toggleBtn" value="{{$setting->is_active}}" id="switch{{$setting->id}}" {{$setting->is_active == 1 ? 'checked' : ''}}>
                                 <label for="switch{{$setting->id}}">Toggle</label>
                             </div>
@@ -31,18 +31,18 @@
                 {{-- </form> --}}
             @endforeach
         </table>
-        
 
-     
+
+
 
 @endsection
 
 @push('scripts')
-    <script>   
+    <script>
         $(document).ready(function(){
             $('.toggleBtn').change(function(){
                 var id = $(this).data('id');
-                
+
                 var value = $(this).is(':checked') ? 1: 0;
 
                 $.ajax({
@@ -52,7 +52,7 @@
                     url: "{{route('admin.settingUpdate')}}",
                     type: "post",
                     data: {id:id, is_active:value},
-                    success: function(){                     
+                    success: function(){
                         /* Add success modal*/
                         Swal.fire({
                             type: 'success',
@@ -60,8 +60,8 @@
                         });
                     }
                  });
-                    
-            
+
+
             });
         });
     </script>
