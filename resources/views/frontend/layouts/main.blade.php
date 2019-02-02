@@ -24,7 +24,6 @@
 
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{!! asset('assets/css/app.css')!!}">
-    <link rel="stylesheet" href="{!! asset('assets/css/stars.css')!!}">
     <!-- Font Awesome JS -->
     <script defer src="{!! asset('assets/vendor/fontawesome/solid.js')!!}"></script>
     <script defer src="{!! asset('assets/vendor/fontawesome/fontawesome.js')!!}"></script>

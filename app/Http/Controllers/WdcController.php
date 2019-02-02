@@ -127,7 +127,7 @@ class WdcController extends Controller
 
        $user->wdc()->update(['progress' => 3]);
 
-       return redirect()->back();
+       return redirect()->route('wdc.dashboard');
     }
 
     public function submission()
@@ -169,7 +169,7 @@ class WdcController extends Controller
 
        $submit->save();
 
-       return redirect()->back();
+       return redirect()->route('wdc.dashboard');
     }
 
     public function updateProgress(Request $request)

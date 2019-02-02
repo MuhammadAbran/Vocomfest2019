@@ -91,4 +91,9 @@ class User extends Authenticatable implements MustVerifyEmail
    {
       return $this->email_verified_at == null ? true : false;
    }
+
+   public function verified()
+   {
+      return $this->email_verified_at != null ? true : false;
+   }
 }

@@ -46,7 +46,7 @@
                     <strong>Total Pembayaran</strong>
                 </div>
                 <div class="col-md-10">:
-                     <span>Rp. 50.000 </span>
+                     <span>Rp 80.000,- </span>
                 </div>
             </div>
         <!-- Button upload akan hilang kalau Pembayaran sudah dikonfirmasi admin -->
@@ -84,7 +84,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp.</span>
                             </div>
-                            <input name="amount" type="text" class="form-control" value="500000" disabled>
+                            <input name="amount" type="text" class="form-control" value="800000" disabled>
                         </div>
                     </div>
 

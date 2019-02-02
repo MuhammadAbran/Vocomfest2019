@@ -28,15 +28,16 @@
                                             <label for="">Pilih Lomba :</label>
                                         </div>
                                         <div class="form-group">
-                                            
                                             <select class="form-control" id="sel1" name="role">
                                                 <option value="3">Web Design Competition</option>
                                                 <option value="2">Mobile Apps Development Competition</option>
                                             </select>
+                                            <div class="require">*</div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control{{ $errors->has('team_name') ? ' is-invalid' : '' }}" id="teamName" placeholder="Nama Tim" name="team_name" value="{{ old('team_name') }}" required>
+                                            <input type="text" class="  form-control{{ $errors->has('team_name') ? ' is-invalid' : '' }}" id="teamName" placeholder="Nama Tim" name="team_name" value="{{ old('team_name') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('team_name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('team_name') }}</strong>
@@ -46,6 +47,7 @@
 
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('leader_name') ? ' is-invalid' : '' }}" id="leaderName"  placeholder="Nama Ketua" name="leader_name" value="{{ old('leader_name') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('leader_name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('leader_name') }}</strong>
@@ -55,6 +57,7 @@
 
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('leader_phone') ? ' is-invalid' : '' }}" id="leaderPhone"  placeholder="No Hp Ketua" name="leader_phone" value="{{ old('leader_phone') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('leader_phone'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('leader_phone') }}</strong>
@@ -65,6 +68,7 @@
 
                                         <div class="form-group">
                                             <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="leaderEmail"  placeholder="Email Ketua" name="email" value="{{ old('email') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -74,6 +78,7 @@
 
                                         <div class="form-group">
                                             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" placeholder="Kata Sandi" name="password" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('password') }}</strong>
@@ -83,6 +88,7 @@
 
                                         <div class="form-group">
                                             <input type="password" class="form-control" id="password-confirm" placeholder="Ulang Kata Sandi" name="password_confirmation" required>
+                                            <div class="require">*</div>
                                         </div>
                                         
                                     </div>
@@ -91,6 +97,7 @@
                                         
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('instance_name') ? ' is-invalid' : '' }}" id="instanceName" placeholder="Nama Instansi" name="instance_name" value="{{ old('instance_name') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('instance_name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('instance_name') }}</strong>
@@ -100,6 +107,7 @@
 
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('instance_address') ? ' is-invalid' : '' }}"  placeholder="Alamat Instansi" name="instance_address" value="{{ old('instance_address') }}" required>
+                                            <div class="require">*</div>
                                             @if ($errors->has('instance_address'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('instance_address') }}</strong>
@@ -161,7 +169,7 @@
                                             @endif
                                         </div>
 
-                                        <input type="hidden" name="progress" value="0">
+                                        <input type="hidden" name="progress" value="1">
                                     
                                     </div>
                                     <div class="col-md-10 offset-md-1">
