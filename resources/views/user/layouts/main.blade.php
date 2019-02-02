@@ -32,8 +32,8 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Vocomfest</h3>
-                <strong>VC</strong>
+                <h3><a href="{{route('homePage')}}"><img src="{{asset('assets/img/logo_text_white.png')}}" alt="logo vocomfest"></a></h3>
+                <strong><a href="{{route('homePage')}}"><img src="{{asset('assets/img/logo_v.png')}}" alt="logo vocomfest"></a></strong>
             </div>
 
             @yield('menu')
