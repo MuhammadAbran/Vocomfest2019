@@ -302,11 +302,10 @@ nav.navScroll{
     display: block;
     position: absolute;
     width: 150px;
-    top:35%;
-    left:40%;
+    top:50%;
+    left:50%;
     transform: translate(-50%,-50%);
-    -webkit-animation: rotation 5s infinite linear;
-    animation: rotation 5s infinite linear;
+
 }
 
 #about .content{
