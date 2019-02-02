@@ -14,14 +14,14 @@ class UserSeederTable extends Seeder
         DB::table('users')->insert([
             'id' => '1',
             'team_name' => 'admin',
-            'leader_email' => 'admin@vocomfest.com',
+            'email' => 'admin@vocomfest.com',
             'role' => '1',
             'password' => bcrypt('vocomfest19'),
         ]);
         DB::table('users')->insert([
             'id' => '2',
             'team_name' => 'WDC TEAM',
-            'leader_email' => 'wdc@gmail.com',
+            'email' => 'wdc@gmail.com',
             'role' => '3',
             'password' => bcrypt('vocomfest19'),
         ]);
@@ -29,21 +29,21 @@ class UserSeederTable extends Seeder
             'id' => '3',
             'team_name' => 'MADC TEAM',
             'role' => '2',
-            'leader_email' => 'madc@gmail.com',
+            'email' => 'madc@gmail.com',
             'password' => bcrypt('vocomfest19'),
         ]);
 
         DB::table('users')->insert([
             'id' => '4',
             'team_name' => 'asfdasdas',
-            'leader_email' => 'asdasd@vocoasdasdmfest.com',
+            'email' => 'asdasd@vocoasdasdmfest.com',
             'role' => '3',
             'password' => bcrypt('asdas'),
         ]);
         DB::table('users')->insert([
             'id' => '5',
             'team_name' => 'WDC TEAM',
-            'leader_email' => 'asdasd@gmail.com',
+            'email' => 'asdasd@gmail.com',
             'role' => '3',
             'password' => bcrypt('vocomfest19'),
         ]);
@@ -51,14 +51,14 @@ class UserSeederTable extends Seeder
             'id' => '6',
             'team_name' => 'MADC TEAM',
             'role' => '2',
-            'leader_email' => 'asdasdsad@gmail.com',
+            'email' => 'asdasdsad@gmail.com',
             'password' => bcrypt('vocomfest19'),
         ]);
         DB::table('users')->insert([
             'id' => '7',
             'team_name' => 'MADC TEAM',
             'role' => '2',
-            'leader_email' => 'sdadsdsd@gmail.com',
+            'email' => 'sdadsdsd@gmail.com',
             'password' => bcrypt('vocomfest19'),
         ]);
 

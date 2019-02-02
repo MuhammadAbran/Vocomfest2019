@@ -56,7 +56,7 @@
 							<div class="form-inline">
 								<div class="form-group">
 									<label for="">Email <span>:</span></label>
-									<input id="email" type="email" placeholder="Leader email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="leader_email" value="{{ old('leader_email') }}" required autofocus>
+									<input id="email" type="email" placeholder="Leader email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                            <!-- @if ($errors->has('email'))
                                <span class="invalid-feedback" role="alert">
                                    <strong>{{ $errors->first('email') }}</strong>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+
 
 class VerificationController extends Controller
 {
@@ -25,7 +27,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -33,21 +35,27 @@ class VerificationController extends Controller
      * @return void
      */
 
-    protected function redirectTo()
-    {
-        if (Auth::user()->role == '1') {
-            return 'wdc';
-        }
-
-        if (Auth::user()->role == '2') {
-            return 'madc';
-        }
-    }
+    
 
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    protected function redirectTo()
+    {
+        //rediret to /madc  if role == 2
+        if (Auth::user()->role == '2') {
+            return 'madc';
+        }
+
+        //rediret to /wdc  if role == 3
+        if (Auth::user()->role == '3') {
+            return 'wdc';
+        }
+
+       
     }
 }

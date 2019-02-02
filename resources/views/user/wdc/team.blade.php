@@ -24,7 +24,7 @@
         @slot('title', 'Ketua Tim')
         @slot('avatar',$tim->leader_avatar)
         @slot('name',$tim->leader_name)
-        @slot('email', $tim->leader_email)
+        @slot('email', $tim->email)
         @slot('button')
           <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
         @endslot
@@ -111,7 +111,7 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
+            <input class="form-control" type="email" name="email" value="{{$tim->email}}" disabled><br>
           </div>
           
           <div class="form-group">

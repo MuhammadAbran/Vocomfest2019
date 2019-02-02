@@ -23,7 +23,7 @@
         @slot('title', 'Ketua Tim')
         @slot('avatar',$tim->leader_avatar)
         @slot('name',$tim->leader_name)
-        @slot('email', $tim->leader_email)
+        @slot('email', $tim->email)
         @slot('button')
 
         @endslot
@@ -41,9 +41,9 @@
 
       @component('components.member_box')
         @slot('title', 'Anggota #2')
-        @slot('avatar',$tim->member_1_avatar)
-        @slot('name',$tim->member_1_name)
-        @slot('email', $tim->member_1_email)
+        @slot('avatar',$tim->member_avatar)
+        @slot('name',$tim->member_name)
+        @slot('email', $tim->member_email)
         @slot('button')
 
         @endslot

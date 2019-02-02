@@ -12,10 +12,16 @@ use App\Submission;
 
 class WdcController extends Controller
 {
-//    public function __construct()
-//    {
-//      $this->middleware(['auth', 'wdc']);
-//   }
+   public function __construct()
+   {
+     $this->middleware(['auth', 'wdc']);
+  }
+
+/**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 
     public function index()
     {
@@ -47,7 +53,7 @@ class WdcController extends Controller
        //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
        if ($req->pos == 1) {
-          $leader->leader_email = $req->email;
+          $leader->email = $req->email;
           $tim->leader_name = $req->name;
           $tim->leader_phone = $req->phone;
           if($file = $req->file('photo')){

@@ -16,12 +16,10 @@ $factory->define(App\Madc::class, function (Faker $faker) {
       'co_leader_name' => $faker->name,
       'co_leader_email' => $faker->safeEmail,
       'co_leader_phone' => $faker->phoneNumber,
-      'member_1_name' => $faker->name,
-      'member_1_email' => $faker->safeEmail,
-      'member_1_phone' => $faker->phoneNumber,
-      'member_2_name' => $faker->name,
-      'member_2_email' => $faker->safeEmail,
-      'member_2_phone' => $faker->phoneNumber,
+      'member_name' => $faker->name,
+      'member_email' => $faker->safeEmail,
+      'member_phone' => $faker->phoneNumber,
+   
       'progress' => mt_rand(0, 7),
       'user_id' => $user_id[$a++],
     ];

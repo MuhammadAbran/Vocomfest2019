@@ -131,7 +131,7 @@ return [
         'leader_name' => [
             'regex' => 'Nama tidak boleh mengandung karakter selain alfabet dan spasi.',
         ],
-        'leader_email' => [
+        'email' => [
             'email' => 'Email tidak sesuai format (contoh@mail.com).'
         ],
         'leader_phone' => [
@@ -148,13 +148,13 @@ return [
             'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
             'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
         ],
-        'member_1_name' => [
+        'member_name' => [
             'regex' => 'Nama tidak boleh mengandung karakter selain alfabet dan spasi.',
         ],
-        'member_1_email' => [
+        'member_email' => [
             'email' => 'Email tidak sesuai format (contoh@mail.com).'
         ],
-        'member_1_phone' => [
+        'member_phone' => [
             'regex' => 'Tidak sesuai format Nomor HP (08xxxxxxxx)',
             'digits_between' => 'Hanya dapat mengandung angka (maksimal 15 angka).',
         ],
@@ -177,7 +177,7 @@ return [
     */
 
     'attributes' => [
-        'leader_email' => 'Email',
+        'email' => 'Email',
         'leader_phone' => 'Nomor Hp',
         'co_leader_phone' => 'Nomor Hp',
         'password' => 'Password'

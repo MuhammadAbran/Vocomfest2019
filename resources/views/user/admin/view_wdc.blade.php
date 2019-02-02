@@ -23,7 +23,7 @@
         @slot('title', 'Ketua Tim')
         @slot('avatar',$tim->leader_avatar)
         @slot('name',$tim->leader_name)
-        @slot('email', $tim->leader_email)
+        @slot('email', $tim->email)
         @slot('button')
 
         @endslot

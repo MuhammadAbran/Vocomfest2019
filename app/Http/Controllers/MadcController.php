@@ -79,7 +79,7 @@ class MadcController extends Controller
          if($file = $req->file('photo')){
             $photo = $leader->team_name . '_' . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('storage/foto'), $photo);
-            $tim->member_1_avatar = $photo;
+            $tim->member_avatar = $photo;
 
             $tim->update();
          }

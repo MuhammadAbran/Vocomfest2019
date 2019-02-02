@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'team_name', 'leader_email', 'password', 'role'
+        'team_name', 'email', 'password', 'role'
     ];
 
     /**
@@ -85,5 +85,10 @@ class User extends Authenticatable implements MustVerifyEmail
       }
 
       return false;
+   }
+
+   public function notVerified()
+   {
+      return $this->email_verified_at == null ? true : false;
    }
 }

@@ -22,7 +22,20 @@
                     @slot('title','Verifikasi Email')
                     @if($user->progress == 0)
                         @slot('status',' timeline-warning')
-                        @slot('description','Belum varifikasi')  
+                        @slot('description') 
+                            @Auth
+                                @if(Auth::user()->notVerified())
+                                @if (session('resent'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ __('Link verifikasi baru telah dikirim ke alamat email anda.') }}
+                                </div>
+                            @endif
+        
+                            {{ __('Sebelum melanjutkan, silakan periksa email Anda untuk melakukan verifikasi email') }}
+                            {{ __('Jika Anda tidak menerima email') }}, <a href="{{ route('verification.resend') }}"><span class="text-primary">Klik disini</span></a> untuk mendapatkan link verifikasi baru.
+                                @endif
+                            @endauth
+                        @endslot
                     @else
                         @slot('status',' timeline-success')
                         @slot('description','Email berhasil di verifikasi')  

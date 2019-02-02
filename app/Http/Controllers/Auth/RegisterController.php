@@ -62,14 +62,14 @@ class RegisterController extends Controller
             'instance_name' => ['required', 'string', 'max:191'],
             'instance_address' =>['required', 'string', 'max:191'],
             'leader_name' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
-            'leader_email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'leader_phone' => ['required', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
             'co_leader_name' => ['nullable', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
             'co_leader_email' => ['nullable', 'string', 'email', 'max:191'],
             'co_leader_phone' => ['nullable', 'regex:/(08)/', 'min:7', 'digits_between:08, 089999999999999', 'max:15'],
-            'member_1_name' => ['nullable', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
-            'member_1_email' => ['nullable', 'string', 'email', 'max:191'],
-            'member_1_phone' => ['nullable', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
+            'member_name' => ['nullable', 'string', 'max:191', 'regex:/^[A-Za-z ]+$/'],
+            'member_email' => ['nullable', 'string', 'email', 'max:191'],
+            'member_phone' => ['nullable', 'regex:/(08)/', 'min:7', 'digits_between:08,089999999999999', 'max:15'],
         ]);
     }
 
@@ -81,16 +81,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // $this->validate($data, [
-        //     'team_name' => ['required', 'string', 'max:255'],
-        //     'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
-        //     'instance_name' => ['required', 'string']
-        // ]);
 
         $user = User::create([
             'team_name' => $data['team_name'],
-            'leader_email' => $data['leader_email'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
         ]);
@@ -105,9 +99,9 @@ class RegisterController extends Controller
                 'co_leader_name' => $data['co_leader_name'],
                 'co_leader_email' => $data['co_leader_email'],
                 'co_leader_phone' => $data['co_leader_phone'],
-                'member_name' => $data['member_1_name'],
-                'member_email' => $data['member_1_email'],
-                'member_phone' => $data['member_1_phone'],
+                'member_name' => $data['member_name'],
+                'member_email' => $data['member_email'],
+                'member_phone' => $data['member_phone'],
                 'progress' => $data['progress'],
             ]);
 
@@ -124,12 +118,10 @@ class RegisterController extends Controller
                 'co_leader_name' => $data['co_leader_name'],
                 'co_leader_email' => $data['co_leader_email'],
                 'co_leader_phone' => $data['co_leader_phone'],
-                'member_1_name' => $data['member_1_name'],
-                'member_1_email' => $data['member_1_email'],
-                'member_1_phone' => $data['member_1_phone'],
-                // 'member_2_name' => $data['member_2_name'],
-                // 'member_2_email' => $data['member_2_email'],
-                // 'member_2_phone' => $data['member_2_phone'],
+                'member_name' => $data['member_name'],
+                'member_email' => $data['member_email'],
+                'member_phone' => $data['member_phone'],
+                
                 'progress' => $data['progress'],
             ]);
 
