@@ -31,7 +31,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 ">
-                    <h1 class="sec-title text-center bottom-animated">Tentang Vocomfest 2019</h1>
+                    <h1 class="sec-title text-center bottom-animated">Teaser Vocomfest 2019</h1>
                     <hr class="title-line" />
  
                 </div> 
@@ -45,7 +45,7 @@
 				</div>
 				<div class=" col-sm-12 order-sm-1  col-md-5 order-md-2 content bottom-animated">
 					<p>
-                        <strong>VOCOMfest</strong> (Vocational Computer Festival) merupakan acara tahunan yang diselenggarakan oleh Himpunan Mahasiswa Komputer dan Sistem Informasi Sekolah Vokasi UGM
+                        <strong>VOCOMFEST</strong> (Vocational Computer Festival)  merupakan acara yang diadakan oleh Himpunan Mahasiswa, Prodi D3 Komputer dan SIstem Informasi, Universitas Gadjah Mada dengan mengangkat tema “Improving Indonesia’s Economy Heading to Industry 4.0”. 
                     </p>
 				</div>
 			</div>
