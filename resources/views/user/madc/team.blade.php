@@ -104,12 +104,21 @@
           
       <!-- Biar tau yang diedit data ketua/wakil/anggota -->
           <input type="hidden" name="pos" value=1>
-          Nama <br>
-          <input type="text" name="name" value="{{$tim->leader_name}}"><br>
-          Email<br>
-          <input type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
-          No.Hp<br>
-          <input type="text" name="phone" value="{{$tim->leader_phone}}">
+          <div class="form-group">
+            <label for="name">Nama</label> 
+            <input class="form-control" type="text" name="name" value="{{$tim->leader_name}}">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" value="{{$tim->leader_email}}" disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">No. Hp</label>
+            <input class="form-control" type="number" name="phone" value="{{$tim->leader_phone}}">
+          </div>
+          
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -136,15 +145,26 @@
         </button>
       </div>
       <form action="{{ route('madc.team.edit') }}" method="post" enctype="multipart/form-data">
+
         <div class="modal-body">
           <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=2>
-          Nama <br>
-          <input type="text" name="name" value="{{$tim->co_leader_name}}"><br>
-          Email<br>
-          <input type="email" name="email" value="{{$tim->co_leader_email}}"><br>
-          No.Hp<br>
-          <input type="text" name="phone" value="{{$tim->co_leader_phone}}">
+
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" value="{{$tim->co_leader_email}}">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">No. Hp</label>
+            <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}">
+          </div>
+
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
@@ -174,12 +194,22 @@
         <div class="modal-body">
           <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=3>
-          Nama <br>
-          <input type="text" name="name" value="{{$tim->member_name}}"><br>
-          Email<br>
-          <input type="email" name="email" value="{{$tim->member_email}}"><br>
-          No.Hp<br>
-          +62<input type="text" name="phone" value="{{$tim->member_phone}}">
+
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}">
+          </div>
+
+          <div>
+            <label for="phone">No. Hp</label>
+            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}">
+          </div>
+          
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
