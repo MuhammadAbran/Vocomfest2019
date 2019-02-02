@@ -18,11 +18,11 @@
                     </div>
                     <div class="card-body">
                         
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" class="form-signin" action="{{ route('login') }}">
                             <h1 class="sec-title text-center">Login</h1>
                             <hr class="title-line" />
 
-                            <div class="form-label-group">
+                            <div class="form-group">
                                 <input type="email" id="inputEmail" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" name="leader_email" placeholder="Alamat Email" required>
                                 @if ($errors->has('leader_email'))
                                     <span class="invalid-feedback" role="alert">
@@ -31,8 +31,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-label-group">
-                                    <br />
+                            <div class="form-group">
                                 <input type="password" id="inputPassword" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" name="password" required>             
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
