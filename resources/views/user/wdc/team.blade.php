@@ -38,7 +38,7 @@
       @endcomponent 
       <!-- End Member Box -->
 
-      @if($tim->co_leader_name != null & $tim->co_leader_email != null & $tim->co_leader_phone != null)
+      @if($tim->co_leader_name != null)
       @component('components.member_box')
         @slot('title', 'Anggota #1')
         @slot('avatar',$tim->co_leader_avatar)
@@ -50,7 +50,7 @@
       @endcomponent
       @endif
     
-      @if($tim->member_name != null & $tim->member_email != null & $tim->member_phone != null)
+      @if($tim->member_name != null )
       @component('components.member_box')
         @slot('title', 'Anggota #2')
         @slot('avatar',$tim->member_avatar)
@@ -184,7 +184,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
         </div>
         @csrf
       </form>
@@ -229,7 +229,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
         </div>
         @csrf
       </form>
