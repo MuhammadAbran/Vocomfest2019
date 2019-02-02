@@ -35,6 +35,7 @@ body{
     outline: 0 ;
     background: transparent;
     border-bottom: 1px solid #6a4cdb ;
+
 }
 .form-signin .form-control:focus{
     border-color: #361A8B;;
@@ -42,6 +43,16 @@ body{
     box-shadow: none;
 }
 
+.form-group{
+    position: relative;
+    display: block;
+}
+.require{
+    position: absolute;
+    color:red;
+    top:0;
+    right:98%;
+}
 
 /*========== Button Style ==========*/
 .btn-custom{

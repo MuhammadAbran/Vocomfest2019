@@ -9,12 +9,19 @@
   <div class="box">
   <!-- Team Member box -->
 
-    @if($tim->progress == 0)
-    <strong>Harap verifikasi email terlebih dahulu</strong><br>
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>    
+    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+
+    @if($tim->co_leader_name == null)
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader" style="margin-bottom: 20px;">Tambah Anggota</button>
+
+    @else
+      @if($tim->member_name == null)
+        <button style="margin-bottom: 20px;" type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Tambah Anggota</button>
+      @endif
     @endif
-    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
-    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
-    <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
+    
     @if($errors->has('photo'))
       <br><strong>{{ $errors->first('photo') }}</strong>
     @endif
@@ -56,8 +63,13 @@
       @endif
 
       <!-- End Member Box -->
-
     </div>
+    <p>
+      <ul><span style="margin-left:-20px;">Note<span class="text-danger">*</span></span>
+        <li>Kartu Pelajar Wajib di upload!</li>
+        <li>Dimohon untuk mengisi data dengan benar!</li>
+      </ul>
+    </p>
         <!-- End of Team member box -->
   </div>
 
@@ -111,7 +123,8 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->email}}" disabled><br>
+            <input class="form-control" type="email" value="{{$tim->email}}" disabled>
+            <input class="form-control" type="hidden" name="email" value="{{$tim->email}}">
           </div>
           
           <div class="form-group">
@@ -120,13 +133,13 @@
           </div>
 
           <div class="form-group">
-            <label for="identitas">Identitas Diri</label>
+            <label for="identitas">Foto Kartu Pelajar</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
         </div>
         @csrf
       </form>
@@ -151,27 +164,27 @@
           
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->co_leader_email}}">
+            <input class="form-control" type="email" name="email" value="{{$tim->co_leader_email}}" required>
           </div>
 
          <div class="form-group">
             <label for="phone">No. Hp</label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}">
+            <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}" required>
           </div>
          
           <div class="form-group">
-            <label for="identitas">Identitas Diri</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+            <label for="identitas">Foto Kartu Pelajar</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
         @csrf
       </form>
@@ -196,17 +209,17 @@
           
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}">
+            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}" required>
           </div>
 
           <div class="form-group">
-            <label for="phone"></label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}">
+            <label for="phone">No. Hp</label>
+            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}" required>
           </div>
           
           <div class="form-group">
@@ -216,7 +229,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
         @csrf
       </form>
