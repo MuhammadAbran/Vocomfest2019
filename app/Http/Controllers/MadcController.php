@@ -136,7 +136,7 @@ class MadcController extends Controller
       $updateProgress = Madc::where('user_id', Auth::user()->id)->first();
       $updateProgress = $updateProgress->update(['progress' => 3]);
 
-      return redirect()->back();
+      return redirect()->route('madc.dashboard');
    }
 
    public function submission()
@@ -179,7 +179,7 @@ class MadcController extends Controller
 
       $submit->save();
 
-      return redirect()->back();
+      return redirect()->route('madc.dashboard');
    }
 
    public function updateProgress(Request $request)
