@@ -27,7 +27,7 @@
             labels: ["Wdc", "Madc", "NTF", "ICPC","Total Peserta"],
             datasets: [{
                 label: '# Pendaftar',
-                data: [{{$madc_all}}, {{$wdc_all}}, 0, 0, {{$total}}],
+                data: [{{$madc_all}}, {{$wdc_all}}, 0, 0, {{$total-1}}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
