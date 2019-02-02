@@ -68,7 +68,7 @@
                       Leader email
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Email" name="leader_email">
+                      : <input type="text" placeholder="Email" name="email">
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="member_1_name">
+                      : <input type="text" placeholder="Member Name" name="member_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -189,7 +189,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="member_1_email">
+                      : <input type="text" placeholder="Member Email" name="member_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -197,7 +197,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num">
-                      : +62 <input type="number" placeholder="Phone Number" name="member_1_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="member_phone">
                     </div>
                   </div>
                 </div>
@@ -270,7 +270,7 @@
                       Leader email
                     </div>
                     <div class="col-md-7">
-                      : <input type="text" placeholder="Email" name="leader_email">
+                      : <input type="text" placeholder="Email" name="email">
                     </div>
                   </div>
                 </div>
@@ -383,7 +383,7 @@
                       Member Name
                     </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Name" name="member_1_name">
+                      : <input type="text" placeholder="Member Name" name="member_name">
                     </div>
                   </div>
                   <div class="row ">
@@ -391,7 +391,7 @@
                       Member Email
                       </div>
                     <div class="col-md-7 mg-b-15">
-                      : <input type="text" placeholder="Member Email" name="member_1_email">
+                      : <input type="text" placeholder="Member Email" name="member_email">
                     </div>
                   </div>
                   <div class="row ">
@@ -399,7 +399,7 @@
                       Phone Number
                       </div>
                     <div class="col-md-7 phone-num mg-b-15">
-                      : +62 <input type="number" placeholder="Phone Number" name="member_1_phone">
+                      : +62 <input type="number" placeholder="Phone Number" name="member_phone">
                     </div>
                   </div>
                 </div>

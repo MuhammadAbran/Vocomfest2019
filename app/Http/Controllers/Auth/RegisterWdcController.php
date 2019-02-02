@@ -49,11 +49,7 @@ class RegisterWdcController extends Controller
      */
     protected function validator(array $data)
     {
-        // return Validator::make($data, [
-        //     'team_name' => ['required', 'string', 'max:255'],
-        //     'leader_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
-        // ]);
+ 
     }
 
     /**
@@ -66,7 +62,7 @@ class RegisterWdcController extends Controller
     {
         $user = User::create([
            'team_name' => $data['team_name'],
-           'leader_email' => $data['leader_email'],
+           'email' => $data['email'],
            'password' => Hash::make($data['password']),
            'role' => $data['role'],
         ]);
@@ -79,9 +75,9 @@ class RegisterWdcController extends Controller
            'co_leader_name' => $data['co_leader_name'],
            'co_leader_email' => $data['co_leader_email'],
            'co_leader_phone' => $data['co_leader_phone'],
-           'member_name' => $data['member_1_name'],
-           'member_email' => $data['member_1_email'],
-           'member_phone' => $data['member_1_phone'],
+           'member_name' => $data['member_name'],
+           'member_email' => $data['member_email'],
+           'member_phone' => $data['member_phone'],
            'progress' => $data['progress'],
         ]);
 

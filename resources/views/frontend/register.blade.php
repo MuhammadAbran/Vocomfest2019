@@ -64,10 +64,10 @@
 
 
                                         <div class="form-group">
-                                            <input type="email" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" id="leaderEmail"  placeholder="Email Ketua" name="leader_email" value="{{ old('leader_email') }}" required>
-                                            @if ($errors->has('leader_email'))
+                                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="leaderEmail"  placeholder="Email Ketua" name="email" value="{{ old('email') }}" required>
+                                            @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('leader_email') }}</strong>
+                                                    <strong>{{ $errors->first('email') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -135,28 +135,28 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control{{ $errors->has('member_1_name') ? ' is-invalid' : '' }}" id="member2Name" placeholder="Nama Anggota #2" name="member_1_name" value="{{ old('member_1_name') }}">
-                                            @if ($errors->has('member_1_name'))
+                                            <input type="text" class="form-control{{ $errors->has('member_name') ? ' is-invalid' : '' }}" id="member2Name" placeholder="Nama Anggota #2" name="member_name" value="{{ old('member_name') }}">
+                                            @if ($errors->has('member_name'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('member_1_name') }}</strong>
+                                                    <strong>{{ $errors->first('member_name') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control{{ $errors->has('member_1_email') ? ' is-invalid' : '' }}" id="member2Email" placeholder="Email Anggota #1" name="member_1_email" value="{{ old('member_1_email') }}">
-                                            @if ($errors->has('member_1_email'))
+                                            <input type="text" class="form-control{{ $errors->has('member_email') ? ' is-invalid' : '' }}" id="member2Email" placeholder="Email Anggota #1" name="member_email" value="{{ old('member_email') }}">
+                                            @if ($errors->has('member_email'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('member_1_email') }}</strong>
+                                                    <strong>{{ $errors->first('member_email') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control{{ $errors->has('member_1_phone') ? ' is-invalid' : '' }}" id="member2Phone"  placeholder="No Hp Anggota #2" name="member_1_phone" value="{{ old('member_1_phone') }}">
-                                            @if ($errors->has('member_1_phone'))
+                                            <input type="text" class="form-control{{ $errors->has('member_phone') ? ' is-invalid' : '' }}" id="member2Phone"  placeholder="No Hp Anggota #2" name="member_phone" value="{{ old('member_phone') }}">
+                                            @if ($errors->has('member_phone'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('member_1_phone') }}</strong>
+                                                    <strong>{{ $errors->first('member_phone') }}</strong>
                                                 </span>
                                             @endif
                                         </div>

@@ -23,10 +23,10 @@
                             <hr class="title-line" />
 
                             <div class="form-group">
-                                <input type="email" id="inputEmail" class="form-control{{ $errors->has('leader_email') ? ' is-invalid' : '' }}" name="leader_email" placeholder="Alamat Email" required>
-                                @if ($errors->has('leader_email'))
+                                <input type="email" id="inputEmail" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Alamat Email" required>
+                                @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('leader_email') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
