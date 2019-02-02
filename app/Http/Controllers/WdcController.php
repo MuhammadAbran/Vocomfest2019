@@ -47,7 +47,6 @@ class WdcController extends Controller
        //$req->pos biar tau yang diganti data ketua/wakil/anggota
 
        if ($req->pos == 1) {
-          $leader->leader_email = $req->email;
           $tim->leader_name = $req->name;
           $tim->leader_phone = $req->phone;
           if($file = $req->file('photo')){

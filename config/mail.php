@@ -55,10 +55,7 @@ return [
     |
     */
 
-    'from' => [
-        'address' => 'vocomfest@vocomfest',
-        'name' => 'VOCOMFEST',
-    ],
+    'from' => ['address' => null, 'name' => null],
 
     /*
     |--------------------------------------------------------------------------
