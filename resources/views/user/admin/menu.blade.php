@@ -14,19 +14,19 @@
             </li>
         </ul>
     </li>
-    <li>
+    <li class="{{ URL::route('admin.payments') === URL::current() ? 'active' : '' }}">
         <a href="{{route('admin.payments')}}"><i class="fas fa-briefcase"></i> Payments</a>
     </li>
-    <li>
+    <li class="{{ URL::route('admin.submissions') === URL::current() ? 'active' : '' }}">
         <a href="{{route('admin.submissions')}}"><i class="fas fa-briefcase"></i> Submissions</a>
     </li>
-    <li>
+    <li class="{{ URL::route('admin.galleries') === URL::current() ? 'active' : '' }}">
         <a href="{{route('admin.galleries')}}"><i class="fas fa-briefcase"></i> Sponsorship</a>
     </li>
-     <li>
+     <li class="{{ URL::route('admin.news') === URL::current() ? 'active' : '' }}">
         <a href="{{route('admin.news')}}"><i class="fas fa-briefcase"></i> News</a>
     </li>
-    <li>
+    <li class="{{ URL::route('admin.setting') === URL::current() ? 'active' : '' }}">
             <a href="{{route('admin.setting')}}"><i class="fas fa-briefcase"></i> Settings</a>
     </li>
 </ul>
