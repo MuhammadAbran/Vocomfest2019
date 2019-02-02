@@ -106,17 +106,17 @@
           <input type="hidden" name="pos" value=1>
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->leader_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->leader_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->leader_email}}" disabled><br>
+            <input class="form-control" type="email" name="email" value="{{$tim->leader_email}}" disabled>
           </div>
           
           <div class="form-group">
             <label for="phone">No. Hp</label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->leader_phone}}">
+            <input class="form-control" type="number" name="phone" value="{{$tim->leader_phone}}" required>
           </div>
 
           <div class="form-group">
@@ -151,17 +151,17 @@
           
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->co_leader_email}}">
+            <input class="form-control" type="email" name="email" value="{{$tim->co_leader_email}}" required>
           </div>
 
          <div class="form-group">
             <label for="phone">No. Hp</label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}">
+            <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}" required>
           </div>
          
           <div class="form-group">
@@ -196,17 +196,17 @@
           
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}">
+            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}" required>
           </div>
 
           <div class="form-group">
             <label for="phone"></label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}">
+            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}" required>
           </div>
           
           <div class="form-group">
