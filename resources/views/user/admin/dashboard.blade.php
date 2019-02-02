@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'Dashboard | Admin')
+@section('title', 'Dashboard')
 
 @section('breadcrumbs')
 
