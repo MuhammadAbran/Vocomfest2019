@@ -540,9 +540,9 @@ class AdminController extends Controller
    {
       $users = \App\User::find($req->id);
       if ($users->wdc) {
-         $users->wdc->update(['progress' => 98]);
+         $users->wdc->update(['progress' => 2]);
       }else {
-         $users->madc->update(['progress' => 98]);
+         $users->madc->update(['progress' => 2]);
       }
    }
 
