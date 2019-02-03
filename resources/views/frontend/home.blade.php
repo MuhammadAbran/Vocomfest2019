@@ -153,28 +153,155 @@
      
     <!-- Start Timeline Section  -->
 
-    <!-- <section id="timeline">
+  <section id="timeline">
 		<div class="container">
+
+            <div class="row">
+                <div class="col-md-12 bottom-animated">
+                    <h1 class="sec-title  text-center">Timeline</h1>
+                    <hr class="title-line" />
+                </div> 
+            </div>
 			<div class="row">
+                <div class="offset-md-3 col-md-6 bottom-animated ">
+                    <div class="text-center" style="margin-top:20px;">
+                        <input id="wdcTab" type="radio" name="tabs" checked>
+                        <label for="wdcTab"><i class="fa fa-laptop fa-2x"></i> <br> <span>WDC</span></label>
+                            
+                        <input id="madcTab" type="radio" name="tabs">
+                        <label for="madcTab"> <i class="fa fa-mobile fa-2x"></i> <br> <span>MADC</span></label>
+                            
+                        <input id="ntfTab" type="radio" name="tabs">
+                        <label for="ntfTab"><i class="fa fa-microphone fa-2x"></i> <br /> <span>NTF</span></label>
+                            
+                        <input id="icpcTab" type="radio" name="tabs">
+                        <label for="icpcTab"> <i class="fa fa-code fa-2x"></i><br/> <span>ICPC</span></label>
 
-				<div class="col-md-6 offset-md-6">
-                        <div class="bottom-animated">
-                            <h1 class="sec-title">Timeline</h1>
-                            <p class="desc">Jangan sampai terlawatkan! Segera catat tanggalnya</p>
-                            <hr class="title-line" style="width:100%;"><br>
-                        </div>
-					<div class="timeline-content bottom-animated">
-                        <p><b>24 November 2018 – 11 Januari 2019</b> Registrasi Kompetisi</p>
-                        <p><b>24 November 2018 – 11 Januari 2019</b> Registrasi Kompetisi</p>
-                        <p><b>24 November 2018 – 11 Januari 2019</b> Registrasi Kompetisi</p>
-                        <p><b>24 November 2018 – 11 Januari 2019</b> Registrasi Kompetisi</p>
-                        <p><b>24 November 2018 – 11 Januari 2019</b> Registrasi Kompetisi</p>
+                        <section id="wdcContent">
+                            <h3 class="tab-title">Web Design Competition</h3>
+                            <div class="timeline_info">
+                                
+                                @component('components.front_timeline_item')
+                                    @slot('date','5 Februari 2018')  
+                                    @slot('text')
+                                        Pendaftaran dan pengumpulan Website.
+                                        <a href="{{route('wdcPage')}}">Download rulebook.</a> 
+                                    @endslot
+                                @endcomponent
 
-					</div>
-				</div>
+                                @component('components.front_timeline_item')
+                                    @slot('date','27 Maret 2018')  
+                                    @slot('text','Batas akhir pengumpulan website.')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','1 April 2018')  
+                                    @slot('text','Pengumuman penyisihan I.')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','18 Maret 2018')  
+                                    @slot('text','Batas pengumpulan website yang disempurnakan.')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','20 April 2018')  
+                                    @slot('text','Technical Meeting MADC')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','21 April 2018')  
+                                    @slot('text','Babak Final MADC')  
+                                @endcomponent
+                            </div>
+
+                        </section>
+                            
+                        <section id="madcContent">
+                            <h3 class="tab-title">Mobile Apps Development Competition</h3>
+                            <div class="timeline_info">
+                                
+                                @component('components.front_timeline_item')
+                                    @slot('date','5 Februari 2018')  
+                                    @slot('text') 
+                                        Pendaftaran dan pengumpulan proposal.
+                                        <a href="{{route('madcPage')}}">Download rulebook.</a> 
+                                    @endslot 
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','24 Maret 2018')  
+                                    @slot('text','Batas pengumpulan akhir proposal.')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','28 Maret 2018')  
+                                    @slot('text','Pengumuman Penyisihan I')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','1 April 2018')  
+                                    @slot('text','Pengumpulan aplikasi dan video')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','11 April 2018')  
+                                    @slot('text','Pengumuman finalis')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','20 April 2018')  
+                                    @slot('text','Technical Meeting MADC')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','21 April 2018')  
+                                    @slot('text','Babak Final MADC')  
+                                @endcomponent
+                            </div>
+                        </section>
+                            
+                        <section id="ntfContent">
+                            <h3 class="tab-title">National Festival Technology</h3>
+                            <div class="timeline_info">
+                                
+                                @component('components.front_timeline_item')
+                                    @slot('date','13 Februari 2018')  
+                                    @slot('text')  
+                                        Pendaftaran 
+                                        <a href="{{route('ntfPage')}}">Klik disini.</a> 
+                                    @endslot
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','31 Maret 2018')  
+                                    @slot('text','Penutupan Pendaftaran')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','21 Maret 2018')  
+                                    @slot('text','Festival')  
+                                @endcomponent
+                            </div>
+                        </section>
+                            
+                        <section id="icpcContent">
+                            <h3 class="tab-title">International Collegiate Programming Contest</h3>
+                            <div class="timeline_info">
+                                    
+                             <p class="text-center"><strong>COMINGSOON</strong></p>
+
+                            </div>
+                        </section>
+
+                    </div>
+                    
+                    
+                </div>
+				
 			</div>
 		</div>
-    </section> -->
+    </section>
     
     <!-- End Timeline Section  -->
 

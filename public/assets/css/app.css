@@ -418,27 +418,147 @@ nav.navScroll{
 /*TIMELINE*/
 #timeline{
     padding-top:100px;
-	height:100vh;
-	background: url('../img/tentang_bg.png') no-repeat;
+	min-height:70vh;
+	background:white;
 	background-size:cover;
 }
 
+#timeline section {
+    display: none;
+    padding: 20px 0 0;
+    width:100%;
+   
+  }
 
-@media screen and (max-width: 768px) {
-	#timeline{
-		background: transparent;
-        background-size: cover;
-        padding-top:50px;
+
+
+#timeline input {
+    display: none;
+  }
+  
+  #timeline   label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #abc;
+    border-top:1px solid #abc;
+
+  }
+  
+  #timeline   label:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+  }
+  
+  #timeline  label[for*='1']:before { content: '\f1cb'; }
+  #timeline  label[for*='2']:before { content: '\f17d'; }
+  #timeline  label[for*='3']:before { content: '\f16c'; }
+  #timeline  label[for*='4']:before { content: '\f171'; }
+  
+  #timeline  label:hover {
+    color: #789;
+    cursor: pointer;
+  }
+  
+  #timeline  input:checked + label {
+    border-top: 2px solid #61ad9e;
+    color: #789;
+  
+  }
+  
+  #timeline  #wdcTab:checked ~ #wdcContent,
+  #timeline #madcTab:checked ~ #madcContent,
+  #timeline  #ntfTab:checked ~ #ntfContent,
+  #timeline  #icpcTab:checked ~ #icpcContent {
+    display: block;
+    
+  }
+  
+  #timeline .timeline_info{
+      text-align: left;
+
+  }
+  .timeline_info .date, .timeline_info .icon, .timeline_info .text{
+    width:auto;
+    display: inline-block;
+
+  }  
+
+  #timeline .tab-title{
+      padding:15px;
+      font-weight: bold;
+      font-size:1.6em;
+      color:#61ad9e;
+  }
+
+  .timeline_info .date{
+      width:120px;
+      font-weight: bold;
+
+  }
+
+
+
+  .timeline_info .icon {
+    background: #61ad9e;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%; /* the magic */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 10px 15px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #timeline label {
+      font-size: 12px;
     }
-    #timeline .sec-title{
+    #timeline label:before {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    #timeline .tab-title{
+        padding:10px;
+        font-size:1.4em;
+
+    }
+    .timeline_item {
         text-align: center;
     }
     
-    #timeline .desc{
+    .timeline_info .icon {
+        background: #61ad9e;
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        line-height: 40px; 
+        margin: 5px 10px ;
+      }
+    #timeline .timeline-item{
         text-align: center;
     }
-}
+    #timeline .mb-10{
+        margin-bottom:20px;
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    #timeline label {
+      padding: 15px;
+    }
+ 
 
+  }
 
 /*NEWS*/
 #news {
