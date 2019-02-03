@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\News;
+use App\Madc;
 use App\Submission;
+use DB;
 use Session;
 use App\Setting;
 use App\Payment;
@@ -23,6 +25,21 @@ class AdminController extends Controller
       $data['total'] = User::count();
       $data['madc_all'] = User::where('role',2)->count();
       $data['wdc_all'] = User::where('role',3)->count();
+
+      $data['wdc_activity'] = DB::table('users')
+                              ->join('wdcs', 'users.id', '=', 'wdcs.user_id') 
+                              ->select('users.team_name', 'wdcs.updated_at','wdcs.progress')
+                              ->limit(5)
+                              ->orderBy('updated_at','desc')
+                              ->get();
+
+      $data['madc_activity'] = DB::table('users')
+                              ->join('madcs', 'users.id', '=', 'madcs.user_id') 
+                              ->select('users.team_name', 'madcs.updated_at','madcs.progress')
+                              ->limit(5)
+                              ->orderBy('updated_at','desc')
+                              ->get();                       
+
       return view('user.admin.dashboard',$data);
    }
 

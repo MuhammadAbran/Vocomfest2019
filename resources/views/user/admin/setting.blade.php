@@ -2,7 +2,7 @@
 
 @extends('user.admin.menu')
 
-@section('title', 'Setting ')
+@section('title', 'Setting')
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">

@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'Tambah Berita | Admin')
+@section('title', 'Tambah Berita')
 
 @section('breadcrumbs')
     <nav aria-label="breadcrumb">
