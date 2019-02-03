@@ -153,11 +153,11 @@
      
     <!-- Start Timeline Section  -->
 
-  <section id="timeline">
+  <section id="timeline" class="bottom-animated">
 		<div class="container">
 
             <div class="row">
-                <div class="col-md-12 bottom-animated">
+                <div class="col-md-12">
                     <h1 class="sec-title  text-center">Timeline</h1>
                     <hr class="title-line" />
                 </div> 
@@ -307,17 +307,17 @@
 
 
     <!-- Start  News Section  -->
-    <section id="news">
+    <section id="news" class="bottom-animated">
 		<div class="container">
                 <div class="row">
                         <div class="col-md-12 ">
-                            <h1 class="sec-title bottom-animated text-center">Berita Terbaru</h1>
+                            <h1 class="sec-title text-center">Berita Terbaru</h1>
                             <hr class="title-line" />
                         </div> 
                     </div>
    
 			<div class="row">
-				<div class="col-md-12 bottom-animated">
+				<div class="col-md-12">
                     <section class="center slider">
                         <!-- news list-->
 
@@ -374,17 +374,16 @@
       
     <!-- Start Sponsorship Section  -->
 
-    <section id="sponsorship">
+    <section id="sponsorship" class="bottom-animated">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="sec-title text-center bottom-animated">Sponsorship</h1>
+                <div class="col-md-12 ">
+                    <h1 class="sec-title text-center">Sponsorship</h1>
                     <hr class="title-line" />
                 </div> 
             </div>
     
-            <div class="row bottom-animated">
-                
+            <div class="row">     
                 @foreach ($sponsorship as $item)
                     <div class="col-xs-6 col-sm-6 col-md-3">
                         <img class="logo mx-auto d-block" src="{{asset('storage/gallaries')}}/{{$item->gallaries_path}}" alt="{{$item->title}}">
@@ -401,20 +400,20 @@
     <section id="contact">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="sec-title text-center bottom-animated">Contact</h1>
+                <div class="col-md-12 ">
+                    <h1 class="sec-title text-center">Contact</h1>
                     <hr class="title-line" />
                 </div> 
             </div>
             
             <div class="row">
-                <div class=" col-xs-6 col-sm-4 col-md-3 offset-md-1 left-box bottom-animated">
+                <div class=" col-xs-6 col-sm-4 col-md-3 offset-md-1 left-box ">
                     <p> <i class="fas fa-map-marker-alt fa-lg icon-purple"></i>  Gedung Sekolah Vokasi UGM</p>
                     <p><i class="fas fa-envelope fa-lg icon-purple"></i> registration@vocomfest.com</p>
                     <p><i class="fas fa-phone fa-lg icon-purple"></i> (+62) 813-2726-8845</p>
                 </div>
 
-                <div class="col-xs-6 col-sm-8 col-md-8 bottom-animated">
+                <div class="col-xs-6 col-sm-8 col-md-8">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.147316700502!2d110.37253361437632!3d-7.774199279276886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a584a6eaf7cbb%3A0x294cd98559dc9c8c!2sSekolah+Vokasi+UGM!5e0!3m2!1sid!2sid!4v1547922619669" width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>

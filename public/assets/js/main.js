@@ -33,3 +33,38 @@ $(".btn,a").mouseleave("animationend webkitAnimationEnd oAnimationEnd MSAnimatio
 });
 
 
+$('.center').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    responsive: [
+        {
+        breakpoint: 768,
+        settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+        }
+        },
+        {
+        breakpoint: 480,
+        settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+        }
+        }
+    ]
+});
+
+window.sr = ScrollReveal({reset:true});
+
+sr.reveal('.bottom-animated', {
+    duration: 1500,
+    origin:'bottom',
+    distance:'50px'
+});
+
+
