@@ -63,6 +63,46 @@
 	  </div>
 	</div>
 
+   <!-- Konfirmasi -->
+   <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi Pembayaran</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+             <p>Anda yakin ingin <strong>Mengkonfirmasi</strong> Pembayaran ini?</p>
+             <button id="" type="button" class="btn btn-success confirm_payment" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
+
+         </div>
+      </div>
+     </div>
+   </div>
+
+   <!-- Un-Konfirmasi -->
+   <div class="modal fade" id="unconfirm-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle">Konfirmasi Pembayaran</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+             <p>Anda yakin ingin Menolak <strong>Konfirmasi</strong> Pembayaran ini?</p>
+             <button id="" type="button" class="btn btn-warning unconfirm_payment" name="button" data-dismiss="modal"> <i class="fa fa-check"></i> Ya</button>
+             <button type="button" class="btn btn-secondary" name="button" data-dismiss="modal"> <i class="fa fa-times"></i> Batal</button>
+
+         </div>
+      </div>
+     </div>
+   </div>
+
   <!-- /modal -->
   </div>
 
@@ -71,6 +111,11 @@
       <script type="text/javascript">
       //Confirmed Payment
       $(document).on('click', '.confirmed', function(){
+         var id = $(this).attr("id");
+         $('.confirm_payment').attr("id", id);
+      });
+
+      $(document).on('click', '.confirm_payment', function(){
          var id = $(this).attr("id");
          $.ajax({
             headers: {
@@ -92,6 +137,11 @@
 
       //Unconfirmed Payment
       $(document).on('click', '.unconfirmed', function(){
+         var id = $(this).attr("id");
+         $('.unconfirm_payment').attr("id", id);
+      });
+
+      $(document).on('click', '.unconfirm_payment', function(){
          var id = $(this).attr("id");
          $.ajax({
             headers: {

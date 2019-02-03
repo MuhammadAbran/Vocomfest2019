@@ -515,8 +515,8 @@ class AdminController extends Controller
          return Datatables::of($data)
          ->addColumn('action', function ($data){
               return'
-                  <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm confirmed"><i class="fa fa-check" aria-hidden="true"></i></a>
-                  <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm unconfirmed"><i class="fa fa-times" aria-hidden="true"></i></a>
+                  <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm confirmed" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-check" aria-hidden="true"></i></a>
+                  <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm unconfirmed" data-toggle="modal" data-target="#unconfirm-modal"><i class="fa fa-times" aria-hidden="true"></i></a>
                   <a href="#" id="'. $data['payment_id'] .'" class="btn-danger btn-sm delete-payment-data" data-toggle="modal" data-target="#delete-modal"><i class="fa fa-trash" ></i></a>
               ';
          })
