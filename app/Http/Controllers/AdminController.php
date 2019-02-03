@@ -27,18 +27,18 @@ class AdminController extends Controller
       $data['wdc_all'] = User::where('role',3)->count();
 
       $data['wdc_activity'] = DB::table('users')
-                              ->join('wdcs', 'users.id', '=', 'wdcs.user_id') 
+                              ->join('wdcs', 'users.id', '=', 'wdcs.user_id')
                               ->select('users.team_name', 'wdcs.updated_at','wdcs.progress')
                               ->limit(5)
                               ->orderBy('updated_at','desc')
                               ->get();
 
       $data['madc_activity'] = DB::table('users')
-                              ->join('madcs', 'users.id', '=', 'madcs.user_id') 
+                              ->join('madcs', 'users.id', '=', 'madcs.user_id')
                               ->select('users.team_name', 'madcs.updated_at','madcs.progress')
                               ->limit(5)
                               ->orderBy('updated_at','desc')
-                              ->get();                       
+                              ->get();
 
       return view('user.admin.dashboard',$data);
    }
@@ -559,6 +559,12 @@ class AdminController extends Controller
       return view('user.admin.submission');
    }
 
+   public function submissionsAll()
+   {
+      // dd($data);
+      return view('user.admin.submissionAll');
+   }
+
    public function submissionsGetData()
    {
       $submissionWdc = \App\Submission::whereHas('user.wdc')->with('user.wdc')->get();
@@ -591,6 +597,58 @@ class AdminController extends Controller
               'submissions_path' => $subW['submissions_path'],
            ];
         }
+      }
+      return Datatables::of($data)
+      ->editColumn('submissions_path', function($data){
+         return '<a href="'. $data['submissions_path'] .'" class="btn-primary btn-sm" target="blank"><i class="fa fa-drive"></i> Link</a>';
+      })
+      ->addColumn('action', function($data){
+         if ($data['progress'] == 6 || $data['progress'] == 8) {
+            return'
+            <a href="#" id="'. $data['submission_id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            ';
+         }else {
+            return'
+            <a href="#" id="'. $data['id'] .'" class="btn-success btn-sm lolos"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <a href="#" id="'. $data['id'] .'" class="btn-warning btn-sm ndak-lolos"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a href="#" id="'. $data['submission_id'] .'" class="btn-danger btn-sm delete-submission" data-toggle="modal" data-target="#deleteTeam"><i class="fa fa-trash" ></i></a>
+            ';
+         }
+
+      })
+      ->addIndexColumn()
+      ->rawColumns(['action', 'submissions_path'])
+      ->make(true);
+   }
+
+   public function submissionsGetAllData()
+   {
+      $submissionWdc = \App\Submission::whereHas('user.wdc')->with('user.wdc')->get();
+      $submissionMadc = \App\Submission::whereHas('user.madc')->with('user.madc')->get();
+      $data = [];
+      foreach ($submissionMadc as $subM) {
+            $data[] = [
+              'id' => $subM->user->id,
+              'submission_id' => $subM->id,
+              'team_name' => $subM->user->team_name,
+              'kompetisi' => "MADC Competition",
+              'theme' => $subM->theme,
+              'progress' => $subM->user->madc['progress'],
+              'submissions_path' => $subM['submissions_path'],
+              'parent_id' => $subM['parent_id']
+           ];
+      }
+      foreach ($submissionWdc as $subW) {
+            $data[] = [
+              'id' => $subW->user->id,
+              'submission_id' => $subW->id,
+              'team_name' => $subW->user->team_name,
+              'kompetisi' => "WDC Competition",
+              'theme' => $subW->theme,
+              'progress' => $subW->user->wdc['progress'],
+              'submissions_path' => $subW['submissions_path'],
+              'parent_id' => $subW['parent_id']
+           ];
       }
       return Datatables::of($data)
       ->editColumn('submissions_path', function($data){

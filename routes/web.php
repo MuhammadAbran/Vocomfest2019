@@ -32,6 +32,7 @@ Route::get('deletePayment', 'AdminController@deletePayment')->name('delete.payme
 
 //submission
 Route::get('dataSubmission', 'AdminController@submissionsGetData')->name('data.submissions.users');
+Route::get('dataAllSubmission', 'AdminController@submissionsGetAllData')->name('data.submissions.all');
 Route::get('lolosSubmisi', 'AdminController@lolosSubmisi')->name('lolos.submisi');
 Route::get('ndakLolosSubmisi', 'AdminController@ndakLolosSubmisi')->name('ndakLolos.submisi');
 Route::get('deleteSubmission', 'AdminController@deleteSubmission')->name('delete.submission');
@@ -70,6 +71,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin/sponsorship', 'AdminController@galleries')->name('admin.galleries');
    Route::get('/admin/payments', 'AdminController@payments')->name('admin.payments');
    Route::get('/admin/submissions', 'AdminController@submissions')->name('admin.submissions');
+   Route::get('/admin/submissions/all', 'AdminController@submissionsAll')->name('admin.submissions.all');
 
    Route::get('/admin/setting', 'AdminController@setting')->name('admin.setting');
    Route::post('/admin/settingUpdate', 'AdminController@settingUpdate')->name('admin.settingUpdate');

@@ -14,6 +14,6 @@
             <a href="{{route('wdc.submission')}}"><i class="fas fa-file"></i> &nbsp; Submit Berkas</a>
         </li>
     @endif
-    
+
 </ul>
 @endsection
