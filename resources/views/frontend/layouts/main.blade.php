@@ -73,6 +73,7 @@
     <!-- Bootstrap JS -->
     <script src="{!! asset('assets/vendor/bootstrap/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('assets/js/animatescroll.js') !!}"></script>
+    <script src="{!! asset('assets/js/jquery.easeScroll.js') !!}"></script>
     <script src="{!! asset('assets/js/main.js') !!}"></script>
 
 
