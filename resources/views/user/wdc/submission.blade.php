@@ -41,14 +41,7 @@
                 </div>
             </div>
 
-            <div class="row submission-info ">
-                <div class="col-md-2">
-                    <strong>Link Proposal</strong>
-                </div>
-                <div class="col-md-10">:
-                    <a href="{{$proposal->submissions_path}}" target="_blank">{{$proposal->submissions_path}}</a>
-                </div>
-            </div>
+        
             @if($setting->is_active == true && $submission_2->is_active == true)
                 @if($user-> wdc['progress'] == 4 || $user-> wdc['progress'] == 6)
                 <button  type="button" data-toggle="modal" data-target="#uploadProposal" class="btn btn-custom"><i class="fas fa-upload"></i> Unggah Berkas</button>
