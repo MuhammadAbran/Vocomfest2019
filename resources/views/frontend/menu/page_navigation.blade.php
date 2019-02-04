@@ -22,6 +22,9 @@
                         
                         @component('components.navigation_link',['href' =>route('homePage').'#festival','menu_name' => 'Festival Technology'])
                         @endcomponent
+
+                        @component('components.navigation_link',['href' =>route('homePage').'#timeline','menu_name' => 'Timeline'])
+                        @endcomponent
                         
                         @component('components.navigation_link',['href' =>route('homePage').'#news','menu_name' => 'Informasi'])
                         @endcomponent
