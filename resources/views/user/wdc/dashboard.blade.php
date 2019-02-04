@@ -12,7 +12,9 @@
             <div class="timeline__group">
                 <span class="timeline__year">Timeline</span>
 
-                @if(Auth::user()->verified())
+
+                {{-- hidden email verification --}}
+                {{-- @if(Auth::user()->verified()) --}}
 
                     @if($user->progress  > 5 & $user->progress < 99)
                         @component('components.timeline_box')
@@ -34,7 +36,9 @@
                                 @slot('description','Selamat Anda lolos tahap #2')
                             @endif
                         @endcomponent
+
                     @endif
+
                     @component('components.timeline_box')
                         @slot('title','Submission #1')
                         @if($user->progress  < 4)
@@ -57,6 +61,7 @@
                             @slot('description','Selamat Anda lolos tahap #1')
                         @endif
                     @endcomponent
+
                     @component('components.timeline_box')
                         @slot('title','Pembayaran')
                         @if($user->progress  < 2)
@@ -90,9 +95,9 @@
                             @slot('description','Data tim berhasil dikunci')
                         @endif
                     @endcomponent
-                @endif
+                {{-- @endif --}}
 
-                @component('components.timeline_box')
+                {{-- @component('components.timeline_box')
                     @slot('title','Verifikasi Email')
 
                     @if(Auth::user()->notVerified())
@@ -111,7 +116,7 @@
                         @slot('status',' timeline-success')
                         @slot('description','Email telah berhasil di verifikasi')
                     @endif
-                @endcomponent
+                @endcomponent --}}
 
                 @component('components.timeline_box')
                     @slot('status',' timeline-success')

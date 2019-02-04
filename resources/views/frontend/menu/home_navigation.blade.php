@@ -25,6 +25,9 @@
                     @component('components.navigation_animate',['section_id' =>'festival','menu_name' => 'Festival Technology'])
                     @endcomponent
 
+                    @component('components.navigation_animate',['section_id' =>'timeline','menu_name' => 'Timeline'])
+                    @endcomponent
+
                     @component('components.navigation_animate',['section_id' =>'news','menu_name' => 'Informasi'])
                     @endcomponent
 
