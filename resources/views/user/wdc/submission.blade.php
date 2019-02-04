@@ -43,10 +43,10 @@
 
             <div class="row submission-info ">
                 <div class="col-md-2">
-                    <strong>Proposal</strong>
+                    <strong>Link Proposal</strong>
                 </div>
                 <div class="col-md-10">:
-                        <span>Hello world</span>
+                    <a href="{{$proposal->submissions_path}}" target="_blank">{{$proposal->submissions_path}}</a>
                 </div>
             </div>
             @if($setting->is_active == true && $submission_2->is_active == true)

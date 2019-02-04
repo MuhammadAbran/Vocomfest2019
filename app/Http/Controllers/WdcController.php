@@ -133,8 +133,11 @@ class WdcController extends Controller
     public function submission()
     {
          $data['user'] = Auth::user();
+         $data['proposal'] = Submission::where(['user_id' => Auth::user()->id])->orderBy('id','desc')->first();
+
          $data['setting'] = Setting::find(3);
          $data['submission_2'] = Setting::find(4);
+
          return view('user.wdc.submission', $data);
     }
 
