@@ -55,7 +55,9 @@ Route::get('deleteGallary', 'AdminController@deleteGallary')->name('delete.galla
 Route::get('publishGallary', 'AdminController@publishGallary')->name('publish.gallary');
 Route::get('unpublishGallary', 'AdminController@unpublishGallary')->name('unpublish.gallary');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
+//route with email verification
+// Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'admin'])->group(function(){
    Route::get('/admin', 'AdminController@index')->name('admin.dashboard');

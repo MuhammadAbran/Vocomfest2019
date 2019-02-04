@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable 
 {
     use Notifiable;
 
@@ -87,13 +87,13 @@ class User extends Authenticatable implements MustVerifyEmail
       return false;
    }
 
-   public function notVerified()
-   {
-      return $this->email_verified_at == null ? true : false;
-   }
+   // public function notVerified()
+   // {
+   //    return $this->email_verified_at == null ? true : false;
+   // }
 
-   public function verified()
-   {
-      return $this->email_verified_at != null ? true : false;
-   }
+   // public function verified()
+   // {
+   //    return $this->email_verified_at != null ? true : false;
+   // }
 }
