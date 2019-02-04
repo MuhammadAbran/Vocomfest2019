@@ -84,15 +84,22 @@
           </button>
         </div>
         <div class="modal-body">
-          Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
-          <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
+          @if($tim->leader_avatar == 'avatar.png')
+            <strong>Kartu Pelajar</strong> wajib di upload
+          @else
+            Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
+            <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
+          @endif
         </div>
+
         <div class="modal-footer">
           <form action="{{route('wdc.updateProgress')}}" method="POST">
             @csrf
             <input type="hidden" name="progress" value="2">
             <input type="hidden" name="_method" value="PUT">
-            <button type="submit" class="btn btn-warning">Kunci Data</button>
+            @if($tim->leader_avatar != 'avatar.png')
+              <button type="submit" class="btn btn-warning">Kunci Data</button>
+            @endif
           </form>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -224,7 +231,7 @@
           
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
           </div>
         </div>
         <div class="modal-footer">
