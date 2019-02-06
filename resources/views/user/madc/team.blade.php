@@ -89,8 +89,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
-        <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
+        @if($tim->leader_avatar == 'avatar.png')
+            <strong>Kartu Pelajar</strong> wajib di upload
+          @else
+            Apakah anda yakin ingin mengunci data tim <strong>{{$tim->team_name}}?</strong><br>
+            <small>Note <span class="text-danger">*</span> Data yang telah dikunci tidak dapat di edit kembali</small>
+          @endif
       </div>
       <div class="modal-footer">
         <form action="{{route('madc.updateProgress')}}" method="POST">
@@ -185,7 +189,7 @@
 
           <div class="form-group">
             <label for="identitas">Kartu Tanda Mahasiswa</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
           </div>
         </div>
         <div class="modal-footer">
@@ -215,22 +219,22 @@
 
           <div class="form-group">
             <label for="name">Nama</label>
-            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}">
+            <input class="form-control" type="text" name="name" value="{{$tim->member_name}}" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}">
+            <input class="form-control" type="email" name="email" value="{{$tim->member_email}}" required>
           </div>
 
           <div>
             <label for="phone">No. Hp</label>
-            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}">
+            <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}" required>
           </div>
           
           <div class="form-group">
             <label for="identitas">Kartu Tanda Mahasiswa</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
           </div>
         </div>
         <div class="modal-footer">

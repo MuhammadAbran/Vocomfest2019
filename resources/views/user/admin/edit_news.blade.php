@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @extends('user.admin.menu')
-@section('title', 'Tambah Berita')
+@section('title', 'Edit Berita')
 
 @section('breadcrumbs')
 @section('breadcrumbs')

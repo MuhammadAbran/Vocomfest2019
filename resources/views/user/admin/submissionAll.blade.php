@@ -6,15 +6,13 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light"  style="color:#7386D5;margin: 1px 0 0 30px">
          <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-         <li class="breadcrumb-item active" aria-current="page">Submissions</li>
+         <li class="breadcrumb-item"><a href="{{ route('admin.submissions') }}">Submissions</a></li>
+         <li class="breadcrumb-item active" aria-current="page">All Record</li>
       </ol>
      </nav>
 @endsection
 @section('content')
   <div class="box">
-     <div class="panel-heading" style="margin-bottom: 20px;">
-      <a href="{{route('admin.submissions.all')}}" class="btn btn-primary pull-right modal-show"><i class="fa fa-table"></i> All Record</a>
-     </div>
     <table class="table table-hover table-bordered table-striped" id="submission-table">
       <thead>
         <tr>
@@ -22,9 +20,8 @@
           <th>Nama Tim</th>
           <th>Kompetisi</th>
           <th>Tema</th>
-          <th>Tahap</th>
           <th>Link</th>
-          <th width="10%">Status</th>
+          <th width="10%">Submission</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -131,7 +128,7 @@
             order: [[ 4, "asc" ]],
             prossessing: true,
             serverSide: true,
-            ajax: '{!! route('data.submissions.users') !!}',
+            ajax: '{!! route('data.submissions.all') !!}',
             columns: [
                { name: 'id', data: 'DT_RowIndex' },
                {
@@ -147,42 +144,18 @@
                  data: 'theme'
                },
                {
-                  name: 'progress',
-                  data: 'progress',
-                  render: function(data){
-                     if (data == 5) {
-                        return '<span class="badge badge-primary">Penyisihan 1</span>';
-                     }
-
-                     else if (data == 7) {
-                        return '<span class="badge badge-success">Penyisihan 2</span>';
-                     }
-                     if (data == 6) {
-                        return '<span class="badge badge-primary">Menuju Penyisihan #2</span>';
-                     }
-
-                     else if (data == 8) {
-                        return '<span class="badge badge-success">FINAL</span>';
-                     }
-                  }
-               },
-               {
                   name: 'submissions_path',
                   data: 'submissions_path'
                },
                {
-                  name: 'progress',
-                  data: 'progress',
+                  name: 'parent_id',
+                  data: 'parent_id',
                   render: function(data){
-                     if (data == 5) {
-                        return '<span class="badge badge-danger">Belum Lolos</span>';
-                     }else if (data == 6) {
-                        return '<span class="badge badge-success">Lolos Penyisihan #1</span>';
-                     }else if (data == 7) {
-                        return '<span class="badge badge-danger">Belum Lolos #2</span>';
-                     }else if (data == 8) {
-                        return '<span class="badge badge-success">Lolos FINAL</span>';
+                     if (data == 0) {
+                        return '<span class="badge badge-secondary">#1</span>';
                      }
+                        return '<span class="badge badge-info">#2</span>';
+
                   }
                },
                {

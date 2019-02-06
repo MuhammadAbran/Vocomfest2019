@@ -2,7 +2,7 @@
 
 @extends('frontend.menu.page_navigation')
 
-@section('title',' 404 Page')
+@section('title',' 500 Page')
 
 @section('content')
     

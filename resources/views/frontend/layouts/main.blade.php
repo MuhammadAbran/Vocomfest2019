@@ -54,7 +54,7 @@
             </button>
         </div>
         <div class="modal-body">
-                <iframe style="width:100%;min-height:400px;height:auto;" src="https://www.youtube.com/embed/nM0xDI5R50E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe style="width:100%;min-height:400px;height:auto;" src="https://www.youtube.com/embed/begNGFteJ9E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       
         </div>
@@ -73,60 +73,10 @@
     <!-- Bootstrap JS -->
     <script src="{!! asset('assets/vendor/bootstrap/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('assets/js/animatescroll.js') !!}"></script>
+    <script src="{!! asset('assets/js/jquery.easeScroll.js') !!}"></script>
     <script src="{!! asset('assets/js/main.js') !!}"></script>
 
-    <script>
-        $('.center').slick({
-    centerMode: true,
-    centerPadding: '60px',
-    slidesToShow: 3,
-    responsive: [
-        {
-        breakpoint: 768,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-        }
-        },
-        {
-        breakpoint: 480,
-        settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-        }
-        }
-    ]
-});
 
-window.sr = ScrollReveal({reset:true});
-
-sr.reveal('.bottom-animated', {
-    duration: 2000,
-    origin:'bottom',
-    distance:'200px'
-});
-sr.reveal('.top-animated', {
-    duration: 2000,
-    origin:'top',
-    distance:'200px'
-});
-
-sr.reveal('.left-animated', {
-    duration: 2000,
-    origin:'left',
-    distance:'200px'
-});
-sr.reveal('.right-animated', {
-    duration: 2000,
-    origin:'right',
-    distance:'200px'
-});
-
-    </script>
 
     
 </body>
