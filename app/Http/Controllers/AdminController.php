@@ -51,8 +51,9 @@ class AdminController extends Controller
 
    public function viewMadcTeams($id)
    {
-      $tim = \App\User::find($id)->madc;
-      return view('user.admin.view_madc', compact(['tim']));
+      $user = \App\User::find($id);
+      $tim = $user->madc;
+      return view('user.admin.view_madc', compact(['tim', 'user']));
    }
 
    public function madcUsers(Request $request)
@@ -126,8 +127,9 @@ class AdminController extends Controller
 
    public function viewWdcTeams($id)
    {
-      $tim = \App\User::find($id)->wdc;
-      return view('user.admin.view_wdc', compact(['tim']));
+      $user = \App\User::find($id);
+      $tim = $user->wdc;
+      return view('user.admin.view_wdc', compact(['tim', 'user']));
    }
 
    public function wdcUsers(Request $request)

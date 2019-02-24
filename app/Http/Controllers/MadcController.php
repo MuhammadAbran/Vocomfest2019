@@ -170,7 +170,7 @@ class MadcController extends Controller
            'user_id' => $user->id,
          ]);
       }
-      
+
       if ($user->madc->progress == 4) {
          $user->madc->update(['progress' => 5]);
       }elseif ($user->madc->progress == 6) {

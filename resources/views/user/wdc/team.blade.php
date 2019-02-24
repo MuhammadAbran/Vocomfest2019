@@ -10,7 +10,7 @@
   <!-- Team Member box -->
 
     <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
-    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>    
+    <button {{$tim->progress ==1? '' : 'disabled'}} class="btn btn-warning" style="margin-bottom: 20px;" data-toggle="modal" data-target="#kunciData"> <i class="fas fa-lock"></i> Kunci Data Tim</button>
     <!-- Tombol Kunci Data akan dsiabled kalau progress sudah 2 (Sudah kunci data) -->
 
     @if($tim->co_leader_name == null)
@@ -21,7 +21,7 @@
         <button style="margin-bottom: 20px;" type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Tambah Anggota</button>
       @endif
     @endif
-    
+
     @if($errors->has('photo'))
       <br><strong>{{ $errors->first('photo') }}</strong>
     @endif
@@ -31,11 +31,12 @@
         @slot('title', 'Ketua Tim')
         @slot('avatar',$tim->leader_avatar)
         @slot('name',$tim->leader_name)
+        @slot('telp',$tim->leader_phone)
         @slot('email', $tim->email)
         @slot('button')
           <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#leader">Edit Data</button>
         @endslot
-      @endcomponent 
+      @endcomponent
       <!-- End Member Box -->
 
       @if($tim->co_leader_name != null)
@@ -43,18 +44,20 @@
         @slot('title', 'Anggota #1')
         @slot('avatar',$tim->co_leader_avatar)
         @slot('name',$tim->co_leader_name)
+        @slot('telp',$tim->co_leader_phone)
         @slot('email', $tim->co_leader_email)
         @slot('button')
         <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#co_leader">Edit Data</button>
         @endslot
       @endcomponent
       @endif
-    
+
       @if($tim->member_name != null )
       @component('components.member_box')
         @slot('title', 'Anggota #2')
         @slot('avatar',$tim->member_avatar)
         @slot('name',$tim->member_name)
+        @slot('telp',$tim->member_phone)
         @slot('email', $tim->member_email)
         @slot('button')
         <button {{$tim->progress <=1?'' : 'disabled'}} type="button" class="btn btn-info" data-toggle="modal" data-target="#member1">Edit Data</button>
@@ -120,7 +123,7 @@
       <form action="{{ route('wdc.team.edit') }}" method="post" enctype="multipart/form-data">
         <div class="modal-body">
           <input type="hidden" name="id" value="{{$tim->id}}">
-          
+
       <!-- Biar tau yang diedit data ketua/wakil/anggota -->
           <input type="hidden" name="pos" value=1>
           <div class="form-group">
@@ -133,7 +136,7 @@
             <input class="form-control" type="email" value="{{$tim->email}}" disabled>
             <input class="form-control" type="hidden" name="email" value="{{$tim->email}}">
           </div>
-          
+
           <div class="form-group">
             <label for="phone">No. Hp</label>
             <input class="form-control" type="number" name="phone" value="{{$tim->leader_phone}}">
@@ -168,7 +171,7 @@
         <div class="modal-body">
           <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=2>
-          
+
           <div class="form-group">
             <label for="name">Nama</label>
             <input class="form-control" type="text" name="name" value="{{$tim->co_leader_name}}" required>
@@ -183,7 +186,7 @@
             <label for="phone">No. Hp</label>
             <input class="form-control" type="number" name="phone" value="{{$tim->co_leader_phone}}" required>
           </div>
-         
+
           <div class="form-group">
             <label for="identitas">Foto Kartu Pelajar</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>
@@ -213,7 +216,7 @@
         <div class="modal-body">
           <input type="hidden" name="id" value="{{$tim->id}}">
           <input type="hidden" name="pos" value=3>
-          
+
           <div class="form-group">
             <label for="name">Nama</label>
             <input class="form-control" type="text" name="name" value="{{$tim->member_name}}" required>
@@ -228,7 +231,7 @@
             <label for="phone">No. Hp</label>
             <input class="form-control" type="number" name="phone" value="{{$tim->member_phone}}" required>
           </div>
-          
+
           <div class="form-group">
             <label for="identitas">Identitas Diri</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="photo" required>

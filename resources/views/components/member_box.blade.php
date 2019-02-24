@@ -6,7 +6,8 @@
       <div class="container">
         <h3>{{$title}}</h3>
         <p class="title"><strong>{{$name}}</strong></p>
-        <p>{{$email}}</p>
+        <p>{{ "+62 " . substr($telp, 1, 20) }} <i class="fa fa-phone"></i></p>
+        <p><i class="fa fa-envelope"></i> {{$email}}</p>
         <p>
             {{$button}}
         </p>
