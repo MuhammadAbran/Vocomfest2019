@@ -14,6 +14,13 @@
 @section('content')
   <div class="box">
   <!-- Team Member  -->
+  <div class="row">
+     <h3>{{ $tim->instance_name }}</h3>
+
+  </div>
+  <div class="row" style="margin-top: -10px">
+     <p>{{ $tim->instance_address }}</p>
+  </div>
 
     <div class="row team">
       <!-- Team Member Box -->
