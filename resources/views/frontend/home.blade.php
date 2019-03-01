@@ -79,6 +79,7 @@
                         <img class="card-img-top img-responsive" src="{!! asset('assets/img/icpc.png')!!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">International Collegiate Programming Contest</p>
+                            <p class="text-center" style="font-size:1.4em; font-weight : bold; color:#FF5722;">Total Hadiah Rp9.500.000,00</p>
                             <div class="text-center">
                                 <a href="{{route('icpcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
@@ -91,6 +92,7 @@
                         <img class="card-img-top img-responsive" src="{!! asset('assets/img/madc.png')!!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">Mobile Apps Development <br/>Competition</p>
+                            <p class="text-center" style="font-size:1.4em; font-weight : bold; color:#FF5722;">Total Hadiah Rp9.500.000,00</p>
                             <div class="text-center">
                                     <a href="{{route('madcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
@@ -103,6 +105,7 @@
                         <img class="card-img-top img-responsive" src="{!! asset('assets/img/wdc.png') !!}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text text-center">Web Design<br/> Competition</p>
+                            <p class="text-center" style="font-size:1.4em; font-weight : bold; color:#FF5722;">Total Hadiah Rp4.500.000,00</p>
                             <div class="text-center">
                                     <a href="{{route('wdcPage')}}"><button class="btn btn-custom btn-transparent">Selengkapnya</button></a>
                             </div>     
@@ -182,7 +185,7 @@
                             <div class="timeline_info">
                                 
                                 @component('components.front_timeline_item')
-                                    @slot('date','5 Februari 2018')  
+                                    @slot('date','5 Februari 2019')  
                                     @slot('text')
                                         Pendaftaran dan pengumpulan Website.
                                         <a href="{{route('wdcPage')}}">Download rulebook.</a> 
@@ -190,28 +193,28 @@
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','27 Maret 2018')  
+                                    @slot('date','27 Maret 2019')  
                                     @slot('text','Batas akhir pengumpulan website.')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','1 April 2018')  
+                                    @slot('date','1 April 2019')  
                                     @slot('text','Pengumuman penyisihan I.')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','18 Maret 2018')  
+                                    @slot('date','18 Maret 2019')  
                                     @slot('text','Batas pengumpulan website yang disempurnakan.')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','20 April 2018')  
-                                    @slot('text','Technical Meeting MADC')  
+                                    @slot('date','19 April 2019')  
+                                    @slot('text','Technical Meeting WDC')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','21 April 2018')  
-                                    @slot('text','Babak Final MADC')  
+                                    @slot('date','20 April 2019')  
+                                    @slot('text','Babak Final WDC')  
                                 @endcomponent
                             </div>
 
@@ -222,7 +225,7 @@
                             <div class="timeline_info">
                                 
                                 @component('components.front_timeline_item')
-                                    @slot('date','5 Februari 2018')  
+                                    @slot('date','5 Februari 2019')  
                                     @slot('text') 
                                         Pendaftaran dan pengumpulan proposal.
                                         <a href="{{route('madcPage')}}">Download rulebook.</a> 
@@ -230,32 +233,37 @@
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','24 Maret 2018')  
+                                    @slot('date','24 Maret 2019')  
                                     @slot('text','Batas pengumpulan akhir proposal.')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','28 Maret 2018')  
+                                    @slot('date','28 Maret 2019')  
                                     @slot('text','Pengumuman Penyisihan I')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','1 April 2018')  
+                                    @slot('date','1 April 2019')  
                                     @slot('text','Pengumpulan aplikasi dan video')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','11 April 2018')  
+                                    @slot('date','11 April 2019')  
                                     @slot('text','Pengumuman finalis')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','20 April 2018')  
+                                    @slot('date','12-18 April 2019')  
+                                    @slot('text','Pengumpulan apps yang sudah disempurnakan dan file presentasi.')  
+                                @endcomponent
+
+                                @component('components.front_timeline_item')
+                                    @slot('date','19 April 2019')  
                                     @slot('text','Technical Meeting MADC')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','21 April 2018')  
+                                    @slot('date','20 April 2019')  
                                     @slot('text','Babak Final MADC')  
                                 @endcomponent
                             </div>
@@ -266,7 +274,7 @@
                             <div class="timeline_info">
                                 
                                 @component('components.front_timeline_item')
-                                    @slot('date','13 Februari 2018')  
+                                    @slot('date','24 Februari 2019')  
                                     @slot('text')  
                                         Pendaftaran 
                                         <a href="{{route('ntfPage')}}">Klik disini.</a> 
@@ -274,12 +282,12 @@
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','31 Maret 2018')  
+                                    @slot('date','31 Maret 2019')  
                                     @slot('text','Penutupan Pendaftaran')  
                                 @endcomponent
 
                                 @component('components.front_timeline_item')
-                                    @slot('date','21 Maret 2018')  
+                                    @slot('date','20 April 2019')  
                                     @slot('text','Festival')  
                                 @endcomponent
                             </div>
@@ -289,7 +297,36 @@
                             <h3 class="tab-title">International Collegiate Programming Contest</h3>
                             <div class="timeline_info">
                                     
-                             <p class="text-center"><strong>COMINGSOON</strong></p>
+                            @component('components.front_timeline_item')
+                                @slot('date','25 Februari 2019')  
+                                @slot('text','Pendaftaran.')  
+                            @endcomponent
+
+                            @component('components.front_timeline_item')
+                                @slot('date','29 Maret 2019')  
+                                @slot('text','Penutupan Pendaftaran.')  
+                            @endcomponent
+
+                            @component('components.front_timeline_item')
+                                @slot('date','5 April 2019')  
+                                @slot('text','Warming Up Online')  
+                            @endcomponent
+
+                            @component('components.front_timeline_item')
+                                @slot('date','7 April 2019')  
+                                @slot('text','Babak Penyisihan online')  
+                            @endcomponent
+
+                            @component('components.front_timeline_item')
+                                @slot('date','8 April 2019')  
+                                @slot('text','Pengumuman finalis')  
+                            @endcomponent
+
+                            @component('components.front_timeline_item')
+                                @slot('date','20 April 2019')  
+                                @slot('text','Babak Final')  
+                            @endcomponent
+
 
                             </div>
                         </section>

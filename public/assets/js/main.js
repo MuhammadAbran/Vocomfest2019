@@ -68,20 +68,20 @@ sr.reveal('.bottom-animated', {
 });
 
 
-$("html").easeScroll({
+// $("html").easeScroll({
 
-    frameRate: 60,
-    animationTime: 2500,
-    stepSize: 250,
-    pulseAlgorithm: 1,
-    pulseScale: 8,
-    pulseNormalize: 1,
-    accelerationDelta: 20,
-    accelerationMax: 1,
-    keyboardSupport: true,
-    arrowScroll: 350,
-    touchpadSupport: true,
-    fixedBackground: true
+//     frameRate: 60,
+//     animationTime: 2500,
+//     stepSize: 250,
+//     pulseAlgorithm: 1,
+//     pulseScale: 8,
+//     pulseNormalize: 1,
+//     accelerationDelta: 20,
+//     accelerationMax: 1,
+//     keyboardSupport: true,
+//     arrowScroll: 350,
+//     touchpadSupport: true,
+//     fixedBackground: true
   
-  });
+//   });
 
