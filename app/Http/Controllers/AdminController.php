@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\News;
 use App\Madc;
+use App\Wdc;
 use App\Submission;
 use DB;
 use Session;
@@ -24,6 +25,19 @@ class AdminController extends Controller
    {
       $data['total'] = User::count();
       $data['madc_all'] = User::where('role',2)->count();
+
+      //kunci data
+      $data['madc_kunci_data'] = Madc::where('progress',2)->count();
+      $data['wdc_kunci_data'] = Wdc::where('progress',2)->count();
+      $data['kunci_data'] = $data['wdc_kunci_data'] + $data['madc_kunci_data'];
+
+      //telah bayar
+      $data['madc_bayar_data'] = Madc::where('progress', 4)->count();
+      $data['wdc_bayar_data'] = Wdc::where('progress', 4)->count();
+      $data['bayar_data'] = $data['wdc_bayar_data'] + $data['madc_bayar_data'];
+      $data['pembayaran'] = ($data['wdc_bayar_data'] * 80000) + ($data['madc_bayar_data'] * 100000);
+
+
       $data['wdc_all'] = User::where('role',3)->count();
 
       $data['wdc_activity'] = DB::table('users')

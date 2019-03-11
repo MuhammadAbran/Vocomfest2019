@@ -12,9 +12,28 @@
 @endsection
 
 @section('content')
-    <div class="box">
+    <div class="box" style="margin-top: -20px;">
          <!-- Chart -->
-
+         <div class="row" style="margin-bottom: 15px; margin-top: -12px">
+            <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
+               <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-credit-card"></i> Total Pemasukan</h5><hr>
+                <h3 style="color:#7386D5;">Rp. {{ format_uang($pembayaran) }}</h3>
+              </div>
+            </div>
+            <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
+               <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-lock"></i> Telah Kunci Data</h5><hr>
+                <h3 style="color:#7386D5;"><i class="fa fa-users"></i> {{ $kunci_data }} Team</h3>
+              </div>
+            </div>
+            <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
+               <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-check-circle"></i> Telah Bayar</h5><hr>
+                <h3 style="color:#7386D5;"><i class="fa fa-users"></i> {{ $bayar_data }} Team</h3>
+              </div>
+            </div>
+         </div>
          <div class="row">
              <div class="col-md-8">
                     <div >
@@ -39,7 +58,7 @@
                                             <td>
                                             @component('components.progress')
                                                 @slot('progress',$activity->progress)
-                                            @endcomponent          
+                                            @endcomponent
                                             </td>
                                         </tr>
                                     @endforeach
@@ -49,7 +68,7 @@
                     <div style="margin-top:40px;"></div>
                     <div class="col-md-12">
                         <span style="font-size:14px;" class="text-danger">Madc User Activity</span>
-                            <table class="table striped" style="font-size:14px !important"> 
+                            <table class="table striped" style="font-size:14px !important">
                                 <thead>
                                     <tr>
                                         <th>Nama Tim</th>
@@ -63,7 +82,7 @@
                                             <td>
                                             @component('components.progress')
                                                 @slot('progress',$activity->progress)
-                                            @endcomponent          
+                                            @endcomponent
                                             </td>
                                         </tr>
                                     @endforeach
@@ -73,13 +92,13 @@
                  </div>
              </div>
          </div>
-    
+
     </div>
 @endsection
 @push('scripts')
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
-    
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
