@@ -18,19 +18,46 @@
             <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
                <div class="card-body">
                 <h5 class="card-title"><i class="fa fa-credit-card"></i> Total Pemasukan</h5><hr>
-                <h3 style="color:#7386D5;">Rp. {{ format_uang($pembayaran) }}</h3>
+                <h2 style="color:#7386D5;">Rp. {{ format_uang($pembayaran) }}</h2>
+                <small class="text-muted" style="font-size: 11px">WDC: Rp. {{ format_uang($wdc_bayar_data * 80000) }} | MADC: Rp. {{ format_uang($madc_bayar_data * 100000) }}</small>
               </div>
             </div>
-            <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
+            <div class="col-md-4 card" style="margin-right: 15px; margin-bottom: 12px">
                <div class="card-body">
-                <h5 class="card-title"><i class="fa fa-lock"></i> Telah Kunci Data</h5><hr>
-                <h3 style="color:#7386D5;"><i class="fa fa-users"></i> {{ $kunci_data }} Team</h3>
+                  <h5 class="card-title"><i class="fa fa-lock"></i> Telah Kunci Data</h5><hr>
+                  <div class="row">
+                     <div class="col-md-5 card" style="margin-right: 20px">
+                        <div class="car-body">
+                           <h6 class="card-title" style="margin-top: 10px;"><i class="fa fa-users"></i> WDC</h5>
+                         <h5 style="color:#7386D5;">{{ $wdc_kunci_data }} Team</h4>
+                        </div>
+                     </div>
+                     <div class="col-md-5 card" style="margin-right: 20px">
+                        <div class="car-body">
+                           <h6 class="card-title" style="margin-top: 10px;"><i class="fa fa-users"></i> MADC</h5>
+                         <h5 style="color:#7386D5;">{{ $madc_kunci_data }} Team</h4>
+                        </div>
+                     </div>
+                  </div>
               </div>
             </div>
-            <div class="col-md-3 card" style="margin-right: 15px; margin-bottom: 12px">
+            <div class="col-md-4 card" style="margin-right: 15px; margin-bottom: 12px">
                <div class="card-body">
                 <h5 class="card-title"><i class="fa fa-check-circle"></i> Telah Bayar</h5><hr>
-                <h3 style="color:#7386D5;"><i class="fa fa-users"></i> {{ $bayar_data }} Team</h3>
+                <div class="row">
+                   <div class="col-md-5 card" style="margin-right: 20px">
+                      <div class="car-body">
+                        <h6 class="card-title" style="margin-top: 10px;"><i class="fa fa-users"></i> WDC</h5>
+                       <h5 style="color:#7386D5;">{{ $wdc_bayar_data }} Team</h4>
+                      </div>
+                   </div>
+                   <div class="col-md-5 card" style="margin-right: 20px">
+                      <div class="car-body">
+                        <h6 class="card-title" style="margin-top: 10px;"><i class="fa fa-users"></i> MADC</h5>
+                       <h5 style="color:#7386D5;">{{ $madc_bayar_data }} Team</h4>
+                      </div>
+                   </div>
+                </div>
               </div>
             </div>
          </div>
